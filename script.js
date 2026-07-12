@@ -1,33 +1,25 @@
 document.getElementById("calculate").addEventListener("click", function () {
 
-const weight = parseFloat(document.getElementById("weight").value);
-const drug = document.getElementById("drug").value;
+    const weight = parseFloat(document.getElementById("weight").value);
+    const drugId = document.getElementById("drug").value;
 
-let result = "";
+    const result = document.getElementById("result");
 
-if (!weight || !drug) {
-    result = "يرجى إدخال الوزن واختيار الدواء.";
-}
-else {
-
-    const medicine = drugs[drug];
-
-    if (!medicine) {
-        result = "الدواء غير موجود.";
-    } else {
-
-        const dose = weight * medicine.mgPerKg;
-
-        result = `
-        <b>${medicine.name}</b><br>
-        الجرعة: ${dose.toFixed(1)} mg<br>
-        عدد المرات: ${medicine.frequency}<br>
-        الحد الأقصى: ${medicine.maxDose} mg
-        `;
-
+    if (!weight || !drugId) {
+        result.innerHTML = "يرجى اختيار الدواء وإدخال الوزن.";
+        return;
     }
-}
 
-document.getElementById("result").innerHTML = result;
+    const drug = drugs[drugId];
 
+    const doseMg = weight * drug.mgPerKg;
+    const doseMl = (doseMg / drug.concentration) * 5;
+
+    result.innerHTML = `
+        <h3>${drug.name}</h3>
+        <p><strong>الجرعة:</strong> ${doseMg.toFixed(1)} mg</p>
+        <p><strong>تعادل:</strong> ${doseMl.toFixed(1)} mL</p>
+        <p><strong>التكرار:</strong> ${drug.frequency}</p>
+        <p><strong>الحد الأقصى:</strong> ${drug.maxDose} mg</p>
+    `;
 });
