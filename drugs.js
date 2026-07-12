@@ -21,9 +21,8 @@ const drugs = {
     frequency: "كل 8 ساعات",
     maxDose: 500,
     concentration: 250
-  }
-};
-azithromycin: {
+  }.
+  azithromycin: {
     name: "Azithromycin",
     mgPerKg: 10,
     frequency: "مرة واحدة يومياً",
@@ -46,3 +45,4 @@ metronidazole: {
     maxDose: 500,
     concentration: 125
 },
+};
