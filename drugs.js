@@ -1,20 +1,25 @@
-const drugs = [
-  {
-    id: "paracetamol",
+const drugs = {
+  paracetamol: {
     name: "Paracetamol",
-    dosePerKg: 15,
-    unit: "mg/kg/dose"
+    mgPerKg: 15,
+    frequency: "كل 4-6 ساعات",
+    maxDose: 1000,
+    concentration: 120
   },
-  {
-    id: "ibuprofen",
+
+  ibuprofen: {
     name: "Ibuprofen",
-    dosePerKg: 10,
-    unit: "mg/kg/dose"
+    mgPerKg: 10,
+    frequency: "كل 6-8 ساعات",
+    maxDose: 400,
+    concentration: 100
   },
-  {
-    id: "amoxicillin",
+
+  amoxicillin: {
     name: "Amoxicillin",
-    dosePerKg: 25,
-    unit: "mg/kg/dose"
+    mgPerKg: 25,
+    frequency: "كل 8 ساعات",
+    maxDose: 500,
+    concentration: 250
   }
-];
+};
