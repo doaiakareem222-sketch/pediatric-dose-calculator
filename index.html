@@ -2,88 +2,90 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PediaDose AI</title>
+    <title>DoseCare</title>
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css">
-
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🩺 PediaDose AI</h1>
+    <h1>🩺 DoseCare</h1>
 
-<p class="subtitle">
-حاسبة جرعات الأطفال بالذكاء الاصطناعي
-</p>
+    <p class="subtitle">
+        حاسبة جرعات الأطفال بالذكاء الاصطناعي
+    </p>
 
-<div class="card">
+    <div class="card">
 
-<label>اسم الدواء</label>
+        <label>اسم الدواء</label>
 
-<select id="drug">
-  <option value="coamoxiclav">Co-amoxiclav</option>
-<option value="cephalexin">Cephalexin</option>
-<option value="cefuroxime">Cefuroxime</option>
-<option value="clarithromycin">Clarithromycin</option>
-<option value="cetirizine">Cetirizine</option>
-<option value="loratadine">Loratadine</option>
-<option value="chlorpheniramine">Chlorpheniramine</option>
-<option value="">اختر الدواء</option>
-<option value="paracetamol">Paracetamol</option>
-<option value="ibuprofen">Ibuprofen</option>
-<option value="amoxicillin">Amoxicillin</option>
-<option value="azithromycin">Azithromycin</option>
-<option value="cefixime">Cefixime</option>
-<option value="metronidazole">Metronidazole</option>
-</select>
+        <select id="drug">
 
-<label>العمر (بالسنوات)</label>
+            <option value="">اختر الدواء</option>
 
-<input
-type="number"
-id="age"
-placeholder="مثال: 5">
+            <option value="paracetamol">Paracetamol</option>
+            <option value="ibuprofen">Ibuprofen</option>
+            <option value="amoxicillin">Amoxicillin</option>
+            <option value="azithromycin">Azithromycin</option>
+            <option value="cefixime">Cefixime</option>
+            <option value="metronidazole">Metronidazole</option>
 
-<label>الوزن (Kg)</label>
+            <option value="coamoxiclav">Co-amoxiclav</option>
+            <option value="cephalexin">Cephalexin</option>
+            <option value="cefuroxime">Cefuroxime</option>
+            <option value="clarithromycin">Clarithromycin</option>
+            <option value="cetirizine">Cetirizine</option>
+            <option value="loratadine">Loratadine</option>
+            <option value="chlorpheniramine">Chlorpheniramine</option>
 
-<input
-type="number"
-id="weight"
-placeholder="مثال: 18">
+        </select>
 
-<button id="calculate">
-احسب الجرعة
-</button>
+        <label>العمر (بالسنوات)</label>
 
-<div id="result"></div>
+        <input
+            type="number"
+            id="age"
+            placeholder="مثال: 5">
 
-</div>
+        <label>الوزن (Kg)</label>
 
-<!-- About Section -->
-<div class="about-card">
+        <input
+            type="number"
+            id="weight"
+            placeholder="مثال: 18">
 
-<h2>ℹ️ About PediaDose AI</h2>
+        <button id="calculate">
+            احسب الجرعة
+        </button>
 
-<p>
-PediaDose AI هو مشروع يساعد في حساب جرعات الأطفال اعتماداً على الوزن
-والمراجع الدوائية القياسية.
-</p>
+        <div id="result"></div>
 
-<p>
-⚠️ النتائج لغرض التعليم والمراجعة فقط، ولا تغني عن استشارة الطبيب أو الصيدلي.
-</p>
+    </div>
 
-<p class="copyright">
-Developed by Doaa Kareem © 2026
-</p>
+    <div class="about-card">
 
-</div>
+        <h2>ℹ️ About DoseCare</h2>
+
+        <p>
+            DoseCare هو مشروع يساعد في حساب جرعات الأطفال اعتمادًا على الوزن
+            والمراجع الدوائية القياسية.
+        </p>
+
+        <p>
+            ⚠️ النتائج لغرض التعليم والمراجعة فقط، ولا تغني عن استشارة الطبيب أو الصيدلي.
+        </p>
+
+        <p class="copyright">
+            Developed by Doaa Kareem © 2026
+        </p>
+
+    </div>
 
 </div>
 
