@@ -108,3 +108,22 @@ document.getElementById("copy").addEventListener("click", function () {
 
     alert("✅ تم نسخ النتيجة.");
 });
+const searchInput = document.getElementById("searchDrug");
+const drugSelect = document.getElementById("drug");
+
+searchInput.addEventListener("input", function () {
+
+    const value = this.value.toLowerCase();
+
+    for (let option of drugSelect.options) {
+
+        if (option.value === "") continue;
+
+        if (option.text.toLowerCase().includes(value)) {
+            drugSelect.value = option.value;
+            break;
+        }
+
+    }
+
+});
