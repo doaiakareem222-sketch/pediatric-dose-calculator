@@ -145,3 +145,25 @@ const savedDrug = localStorage.getItem("favoriteDrug");
 if(savedDrug){
     document.getElementById("drug").value = savedDrug;
 }
+const drugSelect = document.getElementById("drug");
+const strengthSelect = document.getElementById("strength");
+
+drugSelect.addEventListener("change", function(){
+
+    strengthSelect.innerHTML =
+    '<option value="">اختر التركيز</option>';
+
+    const drug = drugs[this.value];
+
+    if(!drug || !drug.strengths) return;
+
+    drug.strengths.forEach((item,index)=>{
+
+        strengthSelect.innerHTML +=
+        `<option value="${index}">
+            ${item.name}
+        </option>`;
+
+    });
+
+});
