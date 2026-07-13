@@ -95,3 +95,16 @@ document.getElementById("reset").addEventListener("click", function () {
     document.getElementById("result").innerHTML = "";
 
 });
+document.getElementById("copy").addEventListener("click", function () {
+
+    const text = document.getElementById("result").innerText;
+
+    if(text.trim() === ""){
+        alert("لا توجد نتيجة لنسخها.");
+        return;
+    }
+
+    navigator.clipboard.writeText(text);
+
+    alert("✅ تم نسخ النتيجة.");
+});
