@@ -165,3 +165,20 @@ button:active{
 .copy-btn:hover{
     background:#059669;
 }
+.favorite-btn{
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    background:#f59e0b;
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.favorite-btn:hover{
+    background:#d97706;
+}
