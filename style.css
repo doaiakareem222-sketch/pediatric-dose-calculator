@@ -148,3 +148,20 @@ button:active{
 .reset-btn:hover{
     background:#dc2626;
 }
+.copy-btn{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    background:#10b981;
+    color:white;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.copy-btn:hover{
+    background:#059669;
+}
