@@ -1,14 +1,30 @@
 const drugs = {
 
-paracetamol: {
-    name: "Paracetamol",
-    mgPerKg: 15,
-    frequency: "كل 4-6 ساعات",
-    maxDose: 1000,
-    concentration: 120,
-    notes: "يمكن إعطاؤه مع أو بدون الطعام."
-},
+paracetamol:{
 
+    name:"Paracetamol",
+
+    mgPerKg:15,
+
+    frequency:"كل 4-6 ساعات",
+
+    maxDose:1000,
+
+    strengths:[
+
+        {
+            name:"120 mg / 5 mL",
+            concentration:120
+        },
+
+        {
+            name:"250 mg / 5 mL",
+            concentration:250
+        }
+
+    ]
+
+},
 ibuprofen: {
     name: "Ibuprofen",
     mgPerKg: 10,
