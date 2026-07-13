@@ -75,6 +75,11 @@ document.getElementById("calculate").addEventListener("click", function () {
                 <strong>${drug.maxDose} mg</strong>
             </div>
 
+            <div class="result-item">
+                <span>📝 ملاحظات</span>
+                <strong>${drug.notes || "لا توجد ملاحظات."}</strong>
+            </div>
+
             ${warning}
 
         </div>
