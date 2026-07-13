@@ -1,5 +1,6 @@
 document.getElementById("calculate").addEventListener("click", function () {
 
+    const age = document.getElementById("age").value;
     const weight = parseFloat(document.getElementById("weight").value);
     const drugId = document.getElementById("drug").value;
 
@@ -16,10 +17,41 @@ document.getElementById("calculate").addEventListener("click", function () {
     const doseMl = (doseMg / drug.concentration) * 5;
 
     result.innerHTML = `
-        <h3>${drug.name}</h3>
-        <p><strong>الجرعة:</strong> ${doseMg.toFixed(1)} mg</p>
-        <p><strong>تعادل:</strong> ${doseMl.toFixed(1)} mL</p>
-        <p><strong>التكرار:</strong> ${drug.frequency}</p>
-        <p><strong>الحد الأقصى:</strong> ${drug.maxDose} mg</p>
+    <div class="result-card">
+
+        <h2>${drug.name}</h2>
+
+        <div class="result-item">
+            <span>👶 العمر</span>
+            <strong>${age} سنة</strong>
+        </div>
+
+        <div class="result-item">
+            <span>⚖️ الوزن</span>
+            <strong>${weight} Kg</strong>
+        </div>
+
+        <div class="result-item">
+            <span>💉 الجرعة</span>
+            <strong>${doseMg.toFixed(1)} mg</strong>
+        </div>
+
+        <div class="result-item">
+            <span>🥄 تعادل</span>
+            <strong>${doseMl.toFixed(1)} mL</strong>
+        </div>
+
+        <div class="result-item">
+            <span>⏰ التكرار</span>
+            <strong>${drug.frequency}</strong>
+        </div>
+
+        <div class="result-item">
+            <span>🚫 الحد الأقصى</span>
+            <strong>${drug.maxDose} mg</strong>
+        </div>
+
+    </div>
     `;
+
 });
