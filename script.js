@@ -127,3 +127,21 @@ searchInput.addEventListener("input", function () {
     }
 
 });
+document.getElementById("favorite").addEventListener("click", function(){
+
+    const drug = document.getElementById("drug").value;
+
+    if(!drug){
+        alert("اختر دواء أولاً");
+        return;
+    }
+
+    localStorage.setItem("favoriteDrug", drug);
+
+    alert("⭐ تم حفظ الدواء في المفضلة");
+});
+const savedDrug = localStorage.getItem("favoriteDrug");
+
+if(savedDrug){
+    document.getElementById("drug").value = savedDrug;
+}
