@@ -131,3 +131,20 @@ button:active{
     color:#6b7280;
     font-size:15px;
 }
+.reset-btn{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    background:#ef4444;
+    color:white;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.reset-btn:hover{
+    background:#dc2626;
+}
