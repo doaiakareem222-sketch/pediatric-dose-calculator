@@ -86,3 +86,12 @@ document.getElementById("calculate").addEventListener("click", function () {
     `;
 
 });
+document.getElementById("reset").addEventListener("click", function () {
+
+    document.getElementById("drug").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("weight").value = "";
+
+    document.getElementById("result").innerHTML = "";
+
+});
