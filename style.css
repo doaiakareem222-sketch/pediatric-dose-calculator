@@ -57,3 +57,38 @@ select {
     font-size: 16px;
     transition: .3s;
     background
+
+.result-card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-top:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.result-card h2{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:18px;
+}
+
+.result-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #e5e7eb;
+    font-size:17px;
+}
+
+.result-item:last-child{
+    border-bottom:none;
+}
+
+.result-item span{
+    color:#555;
+}
+
+.result-item strong{
+    color:#111827;
+}
