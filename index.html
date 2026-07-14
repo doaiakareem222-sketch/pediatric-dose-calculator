@@ -22,12 +22,13 @@
     </p>
 
     <div class="card">
-<label>البحث عن الدواء</label>
 
-<input
-type="text"
-id="searchDrug"
-placeholder="اكتب اسم الدواء...">
+        <label>البحث عن الدواء</label>
+        <input
+            type="text"
+            id="searchDrug"
+            placeholder="اكتب اسم الدواء...">
+
         <label>اسم الدواء</label>
 
         <select id="drug">
@@ -43,33 +44,53 @@ placeholder="اكتب اسم الدواء...">
                 <option value="amoxicillin">Amoxicillin</option>
                 <option value="coamoxiclav">Co-amoxiclav</option>
                 <option value="azithromycin">Azithromycin</option>
-                <option value="cefixime">Cefixime</option>
-                <option value="cefuroxime">Cefuroxime</option>
-                <option value="cephalexin">Cephalexin</option>
                 <option value="clarithromycin">Clarithromycin</option>
+                <option value="cephalexin">Cephalexin</option>
+                <option value="cefuroxime">Cefuroxime</option>
+                <option value="cefixime">Cefixime</option>
                 <option value="metronidazole">Metronidazole</option>
             </optgroup>
 
             <optgroup label="🤧 Antihistamines">
-                <optgroup label="🫁 Asthma">
-    <option value="salbutamol">Salbutamol</option>
-    <option value="budesonide">Budesonide</option>
-    <option value="montelukast">Montelukast</option>
-</optgroup>
                 <option value="cetirizine">Cetirizine</option>
                 <option value="loratadine">Loratadine</option>
                 <option value="chlorpheniramine">Chlorpheniramine</option>
             </optgroup>
 
+            <optgroup label="🫁 Asthma">
+                <option value="salbutamol">Salbutamol</option>
+                <option value="budesonide">Budesonide</option>
+                <option value="montelukast">Montelukast</option>
+            </optgroup>
+
+            <optgroup label="🤢 Antiemetic">
+                <option value="ondansetron">Ondansetron</option>
+            </optgroup>
+
+            <optgroup label="🍄 Antifungal">
+                <option value="fluconazole">Fluconazole</option>
+            </optgroup>
+
+            <optgroup label="🪱 Antiparasitic">
+                <option value="albendazole">Albendazole</option>
+            </optgroup>
+
+            <optgroup label="🧴 Vitamins">
+                <option value="zinc">Zinc</option>
+            </optgroup>
+
         </select>
-<button id="favorite" class="favorite-btn">
-⭐ إضافة إلى المفضلة
-</button>
+
+        <button id="favorite" class="favorite-btn">
+            ⭐ إضافة إلى المفضلة
+        </button>
+
         <label>تركيز الدواء</label>
 
-<select id="strength">
-    <option value="">اختر التركيز</option>
-</select>
+        <select id="strength">
+            <option value="">اختر التركيز</option>
+        </select>
+
         <label>العمر (بالسنوات)</label>
 
         <input
@@ -87,12 +108,15 @@ placeholder="اكتب اسم الدواء...">
         <button id="calculate">
             احسب الجرعة
         </button>
-<button id="reset" class="reset-btn">
-    إعادة تعيين
-</button>
+
+        <button id="reset" class="reset-btn">
+            إعادة تعيين
+        </button>
+
         <button id="copy" class="copy-btn">
-    📋 نسخ النتيجة
-</button>
+            📋 نسخ النتيجة
+        </button>
+
         <div id="result"></div>
 
     </div>
@@ -107,7 +131,7 @@ placeholder="اكتب اسم الدواء...">
         </p>
 
         <p>
-            ⚠️ النتائج لأغراض تعليمية ومراجعة فقط، ولا تغني عن استشارة الطبيب أو الصيدلي.
+            ⚠️ النتائج لأغراض تعليمية فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
         </p>
 
         <p class="copyright">
