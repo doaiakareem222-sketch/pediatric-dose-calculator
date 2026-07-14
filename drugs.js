@@ -233,3 +233,91 @@ montelukast:{
 
     notes:"يعطى مساءً."
 },
+ondansetron:{
+
+    name:"Ondansetron",
+
+    category:"Antiemetic",
+
+    mgPerKg:0.15,
+
+    frequency:"كل 8 ساعات",
+
+    maxDose:8,
+
+    strengths:[
+        {
+            name:"4 mg / 5 mL",
+            concentration:4
+        }
+    ],
+
+    notes:"يعطى لعلاج الغثيان والتقيؤ."
+
+},
+zinc:{
+
+    name:"Zinc",
+
+    category:"Vitamins",
+
+    mgPerKg:1,
+
+    frequency:"مرة يومياً",
+
+    maxDose:20,
+
+    strengths:[
+        {
+            name:"20 mg / 5 mL",
+            concentration:20
+        }
+    ],
+
+    notes:"يستخدم مع الإسهال الحاد عند الأطفال."
+
+},
+fluconazole:{
+
+    name:"Fluconazole",
+
+    category:"Antifungal",
+
+    mgPerKg:6,
+
+    frequency:"مرة يومياً",
+
+    maxDose:400,
+
+    strengths:[
+        {
+            name:"50 mg / 5 mL",
+            concentration:50
+        }
+    ],
+
+    notes:"لعلاج الالتهابات الفطرية."
+
+},
+albendazole:{
+
+    name:"Albendazole",
+
+    category:"Antiparasitic",
+
+    mgPerKg:15,
+
+    frequency:"مرة يومياً",
+
+    maxDose:400,
+
+    strengths:[
+        {
+            name:"200 mg / 5 mL",
+            concentration:200
+        }
+    ],
+
+    notes:"لعلاج الديدان."
+
+},
