@@ -1,3 +1,27 @@
+budesonide:{
+
+    name:"Budesonide",
+
+    category:"Asthma",
+
+    mgPerKg:0.5,
+
+    frequency:"مرتين يومياً",
+
+    maxDose:2,
+
+    strengths:[
+
+        {
+            name:"0.5 mg / 2 mL",
+            concentration:1.25
+        }
+
+    ],
+
+    notes:"للاستنشاق بواسطة النيبولايزر."
+
+},
 const drugs = {
 
 paracetamol:{
@@ -134,3 +158,78 @@ chlorpheniramine: {
 }
 
 };
+salbutamol:{
+
+    name:"Salbutamol",
+
+    category:"Asthma",
+
+    mgPerKg:0.15,
+
+    frequency:"كل 4-6 ساعات",
+
+    maxDose:5,
+
+    strengths:[
+
+        {
+            name:"2 mg / 5 mL",
+            concentration:2
+        }
+
+    ],
+
+    notes:"رج العبوة جيداً قبل الاستخدام."
+
+},
+budesonide:{
+
+    name:"Budesonide",
+
+    category:"Asthma",
+
+    mgPerKg:0.5,
+
+    frequency:"مرتين يومياً",
+
+    maxDose:2,
+
+    strengths:[
+
+        {
+            name:"0.5 mg / 2 mL",
+            concentration:1.25
+        }
+
+    ],
+
+    notes:"للاستنشاق بواسطة النيبولايزر."
+
+},
+montelukast:{
+
+    name:"Montelukast",
+
+    category:"Asthma",
+
+    mgPerKg:0.2,
+
+    frequency:"مرة يومياً",
+
+    maxDose:10,
+
+    strengths:[
+
+        {
+            name:"4 mg Chewable",
+            concentration:4
+        },
+        {
+            name:"5 mg Chewable",
+            concentration:5
+        }
+
+    ],
+
+    notes:"يعطى مساءً."
+},
