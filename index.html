@@ -2,179 +2,153 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DoseCare</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+<title>DoseCare</title>
+
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <div class="container">
-<div class="theme-switch">
 
-<button id="themeBtn">
-🌙 Dark Mode
+<h1>🩺 DoseCare</h1>
+
+<p class="subtitle">
+حاسبة جرعات الأطفال بالاعتماد على الوزن
+</p>
+
+<div class="card">
+
+<label>البحث عن الدواء</label>
+
+<input
+type="text"
+id="searchDrug"
+placeholder="اكتب اسم الدواء...">
+
+<label>اسم الدواء</label>
+
+<select id="drug">
+
+<option value="">اختر الدواء</option>
+
+<optgroup label="💊 Pain & Fever">
+<option value="paracetamol">Paracetamol</option>
+<option value="ibuprofen">Ibuprofen</option>
+</optgroup>
+
+<optgroup label="🦠 Antibiotics">
+<option value="amoxicillin">Amoxicillin</option>
+<option value="coamoxiclav">Co-amoxiclav</option>
+<option value="azithromycin">Azithromycin</option>
+<option value="cefixime">Cefixime</option>
+<option value="cefuroxime">Cefuroxime</option>
+<option value="cephalexin">Cephalexin</option>
+<option value="clarithromycin">Clarithromycin</option>
+<option value="metronidazole">Metronidazole</option>
+</optgroup>
+
+<optgroup label="🤧 Antihistamines">
+<option value="cetirizine">Cetirizine</option>
+<option value="loratadine">Loratadine</option>
+<option value="chlorpheniramine">Chlorpheniramine</option>
+</optgroup>
+
+<optgroup label="🫁 Asthma">
+<option value="salbutamol">Salbutamol</option>
+<option value="budesonide">Budesonide</option>
+<option value="montelukast">Montelukast</option>
+</optgroup>
+
+<optgroup label="🤢 Antiemetic">
+<option value="ondansetron">Ondansetron</option>
+</optgroup>
+
+<optgroup label="🍄 Antifungal">
+<option value="fluconazole">Fluconazole</option>
+</optgroup>
+
+<optgroup label="🪱 Antiparasitic">
+<option value="albendazole">Albendazole</option>
+</optgroup>
+
+<optgroup label="💊 Vitamins">
+<option value="zinc">Zinc</option>
+</optgroup>
+
+</select>
+
+<label>تركيز الدواء</label>
+
+<select id="strength">
+
+<option value="">اختر التركيز</option>
+
+</select>
+
+<button id="favorite">
+⭐ إضافة إلى المفضلة
 </button>
 
-</div>
-    <h1>🩺 DoseCare</h1>
+<label>العمر (بالسنوات)</label>
 
-    <p class="subtitle">
-        حاسبة جرعات الأطفال بالذكاء الاصطناعي
-    </p>
+<input
+type="number"
+id="age"
+placeholder="مثال: 5">
 
-    <div class="card">
+<label>الوزن (Kg)</label>
 
-        <label>البحث عن الدواء</label>
-        <input
-            type="text"
-            id="searchDrug"
-            placeholder="اكتب اسم الدواء...">
+<input
+type="number"
+id="weight"
+placeholder="مثال: 18">
 
-        <label>اسم الدواء</label>
+<button id="calculate">
+احسب الجرعة
+</button>
 
-        <select id="drug">
+<button id="reset" class="red">
+إعادة تعيين
+</button>
 
-            <option value="">اختر الدواء</option>
+<button id="copy" class="green">
+📋 نسخ النتيجة
+</button>
 
-            <optgroup label="💊 Pain & Fever">
-                <option value="paracetamol">Paracetamol</option>
-                <option value="ibuprofen">Ibuprofen</option>
-            </optgroup>
-
-            <optgroup label="🦠 Antibiotics">
-                <option value="amoxicillin">Amoxicillin</option>
-                <option value="coamoxiclav">Co-amoxiclav</option>
-                <option value="azithromycin">Azithromycin</option>
-                <option value="clarithromycin">Clarithromycin</option>
-                <option value="cephalexin">Cephalexin</option>
-                <option value="cefuroxime">Cefuroxime</option>
-                <option value="cefixime">Cefixime</option>
-                <option value="metronidazole">Metronidazole</option>
-            </optgroup>
-
-            <optgroup label="🤧 Antihistamines">
-                <option value="cetirizine">Cetirizine</option>
-                <option value="loratadine">Loratadine</option>
-                <option value="chlorpheniramine">Chlorpheniramine</option>
-            </optgroup>
-
-            <optgroup label="🫁 Asthma">
-                <option value="salbutamol">Salbutamol</option>
-                <option value="budesonide">Budesonide</option>
-                <option value="montelukast">Montelukast</option>
-            </optgroup>
-
-            <optgroup label="🤢 Antiemetic">
-                <option value="ondansetron">Ondansetron</option>
-            </optgroup>
-
-            <optgroup label="🍄 Antifungal">
-                <option value="fluconazole">Fluconazole</option>
-            </optgroup>
-
-            <optgroup label="🪱 Antiparasitic">
-                <option value="albendazole">Albendazole</option>
-            </optgroup>
-
-            <optgroup label="🧴 Vitamins">
-                <option value="zinc">Zinc</option>
-            </optgroup>
-
-        </select>
-
-        <button id="favorite" class="favorite-btn">
-            ⭐ إضافة إلى المفضلة
-        </button>
-
-        <label>تركيز الدواء</label>
-
-        <select id="strength">
-            <option value="">اختر التركيز</option>
-        </select>
-
-        <label>العمر (بالسنوات)</label>
-
-        <input
-            type="number"
-            id="age"
-            placeholder="مثال: 5">
-
-        <label>الوزن (Kg)</label>
-
-        <input
-            type="number"
-            id="weight"
-            placeholder="مثال: 18">
-
-        <button id="calculate">
-            احسب الجرعة
-        </button>
-
-        <button id="reset" class="reset-btn">
-            إعادة تعيين
-        </button>
-
-        <button id="copy" class="copy-btn">
-            📋 نسخ النتيجة
-        </button>
-<button id="info" class="info-btn">
+<button id="info" class="purple">
 ℹ️ معلومات الدواء
 </button>
-        <div id="result"></div>
-<div class="history">
 
-<h2>🕒 آخر العمليات</h2>
+<div id="result"></div>
 
 <div id="history"></div>
 
 </div>
 
-    <div class="about-card">
-<div class="dashboard">
+<div class="about-card">
 
-<h2>📊 Dashboard</h2>
+<h2>ℹ️ About DoseCare</h2>
 
-<div class="stats">
+<p>
+DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
+</p>
 
-<div class="stat-card">
-<h3 id="totalCalc">0</h3>
-<p>إجمالي العمليات</p>
-</div>
+<p>
+⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
+</p>
 
-<div class="stat-card">
-<h3 id="topDrug">-</h3>
-<p>الأكثر استخداماً</p>
-</div>
-
-<div class="stat-card">
-<h3 id="lastCalc">-</h3>
-<p>آخر عملية</p>
-</div>
+<p class="copyright">
+Developed by Doaa Kareem © 2026
+</p>
 
 </div>
-
-</div>
-        <h2>ℹ️ About DoseCare</h2>
-
-        <p>
-            DoseCare هو مشروع لحساب جرعات الأطفال اعتمادًا على الوزن
-            والمراجع الدوائية القياسية.
-        </p>
-
-        <p>
-            ⚠️ النتائج لأغراض تعليمية فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
-        </p>
-
-        <p class="copyright">
-            Developed by Doaa Kareem © 2026
-        </p>
-
-    </div>
 
 </div>
 
