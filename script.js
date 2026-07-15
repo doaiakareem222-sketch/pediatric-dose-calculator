@@ -234,3 +234,42 @@ drugSelect.addEventListener("change", function () {
     });
 
 });
+document.getElementById("info").addEventListener("click", function(){
+
+const drugId=document.getElementById("drug").value;
+
+if(!drugId){
+
+alert("اختر دواء أولاً");
+
+return;
+
+}
+
+const drug=drugs[drugId];
+
+alert(
+
+`💊 ${drug.name}
+
+📂 التصنيف:
+${drug.category}
+
+✅ الاستعمالات:
+${drug.indication}
+
+🤢 الآثار الجانبية:
+${drug.sideEffects}
+
+🚫 موانع الاستعمال:
+${drug.contraindications}
+
+📦 الحفظ:
+${drug.storage}
+
+📝 ملاحظات:
+${drug.notes}`
+
+);
+
+});
