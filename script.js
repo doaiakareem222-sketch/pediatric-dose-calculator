@@ -79,7 +79,7 @@ localStorage.setItem("history",JSON.stringify(history));
 
 loadHistory();
     <div class="result-card">
-
+updateDashboard();
         <h2>${drug.name}</h2>
 
         <div class="result-item">
@@ -324,3 +324,45 @@ historyDiv.innerHTML+=`
 }
 
 loadHistory();
+function updateDashboard(){
+
+const history = JSON.parse(localStorage.getItem("history")) || [];
+
+document.getElementById("totalCalc").innerText = history.length;
+
+if(history.length>0){
+
+document.getElementById("lastCalc").innerText =
+history[0].drug;
+
+let count={};
+
+history.forEach(item=>{
+
+count[item.drug]=(count[item.drug]||0)+1;
+
+});
+
+let top="-";
+
+let max=0;
+
+for(let drug in count){
+
+if(count[drug]>max){
+
+max=count[drug];
+
+top=drug;
+
+}
+
+}
+
+document.getElementById("topDrug").innerText=top;
+
+}
+
+}
+
+updateDashboard();
