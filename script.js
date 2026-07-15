@@ -57,7 +57,27 @@ document.getElementById("calculate").addEventListener("click", function () {
     const doseMl = (doseMg / concentration) * 5;
 
     result.innerHTML = `
+let history = JSON.parse(localStorage.getItem("history")) || [];
 
+history.unshift({
+
+drug:drug.name,
+
+age:age,
+
+weight:weight,
+
+dose:doseMg.toFixed(1),
+
+ml:doseMl.toFixed(1)
+
+});
+
+history = history.slice(0,5);
+
+localStorage.setItem("history",JSON.stringify(history));
+
+loadHistory();
     <div class="result-card">
 
         <h2>${drug.name}</h2>
@@ -273,3 +293,34 @@ ${drug.notes}`
 );
 
 });
+function loadHistory(){
+
+const historyDiv=document.getElementById("history");
+
+const history=JSON.parse(localStorage.getItem("history"))||[];
+
+historyDiv.innerHTML="";
+
+history.forEach(item=>{
+
+historyDiv.innerHTML+=`
+
+<div class="history-item">
+
+💊 ${item.drug}<br>
+
+⚖️ ${item.weight} Kg<br>
+
+💉 ${item.dose} mg<br>
+
+🥄 ${item.ml} mL
+
+</div>
+
+`;
+
+});
+
+}
+
+loadHistory();
