@@ -1,86 +1,108 @@
-// =========================
-// حساب الجرعة
-// =========================
+// ==========================
+// العناصر الأساسية
+// ==========================
 
-document.getElementById("calculate").addEventListener("click", function () {
+const drugSelect = document.getElementById("drug");
+const strengthSelect = document.getElementById("strength");
+const result = document.getElementById("result");
+const historyDiv = document.getElementById("history");
+
+// ==========================
+// تغيير التركيز حسب الدواء
+// ==========================
+
+drugSelect.addEventListener("change", function () {
+
+    strengthSelect.innerHTML =
+    '<option value="">اختر التركيز</option>';
+
+    const drug = drugs[this.value];
+
+    if (!drug || !drug.strengths) return;
+
+    drug.strengths.forEach((item, index) => {
+
+        strengthSelect.innerHTML +=
+        `<option value="${index}">
+            ${item.name}
+        </option>`;
+
+    });
+
+});
+
+// ==========================
+// البحث عن الدواء
+// ==========================
+
+document.getElementById("searchDrug")
+.addEventListener("input", function () {
+
+    const value = this.value.toLowerCase();
+
+    for (let option of drugSelect.options) {
+
+        if (option.value === "") continue;
+
+        if (option.text.toLowerCase().includes(value)) {
+
+            drugSelect.value = option.value;
+
+            drugSelect.dispatchEvent(new Event("change"));
+
+            break;
+
+        }
+
+    }
+
+});
+
+// ==========================
+// حساب الجرعة
+// ==========================
+
+document.getElementById("calculate")
+.addEventListener("click", function () {
 
     const age = document.getElementById("age").value;
     const weight = parseFloat(document.getElementById("weight").value);
-    const drugId = document.getElementById("drug").value;
-    const strengthIndex = document.getElementById("strength").value;
+    const drugId = drugSelect.value;
+    const strengthIndex = strengthSelect.value;
 
-    const result = document.getElementById("result");
+    if (!weight || !drugId || strengthIndex === "") {
 
-    if (!weight || !drugId) {
         result.innerHTML = `
         <div style="color:red;font-weight:bold;">
-        يرجى اختيار الدواء وإدخال الوزن.
+        يرجى اختيار الدواء والتركيز وإدخال الوزن.
         </div>`;
+
         return;
+
     }
 
     const drug = drugs[drugId];
-
-    if (drug.strengths && strengthIndex === "") {
-        result.innerHTML = `
-        <div style="color:red;font-weight:bold;">
-        يرجى اختيار تركيز الدواء.
-        </div>`;
-        return;
-    }
-
-    let concentration = drug.concentration;
-
-    if (drug.strengths) {
-        concentration = drug.strengths[strengthIndex].concentration;
-    }
+    const concentration =
+    drug.strengths[strengthIndex].concentration;
 
     let doseMg = weight * drug.mgPerKg;
 
-    let warning = "";
-
     if (doseMg > drug.maxDose) {
         doseMg = drug.maxDose;
-
-        warning = `
-        <div style="
-        margin-top:15px;
-        padding:12px;
-        background:#fee2e2;
-        color:#b91c1c;
-        border-radius:10px;
-        font-weight:bold;">
-        ⚠️ الجرعة المحسوبة تجاوزت الحد الأقصى، لذلك تم اعتماد الحد الأقصى الموصى به.
-        </div>`;
     }
 
     const doseMl = (doseMg / concentration) * 5;
 
     result.innerHTML = `
-let history = JSON.parse(localStorage.getItem("history")) || [];
 
-history.unshift({
-
-drug:drug.name,
-
-age:age,
-
-weight:weight,
-
-dose:doseMg.toFixed(1),
-
-ml:doseMl.toFixed(1)
-
-});
-
-history = history.slice(0,5);
-
-localStorage.setItem("history",JSON.stringify(history));
-
-loadHistory();
     <div class="result-card">
-updateDashboard();
+
         <h2>${drug.name}</h2>
+
+        <div class="result-item">
+            <span>📂 الفئة</span>
+            <strong>${drug.category}</strong>
+        </div>
 
         <div class="result-item">
             <span>👶 العمر</span>
@@ -94,7 +116,7 @@ updateDashboard();
 
         <div class="result-item">
             <span>🧪 التركيز</span>
-            <strong>${concentration} mg / 5 mL</strong>
+            <strong>${drug.strengths[strengthIndex].name}</strong>
         </div>
 
         <div class="result-item">
@@ -119,43 +141,97 @@ updateDashboard();
 
         <div class="result-item">
             <span>📝 ملاحظات</span>
-            <strong>${drug.notes || "لا توجد ملاحظات."}</strong>
+            <strong>${drug.notes}</strong>
         </div>
 
-        ${warning}
-
     </div>
-
     `;
+
+    saveHistory(drug.name, weight, doseMg, doseMl);
 
 });
 
+// ==========================
+// حفظ السجل
+// ==========================
 
-// =========================
+function saveHistory(drug, weight, dose, ml) {
+
+    let history =
+    JSON.parse(localStorage.getItem("history")) || [];
+
+    history.unshift({
+        drug,
+        weight,
+        dose: dose.toFixed(1),
+        ml: ml.toFixed(1)
+    });
+
+    history = history.slice(0, 5);
+
+    localStorage.setItem("history", JSON.stringify(history));
+
+    loadHistory();
+
+}
+
+// ==========================
+// عرض السجل
+// ==========================
+
+function loadHistory() {
+
+    const history =
+    JSON.parse(localStorage.getItem("history")) || [];
+
+    historyDiv.innerHTML = "";
+
+    history.forEach(item => {
+
+        historyDiv.innerHTML += `
+
+        <div class="history-item">
+
+            💊 ${item.drug}<br>
+            ⚖️ ${item.weight} Kg<br>
+            💉 ${item.dose} mg<br>
+            🥄 ${item.ml} mL
+
+        </div>`;
+
+    });
+
+}
+
+loadHistory();
+
+// ==========================
 // إعادة التعيين
-// =========================
+// ==========================
 
-document.getElementById("reset").addEventListener("click", function () {
+document.getElementById("reset")
+.addEventListener("click", function () {
 
-    document.getElementById("drug").value = "";
-    document.getElementById("strength").innerHTML =
+    drugSelect.value = "";
+
+    strengthSelect.innerHTML =
     '<option value="">اختر التركيز</option>';
 
     document.getElementById("age").value = "";
     document.getElementById("weight").value = "";
 
-    document.getElementById("result").innerHTML = "";
+    result.innerHTML = "";
 
 });
 
-
-// =========================
+// ==========================
 // نسخ النتيجة
-// =========================
+// ==========================
 
-document.getElementById("copy").addEventListener("click", function () {
+document.getElementById("copy")
+.addEventListener("click", function () {
 
-    const text = document.getElementById("result").innerText;
+    const text = result.innerText;
 
     if (text.trim() === "") {
         alert("لا توجد نتيجة لنسخها.");
@@ -168,52 +244,52 @@ document.getElementById("copy").addEventListener("click", function () {
 
 });
 
+// ==========================
+// معلومات الدواء
+// ==========================
 
-// =========================
-// البحث عن الدواء
-// =========================
+document.getElementById("info")
+.addEventListener("click", function () {
 
-const searchInput = document.getElementById("searchDrug");
-const drugSelect = document.getElementById("drug");
-const strengthSelect = document.getElementById("strength");
+    const drugId = drugSelect.value;
 
-searchInput.addEventListener("input", function () {
-
-    const value = this.value.toLowerCase();
-
-    for (let option of drugSelect.options) {
-
-        if (option.value === "") continue;
-
-        if (option.text.toLowerCase().includes(value)) {
-
-            drugSelect.value = option.value;
-
-            drugSelect.dispatchEvent(new Event("change"));
-
-            break;
-
-        }
-
+    if (!drugId) {
+        alert("اختر دواء أولاً");
+        return;
     }
+
+    const drug = drugs[drugId];
+
+    alert(
+`💊 ${drug.name}
+
+📂 الفئة:
+${drug.category}
+
+⏰ التكرار:
+${drug.frequency}
+
+🚫 الحد الأقصى:
+${drug.maxDose} mg
+
+📝 ملاحظات:
+${drug.notes}`
+    );
 
 });
 
-
-// =========================
+// ==========================
 // المفضلة
-// =========================
+// ==========================
 
-document.getElementById("favorite").addEventListener("click", function () {
+document.getElementById("favorite")
+.addEventListener("click", function () {
 
     const drug = drugSelect.value;
 
     if (!drug) {
-
         alert("اختر دواء أولاً");
-
         return;
-
     }
 
     localStorage.setItem("favoriteDrug", drug);
@@ -222,178 +298,13 @@ document.getElementById("favorite").addEventListener("click", function () {
 
 });
 
-const savedDrug = localStorage.getItem("favoriteDrug");
+const savedDrug =
+localStorage.getItem("favoriteDrug");
 
 if (savedDrug) {
 
     drugSelect.value = savedDrug;
 
-}
-
-
-// =========================
-// تغيير التركيز حسب الدواء
-// =========================
-
-drugSelect.addEventListener("change", function () {
-
-    strengthSelect.innerHTML =
-    '<option value="">اختر التركيز</option>';
-
-    const drug = drugs[this.value];
-
-    if (!drug || !drug.strengths) return;
-
-    drug.strengths.forEach((item, index) => {
-
-        strengthSelect.innerHTML +=
-        `<option value="${index}">
-            ${item.name}
-        </option>`;
-
-    });
-
-});
-document.getElementById("info").addEventListener("click", function(){
-
-const drugId=document.getElementById("drug").value;
-
-if(!drugId){
-
-alert("اختر دواء أولاً");
-
-return;
+    drugSelect.dispatchEvent(new Event("change"));
 
 }
-
-const drug=drugs[drugId];
-
-alert(
-
-`💊 ${drug.name}
-
-📂 التصنيف:
-${drug.category}
-
-✅ الاستعمالات:
-${drug.indication}
-
-🤢 الآثار الجانبية:
-${drug.sideEffects}
-
-🚫 موانع الاستعمال:
-${drug.contraindications}
-
-📦 الحفظ:
-${drug.storage}
-
-📝 ملاحظات:
-${drug.notes}`
-
-);
-
-});
-function loadHistory(){
-
-const historyDiv=document.getElementById("history");
-
-const history=JSON.parse(localStorage.getItem("history"))||[];
-
-historyDiv.innerHTML="";
-
-history.forEach(item=>{
-
-historyDiv.innerHTML+=`
-
-<div class="history-item">
-
-💊 ${item.drug}<br>
-
-⚖️ ${item.weight} Kg<br>
-
-💉 ${item.dose} mg<br>
-
-🥄 ${item.ml} mL
-
-</div>
-
-`;
-
-});
-
-}
-
-loadHistory();
-function updateDashboard(){
-
-const history = JSON.parse(localStorage.getItem("history")) || [];
-
-document.getElementById("totalCalc").innerText = history.length;
-
-if(history.length>0){
-
-document.getElementById("lastCalc").innerText =
-history[0].drug;
-
-let count={};
-
-history.forEach(item=>{
-
-count[item.drug]=(count[item.drug]||0)+1;
-
-});
-
-let top="-";
-
-let max=0;
-
-for(let drug in count){
-
-if(count[drug]>max){
-
-max=count[drug];
-
-top=drug;
-
-}
-
-}
-
-document.getElementById("topDrug").innerText=top;
-
-}
-
-}
-
-updateDashboard();
-const themeBtn = document.getElementById("themeBtn");
-
-const savedTheme = localStorage.getItem("theme");
-
-if(savedTheme === "dark"){
-
-document.body.classList.add("dark");
-
-themeBtn.innerText="☀️ Light Mode";
-
-}
-
-themeBtn.addEventListener("click",function(){
-
-document.body.classList.toggle("dark");
-
-if(document.body.classList.contains("dark")){
-
-localStorage.setItem("theme","dark");
-
-themeBtn.innerText="☀️ Light Mode";
-
-}else{
-
-localStorage.setItem("theme","light");
-
-themeBtn.innerText="🌙 Dark Mode";
-
-}
-
-});
