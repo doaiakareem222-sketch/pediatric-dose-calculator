@@ -2,28 +2,43 @@ const drugs = {
 
 paracetamol:{
 
-name:"Paracetamol",
+    name:"Paracetamol",
 
-category:"Pain & Fever",
+    category:"Pain & Fever",
 
+    mgPerKg:15,
+
+    frequency:"كل 4-6 ساعات",
+
+    maxDose:1000,
 indication:"Pain, Fever",
-
-mgPerKg:15,
-
-frequency:"كل 4-6 ساعات",
-
-maxDose:1000,
 
 sideEffects:"Nausea, Rash",
 
 contraindications:"Severe liver disease",
 
 storage:"Store below 25°C",
+    strengths:[
 
-strengths:[...],
+        {
 
-notes:"..."
-}
+            name:"120 mg / 5 mL",
+
+            concentration:120
+
+        },
+
+        {
+
+            name:"250 mg / 5 mL",
+
+            concentration:250
+
+        }
+
+    ],
+
+    notes:"لا تتجاوز الحد الأقصى اليومي."
 },
 
 ibuprofen:{
