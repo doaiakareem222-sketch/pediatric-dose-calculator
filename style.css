@@ -242,3 +242,52 @@ line-height:1.7;
 font-size:15px;
 
 }
+.dashboard{
+
+margin-top:25px;
+padding:20px;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.dashboard h2{
+
+text-align:center;
+margin-bottom:20px;
+color:#2563eb;
+
+}
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+
+}
+
+.stat-card{
+
+background:#eef4ff;
+padding:15px;
+border-radius:15px;
+text-align:center;
+
+}
+
+.stat-card h3{
+
+font-size:22px;
+color:#2563eb;
+
+}
+
+.stat-card p{
+
+margin-top:8px;
+font-size:14px;
+color:#555;
+
+}
