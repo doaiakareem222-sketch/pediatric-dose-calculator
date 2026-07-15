@@ -317,3 +317,45 @@ transition:.3s;
 opacity:.9;
 
 }
+body.dark{
+
+background:#111827;
+
+}
+
+body.dark .card,
+body.dark .about-card,
+body.dark .history,
+body.dark .dashboard{
+
+background:#1f2937;
+color:white;
+
+}
+
+body.dark label,
+body.dark p,
+body.dark h1,
+body.dark h2{
+
+color:white;
+
+}
+
+body.dark input,
+body.dark select{
+
+background:#374151;
+color:white;
+border-color:#4b5563;
+
+}
+
+body.dark .result-card,
+body.dark .history-item,
+body.dark .stat-card{
+
+background:#374151;
+color:white;
+
+}
