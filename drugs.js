@@ -1,44 +1,22 @@
 const drugs = {
 
 paracetamol:{
-
     name:"Paracetamol",
-
     category:"Pain & Fever",
-
     mgPerKg:15,
-
     frequency:"كل 4-6 ساعات",
-
     maxDose:1000,
-indication:"Pain, Fever",
-
-sideEffects:"Nausea, Rash",
-
-contraindications:"Severe liver disease",
-
-storage:"Store below 25°C",
     strengths:[
-
         {
-
             name:"120 mg / 5 mL",
-
             concentration:120
-
         },
-
         {
-
             name:"250 mg / 5 mL",
-
             concentration:250
-
         }
-
     ],
-
-    notes:"لا تتجاوز الحد الأقصى اليومي."
+    notes:"يعطى عند الألم والحمى، ولا تتجاوز الجرعة القصوى."
 },
 
 ibuprofen:{
@@ -64,11 +42,15 @@ amoxicillin:{
     maxDose:500,
     strengths:[
         {
+            name:"125 mg / 5 mL",
+            concentration:125
+        },
+        {
             name:"250 mg / 5 mL",
             concentration:250
         }
     ],
-    notes:"أكمل مدة العلاج."
+    notes:"أكمل مدة العلاج حتى النهاية."
 },
 
 coamoxiclav:{
@@ -81,9 +63,13 @@ coamoxiclav:{
         {
             name:"228 mg / 5 mL",
             concentration:228
+        },
+        {
+            name:"457 mg / 5 mL",
+            concentration:457
         }
     ],
-    notes:"يعطى مع الطعام."
+    notes:"يفضل تناوله مع بداية الوجبة."
 },
 
 azithromycin:{
@@ -98,22 +84,7 @@ azithromycin:{
             concentration:200
         }
     ],
-    notes:"مرة واحدة يومياً."
-},
-
-clarithromycin:{
-    name:"Clarithromycin",
-    category:"Antibiotics",
-    mgPerKg:7.5,
-    frequency:"كل 12 ساعة",
-    maxDose:500,
-    strengths:[
-        {
-            name:"125 mg / 5 mL",
-            concentration:125
-        }
-    ],
-    notes:"رج العبوة قبل الاستعمال."
+    notes:"يعطى مرة واحدة يومياً."
 },
 
 cefixime:{
@@ -158,10 +129,28 @@ cephalexin:{
             concentration:250
         }
     ],
-    notes:"أكمل العلاج."
+    notes:"أكمل العلاج حتى النهاية."
 },
 
-metronidazole:{
+clarithromycin:{
+    name:"Clarithromycin",
+    category:"Antibiotics",
+    mgPerKg:7.5,
+    frequency:"كل 12 ساعة",
+    maxDose:500,
+    strengths:[
+        {
+            name:"125 mg / 5 mL",
+            concentration:125
+        },
+        {
+            name:"250 mg / 5 mL",
+            concentration:250
+        }
+    ],
+    notes:"رج العبوة جيداً قبل الاستخدام."
+},
+    metronidazole:{
     name:"Metronidazole",
     category:"Antibiotics",
     mgPerKg:7.5,
@@ -173,9 +162,10 @@ metronidazole:{
             concentration:125
         }
     ],
-    notes:"يفضل بعد الطعام."
+    notes:"يمكن إعطاؤه بعد الطعام لتقليل اضطراب المعدة."
 },
-    cetirizine:{
+
+cetirizine:{
     name:"Cetirizine",
     category:"Antihistamines",
     mgPerKg:0.25,
@@ -187,7 +177,7 @@ metronidazole:{
             concentration:5
         }
     ],
-    notes:"قد يسبب النعاس."
+    notes:"قد يسبب النعاس عند بعض الأطفال."
 },
 
 loratadine:{
@@ -296,7 +286,7 @@ zinc:{
             concentration:20
         }
     ],
-    notes:"يستخدم مع الإسهال."
+    notes:"يستخدم مع الإسهال الحاد."
 },
 
 fluconazole:{
