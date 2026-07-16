@@ -434,3 +434,140 @@ background:#fff7ed;
 border-left:6px solid #92400e;
 background:#fef3c7;
 }
+/*=========================
+الأزرار العلوية
+=========================*/
+
+.top-buttons{
+
+display:flex;
+gap:10px;
+margin-bottom:18px;
+
+}
+
+.top-buttons button{
+
+flex:1;
+padding:13px;
+border:none;
+border-radius:12px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+
+}
+
+#themeBtn{
+
+background:#111827;
+color:white;
+
+}
+
+#colorBtn{
+
+background:#7c3aed;
+color:white;
+
+}
+
+#themeBtn:hover{
+
+background:#000;
+
+}
+
+#colorBtn:hover{
+
+background:#6d28d9;
+
+}
+
+/*=========================
+ألوان التطبيق
+=========================*/
+
+:root{
+
+--main-color:#2563eb;
+
+}
+
+button{
+
+background:var(--main-color);
+
+}
+
+h1{
+
+color:var(--main-color);
+
+}
+
+#result h3{
+
+color:var(--main-color);
+
+}
+
+.history h2{
+
+color:var(--main-color);
+
+}
+
+.dashboard h2{
+
+color:var(--main-color);
+
+}
+
+/*=========================
+الوضع الليلي
+=========================*/
+
+body.dark{
+
+background:#0f172a;
+
+}
+
+body.dark .card,
+body.dark .about-card,
+body.dark .history,
+body.dark .dashboard,
+body.dark .drug-card,
+body.dark #result{
+
+background:#1e293b;
+color:white;
+
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark label{
+
+color:white;
+
+}
+
+body.dark input,
+body.dark select{
+
+background:#334155;
+color:white;
+border:1px solid #475569;
+
+}
+
+body.dark .history-item{
+
+background:#334155;
+
+}
