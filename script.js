@@ -308,3 +308,66 @@ if (savedDrug) {
     drugSelect.dispatchEvent(new Event("change"));
 
 }
+const diseaseSelect = document.getElementById("disease");
+
+if (diseaseSelect) {
+
+    diseaseSelect.addEventListener("change", function () {
+
+        switch (this.value) {
+
+            case "fever":
+            case "pain":
+                document.getElementById("drug").value = "paracetamol";
+                break;
+
+            case "otitis":
+            case "pharyngitis":
+                document.getElementById("drug").value = "amoxicillin";
+                break;
+
+            case "sinusitis":
+                document.getElementById("drug").value = "coamoxiclav";
+                break;
+
+            case "pneumonia":
+                document.getElementById("drug").value = "azithromycin";
+                break;
+
+            case "uti":
+                document.getElementById("drug").value = "cefixime";
+                break;
+
+            case "diarrhea":
+                document.getElementById("drug").value = "zinc";
+                break;
+
+            case "vomiting":
+                document.getElementById("drug").value = "ondansetron";
+                break;
+
+            case "asthma":
+                document.getElementById("drug").value = "salbutamol";
+                break;
+
+            case "allergy":
+                document.getElementById("drug").value = "cetirizine";
+                break;
+
+            case "fungal":
+                document.getElementById("drug").value = "fluconazole";
+                break;
+
+            case "worms":
+                document.getElementById("drug").value = "albendazole";
+                break;
+
+            default:
+                document.getElementById("drug").value = "";
+        }
+
+        document.getElementById("drug").dispatchEvent(new Event("change"));
+
+    });
+
+}
