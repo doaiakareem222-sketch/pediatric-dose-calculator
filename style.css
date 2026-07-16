@@ -400,3 +400,37 @@ color:#2563eb;
 margin-bottom:10px;
 
 }
+.drug-blue{
+border-left:6px solid #2563eb;
+background:#eff6ff;
+}
+
+.drug-red{
+border-left:6px solid #dc2626;
+background:#fef2f2;
+}
+
+.drug-green{
+border-left:6px solid #16a34a;
+background:#f0fdf4;
+}
+
+.drug-purple{
+border-left:6px solid #7c3aed;
+background:#f5f3ff;
+}
+
+.drug-yellow{
+border-left:6px solid #ca8a04;
+background:#fefce8;
+}
+
+.drug-orange{
+border-left:6px solid #ea580c;
+background:#fff7ed;
+}
+
+.drug-brown{
+border-left:6px solid #92400e;
+background:#fef3c7;
+}
