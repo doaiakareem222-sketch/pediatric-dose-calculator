@@ -404,3 +404,36 @@ drugSelect.addEventListener("change", function(){
 `;
 
 });
+const drugSelect = document.getElementById("drug");
+
+drugSelect.addEventListener("change", function(){
+
+    const drug = drugs[this.value];
+
+    const card = document.getElementById("drugCard");
+
+    if(!drug){
+
+        card.style.display="none";
+
+        return;
+
+    }
+
+    card.style.display="block";
+
+    card.innerHTML=`
+
+<h3>💊 ${drug.name}</h3>
+
+<p><strong>📂 التصنيف:</strong> ${drug.category}</p>
+
+<p><strong>⏰ التكرار:</strong> ${drug.frequency}</p>
+
+<p><strong>🚫 الحد الأقصى:</strong> ${drug.maxDose} mg</p>
+
+<p><strong>📝 الملاحظات:</strong> ${drug.notes}</p>
+
+`;
+
+});
