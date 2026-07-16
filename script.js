@@ -386,40 +386,39 @@ drugSelect.addEventListener("change", function(){
         return;
 
     }
+card.className="drug-card";
 
-    card.style.display="block";
+switch(drug.category){
 
-    card.innerHTML=`
+case "Pain & Fever":
+card.classList.add("drug-blue");
+break;
 
-<h3>💊 ${drug.name}</h3>
+case "Antibiotics":
+card.classList.add("drug-red");
+break;
 
-<p><strong>📂 التصنيف:</strong> ${drug.category}</p>
+case "Asthma":
+card.classList.add("drug-purple");
+break;
 
-<p><strong>⏰ التكرار:</strong> ${drug.frequency}</p>
+case "Antihistamines":
+card.classList.add("drug-yellow");
+break;
 
-<p><strong>🚫 الحد الأقصى:</strong> ${drug.maxDose} mg</p>
+case "Vitamins":
+card.classList.add("drug-green");
+break;
 
-<p><strong>📝 الملاحظات:</strong> ${drug.notes}</p>
+case "Antifungal":
+card.classList.add("drug-orange");
+break;
 
-`;
+case "Antiparasitic":
+card.classList.add("drug-brown");
+break;
 
-});
-const drugSelect = document.getElementById("drug");
-
-drugSelect.addEventListener("change", function(){
-
-    const drug = drugs[this.value];
-
-    const card = document.getElementById("drugCard");
-
-    if(!drug){
-
-        card.style.display="none";
-
-        return;
-
-    }
-
+}
     card.style.display="block";
 
     card.innerHTML=`
