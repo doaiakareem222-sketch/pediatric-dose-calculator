@@ -442,9 +442,55 @@ document.getElementById("copy").addEventListener("click", function () {
 // المفضلة
 // ==========================
 
-document.getElementById("favorite").addEventListener("click", function () {
+// ==========================
+// المفضلة
+// ==========================
 
-    if (!drugSelect.value) {
+const favoritesList = document.getElementById("favoritesList");
+
+function loadFavorites(){
+
+    let favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if(favorites.length===0){
+
+        favoritesList.innerHTML="لا توجد أدوية محفوظة.";
+
+        return;
+
+    }
+
+    favoritesList.innerHTML="";
+
+    favorites.forEach((drug,index)=>{
+
+        favoritesList.innerHTML+=`
+
+<div class="history-item">
+
+💊 ${drug}
+
+<button onclick="removeFavorite(${index})"
+style="
+margin-top:10px;
+background:#ef4444;
+padding:8px;
+font-size:14px;">
+❌ حذف
+</button>
+
+</div>
+
+`;
+
+    });
+
+}
+
+document.getElementById("favorite").addEventListener("click",function(){
+
+    if(!drugSelect.value){
 
         alert("اختر دواء أولاً");
 
@@ -452,11 +498,39 @@ document.getElementById("favorite").addEventListener("click", function () {
 
     }
 
-    localStorage.setItem("favoriteDrug", drugSelect.value);
+    let favorites=
+    JSON.parse(localStorage.getItem("favorites"))||[];
+
+    const drugName=drugs[drugSelect.value].name;
+
+    if(!favorites.includes(drugName)){
+
+        favorites.push(drugName);
+
+        localStorage.setItem("favorites",JSON.stringify(favorites));
+
+    }
+
+    loadFavorites();
 
     alert("⭐ تمت الإضافة للمفضلة");
 
 });
+
+function removeFavorite(index){
+
+    let favorites=
+    JSON.parse(localStorage.getItem("favorites"))||[];
+
+    favorites.splice(index,1);
+
+    localStorage.setItem("favorites",JSON.stringify(favorites));
+
+    loadFavorites();
+
+}
+
+loadFavorites();
 
 // ==========================
 // معلومات الدواء
@@ -582,3 +656,18 @@ if (colorBtn) {
     });
 
 }
+document.getElementById("showFavorites").addEventListener("click",function(){
+
+    const fav=document.getElementById("favorites");
+
+    if(fav.style.display==="none" || fav.style.display===""){
+
+        fav.style.display="block";
+
+    }else{
+
+        fav.style.display="none";
+
+    }
+
+});
