@@ -530,3 +530,55 @@ if (themeBtn) {
     });
 
 }
+// ==========================
+// تغيير اللون
+// ==========================
+
+const colorBtn = document.getElementById("colorBtn");
+
+const colors = [
+    "#2563eb",
+    "#16a34a",
+    "#dc2626",
+    "#7c3aed",
+    "#ea580c",
+    "#0891b2"
+];
+
+let colorIndex = 0;
+
+// استرجاع اللون المحفوظ
+const savedColor = localStorage.getItem("mainColor");
+
+if (savedColor) {
+
+    document.documentElement.style.setProperty("--main-color", savedColor);
+
+    colorIndex = colors.indexOf(savedColor);
+
+    if (colorIndex < 0) colorIndex = 0;
+
+}
+
+if (colorBtn) {
+
+    colorBtn.addEventListener("click", function () {
+
+        colorIndex++;
+
+        if (colorIndex >= colors.length)
+            colorIndex = 0;
+
+        document.documentElement.style.setProperty(
+            "--main-color",
+            colors[colorIndex]
+        );
+
+        localStorage.setItem(
+            "mainColor",
+            colors[colorIndex]
+        );
+
+    });
+
+}
