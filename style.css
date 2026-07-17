@@ -552,3 +552,6 @@ body.dark .history-item{
 background:#334155;
 
 }
+#favorites{
+    display:none;
+}
