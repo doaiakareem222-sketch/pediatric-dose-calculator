@@ -495,3 +495,38 @@ if (infoBtn) {
     });
 
 }
+// ==========================
+// الوضع الليلي
+// ==========================
+
+const themeBtn = document.getElementById("themeBtn");
+
+if (themeBtn) {
+
+    // استرجاع الوضع المحفوظ
+    if (localStorage.getItem("theme") === "dark") {
+
+        document.body.classList.add("dark");
+        themeBtn.innerHTML = "☀️ الوضع النهاري";
+
+    }
+
+    themeBtn.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+
+            localStorage.setItem("theme", "dark");
+            themeBtn.innerHTML = "☀️ الوضع النهاري";
+
+        } else {
+
+            localStorage.setItem("theme", "light");
+            themeBtn.innerHTML = "🌙 الوضع الليلي";
+
+        }
+
+    });
+
+}
