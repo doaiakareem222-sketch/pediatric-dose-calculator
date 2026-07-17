@@ -345,7 +345,18 @@ ${warning}
 // ==========================
 
 function saveHistory(drug, weight, dose, ml) {
+// تحديث الإحصائيات
 
+let count =
+parseInt(localStorage.getItem("calcCount")) || 0;
+
+count++;
+
+localStorage.setItem("calcCount", count);
+
+localStorage.setItem("lastDrug", drug.name);
+
+updateDashboard();
     let history =
         JSON.parse(localStorage.getItem("history")) || [];
 
@@ -442,14 +453,10 @@ document.getElementById("copy").addEventListener("click", function () {
 // المفضلة
 // ==========================
 
-// ==========================
-// المفضلة
-// ==========================
-
 const favoritesList = document.getElementById("favoritesList");
 
 function loadFavorites(){
-
+updateDashboard();
     let favorites =
     JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -472,6 +479,7 @@ function loadFavorites(){
 💊 ${drug}
 
 <button onclick="removeFavorite(${index})"
+updateDashboard();
 style="
 margin-top:10px;
 background:#ef4444;
@@ -669,5 +677,31 @@ document.getElementById("showFavorites").addEventListener("click",function(){
         fav.style.display="none";
 
     }
+// ==========================
+// Dashboard
+// ==========================
 
+function updateDashboard() {
+
+    // عدد عمليات الحساب
+    let calcCount =
+        parseInt(localStorage.getItem("calcCount")) || 0;
+
+    document.getElementById("calcCount").innerText = calcCount;
+
+    // عدد المفضلة
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    document.getElementById("favCount").innerText = favorites.length;
+
+    // آخر دواء
+    let lastDrug =
+        localStorage.getItem("lastDrug") || "-";
+
+    document.getElementById("lastDrug").innerText = lastDrug;
+
+}
+
+updateDashboard();
 });
