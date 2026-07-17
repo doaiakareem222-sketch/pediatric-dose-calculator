@@ -26,7 +26,9 @@ body{
 
 h1{
     text-align:center;
-    color:#2563eb;
+    h1{
+    color:var(--main-color);
+}
     font-size:34px;
     margin-bottom:8px;
 }
@@ -68,7 +70,7 @@ select{
 
 input:focus,
 select:focus{
-    border-color:#2563eb;
+    border-color:var(--main-color);
     box-shadow:0 0 10px rgba(37,99,235,.15);
 }
 
@@ -109,7 +111,8 @@ button:active{
 }
 
 #result h3{
-    color:#2563eb;
+    color:var(--main-color);
+}
     margin-bottom:10px;
     text-align:center;
 }
@@ -223,13 +226,7 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .history h2{
-
-margin-bottom:15px;
-
-color:#2563eb;
-
-text-align:center;
-
+    color:var(--main-color);
 }
 
 .history-item{
@@ -258,11 +255,7 @@ box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .dashboard h2{
-
-text-align:center;
-margin-bottom:20px;
-color:#2563eb;
-
+    color:var(--main-color);
 }
 
 .stats{
@@ -283,12 +276,8 @@ text-align:center;
 }
 
 .stat-card h3{
-
-font-size:22px;
-color:#2563eb;
-
+    color:var(--main-color);
 }
-
 .stat-card p{
 
 margin-top:8px;
@@ -372,7 +361,9 @@ padding:18px;
 
 background:#eef5ff;
 
-border-left:6px solid #2563eb;
+.drug-card{
+    border-left:6px solid var(--main-color);
+}
 
 border-radius:14px;
 
@@ -399,15 +390,14 @@ transform:translateY(0);
 }
 
 .drug-card h3{
-
-color:#2563eb;
+    color:var(--main-color);
+}
 
 margin-bottom:10px;
 
 }
 .drug-blue{
-border-left:6px solid #2563eb;
-background:#eff6ff;
+    border-left:6px solid var(--main-color);
 }
 
 .drug-red{
