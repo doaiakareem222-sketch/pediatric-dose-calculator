@@ -1,5 +1,5 @@
 // ==========================
-// DoseCare Script v1.0
+// DoseCare Script v2.0
 // الجزء الأول
 // ==========================
 
@@ -19,7 +19,7 @@ const searchInput = document.getElementById("searchDrug");
 drugSelect.addEventListener("change", function () {
 
     strengthSelect.innerHTML =
-        '<option value="">اختر التركيز</option>';
+    '<option value="">اختر التركيز</option>';
 
     const drug = drugs[this.value];
 
@@ -28,23 +28,22 @@ drugSelect.addEventListener("change", function () {
     if (!drug) {
 
         card.style.display = "none";
-
         return;
 
     }
 
-    // تعبئة التركيزات
+    // تعبئة التراكيز
 
     drug.strengths.forEach((item, index) => {
 
-        strengthSelect.innerHTML +=
-        `<option value="${index}">
+        strengthSelect.innerHTML += `
+        <option value="${index}">
             ${item.name}
         </option>`;
 
     });
 
-    // لون البطاقة
+    // ألوان البطاقة
 
     card.className = "drug-card";
 
@@ -188,7 +187,7 @@ diseaseSelect.addEventListener("change", function () {
 });
 
 // ==========================
-// استرجاع المفضلة
+// استرجاع آخر دواء مفضل
 // ==========================
 
 const savedDrug = localStorage.getItem("favoriteDrug");
@@ -196,7 +195,6 @@ const savedDrug = localStorage.getItem("favoriteDrug");
 if (savedDrug) {
 
     drugSelect.value = savedDrug;
-
     drugSelect.dispatchEvent(new Event("change"));
 
 }
@@ -213,8 +211,8 @@ document.getElementById("calculate").addEventListener("click", function () {
 
     if (!age || age <= 0) {
 
-        result.innerHTML =
-        `<div style="color:red;font-weight:bold;">
+        result.innerHTML = `
+        <div style="color:red;font-weight:bold;">
         يرجى إدخال العمر.
         </div>`;
 
@@ -223,8 +221,8 @@ document.getElementById("calculate").addEventListener("click", function () {
 
     if (!weight || weight <= 0) {
 
-        result.innerHTML =
-        `<div style="color:red;font-weight:bold;">
+        result.innerHTML = `
+        <div style="color:red;font-weight:bold;">
         يرجى إدخال الوزن.
         </div>`;
 
@@ -233,8 +231,8 @@ document.getElementById("calculate").addEventListener("click", function () {
 
     if (!drugId) {
 
-        result.innerHTML =
-        `<div style="color:red;font-weight:bold;">
+        result.innerHTML = `
+        <div style="color:red;font-weight:bold;">
         يرجى اختيار الدواء.
         </div>`;
 
@@ -243,8 +241,8 @@ document.getElementById("calculate").addEventListener("click", function () {
 
     if (strengthIndex === "") {
 
-        result.innerHTML =
-        `<div style="color:red;font-weight:bold;">
+        result.innerHTML = `
+        <div style="color:red;font-weight:bold;">
         يرجى اختيار التركيز.
         </div>`;
 
@@ -254,7 +252,7 @@ document.getElementById("calculate").addEventListener("click", function () {
     const drug = drugs[drugId];
 
     const concentration =
-        drug.strengths[strengthIndex].concentration;
+    drug.strengths[strengthIndex].concentration;
 
     let doseMg = weight * drug.mgPerKg;
 
@@ -333,10 +331,14 @@ document.getElementById("calculate").addEventListener("click", function () {
 ${warning}
 
 </div>
-
 `;
 
-    saveHistory(drug.name, weight, doseMg, doseMl);
+    saveHistory(
+        drug.name,
+        weight,
+        doseMg,
+        doseMl
+    );
 
 });
 
@@ -345,20 +347,24 @@ ${warning}
 // ==========================
 
 function saveHistory(drug, weight, dose, ml) {
-// تحديث الإحصائيات
 
-let count =
-parseInt(localStorage.getItem("calcCount")) || 0;
+    // تحديث الإحصائيات
 
-count++;
+    let count =
+    parseInt(localStorage.getItem("calcCount")) || 0;
 
-localStorage.setItem("calcCount", count);
+    count++;
 
-localStorage.setItem("lastDrug", drug.name);
+    localStorage.setItem("calcCount", count);
 
-updateDashboard();
+    localStorage.setItem("lastDrug", drug);
+
+    updateDashboard();
+
+    // حفظ السجل
+
     let history =
-        JSON.parse(localStorage.getItem("history")) || [];
+    JSON.parse(localStorage.getItem("history")) || [];
 
     history.unshift({
 
@@ -369,22 +375,26 @@ updateDashboard();
 
     });
 
-    history = history.slice(0, 5);
+    history = history.slice(0,5);
 
-    localStorage.setItem("history", JSON.stringify(history));
+    localStorage.setItem(
+        "history",
+        JSON.stringify(history)
+    );
 
     loadHistory();
 
 }
 
-function loadHistory() {
+function loadHistory(){
 
     const history =
-        JSON.parse(localStorage.getItem("history")) || [];
+    JSON.parse(localStorage.getItem("history")) || [];
 
-    historyDiv.innerHTML = "<h3>آخر العمليات</h3>";
+    historyDiv.innerHTML =
+    "<h3>آخر العمليات</h3>";
 
-    history.forEach(item => {
+    history.forEach(item=>{
 
         historyDiv.innerHTML += `
 
@@ -407,7 +417,6 @@ function loadHistory() {
 }
 
 loadHistory();
-
 // ==========================
 // إعادة التعيين
 // ==========================
@@ -415,13 +424,11 @@ loadHistory();
 document.getElementById("reset").addEventListener("click", function () {
 
     document.getElementById("age").value = "";
-
     document.getElementById("weight").value = "";
 
     drugSelect.value = "";
-
     strengthSelect.innerHTML =
-        '<option value="">اختر التركيز</option>';
+    '<option value="">اختر التركيز</option>';
 
     result.innerHTML = "";
 
@@ -438,7 +445,6 @@ document.getElementById("copy").addEventListener("click", function () {
     if (result.innerText.trim() === "") {
 
         alert("لا توجد نتيجة.");
-
         return;
 
     }
@@ -453,39 +459,49 @@ document.getElementById("copy").addEventListener("click", function () {
 // المفضلة
 // ==========================
 
-const favoritesList = document.getElementById("favoritesList");
+const favoritesList =
+document.getElementById("favoritesList");
 
 function loadFavorites(){
-updateDashboard();
+
     let favorites =
     JSON.parse(localStorage.getItem("favorites")) || [];
 
     if(favorites.length===0){
 
-        favoritesList.innerHTML="لا توجد أدوية محفوظة.";
+        favoritesList.innerHTML =
+        "لا توجد أدوية محفوظة.";
+
+        updateDashboard();
 
         return;
 
     }
 
-    favoritesList.innerHTML="";
+    favoritesList.innerHTML = "";
 
     favorites.forEach((drug,index)=>{
 
-        favoritesList.innerHTML+=`
+        favoritesList.innerHTML += `
 
 <div class="history-item">
 
 💊 ${drug}
 
-<button onclick="removeFavorite(${index})"
-updateDashboard();
+<br><br>
+
+<button
+onclick="removeFavorite(${index})"
 style="
-margin-top:10px;
 background:#ef4444;
-padding:8px;
-font-size:14px;">
+color:white;
+padding:8px 15px;
+border:none;
+border-radius:8px;
+cursor:pointer;">
+
 ❌ حذف
+
 </button>
 
 </div>
@@ -493,6 +509,8 @@ font-size:14px;">
 `;
 
     });
+
+    updateDashboard();
 
 }
 
@@ -506,16 +524,20 @@ document.getElementById("favorite").addEventListener("click",function(){
 
     }
 
-    let favorites=
-    JSON.parse(localStorage.getItem("favorites"))||[];
+    let favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
 
-    const drugName=drugs[drugSelect.value].name;
+    const drugName =
+    drugs[drugSelect.value].name;
 
     if(!favorites.includes(drugName)){
 
         favorites.push(drugName);
 
-        localStorage.setItem("favorites",JSON.stringify(favorites));
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(favorites)
+        );
 
     }
 
@@ -527,12 +549,15 @@ document.getElementById("favorite").addEventListener("click",function(){
 
 function removeFavorite(index){
 
-    let favorites=
-    JSON.parse(localStorage.getItem("favorites"))||[];
+    let favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
 
     favorites.splice(index,1);
 
-    localStorage.setItem("favorites",JSON.stringify(favorites));
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
 
     loadFavorites();
 
@@ -541,16 +566,38 @@ function removeFavorite(index){
 loadFavorites();
 
 // ==========================
+// إظهار وإخفاء المفضلة
+// ==========================
+
+document.getElementById("showFavorites").addEventListener("click",function(){
+
+    const fav =
+    document.getElementById("favorites");
+
+    if(fav.style.display==="none" || fav.style.display===""){
+
+        fav.style.display="block";
+
+    }else{
+
+        fav.style.display="none";
+
+    }
+
+});
+
+// ==========================
 // معلومات الدواء
 // ==========================
 
-const infoBtn = document.getElementById("info");
+const infoBtn =
+document.getElementById("info");
 
-if (infoBtn) {
+if(infoBtn){
 
-    infoBtn.addEventListener("click", function () {
+    infoBtn.addEventListener("click",function(){
 
-        if (!drugSelect.value) {
+        if(!drugSelect.value){
 
             alert("اختر دواء أولاً");
 
@@ -558,11 +605,12 @@ if (infoBtn) {
 
         }
 
-        const drug = drugs[drugSelect.value];
+        const drug =
+        drugs[drugSelect.value];
 
-        alert(
+        alert(`
 
-`💊 ${drug.name}
+💊 ${drug.name}
 
 📂 ${drug.category}
 
@@ -570,9 +618,9 @@ if (infoBtn) {
 
 🚫 Max Dose: ${drug.maxDose} mg
 
-📝 ${drug.notes}`
+📝 ${drug.notes}
 
-        );
+`);
 
     });
 
@@ -586,9 +634,11 @@ const themeBtn = document.getElementById("themeBtn");
 if (themeBtn) {
 
     // استرجاع الوضع المحفوظ
+
     if (localStorage.getItem("theme") === "dark") {
 
         document.body.classList.add("dark");
+
         themeBtn.innerHTML = "☀️ الوضع النهاري";
 
     }
@@ -600,11 +650,13 @@ if (themeBtn) {
         if (document.body.classList.contains("dark")) {
 
             localStorage.setItem("theme", "dark");
+
             themeBtn.innerHTML = "☀️ الوضع النهاري";
 
         } else {
 
             localStorage.setItem("theme", "light");
+
             themeBtn.innerHTML = "🌙 الوضع الليلي";
 
         }
@@ -612,8 +664,9 @@ if (themeBtn) {
     });
 
 }
+
 // ==========================
-// تغيير اللون
+// تغيير اللون الرئيسي
 // ==========================
 
 const colorBtn = document.getElementById("colorBtn");
@@ -630,11 +683,15 @@ const colors = [
 let colorIndex = 0;
 
 // استرجاع اللون المحفوظ
+
 const savedColor = localStorage.getItem("mainColor");
 
 if (savedColor) {
 
-    document.documentElement.style.setProperty("--main-color", savedColor);
+    document.documentElement.style.setProperty(
+        "--main-color",
+        savedColor
+    );
 
     colorIndex = colors.indexOf(savedColor);
 
@@ -648,8 +705,11 @@ if (colorBtn) {
 
         colorIndex++;
 
-        if (colorIndex >= colors.length)
+        if (colorIndex >= colors.length) {
+
             colorIndex = 0;
+
+        }
 
         document.documentElement.style.setProperty(
             "--main-color",
@@ -664,44 +724,59 @@ if (colorBtn) {
     });
 
 }
-document.getElementById("showFavorites").addEventListener("click",function(){
 
-    const fav=document.getElementById("favorites");
-
-    if(fav.style.display==="none" || fav.style.display===""){
-
-        fav.style.display="block";
-
-    }else{
-
-        fav.style.display="none";
-
-    }
 // ==========================
 // Dashboard
 // ==========================
 
 function updateDashboard() {
 
-    // عدد عمليات الحساب
-    let calcCount =
-        parseInt(localStorage.getItem("calcCount")) || 0;
+    // عدد العمليات
 
-    document.getElementById("calcCount").innerText = calcCount;
+    let calcCount =
+    parseInt(localStorage.getItem("calcCount")) || 0;
+
+    const calcCountEl =
+    document.getElementById("calcCount");
+
+    if (calcCountEl) {
+
+        calcCountEl.innerText = calcCount;
+
+    }
 
     // عدد المفضلة
-    let favorites =
-        JSON.parse(localStorage.getItem("favorites")) || [];
 
-    document.getElementById("favCount").innerText = favorites.length;
+    let favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const favCountEl =
+    document.getElementById("favCount");
+
+    if (favCountEl) {
+
+        favCountEl.innerText = favorites.length;
+
+    }
 
     // آخر دواء
-    let lastDrug =
-        localStorage.getItem("lastDrug") || "-";
 
-    document.getElementById("lastDrug").innerText = lastDrug;
+    let lastDrug =
+    localStorage.getItem("lastDrug") || "-";
+
+    const lastDrugEl =
+    document.getElementById("lastDrug");
+
+    if (lastDrugEl) {
+
+        lastDrugEl.innerText = lastDrug;
+
+    }
 
 }
 
+// تشغيل Dashboard عند فتح الموقع
+
 updateDashboard();
-});
+
+console.log("✅ DoseCare v2.0 Loaded Successfully");
