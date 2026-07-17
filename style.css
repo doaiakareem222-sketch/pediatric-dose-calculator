@@ -26,9 +26,7 @@ body{
 
 h1{
     text-align:center;
-    h1{
     color:var(--main-color);
-}
     font-size:34px;
     margin-bottom:8px;
 }
@@ -112,7 +110,6 @@ button:active{
 
 #result h3{
     color:var(--main-color);
-}
     margin-bottom:10px;
     text-align:center;
 }
@@ -356,21 +353,12 @@ color:white;
 .drug-card{
 
 margin-top:18px;
-
 padding:18px;
-
 background:#eef5ff;
-
-.drug-card{
-    border-left:6px solid var(--main-color);
-}
-
+border-left:6px solid var(--main-color);
 border-radius:14px;
-
 line-height:2;
-
 font-size:15px;
-
 animation:fade .3s;
 
 }
@@ -391,8 +379,6 @@ transform:translateY(0);
 
 .drug-card h3{
     color:var(--main-color);
-}
-
 margin-bottom:10px;
 
 }
