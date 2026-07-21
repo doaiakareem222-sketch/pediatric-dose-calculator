@@ -397,6 +397,21 @@ document.getElementById("calculate").addEventListener("click", function () {
     }
 
     const drug = drugs[drugId];
+    const drug2Id = document.getElementById("drug2").value;
+
+let interactionMessage = "";
+
+if (drug2Id) {
+
+    const key1 = drugId + "-" + drug2Id;
+    const key2 = drug2Id + "-" + drugId;
+
+    interactionMessage =
+        interactions[key1] ||
+        interactions[key2] ||
+        "✅ لا يوجد تداخل دوائي مهم معروف.";
+
+}
 if (age < drug.minAge || age > drug.maxAge) {
 
     result.innerHTML = `
@@ -427,7 +442,8 @@ if (age < drug.minAge || age > drug.maxAge) {
         border-radius:10px;
         font-weight:bold;">
         ⚠️ تم اعتماد الحد الأقصى للجرعة.
-        </div>`;
+        </div>
+        `;
 
     }
 
@@ -485,7 +501,12 @@ if (age < drug.minAge || age > drug.maxAge) {
 </div>
 
 ${warning}
-
+${drug2Id ? `
+<div class="warning-box">
+<h3>💊 Drug Interaction Checker</h3>
+<p>${interactionMessage}</p>
+</div>
+` : ""}
 </div>
 `;
 
