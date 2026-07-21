@@ -68,6 +68,7 @@ coamoxiclav:{
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:875,
+    diseases:["otitis","sinusitis","pneumonia"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -89,6 +90,7 @@ azithromycin:{
     mgPerKg:10,
     frequency:"مرة يومياً",
     maxDose:500,
+    diseases:["pharyngitis","pneumonia"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -106,6 +108,7 @@ cefixime:{
     mgPerKg:8,
     frequency:"مرة أو مرتين يومياً",
     maxDose:400,
+    diseases:["uti","otitis"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -123,6 +126,7 @@ cefuroxime:{
     mgPerKg:15,
     frequency:"كل 12 ساعة",
     maxDose:500,
+    diseases:["sinusitis","otitis"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -140,6 +144,7 @@ cephalexin:{
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:1000,
+    diseases:["skin","pharyngitis"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -177,6 +182,7 @@ maxAge:12,
     mgPerKg:7.5,
     frequency:"كل 8 ساعات",
     maxDose:500,
+        diseases:["diarrhea"],
         minAge:0,
 maxAge:12,
     strengths:[
@@ -228,6 +234,7 @@ chlorpheniramine:{
     mgPerKg:0.1,
     frequency:"كل 6 ساعات",
     maxDose:4,
+    diseases:["allergy"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -245,6 +252,7 @@ salbutamol:{
     mgPerKg:0.15,
     frequency:"كل 4-6 ساعات",
     maxDose:5,
+    diseases:["asthma"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -262,6 +270,7 @@ budesonide:{
     mgPerKg:0.5,
     frequency:"مرتين يومياً",
     maxDose:2,
+    diseases:["asthma"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -279,6 +288,7 @@ montelukast:{
     mgPerKg:0.2,
     frequency:"مرة يومياً",
     maxDose:10,
+    diseases:["asthma","allergy"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -300,6 +310,7 @@ ondansetron:{
     mgPerKg:0.15,
     frequency:"كل 8 ساعات",
     maxDose:8,
+    diseases:["vomiting"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -317,6 +328,7 @@ zinc:{
     mgPerKg:1,
     frequency:"مرة يومياً",
     maxDose:20,
+    diseases:["diarrhea"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -334,6 +346,7 @@ fluconazole:{
     mgPerKg:6,
     frequency:"مرة يومياً",
     maxDose:400,
+    diseases:["fungal"],
     minAge:0,
 maxAge:12,
     strengths:[
@@ -351,6 +364,7 @@ albendazole:{
     mgPerKg:15,
     frequency:"مرة يومياً",
     maxDose:400,
+    diseases:["worms"],
     minAge:0,
 maxAge:12,
     strengths:[
