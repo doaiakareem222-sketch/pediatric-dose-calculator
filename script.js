@@ -1,3 +1,24 @@
+const interactions = {
+
+"clarithromycin-fluconazole":
+"⚠️ يزيد خطر اضطرابات نظم القلب (QT prolongation).",
+
+"clarithromycin-ondansetron":
+"⚠️ يزيد احتمال إطالة QT.",
+
+"ibuprofen-paracetamol":
+"✅ يمكن استخدامهما معاً عند الحاجة بالجرعات الصحيحة.",
+
+"ibuprofen-amoxicillin":
+"✅ لا يوجد تداخل مهم.",
+
+"metronidazole-alcohol":
+"❌ يمنع تناول الكحول أثناء العلاج.",
+
+"fluconazole-ondansetron":
+"⚠️ قد يزيد خطر اضطراب نظم القلب."
+
+};
 // ==========================
 // DoseCare Script v2.0
 // الجزء الأول
