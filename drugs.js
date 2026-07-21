@@ -3,6 +3,7 @@ const drugs = {
 paracetamol:{
     name:"Paracetamol",
     category:"Pain & Fever",
+    diseases:["fever","pain"],
     mgPerKg:15,
     frequency:"كل 4-6 ساعات",
     maxDose:1000,
@@ -24,6 +25,7 @@ maxAge:12,
 ibuprofen:{
     name:"Ibuprofen",
     category:"Pain & Fever",
+diseases:["fever","pain"],
     mgPerKg:10,
     frequency:"كل 6-8 ساعات",
     maxDose:400,
@@ -41,6 +43,7 @@ maxAge:12,
 amoxicillin:{
     name:"Amoxicillin",
     category:"Antibiotics",
+diseases:["otitis","pharyngitis","sinusitis","pneumonia"],
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:500,
