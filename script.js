@@ -22,7 +22,6 @@ drugSelect.addEventListener("change", function () {
     '<option value="">اختر التركيز</option>';
 
     const drug = drugs[this.value];
-
     const card = document.getElementById("drugCard");
 
     if (!drug) {
@@ -250,7 +249,16 @@ document.getElementById("calculate").addEventListener("click", function () {
     }
 
     const drug = drugs[drugId];
+if (age < drug.minAge || age > drug.maxAge) {
 
+    result.innerHTML = `
+    <div class="warning-box">
+    ⚠️ هذا الدواء غير مناسب لهذا العمر.
+    </div>
+    `;
+
+    return;
+}
     const concentration =
     drug.strengths[strengthIndex].concentration;
 
