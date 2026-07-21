@@ -6,6 +6,8 @@ paracetamol:{
     mgPerKg:15,
     frequency:"كل 4-6 ساعات",
     maxDose:1000,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"120 mg / 5 mL",
@@ -25,6 +27,8 @@ ibuprofen:{
     mgPerKg:10,
     frequency:"كل 6-8 ساعات",
     maxDose:400,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"100 mg / 5 mL",
@@ -40,6 +44,8 @@ amoxicillin:{
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:500,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"125 mg / 5 mL",
@@ -59,6 +65,8 @@ coamoxiclav:{
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:875,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"228 mg / 5 mL",
@@ -78,6 +86,8 @@ azithromycin:{
     mgPerKg:10,
     frequency:"مرة يومياً",
     maxDose:500,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"200 mg / 5 mL",
@@ -93,6 +103,8 @@ cefixime:{
     mgPerKg:8,
     frequency:"مرة أو مرتين يومياً",
     maxDose:400,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"100 mg / 5 mL",
@@ -108,6 +120,8 @@ cefuroxime:{
     mgPerKg:15,
     frequency:"كل 12 ساعة",
     maxDose:500,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"125 mg / 5 mL",
@@ -123,6 +137,8 @@ cephalexin:{
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:1000,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"250 mg / 5 mL",
@@ -138,6 +154,8 @@ clarithromycin:{
     mgPerKg:7.5,
     frequency:"كل 12 ساعة",
     maxDose:500,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"125 mg / 5 mL",
@@ -156,6 +174,8 @@ clarithromycin:{
     mgPerKg:7.5,
     frequency:"كل 8 ساعات",
     maxDose:500,
+        minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"125 mg / 5 mL",
@@ -171,6 +191,8 @@ cetirizine:{
     mgPerKg:0.25,
     frequency:"مرة يومياً",
     maxDose:10,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"5 mg / 5 mL",
@@ -186,6 +208,8 @@ loratadine:{
     mgPerKg:0.2,
     frequency:"مرة يومياً",
     maxDose:10,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"5 mg / 5 mL",
@@ -201,6 +225,8 @@ chlorpheniramine:{
     mgPerKg:0.1,
     frequency:"كل 6 ساعات",
     maxDose:4,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"2 mg / 5 mL",
@@ -216,6 +242,8 @@ salbutamol:{
     mgPerKg:0.15,
     frequency:"كل 4-6 ساعات",
     maxDose:5,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"2 mg / 5 mL",
@@ -231,6 +259,8 @@ budesonide:{
     mgPerKg:0.5,
     frequency:"مرتين يومياً",
     maxDose:2,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"0.5 mg / 2 mL",
@@ -246,6 +276,8 @@ montelukast:{
     mgPerKg:0.2,
     frequency:"مرة يومياً",
     maxDose:10,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"4 mg Chewable",
@@ -265,6 +297,8 @@ ondansetron:{
     mgPerKg:0.15,
     frequency:"كل 8 ساعات",
     maxDose:8,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"4 mg / 5 mL",
@@ -280,6 +314,8 @@ zinc:{
     mgPerKg:1,
     frequency:"مرة يومياً",
     maxDose:20,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"20 mg / 5 mL",
@@ -295,6 +331,8 @@ fluconazole:{
     mgPerKg:6,
     frequency:"مرة يومياً",
     maxDose:400,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"50 mg / 5 mL",
@@ -310,6 +348,8 @@ albendazole:{
     mgPerKg:15,
     frequency:"مرة يومياً",
     maxDose:400,
+    minAge:0,
+maxAge:12,
     strengths:[
         {
             name:"200 mg / 5 mL",
