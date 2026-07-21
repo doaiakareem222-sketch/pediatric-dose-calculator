@@ -214,6 +214,10 @@ drugSelect.addEventListener("change", function () {
 <p><strong>🚫 الحد الأقصى:</strong> ${drug.maxDose} mg</p>
 
 <p><strong>📝 الملاحظات:</strong> ${drug.notes}</p>
+<div class="info-row">
+<b>⚠️ التحذيرات:</b><br>
+${drug.warnings}
+</div>
 
 `;
 
