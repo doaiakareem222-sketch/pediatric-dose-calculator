@@ -15,7 +15,32 @@ const searchInput = document.getElementById("searchDrug");
 // ==========================
 // تغيير التركيز + بطاقة الدواء
 // ==========================
+diseaseSelect.addEventListener("change", function () {
 
+    const disease = this.value;
+
+    drugSelect.innerHTML = '<option value="">اختر الدواء</option>';
+
+    for (const id in drugs) {
+
+        const drug = drugs[id];
+
+        if (!disease || drug.diseases.includes(disease)) {
+
+            const option = document.createElement("option");
+            option.value = id;
+            option.textContent = drug.name;
+
+            drugSelect.appendChild(option);
+        }
+    }
+
+    strengthSelect.innerHTML =
+        '<option value="">اختر التركيز</option>';
+
+    document.getElementById("drugCard").style.display = "none";
+
+});
 drugSelect.addEventListener("change", function () {
 
     strengthSelect.innerHTML =
