@@ -647,3 +647,18 @@ background:#3b1d1d;
 color:#fecaca;
 
 }
+.info-row{
+
+margin-top:12px;
+padding:10px;
+background:#fff7ed;
+border-right:4px solid #f59e0b;
+border-radius:10px;
+
+}
+
+body.dark .info-row{
+
+background:#3b2f1d;
+
+}
