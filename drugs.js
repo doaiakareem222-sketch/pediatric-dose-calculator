@@ -7,6 +7,7 @@ paracetamol:{
     mgPerKg:15,
     frequency:"كل 4-6 ساعات",
     maxDose:1000,
+    warnings:"لا تتجاوز الجرعة اليومية القصوى."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -29,6 +30,7 @@ diseases:["fever","pain"],
     mgPerKg:10,
     frequency:"كل 6-8 ساعات",
     maxDose:400,
+        warnings:"يمنع عند قرحة المعدة والجفاف الشديد."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -47,6 +49,7 @@ diseases:["otitis","pharyngitis","sinusitis","pneumonia"],
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:500,
+        warnings:"تأكد من عدم وجود حساسية للبنسلين."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -69,6 +72,7 @@ coamoxiclav:{
     frequency:"كل 8 ساعات",
     maxDose:875,
     diseases:["otitis","sinusitis","pneumonia"],
+        warnings:"يعطى بعد الطعام لتقليل اضطرابات المعدة. يستخدم بحذر في مرضى الكبد."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -91,6 +95,7 @@ azithromycin:{
     frequency:"مرة يومياً",
     maxDose:500,
     diseases:["pharyngitis","pneumonia"],
+        warnings:"يستخدم بحذر مع مرضى اضطرابات نظم القلب."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -109,6 +114,7 @@ cefixime:{
     frequency:"مرة أو مرتين يومياً",
     maxDose:400,
     diseases:["uti","otitis"],
+        warnings:"يعدل في القصور الكلوي."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -127,6 +133,7 @@ cefuroxime:{
     frequency:"كل 12 ساعة",
     maxDose:500,
     diseases:["sinusitis","otitis"],
+        warnings:"يفضل تناوله بعد الطعام لتحسين الامتصاص. يستخدم بحذر عند حساسية السيفالوسبورينات."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -145,6 +152,7 @@ cephalexin:{
     frequency:"كل 8 ساعات",
     maxDose:1000,
     diseases:["skin","pharyngitis"],
+        warnings:"قد يسبب حساسية متصالبة مع البنسلين. أكمل مدة العلاج كاملة."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -162,6 +170,7 @@ clarithromycin:{
     mgPerKg:7.5,
     frequency:"كل 12 ساعة",
     maxDose:500,
+        warnings:"يتداخل مع العديد من الأدوية وقد يطيل فترة QT."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -183,6 +192,7 @@ maxAge:12,
     frequency:"كل 8 ساعات",
     maxDose:500,
         diseases:["diarrhea"],
+        warnings:"يمنع تناول الكحول أثناء العلاج ولمدة 48 ساعة بعد آخر جرعة."
         minAge:0,
 maxAge:12,
     strengths:[
@@ -200,6 +210,7 @@ cetirizine:{
     mgPerKg:0.25,
     frequency:"مرة يومياً",
     maxDose:10,
+        warnings:"قد يسبب نعاساً عند بعض المرضى رغم أنه أقل من الجيل الأول."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -217,6 +228,7 @@ loratadine:{
     mgPerKg:0.2,
     frequency:"مرة يومياً",
     maxDose:10,
+        warnings:"نادراً ما يسبب النعاس. لا تتجاوز الجرعة الموصى بها."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -235,6 +247,7 @@ chlorpheniramine:{
     frequency:"كل 6 ساعات",
     maxDose:4,
     diseases:["allergy"],
+        warnings:"يسبب النعاس ويجب تجنب القيادة أو تشغيل الآلات."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -253,6 +266,7 @@ salbutamol:{
     frequency:"كل 4-6 ساعات",
     maxDose:5,
     diseases:["asthma"],
+        warnings:"قد يسبب رجفة وخفقان القلب عند زيادة الجرعة."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -271,6 +285,7 @@ budesonide:{
     frequency:"مرتين يومياً",
     maxDose:2,
     diseases:["asthma"],
+        warnings:"اغسل الفم بعد الاستنشاق لتقليل خطر الفطريات الفموية."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -289,6 +304,7 @@ montelukast:{
     frequency:"مرة يومياً",
     maxDose:10,
     diseases:["asthma","allergy"],
+        warnings:"راقب أي تغيرات في المزاج أو السلوك، خاصة عند الأطفال."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -311,6 +327,7 @@ ondansetron:{
     frequency:"كل 8 ساعات",
     maxDose:8,
     diseases:["vomiting"],
+        warnings:"قد يسبب إطالة QT خاصة عند الجرعات العالية أو مرضى القلب."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -329,6 +346,7 @@ zinc:{
     frequency:"مرة يومياً",
     maxDose:20,
     diseases:["diarrhea"],
+        warnings:"لا يؤخذ مع الحديد أو الكالسيوم في نفس الوقت لتجنب تقليل الامتصاص."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -347,6 +365,7 @@ fluconazole:{
     frequency:"مرة يومياً",
     maxDose:400,
     diseases:["fungal"],
+        warnings:"قد يؤثر في وظائف الكبد ويتداخل مع عدة أدوية."
     minAge:0,
 maxAge:12,
     strengths:[
@@ -365,6 +384,7 @@ albendazole:{
     frequency:"مرة يومياً",
     maxDose:400,
     diseases:["worms"],
+        warnings:"يفضل تناوله بعد الطعام. قد يحتاج علاج جميع أفراد الأسرة في بعض حالات الديدان."
     minAge:0,
 maxAge:12,
     strengths:[
