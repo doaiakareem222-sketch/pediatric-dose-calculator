@@ -18,7 +18,105 @@ const searchInput = document.getElementById("searchDrug");
 diseaseSelect.addEventListener("change", function () {
 
     const disease = this.value;
+const guide = document.getElementById("diseaseGuide");
 
+const treatments = {
+
+fever:{
+title:"🌡 Fever",
+first:"Paracetamol أو Ibuprofen",
+second:"الإكثار من السوائل ومراجعة الطبيب إذا استمرت الحمى."
+},
+
+pain:{
+title:"💊 Pain",
+first:"Paracetamol",
+second:"Ibuprofen إذا لم توجد موانع."
+},
+
+otitis:{
+title:"👂 Otitis Media",
+first:"Amoxicillin",
+second:"Co-amoxiclav أو Cefixime."
+},
+
+pharyngitis:{
+title:"🦠 Pharyngitis",
+first:"Amoxicillin",
+second:"Azithromycin عند حساسية البنسلين."
+},
+
+sinusitis:{
+title:"👃 Sinusitis",
+first:"Amoxicillin/Clavulanate",
+second:"Cefuroxime."
+},
+
+pneumonia:{
+title:"🫁 Pneumonia",
+first:"Amoxicillin",
+second:"Azithromycin حسب الحالة."
+},
+
+uti:{
+title:"🚽 UTI",
+first:"Cefixime",
+second:"حسب نتيجة الزرع."
+},
+
+diarrhea:{
+title:"💧 Diarrhea",
+first:"ORS + Zinc",
+second:"Metronidazole عند الحاجة."
+},
+
+vomiting:{
+title:"🤢 Vomiting",
+first:"Ondansetron",
+second:"تعويض السوائل."
+},
+
+asthma:{
+title:"🫁 Asthma",
+first:"Salbutamol",
+second:"Budesonide + Montelukast."
+},
+
+allergy:{
+title:"🤧 Allergy",
+first:"Cetirizine",
+second:"Loratadine."
+},
+
+fungal:{
+title:"🍄 Fungal Infection",
+first:"Fluconazole",
+second:"حسب نوع العدوى."
+},
+
+worms:{
+title:"🪱 Worm Infestation",
+first:"Albendazole",
+second:"إعادة الجرعة بعد أسبوعين عند الحاجة."
+}
+
+};
+
+if(treatments[disease]){
+
+guide.style.display="block";
+
+guide.innerHTML=`
+<h3>${treatments[disease].title}</h3>
+<p><b>First Line:</b> ${treatments[disease].first}</p>
+<p><b>Alternative:</b> ${treatments[disease].second}</p>
+`;
+
+}else{
+
+guide.style.display="none";
+
+}
     drugSelect.innerHTML = '<option value="">اختر الدواء</option>';
 
     for (const id in drugs) {
