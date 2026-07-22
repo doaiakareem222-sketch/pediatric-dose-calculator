@@ -591,7 +591,11 @@ ${drug2Id ? `
         doseMg,
         doseMl
     );
+const loading = document.getElementById("loading");
 
+loading.style.display = "block";
+
+result.innerHTML = "";
 });
 
 // ==========================
@@ -681,7 +685,7 @@ document.getElementById("reset").addEventListener("click", function () {
     drugSelect.value = "";
     strengthSelect.innerHTML =
     '<option value="">اختر التركيز</option>';
-
+loading.style.display = "none";
     result.innerHTML = "";
 
     document.getElementById("drugCard").style.display = "none";
