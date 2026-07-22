@@ -16,20 +16,14 @@
 
 <body>
 
-</div class="top-buttons">
+<div class="top-buttons">
 
-<button id="themeBtn">
-🌙 الوضع الليلي
-</button>
+<button id="themeBtn">🌙 الوضع الليلي</button>
 
-<button id="colorBtn">
-🎨 تغيير اللون
-</button>
+<button id="colorBtn">🎨 تغيير اللون</button>
 
-  <button id="langBtn">
-🌐 العربية
-</button>
-  
+<button id="langBtn">🌐 العربية</button>
+
 </div>
 
 <div class="container">
@@ -65,7 +59,10 @@
 <option value="worms">Worm Infestation</option>
 
 </select>
-
+<div id="diseaseGuide"
+class="guide-card"
+style="display:none;">
+</div>
 <label id="lblSearchDrug" for="searchDrug">
 البحث عن الدواء
 </label>
@@ -284,7 +281,9 @@ placeholder="مثال: 18">
 
 <div id="favorites" class="history">
 
-<h2 id="favoritesTitle">⭐ الأدوية المفضلة</h2><h2 id="favoritesTitle">⭐ الأدوية المفضلة</h2>
+<h2 id="favoritesTitle">
+⭐ الأدوية المفضلة
+</h2>
 
 <div id="favoritesList">
 لا توجد أدوية محفوظة.
@@ -300,7 +299,7 @@ placeholder="مثال: 18">
 <p id="aboutText">
 DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
 </p>
-<p>
+<p><p id="warningText">
 ⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
 </p>
 <p class="copyright">
@@ -319,23 +318,7 @@ Developed by Doaa Kareem © 2026
 </body>
 
 </html>
-.loading-box{
 
-display:none;
-
-text-align:center;
-
-padding:25px;
-
-background:#1e293b;
-
-border-radius:15px;
-
-margin-top:20px;
-
-color:white;
-
-}
 
 .loader{
 
