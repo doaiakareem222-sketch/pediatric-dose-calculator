@@ -191,20 +191,24 @@ placeholder="اكتب اسم الدواء...">
 <div id="drugCard" class="drug-card" style="display:none;"></div>
 
 <button id="favorite">
-⭐ إضافة إلى المفضلة
+⭐ <span id="btnFavorite">إضافة إلى المفضلة</span>
 </button>
 
 <button id="showFavorites" class="favorite-btn">
-📖 عرض المفضلة
+📖 <span id="btnShowFavorites">عرض المفضلة</span>
 </button>
-<label>العمر (بالسنوات)</label>
+<label id="lblAge" for="age">
+العمر (بالسنوات)
+</label>
 
 <input
 type="number"
 id="age"
 placeholder="مثال: 5">
 
-<label>الوزن (Kg)</label>
+<label id="lblWeight" for="weight">
+الوزن (Kg)
+</label>
 
 <input
 type="number"
@@ -212,15 +216,15 @@ id="weight"
 placeholder="مثال: 18">
 
 <button id="calculate">
-🧮 احسب الجرعة
+🧮 <span id="btnCalculate">احسب الجرعة</span>
 </button>
 
 <button id="reset" class="red">
-🔄 إعادة تعيين
+🔄 <span id="btnReset">إعادة تعيين</span>
 </button>
 
 <button id="copy" class="green">
-📋 نسخ النتيجة
+📋 <span id="btnCopy">نسخ النتيجة</span>
 </button>
 
   <button id="pdf" class="blue">
@@ -228,7 +232,7 @@ placeholder="مثال: 18">
 </button>
 
 <button id="info" class="purple">
-ℹ️ معلومات الدواء
+ℹ️ <span id="btnInfo">معلومات الدواء</span>
 </button>
 
 <div id="result"></div>
@@ -247,23 +251,23 @@ placeholder="مثال: 18">
 
 <div class="dashboard">
 
-<h2>📊 Dashboard</h2>
+<h2 id="dashboardTitle">📊 Dashboard</h2>
 
 <div class="stats">
 
 <div class="stat-card">
 <h3 id="calcCount">0</h3>
-<p>عدد الحسابات</p>
+<p id="txtCalcCount">عدد الحسابات</p>
 </div>
 
 <div class="stat-card">
 <h3 id="favCount">0</h3>
-<p>المفضلة</p>
+<p id="txtFavorites">المفضلة</p>
 </div>
 
 <div class="stat-card">
 <h3 id="lastDrug">-</h3>
-<p>آخر دواء</p>
+<p id="txtLastDrug">آخر دواء</p>
 </div>
 
 </div>
@@ -272,7 +276,7 @@ placeholder="مثال: 18">
 
 <div id="favorites" class="history">
 
-<h2>⭐ الأدوية المفضلة</h2>
+<h2 id="favoritesTitle">⭐ الأدوية المفضلة</h2><h2 id="favoritesTitle">⭐ الأدوية المفضلة</h2>
 
 <div id="favoritesList">
 لا توجد أدوية محفوظة.
@@ -283,16 +287,14 @@ placeholder="مثال: 18">
 
 <div class="about-card">
 
-<h2>ℹ️ About DoseCare</h2>
+<h2 id="aboutTitle">ℹ️ About DoseCare</h2>
 
-<p>
+<p id="aboutText">
 DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
 </p>
-
 <p>
 ⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
 </p>
-
 <p class="copyright">
 Developed by Doaa Kareem © 2026
 </p>
