@@ -43,6 +43,35 @@ txtLastDrug:"آخر دواء",
 favoritesTitle:"⭐ الأدوية المفضلة",
 
 aboutTitle:"ℹ️ About DoseCare",
+  diseases:{
+
+fever:"الحمى",
+
+pain:"الألم",
+
+otitis:"التهاب الأذن",
+
+pharyngitis:"التهاب البلعوم",
+
+sinusitis:"التهاب الجيوب",
+
+pneumonia:"ذات الرئة",
+
+uti:"التهاب المسالك",
+
+diarrhea:"الإسهال",
+
+vomiting:"التقيؤ",
+
+asthma:"الربو",
+
+allergy:"الحساسية",
+
+fungal:"عدوى فطرية",
+
+worms:"الديدان"
+
+},
 
 aboutText:"DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.",
 
@@ -106,7 +135,35 @@ txtLastDrug:"Last Drug",
 favoritesTitle:"⭐ Favorite Drugs",
 
 aboutTitle:"ℹ️ About DoseCare",
+diseases:{
 
+fever:"Fever",
+
+pain:"Pain",
+
+otitis:"Otitis Media",
+
+pharyngitis:"Pharyngitis",
+
+sinusitis:"Sinusitis",
+
+pneumonia:"Pneumonia",
+
+uti:"UTI",
+
+diarrhea:"Diarrhea",
+
+vomiting:"Vomiting",
+
+asthma:"Asthma",
+
+allergy:"Allergy",
+
+fungal:"Fungal Infection",
+
+worms:"Worm Infestation"
+
+},
 aboutText:"DoseCare is a pediatric dose calculator based on body weight and standard drug references.",
 
 warningText:"⚠️ Results are for educational purposes only and do not replace medical advice."
