@@ -818,3 +818,92 @@ border-radius:14px;
 font-size:20px;
 
 }
+body.dark .header{
+
+background:#1f2937;
+
+}
+/* ==========================
+   Smooth Animation
+========================== */
+
+.card,
+.result-card,
+.drug-card,
+.history,
+.dashboard,
+.about-card{
+    animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ==========================
+   Better Inputs
+========================== */
+
+input,
+select{
+    transition:0.25s;
+}
+
+input:hover,
+select:hover{
+    border-color:var(--main-color);
+}
+
+/* ==========================
+   Better Buttons
+========================== */
+
+button{
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+/* ==========================
+   Result Card
+========================== */
+
+.result-card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.result-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.result-item:last-child{
+    border:none;
+}
+
+.result-item span{
+    color:#666;
+}
+
+.result-item strong{
+    color:#111827;
+}
