@@ -1442,3 +1442,6 @@ document.getElementById("fluidResult").innerHTML = `
 });
 
 }
+window.addEventListener("load", () => {
+    diseaseSelect.dispatchEvent(new Event("change"));
+});
