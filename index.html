@@ -15,7 +15,7 @@
 
 <body>
 
-<div class="top-buttons">
+</div class="top-buttons">
 
 <button id="themeBtn">
 🌙 الوضع الليلي
@@ -33,15 +33,17 @@
 
 <div class="container">
 
-<h1>🩺 DoseCare</h1>
+<h1 id="appTitle">🩺 DoseCare</h1>
 
-<p class="subtitle">
+<p class="subtitle" id="appSubtitle">
 حاسبة جرعات الأطفال بالاعتماد على الوزن
 </p>
 
 <div class="card">
 
-<label>🔍 البحث حسب المرض</label>
+<label id="lblDisease" for="disease">
+🔍 البحث حسب المرض
+</label>
 
 <select id="disease">
 
@@ -63,14 +65,18 @@
 
 </select>
 
-<label>البحث عن الدواء</label>
+<label id="lblSearchDrug" for="searchDrug">
+البحث عن الدواء
+</label>
 
 <input
 type="text"
 id="searchDrug"
 placeholder="اكتب اسم الدواء...">
 
-<label>اسم الدواء</label>
+<label id="lblDrug" for="drug">
+اسم الدواء
+</label>
 
 <select id="drug">
 
@@ -121,7 +127,9 @@ placeholder="اكتب اسم الدواء...">
 </optgroup>
 
 </select>
-<label>الدواء الثاني (اختياري)</label>
+<label id="lblDrug2" for="drug2">
+الدواء الثاني (اختياري)
+</label>
 
 <select id="drug2">
 
@@ -172,7 +180,9 @@ placeholder="اكتب اسم الدواء...">
 </optgroup>
 
 </select>
-<label>تركيز الدواء</label>
+<label id="lblStrength" for="strength">
+تركيز الدواء
+</label>
 
 <select id="strength">
 <option value="">اختر التركيز</option>
