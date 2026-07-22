@@ -767,14 +767,13 @@ document.getElementById("showFavorites").addEventListener("click",function(){
 // معلومات الدواء
 // ==========================
 
-const infoBtn =
-document.getElementById("info");
+const infoBtn = document.getElementById("info");
 
-if(infoBtn){
+if (infoBtn) {
 
-    infoBtn.addEventListener("click",function(){
+    infoBtn.addEventListener("click", function () {
 
-        if(!drugSelect.value){
+        if (!drugSelect.value) {
 
             alert("اختر دواء أولاً");
 
@@ -782,26 +781,59 @@ if(infoBtn){
 
         }
 
-        const drug =
-        drugs[drugSelect.value];
+        const drug = drugs[drugSelect.value];
 
-        alert(`
+        document.getElementById("drugInfoContent").innerHTML = `
 
-💊 ${drug.name}
+<h2>💊 ${drug.name}</h2>
 
-📂 ${drug.category}
+<p><b>📂 التصنيف:</b> ${drug.category}</p>
 
-⏰ ${drug.frequency}
+<p><b>⚙️ آلية العمل:</b><br>${drug.mechanism}</p>
 
-🚫 Max Dose: ${drug.maxDose} mg
+<p><b>✅ الاستعمالات:</b><br>${drug.indications}</p>
 
-📝 ${drug.notes}
+<p><b>⛔ موانع الاستعمال:</b><br>${drug.contraindications}</p>
 
-`);
+<p><b>⚠️ الآثار الجانبية:</b><br>${drug.sideEffects}</p>
+
+<p><b>👶 العمر:</b> ${drug.minAge} - ${drug.maxAge} سنة</p>
+
+<p><b>🤰 الحمل:</b><br>${drug.pregnancy}</p>
+
+<p><b>📦 التخزين:</b><br>${drug.storage}</p>
+
+<p><b>📝 ملاحظات:</b><br>${drug.notes}</p>
+
+`;
+
+        document.getElementById("drugInfoModal").style.display = "block";
 
     });
 
 }
+
+// زر الإغلاق
+
+document.getElementById("closeModal").onclick = function () {
+
+    document.getElementById("drugInfoModal").style.display = "none";
+
+};
+
+// إغلاق عند الضغط خارج النافذة
+
+window.onclick = function (event) {
+
+    const modal = document.getElementById("drugInfoModal");
+
+    if (event.target == modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
 // ==========================
 // الوضع الليلي
 // ==========================
