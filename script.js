@@ -1018,3 +1018,22 @@ return 1;
 return 1;
 
 }
+const pdfBtn = document.getElementById("pdf");
+
+if (pdfBtn) {
+
+    pdfBtn.addEventListener("click", function () {
+
+        if (result.innerHTML.trim() === "") {
+
+            alert("لا توجد نتيجة لحفظها.");
+
+            return;
+
+        }
+
+        html2pdf().from(result).save("DoseCare_Result.pdf");
+
+    });
+
+}
