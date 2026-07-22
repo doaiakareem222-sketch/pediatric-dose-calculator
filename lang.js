@@ -233,7 +233,21 @@ lang==="ar" ?
 }
 
 setLanguage(currentLanguage);
+const diseaseSelect = document.getElementById("disease");
 
+for(let i=1;i<diseaseSelect.options.length;i++){
+
+const option=diseaseSelect.options[i];
+
+const value=option.value;
+
+if(t.diseases[value]){
+
+option.textContent=t.diseases[value];
+
+}
+
+}
 document.getElementById("langBtn")
 
 .addEventListener("click",()=>{
