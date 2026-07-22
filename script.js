@@ -17,7 +17,73 @@ const interactions = {
 
 "fluconazole-ondansetron":
 "⚠️ قد يزيد خطر اضطراب نظم القلب."
+// Pain & Fever
+"ibuprofen-paracetamol":"✅ يمكن استخدامهما معاً عند الحاجة.",
+"ibuprofen-amoxicillin":"✅ لا يوجد تداخل مهم.",
+"ibuprofen-cefixime":"✅ لا يوجد تداخل مهم.",
+"ibuprofen-azithromycin":"✅ لا يوجد تداخل مهم.",
+"ibuprofen-cefuroxime":"✅ لا يوجد تداخل مهم.",
 
+// Macrolides
+"clarithromycin-fluconazole":"⚠️ يزيد خطر اضطراب نظم القلب (QT prolongation).",
+"clarithromycin-ondansetron":"⚠️ يزيد احتمال إطالة QT.",
+"clarithromycin-azithromycin":"❌ لا يفضل الجمع بين ماكروليدين.",
+"clarithromycin-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
+"clarithromycin-cetirizine":"✅ لا يوجد تداخل مهم.",
+"clarithromycin-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
+"clarithromycin-montelukast":"✅ لا يوجد تداخل مهم.",
+
+// Fluconazole
+"fluconazole-ondansetron":"⚠️ قد يزيد خطر اضطراب نظم القلب.",
+"fluconazole-azithromycin":"⚠️ يزيد خطر QT.",
+"fluconazole-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
+"fluconazole-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
+"fluconazole-metronidazole":"⚠️ يفضل الحذر بسبب زيادة الآثار الجانبية.",
+"fluconazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد.",
+
+// Metronidazole
+"metronidazole-alcohol":"❌ يمنع تناول الكحول أثناء العلاج ولمدة 48 ساعة بعد آخر جرعة.",
+"metronidazole-ondansetron":"⚠️ قد يزيد خطر QT.",
+"metronidazole-clarithromycin":"⚠️ يزيد احتمال اضطراب نظم القلب.",
+"metronidazole-azithromycin":"⚠️ الحذر بسبب QT.",
+
+// Ondansetron
+"ondansetron-azithromycin":"⚠️ يزيد خطر QT.",
+"ondansetron-loratadine":"✅ لا يوجد تداخل مهم.",
+"ondansetron-cetirizine":"✅ لا يوجد تداخل مهم.",
+"ondansetron-salbutamol":"⚠️ الحذر عند المرضى المعرضين لاضطراب نظم القلب.",
+    // Antibiotics
+"amoxicillin-coamoxiclav":"❌ لا داعي للجمع بينهما.",
+"amoxicillin-cephalexin":"⚠️ غالباً لا توجد فائدة من الجمع.",
+"cefixime-cefuroxime":"❌ لا يفضل الجمع بين سيفالوسبورينين.",
+"cefixime-cephalexin":"❌ لا يوصى به.",
+"cefuroxime-cephalexin":"❌ لا يوصى به.",
+"azithromycin-cefixime":"✅ يستخدم أحياناً حسب الحالة.",
+"azithromycin-amoxicillin":"✅ قد يستخدمان معاً عند الحاجة.",
+"coamoxiclav-metronidazole":"✅ يستخدمان معاً ببعض الالتهابات.",
+"coamoxiclav-fluconazole":"✅ لا يوجد تداخل مهم.",
+"coamoxiclav-paracetamol":"✅ آمن.",
+
+// Allergy
+"cetirizine-loratadine":"❌ لا يفضل الجمع بين مضادي هيستامين.",
+"cetirizine-chlorpheniramine":"⚠️ يزيد النعاس.",
+"loratadine-chlorpheniramine":"⚠️ يزيد النعاس.",
+"chlorpheniramine-ondansetron":"⚠️ قد يزيد الدوخة.",
+"chlorpheniramine-montelukast":"✅ لا يوجد تداخل مهم.",
+
+// Asthma
+"salbutamol-budesonide":"✅ يستخدمان معاً بشكل شائع.",
+"salbutamol-montelukast":"✅ يستخدمان معاً.",
+"budesonide-montelukast":"✅ علاج قياسي للربو.",
+"salbutamol-ondansetron":"⚠️ الحذر عند مرضى اضطراب نظم القلب.",
+"salbutamol-azithromycin":"⚠️ احتمال زيادة QT عند المرضى المعرضين.",
+
+// Others
+"zinc-amoxicillin":"✅ لا يوجد تداخل مهم.",
+"zinc-cefixime":"✅ لا يوجد تداخل مهم.",
+"zinc-fluconazole":"✅ لا يوجد تداخل مهم.",
+"albendazole-metronidazole":"⚠️ قد يزيد اضطرابات الكبد.",
+"albendazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد."
 };
 // ==========================
 // DoseCare Script v2.0
