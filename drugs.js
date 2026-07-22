@@ -49,6 +49,23 @@ ibuprofen:{
         {name:"100 mg / 5 mL", concentration:100}
     ],
     notes:"يفضل بعد الطعام."
+    mechanism:
+"يثبط إنزيمات COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات ويخفف الألم والحمى والالتهاب.",
+
+indications:
+"الحمى، الألم، الالتهابات.",
+
+contraindications:
+"قرحة المعدة، النزف، الحساسية لمضادات الالتهاب، الجفاف الشديد.",
+
+sideEffects:
+"ألم معدة، غثيان، قرحة، نزف معدي، اضطراب كلوي.",
+
+pregnancy:
+"يمنع في الثلث الأخير من الحمل ويستخدم بحذر في باقي الحمل.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 amoxicillin:{
@@ -66,6 +83,23 @@ amoxicillin:{
         {name:"250 mg / 5 mL", concentration:250}
     ],
     notes:"أكمل العلاج للنهاية."
+    mechanism:
+"يثبط تصنيع جدار الخلية البكتيرية.",
+
+indications:
+"التهاب الأذن، التهاب الحلق، الجيوب الأنفية، الالتهاب الرئوي.",
+
+contraindications:
+"حساسية البنسلين.",
+
+sideEffects:
+"إسهال، طفح جلدي، غثيان.",
+
+pregnancy:
+"آمن أثناء الحمل عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة، والمعلق بعد التحضير في الثلاجة."
 },
 
 coamoxiclav:{
@@ -83,6 +117,23 @@ coamoxiclav:{
         {name:"457 mg / 5 mL", concentration:457}
     ],
     notes:"يستخدم للالتهابات المتوسطة والشديدة."
+    mechanism:
+"أموكسيسيلين يثبط جدار الخلية، وحمض الكلافولانيك يمنع بيتا لاكتاماز.",
+
+indications:
+"التهابات الجهاز التنفسي، الأذن، الجيوب، الجلد.",
+
+contraindications:
+"حساسية البنسلين أو اضطرابات الكبد السابقة بسبب الدواء.",
+
+sideEffects:
+"إسهال، غثيان، طفح جلدي.",
+
+pregnancy:
+"يعتبر آمناً عند الحاجة.",
+
+storage:
+"يحفظ المعلق في الثلاجة بعد التحضير."
 },
 
 azithromycin:{
@@ -99,6 +150,23 @@ azithromycin:{
         {name:"200 mg / 5 mL", concentration:200}
     ],
     notes:"يعطى مرة واحدة يومياً."
+    mechanism:
+"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
+
+indications:
+"التهاب الحلق، الالتهاب الرئوي، التهابات الجهاز التنفسي.",
+
+contraindications:
+"حساسية الماكروليدات.",
+
+sideEffects:
+"إسهال، غثيان، ألم بطني، إطالة QT.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 cefixime:{
@@ -115,6 +183,23 @@ cefixime:{
         {name:"100 mg / 5 mL", concentration:100}
     ],
     notes:"فعال ضد التهابات البول."
+    mechanism:
+"يثبط تصنيع جدار الخلية البكتيرية.",
+
+indications:
+"التهابات البول، الأذن، الجهاز التنفسي.",
+
+contraindications:
+"حساسية السيفالوسبورينات.",
+
+sideEffects:
+"إسهال، طفح جلدي، غثيان.",
+
+pregnancy:
+"آمن نسبياً.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 cefuroxime:{
@@ -131,6 +216,23 @@ cefuroxime:{
         {name:"125 mg / 5 mL", concentration:125}
     ],
     notes:"من الجيل الثاني للسيفالوسبورينات."
+    mechanism:
+"يثبط تصنيع جدار الخلية البكتيرية.",
+
+indications:
+"التهاب الجيوب، الأذن، الجهاز التنفسي.",
+
+contraindications:
+"حساسية السيفالوسبورينات.",
+
+sideEffects:
+"غثيان، إسهال، طفح جلدي.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
     cephalexin:{
     name:"Cephalexin",
@@ -147,6 +249,23 @@ cefuroxime:{
         {name:"250 mg / 5 mL", concentration:250}
     ],
     notes:"مفيد لالتهابات الجلد والبلعوم."
+        mechanism:
+"يثبط تصنيع جدار الخلية البكتيرية.",
+
+indications:
+"التهابات الجلد، البلعوم، المسالك البولية.",
+
+contraindications:
+"حساسية السيفالوسبورينات.",
+
+sideEffects:
+"إسهال، غثيان، طفح جلدي.",
+
+pregnancy:
+"يعتبر آمناً عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 clarithromycin:{
@@ -164,6 +283,23 @@ clarithromycin:{
         {name:"250 mg / 5 mL", concentration:250}
     ],
     notes:"بديل عند حساسية البنسلين."
+    mechanism:
+"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
+
+indications:
+"التهابات الجهاز التنفسي، التهاب الحلق، الالتهاب الرئوي.",
+
+contraindications:
+"حساسية الماكروليدات، إطالة QT.",
+
+sideEffects:
+"غثيان، إسهال، اضطراب التذوق.",
+
+pregnancy:
+"يستخدم عند الضرورة فقط.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 metronidazole:{
@@ -181,6 +317,23 @@ metronidazole:{
         {name:"200 mg / 5 mL", concentration:200}
     ],
     notes:"فعال ضد الجراثيم اللاهوائية والطفيليات."
+    mechanism:
+"يثبط تصنيع الحمض النووي للكائنات اللاهوائية والطفيليات.",
+
+indications:
+"الجيارديا، الأميبيا، الالتهابات اللاهوائية.",
+
+contraindications:
+"الحساسية للدواء واستعمال الكحول.",
+
+sideEffects:
+"طعم معدني، غثيان، صداع.",
+
+pregnancy:
+"يستخدم بحذر خاصة في الأشهر الأولى.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 cetirizine:{
@@ -197,6 +350,23 @@ cetirizine:{
         {name:"5 mg / 5 mL", concentration:5}
     ],
     notes:"لعلاج الحساسية والشرى."
+    mechanism:
+"يثبط مستقبلات H1 للهيستامين.",
+
+indications:
+"الحساسية الموسمية، الشرى، الحكة.",
+
+contraindications:
+"الحساسية للسيتيريزين.",
+
+sideEffects:
+"نعاس خفيف، جفاف الفم.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 loratadine:{
@@ -213,6 +383,23 @@ loratadine:{
         {name:"5 mg / 5 mL", concentration:5}
     ],
     notes:"مضاد هيستامين طويل المفعول."
+    mechanism:
+"يثبط مستقبلات H1 دون عبور كبير للدماغ.",
+
+indications:
+"الحساسية الموسمية والشرى.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"صداع، جفاف الفم.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 chlorpheniramine:{
@@ -229,6 +416,24 @@ chlorpheniramine:{
         {name:"2 mg / 5 mL", concentration:2}
     ],
     notes:"يستخدم للحساسية والحكة."
+    mechanism:
+"يثبط مستقبلات H1 ويعبر الحاجز الدماغي.",
+
+indications:
+"الحساسية، الحكة، الرشح.",
+
+contraindications:
+"الزرق ضيق الزاوية وحديثي الولادة.",
+
+sideEffects:
+"نعاس شديد، جفاف الفم، دوخة.",
+
+pregnancy:
+"يستخدم بحذر.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
+    
 },
 
 salbutamol:{
@@ -277,6 +482,23 @@ montelukast:{
         {name:"5 mg Chewable", concentration:5}
     ],
     notes:"للوقاية من الربو والحساسية."
+    mechanism:
+"يثبط مستقبلات الليكوترينات ويقلل التهاب الشعب الهوائية.",
+
+indications:
+"الربو، حساسية الأنف.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"صداع، اضطرابات نوم، تغيرات سلوكية نادرة.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 ondansetron:{
@@ -293,6 +515,23 @@ ondansetron:{
         {name:"4 mg / 5 mL", concentration:4}
     ],
     notes:"لعلاج الغثيان والتقيؤ."
+    mechanism:
+"يثبط مستقبلات 5-HT3 المضادة للغثيان.",
+
+indications:
+"الغثيان والتقيؤ.",
+
+contraindications:
+"الحساسية للدواء، إطالة QT.",
+
+sideEffects:
+"صداع، إمساك، دوخة.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 fluconazole:{
@@ -309,6 +548,23 @@ fluconazole:{
         {name:"50 mg / 5 mL", concentration:50}
     ],
     notes:"لعلاج العدوى الفطرية."
+    mechanism:
+"يثبط تصنيع الإرغوستيرول في جدار الفطريات.",
+
+indications:
+"العدوى الفطرية المختلفة.",
+
+contraindications:
+"الحساسية للأزولات.",
+
+sideEffects:
+"غثيان، ارتفاع إنزيمات الكبد، طفح.",
+
+pregnancy:
+"يتجنب بجرعات عالية.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 albendazole:{
@@ -325,6 +581,23 @@ albendazole:{
         {name:"200 mg / 5 mL", concentration:200}
     ],
     notes:"لعلاج معظم الديدان المعوية."
+    mechanism:
+"يثبط امتصاص الجلوكوز داخل الديدان.",
+
+indications:
+"الديدان المعوية.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"ألم بطني، غثيان، صداع.",
+
+pregnancy:
+"يمنع أثناء الحمل.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 zinc:{
@@ -341,6 +614,23 @@ zinc:{
         {name:"20 mg / 5 mL", concentration:20}
     ],
     notes:"يعطى مع ORS في الإسهال."
+    mechanism:
+"يعوض نقص الزنك ويساعد على إصلاح الغشاء المخاطي للأمعاء.",
+
+indications:
+"الإسهال، نقص الزنك.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"غثيان خفيف، اضطراب معدي.",
+
+pregnancy:
+"آمن.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 vitaminD:{
@@ -357,6 +647,23 @@ vitaminD:{
         {name:"400 IU / mL", concentration:400}
     ],
     notes:"للوقاية وعلاج نقص فيتامين D."
+    mechanism:
+"يزيد امتصاص الكالسيوم والفوسفور من الأمعاء.",
+
+indications:
+"الوقاية وعلاج نقص فيتامين D.",
+
+contraindications:
+"فرط كالسيوم الدم.",
+
+sideEffects:
+"ارتفاع الكالسيوم عند الجرعات العالية.",
+
+pregnancy:
+"آمن بالجرعات الموصى بها.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
     iron:{
     name:"Iron",
@@ -372,6 +679,23 @@ vitaminD:{
         {name:"30 mg / 5 mL", concentration:30}
     ],
     notes:"لعلاج فقر الدم الناتج عن نقص الحديد."
+        mechanism:
+"يعوض نقص الحديد اللازم لتكوين الهيموغلوبين.",
+
+indications:
+"فقر الدم بنقص الحديد.",
+
+contraindications:
+"زيادة مخزون الحديد.",
+
+sideEffects:
+"إمساك، غثيان، تغير لون البراز.",
+
+pregnancy:
+"آمن ويوصى به عند الحاجة.",
+
+storage:
+"يحفظ بعيداً عن الأطفال."
 },
 
 calcium:{
@@ -388,6 +712,23 @@ calcium:{
         {name:"125 mg / 5 mL", concentration:125}
     ],
     notes:"لعلاج نقص الكالسيوم."
+    mechanism:
+"يعوض نقص الكالسيوم الضروري للعظام والعضلات.",
+
+indications:
+"نقص الكالسيوم.",
+
+contraindications:
+"فرط كالسيوم الدم.",
+
+sideEffects:
+"إمساك، انتفاخ.",
+
+pregnancy:
+"آمن.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 oralRehydration:{
@@ -404,6 +745,23 @@ oralRehydration:{
         {name:"جاهز للاستعمال", concentration:1}
     ],
     notes:"يعوض السوائل والأملاح."
+    mechanism:
+"يعوض الماء والأملاح المفقودة أثناء الإسهال.",
+
+indications:
+"الجفاف والإسهال.",
+
+contraindications:
+"انسداد الأمعاء أو القيء غير المسيطر عليه.",
+
+sideEffects:
+"نادراً اضطراب معدي.",
+
+pregnancy:
+"آمن.",
+
+storage:
+"يحفظ في مكان جاف، وبعد التحضير يستخدم خلال المدة الموصى بها."
 },
 
 nystatin:{
@@ -420,6 +778,23 @@ nystatin:{
         {name:"100000 IU / mL", concentration:100000}
     ],
     notes:"لعلاج فطريات الفم."
+    mechanism:
+"يرتبط بالإرغوستيرول ويؤدي إلى تدمير غشاء الخلية الفطرية.",
+
+indications:
+"فطريات الفم.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"تهيج بسيط أو غثيان.",
+
+pregnancy:
+"آمن.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 cetirizineDrops:{
@@ -436,6 +811,23 @@ cetirizineDrops:{
         {name:"10 mg / mL", concentration:10}
     ],
     notes:"مناسب للأطفال الصغار."
+    mechanism:
+"يثبط مستقبلات H1 للهيستامين.",
+
+indications:
+"الحساسية عند الأطفال الصغار.",
+
+contraindications:
+"الحساسية للدواء.",
+
+sideEffects:
+"نعاس خفيف.",
+
+pregnancy:
+"يستخدم عند الحاجة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 dexamethasone:{
@@ -452,6 +844,23 @@ dexamethasone:{
         {name:"0.5 mg / 5 mL", concentration:0.5}
     ],
     notes:"كورتيكوستيرويد للحالات الخاصة."
+    mechanism:
+"كورتيكوستيرويد قوي مضاد للالتهاب ومثبط للمناعة.",
+
+indications:
+"الحساسية الشديدة، الربو، الوذمة.",
+
+contraindications:
+"العدوى الفطرية الجهازية غير المعالجة.",
+
+sideEffects:
+"ارتفاع السكر، زيادة الشهية، تثبيط المناعة.",
+
+pregnancy:
+"يستخدم عند الضرورة.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 },
 
 prednisolone:{
@@ -468,6 +877,23 @@ prednisolone:{
         {name:"15 mg / 5 mL", concentration:15}
     ],
     notes:"يستخدم لنوبات الربو والحساسية."
+    mechanism:
+"كورتيكوستيرويد يقلل الالتهاب ويثبط الاستجابة المناعية.",
+
+indications:
+"الربو، الحساسية، الأمراض الالتهابية.",
+
+contraindications:
+"العدوى الفطرية الجهازية غير المعالجة.",
+
+sideEffects:
+"زيادة الشهية، ارتفاع السكر، اضطراب النوم.",
+
+pregnancy:
+"يستخدم عند الحاجة وتحت إشراف طبي.",
+
+storage:
+"يحفظ بدرجة حرارة الغرفة."
 }
 
 };
