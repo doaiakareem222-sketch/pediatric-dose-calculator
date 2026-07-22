@@ -1115,3 +1115,28 @@ document.getElementById("langBtn").addEventListener("click",function(){
     applyLanguage(currentLang === "ar" ? "en" : "ar");
 
 });
+// ==========================
+// Service Worker
+// ==========================
+
+if ("serviceWorker" in navigator) {
+
+window.addEventListener("load", () => {
+
+navigator.serviceWorker.register("sw.js")
+
+.then(() => {
+
+console.log("✅ Service Worker Registered");
+
+})
+
+.catch(err => {
+
+console.log(err);
+
+});
+
+});
+
+}
