@@ -1037,3 +1037,58 @@ if (pdfBtn) {
     });
 
 }
+// ==========================
+// Language Support
+// ==========================
+
+let currentLang = localStorage.getItem("language") || "ar";
+
+function applyLanguage(lang){
+
+    currentLang = lang;
+
+    localStorage.setItem("language", lang);
+
+    const t = translations[lang];
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    document.querySelector("h1").innerText = t.title;
+
+    document.querySelector(".subtitle").innerText = t.subtitle;
+
+    document.querySelector("label[for='disease']")?.innerText = t.searchDisease;
+
+    document.querySelector("label[for='drug']")?.innerText = t.drug;
+
+    document.querySelector("label[for='strength']")?.innerText = t.strength;
+
+    document.querySelector("label[for='age']")?.innerText = t.age;
+
+    document.querySelector("label[for='weight']")?.innerText = t.weight;
+
+    document.getElementById("calculate").innerText = t.calculate;
+
+    document.getElementById("reset").innerText = t.reset;
+
+    document.getElementById("copy").innerText = t.copy;
+
+    document.getElementById("info").innerText = t.info;
+
+    document.getElementById("favorite").innerText = t.favorite;
+
+    document.getElementById("showFavorites").innerText = t.showFavorites;
+
+    document.getElementById("langBtn").innerText =
+        lang === "ar" ? "🌐 English" : "🌐 العربية";
+
+}
+
+applyLanguage(currentLang);
+
+document.getElementById("langBtn").addEventListener("click",function(){
+
+    applyLanguage(currentLang === "ar" ? "en" : "ar");
+
+});
