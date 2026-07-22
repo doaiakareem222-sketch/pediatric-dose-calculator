@@ -448,7 +448,11 @@ if (age < drug.minAge || age > drug.maxAge) {
     }
 
     const doseMl = (doseMg / concentration) * 5;
+// الجرعة اليومية الكلية
+const dailyDose = doseMg * getFrequencyNumber(drug.frequency);
 
+// جرعة كل مرة
+const singleDose = doseMg;
     result.innerHTML = `
 
 <div class="result-card">
@@ -476,8 +480,13 @@ if (age < drug.minAge || age > drug.maxAge) {
 </div>
 
 <div class="result-item">
-<span>💉 الجرعة</span>
-<strong>${doseMg.toFixed(1)} mg</strong>
+<span>💉 الجرعة الواحدة</span>
+<strong>${singleDose.toFixed(1)} mg</strong>
+</div>
+
+<div class="result-item">
+<span>📅 الجرعة اليومية</span>
+<strong>${dailyDose.toFixed(1)} mg/day</strong>
 </div>
 
 <div class="result-item">
@@ -989,3 +998,23 @@ function updateDashboard() {
 updateDashboard();
 
 console.log("✅ DoseCare v2.0 Loaded Successfully");
+function getFrequencyNumber(freq){
+
+if(freq.includes("4"))
+return 6;
+
+if(freq.includes("6"))
+return 4;
+
+if(freq.includes("8"))
+return 3;
+
+if(freq.includes("12"))
+return 2;
+
+if(freq.includes("مرة"))
+return 1;
+
+return 1;
+
+}
