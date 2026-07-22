@@ -722,4 +722,34 @@ body.dark .modal-content{
 background:#1f2937;
 color:white;
 
+}.red{
+    background:#ef4444;
+}
+
+.red:hover{
+    background:#dc2626;
+}
+
+.green{
+    background:#10b981;
+}
+
+.green:hover{
+    background:#059669;
+}
+
+.blue{
+    background:#2563eb;
+}
+
+.blue:hover{
+    background:#1d4ed8;
+}
+
+.purple{
+    background:#7c3aed;
+}
+
+.purple:hover{
+    background:#6d28d9;
 }
