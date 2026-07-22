@@ -1,111 +1,153 @@
-const interactions = {
-
-"clarithromycin-fluconazole":
-"⚠️ يزيد خطر اضطرابات نظم القلب (QT prolongation).",
-
-"clarithromycin-ondansetron":
-"⚠️ يزيد احتمال إطالة QT.",
-
-"ibuprofen-paracetamol":
-"✅ يمكن استخدامهما معاً عند الحاجة بالجرعات الصحيحة.",
-
-"ibuprofen-amoxicillin":
-"✅ لا يوجد تداخل مهم.",
-
-"metronidazole-alcohol":
-"❌ يمنع تناول الكحول أثناء العلاج.",
-
-"fluconazole-ondansetron":
-"⚠️ قد يزيد خطر اضطراب نظم القلب."
-// Pain & Fever
-"ibuprofen-paracetamol":"✅ يمكن استخدامهما معاً عند الحاجة.",
-"ibuprofen-amoxicillin":"✅ لا يوجد تداخل مهم.",
-"ibuprofen-cefixime":"✅ لا يوجد تداخل مهم.",
-"ibuprofen-azithromycin":"✅ لا يوجد تداخل مهم.",
-"ibuprofen-cefuroxime":"✅ لا يوجد تداخل مهم.",
-
-// Macrolides
-"clarithromycin-fluconazole":"⚠️ يزيد خطر اضطراب نظم القلب (QT prolongation).",
-"clarithromycin-ondansetron":"⚠️ يزيد احتمال إطالة QT.",
-"clarithromycin-azithromycin":"❌ لا يفضل الجمع بين ماكروليدين.",
-"clarithromycin-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
-"clarithromycin-cetirizine":"✅ لا يوجد تداخل مهم.",
-"clarithromycin-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
-"clarithromycin-montelukast":"✅ لا يوجد تداخل مهم.",
-
-// Fluconazole
-"fluconazole-ondansetron":"⚠️ قد يزيد خطر اضطراب نظم القلب.",
-"fluconazole-azithromycin":"⚠️ يزيد خطر QT.",
-"fluconazole-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
-"fluconazole-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
-"fluconazole-metronidazole":"⚠️ يفضل الحذر بسبب زيادة الآثار الجانبية.",
-"fluconazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد.",
-
-// Metronidazole
-"metronidazole-alcohol":"❌ يمنع تناول الكحول أثناء العلاج ولمدة 48 ساعة بعد آخر جرعة.",
-"metronidazole-ondansetron":"⚠️ قد يزيد خطر QT.",
-"metronidazole-clarithromycin":"⚠️ يزيد احتمال اضطراب نظم القلب.",
-"metronidazole-azithromycin":"⚠️ الحذر بسبب QT.",
-
-// Ondansetron
-"ondansetron-azithromycin":"⚠️ يزيد خطر QT.",
-"ondansetron-loratadine":"✅ لا يوجد تداخل مهم.",
-"ondansetron-cetirizine":"✅ لا يوجد تداخل مهم.",
-"ondansetron-salbutamol":"⚠️ الحذر عند المرضى المعرضين لاضطراب نظم القلب.",
-    // Antibiotics
-"amoxicillin-coamoxiclav":"❌ لا داعي للجمع بينهما.",
-"amoxicillin-cephalexin":"⚠️ غالباً لا توجد فائدة من الجمع.",
-"cefixime-cefuroxime":"❌ لا يفضل الجمع بين سيفالوسبورينين.",
-"cefixime-cephalexin":"❌ لا يوصى به.",
-"cefuroxime-cephalexin":"❌ لا يوصى به.",
-"azithromycin-cefixime":"✅ يستخدم أحياناً حسب الحالة.",
-"azithromycin-amoxicillin":"✅ قد يستخدمان معاً عند الحاجة.",
-"coamoxiclav-metronidazole":"✅ يستخدمان معاً ببعض الالتهابات.",
-"coamoxiclav-fluconazole":"✅ لا يوجد تداخل مهم.",
-"coamoxiclav-paracetamol":"✅ آمن.",
-
-// Allergy
-"cetirizine-loratadine":"❌ لا يفضل الجمع بين مضادي هيستامين.",
-"cetirizine-chlorpheniramine":"⚠️ يزيد النعاس.",
-"loratadine-chlorpheniramine":"⚠️ يزيد النعاس.",
-"chlorpheniramine-ondansetron":"⚠️ قد يزيد الدوخة.",
-"chlorpheniramine-montelukast":"✅ لا يوجد تداخل مهم.",
-
-// Asthma
-"salbutamol-budesonide":"✅ يستخدمان معاً بشكل شائع.",
-"salbutamol-montelukast":"✅ يستخدمان معاً.",
-"budesonide-montelukast":"✅ علاج قياسي للربو.",
-"salbutamol-ondansetron":"⚠️ الحذر عند مرضى اضطراب نظم القلب.",
-"salbutamol-azithromycin":"⚠️ احتمال زيادة QT عند المرضى المعرضين.",
-
-// Others
-"zinc-amoxicillin":"✅ لا يوجد تداخل مهم.",
-"zinc-cefixime":"✅ لا يوجد تداخل مهم.",
-"zinc-fluconazole":"✅ لا يوجد تداخل مهم.",
-"albendazole-metronidazole":"⚠️ قد يزيد اضطرابات الكبد.",
-"albendazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد."
-};
 // ==========================
-// DoseCare Script v2.0
-// الجزء الأول
+// DoseCare v3.0
+// Part 1
+// Variables + Interactions + Drug Card
 // ==========================
 
-// العناصر الأساسية
+
+// ==========================
+// Variables
+// ==========================
 
 const drugSelect = document.getElementById("drug");
 const strengthSelect = document.getElementById("strength");
-const result = document.getElementById("result");
-const historyDiv = document.getElementById("history");
 const diseaseSelect = document.getElementById("disease");
 const searchInput = document.getElementById("searchDrug");
 
-// ==========================
-// تغيير التركيز + بطاقة الدواء
-// ==========================
-diseaseSelect.addEventListener("change", function () {
+const result = document.getElementById("result");
+const historyDiv = document.getElementById("history");
 
-    const disease = this.value;
-const guide = document.getElementById("diseaseGuide");
+const drugCard = document.getElementById("drugCard");
+
+
+// ==========================
+// Drug Interactions
+// ==========================
+
+const interactions = {
+
+
+// Pain & Fever
+
+"ibuprofen-paracetamol":"✅ يمكن استخدامهما معاً عند الحاجة.",
+
+"ibuprofen-amoxicillin":"✅ لا يوجد تداخل مهم.",
+
+"ibuprofen-cefixime":"✅ لا يوجد تداخل مهم.",
+
+"ibuprofen-azithromycin":"✅ لا يوجد تداخل مهم.",
+
+"ibuprofen-cefuroxime":"✅ لا يوجد تداخل مهم.",
+
+
+// Antibiotics
+
+"amoxicillin-coamoxiclav":"❌ لا داعي للجمع بينهما.",
+
+"amoxicillin-cephalexin":"⚠️ غالباً لا توجد فائدة من الجمع.",
+
+"cefixime-cefuroxime":"❌ لا يفضل الجمع بين سيفالوسبورينين.",
+
+"cefixime-cephalexin":"❌ لا يوصى به.",
+
+"cefuroxime-cephalexin":"❌ لا يوصى به.",
+
+"azithromycin-cefixime":"✅ يستخدم أحياناً حسب الحالة.",
+
+"azithromycin-amoxicillin":"✅ قد يستخدمان معاً.",
+
+"coamoxiclav-metronidazole":"✅ يستخدمان معاً ببعض الالتهابات.",
+
+"coamoxiclav-fluconazole":"✅ لا يوجد تداخل مهم.",
+
+"coamoxiclav-paracetamol":"✅ آمن.",
+
+
+// Clarithromycin
+
+"clarithromycin-fluconazole":"⚠️ يزيد خطر QT prolongation.",
+
+"clarithromycin-ondansetron":"⚠️ يزيد احتمال إطالة QT.",
+
+"clarithromycin-azithromycin":"❌ لا يفضل الجمع بين Macrolides.",
+
+"clarithromycin-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
+
+"clarithromycin-cetirizine":"✅ لا يوجد تداخل مهم.",
+
+"clarithromycin-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
+
+"clarithromycin-montelukast":"✅ لا يوجد تداخل مهم.",
+
+
+// Fluconazole
+
+"fluconazole-ondansetron":"⚠️ قد يزيد خطر اضطراب نظم القلب.",
+
+"fluconazole-azithromycin":"⚠️ يزيد خطر QT.",
+
+"fluconazole-loratadine":"⚠️ قد يزيد تركيز Loratadine.",
+
+"fluconazole-budesonide":"⚠️ قد يزيد تأثير Budesonide.",
+
+"fluconazole-metronidazole":"⚠️ يفضل الحذر.",
+
+"fluconazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد.",
+
+
+// Metronidazole
+
+"metronidazole-alcohol":"❌ يمنع تناول الكحول أثناء العلاج ولمدة 48 ساعة بعد آخر جرعة.",
+
+"metronidazole-ondansetron":"⚠️ قد يزيد QT.",
+
+"metronidazole-clarithromycin":"⚠️ يزيد احتمال اضطراب نظم القلب.",
+
+"metronidazole-azithromycin":"⚠️ الحذر بسبب QT.",
+
+
+// Allergy
+
+"cetirizine-loratadine":"❌ لا يفضل الجمع.",
+
+"cetirizine-chlorpheniramine":"⚠️ يزيد النعاس.",
+
+"loratadine-chlorpheniramine":"⚠️ يزيد النعاس.",
+
+"chlorpheniramine-ondansetron":"⚠️ قد يزيد الدوخة.",
+
+"chlorpheniramine-montelukast":"✅ لا يوجد تداخل مهم.",
+
+
+// Asthma
+
+"salbutamol-budesonide":"✅ يستخدمان معاً.",
+
+"salbutamol-montelukast":"✅ يستخدمان معاً.",
+
+"budesonide-montelukast":"✅ علاج قياسي.",
+
+"salbutamol-ondansetron":"⚠️ الحذر عند مرضى اضطراب نظم القلب.",
+
+"salbutamol-azithromycin":"⚠️ احتمال زيادة QT.",
+
+
+// Others
+
+"zinc-amoxicillin":"✅ لا يوجد تداخل مهم.",
+
+"zinc-cefixime":"✅ لا يوجد تداخل مهم.",
+
+"zinc-fluconazole":"✅ لا يوجد تداخل مهم.",
+
+"albendazole-metronidazole":"⚠️ قد يزيد اضطرابات الكبد.",
+
+"albendazole-paracetamol":"⚠️ يستخدم بحذر عند مرضى الكبد."
+
+};
+// ==========================
+// Disease Guide
+// ==========================
 
 const treatments = {
 
@@ -135,14 +177,14 @@ second:"Azithromycin عند حساسية البنسلين."
 
 sinusitis:{
 title:"👃 Sinusitis",
-first:"Amoxicillin/Clavulanate",
+first:"Co-amoxiclav",
 second:"Cefuroxime."
 },
 
 pneumonia:{
 title:"🫁 Pneumonia",
 first:"Amoxicillin",
-second:"Azithromycin حسب الحالة."
+second:"Azithromycin."
 },
 
 uti:{
@@ -184,19 +226,36 @@ second:"حسب نوع العدوى."
 worms:{
 title:"🪱 Worm Infestation",
 first:"Albendazole",
-second:"إعادة الجرعة بعد أسبوعين عند الحاجة."
+second:"إعادة الجرعة بعد أسبوعين."
 }
 
 };
+
+
+// ==========================
+// Disease Change
+// ==========================
+
+diseaseSelect.addEventListener("change",function(){
+
+const disease=this.value;
+
+const guide=document.getElementById("diseaseGuide");
+
+if(guide){
 
 if(treatments[disease]){
 
 guide.style.display="block";
 
 guide.innerHTML=`
+
 <h3>${treatments[disease].title}</h3>
+
 <p><b>First Line:</b> ${treatments[disease].first}</p>
+
 <p><b>Alternative:</b> ${treatments[disease].second}</p>
+
 `;
 
 }else{
@@ -204,93 +263,148 @@ guide.innerHTML=`
 guide.style.display="none";
 
 }
-    drugSelect.innerHTML = '<option value="">اختر الدواء</option>';
 
-    for (const id in drugs) {
+}
 
-        const drug = drugs[id];
+// إعادة تعبئة قائمة الأدوية
 
-        if (!disease || drug.diseases.includes(disease)) {
+drugSelect.innerHTML='<option value="">اختر الدواء</option>';
 
-            const option = document.createElement("option");
-            option.value = id;
-            option.textContent = drug.name;
+for(const id in drugs){
 
-            drugSelect.appendChild(option);
-        }
-    }
+const drug=drugs[id];
 
-    strengthSelect.innerHTML =
-        '<option value="">اختر التركيز</option>';
+if(!disease || drug.diseases.includes(disease)){
 
-    document.getElementById("drugCard").style.display = "none";
+const option=document.createElement("option");
+
+option.value=id;
+
+option.textContent=drug.name;
+
+drugSelect.appendChild(option);
+
+}
+
+}
+
+strengthSelect.innerHTML='<option value="">اختر التركيز</option>';
+
+drugCard.style.display="none";
 
 });
-drugSelect.addEventListener("change", function () {
+// ==========================
+// Drug Search
+// ==========================
 
-    strengthSelect.innerHTML =
-    '<option value="">اختر التركيز</option>';
+searchInput.addEventListener("input",function(){
 
-    const drug = drugs[this.value];
-    const card = document.getElementById("drugCard");
+const value=this.value.toLowerCase();
 
-    if (!drug) {
+for(let option of drugSelect.options){
 
-        card.style.display = "none";
-        return;
+if(option.value==="") continue;
 
-    }
+if(option.text.toLowerCase().includes(value)){
 
-    // تعبئة التراكيز
+drugSelect.value=option.value;
 
-    drug.strengths.forEach((item, index) => {
+drugSelect.dispatchEvent(new Event("change"));
 
-        strengthSelect.innerHTML += `
-        <option value="${index}">
-            ${item.name}
-        </option>`;
+break;
 
-    });
+}
 
-    // ألوان البطاقة
+}
 
-    card.className = "drug-card";
+});
+// ==========================
+// Drug Card
+// ==========================
 
-    switch (drug.category) {
+drugSelect.addEventListener("change",function(){
 
-        case "Pain & Fever":
-            card.classList.add("drug-blue");
-            break;
+strengthSelect.innerHTML='<option value="">اختر التركيز</option>';
 
-        case "Antibiotics":
-            card.classList.add("drug-red");
-            break;
+const drug=drugs[this.value];
 
-        case "Asthma":
-            card.classList.add("drug-purple");
-            break;
+if(!drug){
 
-        case "Antihistamines":
-            card.classList.add("drug-yellow");
-            break;
+drugCard.style.display="none";
 
-        case "Vitamins":
-            card.classList.add("drug-green");
-            break;
+return;
 
-        case "Antifungal":
-            card.classList.add("drug-orange");
-            break;
+}
 
-        case "Antiparasitic":
-            card.classList.add("drug-brown");
-            break;
+// تعبئة التراكيز
 
-    }
+drug.strengths.forEach((item,index)=>{
 
-    card.style.display = "block";
+strengthSelect.innerHTML+=`
 
-    card.innerHTML = `
+<option value="${index}">
+
+${item.name}
+
+</option>
+
+`;
+
+});
+
+// لون البطاقة
+
+drugCard.className="drug-card";
+
+switch(drug.category){
+
+case "Pain & Fever":
+
+drugCard.classList.add("drug-blue");
+
+break;
+
+case "Antibiotics":
+
+drugCard.classList.add("drug-red");
+
+break;
+
+case "Asthma":
+
+drugCard.classList.add("drug-purple");
+
+break;
+
+case "Antihistamines":
+
+drugCard.classList.add("drug-yellow");
+
+break;
+
+case "Vitamins":
+
+drugCard.classList.add("drug-green");
+
+break;
+
+case "Antifungal":
+
+drugCard.classList.add("drug-orange");
+
+break;
+
+case "Antiparasitic":
+
+drugCard.classList.add("drug-brown");
+
+break;
+
+}
+
+drugCard.style.display="block";
+
+drugCard.innerHTML=`
 
 <h3>💊 ${drug.name}</h3>
 
@@ -301,229 +415,196 @@ drugSelect.addEventListener("change", function () {
 <p><strong>🚫 الحد الأقصى:</strong> ${drug.maxDose} mg</p>
 
 <p><strong>📝 الملاحظات:</strong> ${drug.notes}</p>
+
 <div class="info-row">
+
 <b>⚠️ التحذيرات:</b><br>
+
 ${drug.warnings}
+
 </div>
 
 `;
 
 });
-
 // ==========================
-// البحث عن الدواء
-// ==========================
-
-searchInput.addEventListener("input", function () {
-
-    const value = this.value.toLowerCase();
-
-    for (let option of drugSelect.options) {
-
-        if (option.value === "") continue;
-
-        if (option.text.toLowerCase().includes(value)) {
-
-            drugSelect.value = option.value;
-
-            drugSelect.dispatchEvent(new Event("change"));
-
-            break;
-
-        }
-
-    }
-
-});
-
-// ==========================
-// اختيار المرض
+// Restore Last Drug
 // ==========================
 
-diseaseSelect.addEventListener("change", function () {
+const savedDrug=localStorage.getItem("favoriteDrug");
 
-    switch (this.value) {
+if(savedDrug){
 
-        case "fever":
-        case "pain":
-            drugSelect.value = "paracetamol";
-            break;
+drugSelect.value=savedDrug;
 
-        case "otitis":
-        case "pharyngitis":
-            drugSelect.value = "amoxicillin";
-            break;
-
-        case "sinusitis":
-            drugSelect.value = "coamoxiclav";
-            break;
-
-        case "pneumonia":
-            drugSelect.value = "azithromycin";
-            break;
-
-        case "uti":
-            drugSelect.value = "cefixime";
-            break;
-
-        case "diarrhea":
-            drugSelect.value = "zinc";
-            break;
-
-        case "vomiting":
-            drugSelect.value = "ondansetron";
-            break;
-
-        case "asthma":
-            drugSelect.value = "salbutamol";
-            break;
-
-        case "allergy":
-            drugSelect.value = "cetirizine";
-            break;
-
-        case "fungal":
-            drugSelect.value = "fluconazole";
-            break;
-
-        case "worms":
-            drugSelect.value = "albendazole";
-            break;
-
-        default:
-            drugSelect.value = "";
-
-    }
-
-    drugSelect.dispatchEvent(new Event("change"));
-
-});
-
-// ==========================
-// استرجاع آخر دواء مفضل
-// ==========================
-
-const savedDrug = localStorage.getItem("favoriteDrug");
-
-if (savedDrug) {
-
-    drugSelect.value = savedDrug;
-    drugSelect.dispatchEvent(new Event("change"));
+drugSelect.dispatchEvent(new Event("change"));
 
 }
 // ==========================
-// حساب الجرعة
+// Dose Calculator
 // ==========================
 
 document.getElementById("calculate").addEventListener("click", function () {
 
-    const age = document.getElementById("age").value;
-    const weight = parseFloat(document.getElementById("weight").value);
-    const drugId = drugSelect.value;
-    const strengthIndex = strengthSelect.value;
+const age = Number(document.getElementById("age").value);
 
-    if (!age || age <= 0) {
+const weight = Number(document.getElementById("weight").value);
 
-        result.innerHTML = `
-        <div style="color:red;font-weight:bold;">
-        يرجى إدخال العمر.
-        </div>`;
+const drugId = drugSelect.value;
 
-        return;
-    }
+const strengthIndex = strengthSelect.value;
 
-    if (!weight || weight <= 0) {
+const drug2Id = document.getElementById("drug2").value;
 
-        result.innerHTML = `
-        <div style="color:red;font-weight:bold;">
-        يرجى إدخال الوزن.
-        </div>`;
 
-        return;
-    }
+// ==========================
+// Validation
+// ==========================
 
-    if (!drugId) {
+if(!age){
 
-        result.innerHTML = `
-        <div style="color:red;font-weight:bold;">
-        يرجى اختيار الدواء.
-        </div>`;
+result.innerHTML=`
+<div class="warning-box">
+⚠️ يرجى إدخال العمر.
+</div>
+`;
 
-        return;
-    }
-
-    if (strengthIndex === "") {
-
-        result.innerHTML = `
-        <div style="color:red;font-weight:bold;">
-        يرجى اختيار التركيز.
-        </div>`;
-
-        return;
-    }
-
-    const drug = drugs[drugId];
-    const drug2Id = document.getElementById("drug2").value;
-
-let interactionMessage = "";
-
-if (drug2Id) {
-
-    const key1 = drugId + "-" + drug2Id;
-    const key2 = drug2Id + "-" + drugId;
-
-    interactionMessage =
-        interactions[key1] ||
-        interactions[key2] ||
-        "✅ لا يوجد تداخل دوائي مهم معروف.";
+return;
 
 }
-if (age < drug.minAge || age > drug.maxAge) {
 
-    result.innerHTML = `
-    <div class="warning-box">
-    ⚠️ هذا الدواء غير مناسب لهذا العمر.
-    </div>
-    `;
+if(!weight){
 
-    return;
+result.innerHTML=`
+<div class="warning-box">
+⚠️ يرجى إدخال الوزن.
+</div>
+`;
+
+return;
+
 }
-    const concentration =
-    drug.strengths[strengthIndex].concentration;
 
-    let doseMg = weight * drug.mgPerKg;
+if(!drugId){
 
-    let warning = "";
+result.innerHTML=`
+<div class="warning-box">
+⚠️ يرجى اختيار الدواء.
+</div>
+`;
 
-    if (doseMg > drug.maxDose) {
+return;
 
-        doseMg = drug.maxDose;
+}
 
-        warning = `
-        <div style="
-        margin-top:15px;
-        padding:12px;
-        background:#fee2e2;
-        color:#b91c1c;
-        border-radius:10px;
-        font-weight:bold;">
-        ⚠️ تم اعتماد الحد الأقصى للجرعة.
-        </div>
-        `;
+if(strengthIndex===""){
 
-    }
+result.innerHTML=`
+<div class="warning-box">
+⚠️ يرجى اختيار التركيز.
+</div>
+`;
 
-    const doseMl = (doseMg / concentration) * 5;
-// الجرعة اليومية الكلية
+return;
+
+}
+
+
+// ==========================
+// Drug Object
+// ==========================
+
+const drug = drugs[drugId];
+
+
+// ==========================
+// Age Validation
+// ==========================
+
+if(age < drug.minAge || age > drug.maxAge){
+
+result.innerHTML=`
+
+<div class="warning-box">
+
+⚠️ هذا الدواء غير مناسب لهذا العمر.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+// ==========================
+// Dose Calculation
+// ==========================
+
+const concentration = drug.strengths[strengthIndex].concentration;
+
+let doseMg = weight * drug.mgPerKg;
+
+let warning = "";
+
+if(doseMg > drug.maxDose){
+
+doseMg = drug.maxDose;
+
+warning=`
+
+<div class="warning-box">
+
+⚠️ تم اعتماد الحد الأقصى للجرعة.
+
+</div>
+
+`;
+
+}
+
+const doseMl = (doseMg / concentration) * 5;
+
+const singleDose = doseMg;
+
 const dailyDose = doseMg * getFrequencyNumber(drug.frequency);
 
-// جرعة كل مرة
-const singleDose = doseMg;
-    result.innerHTML = `
+
+// ==========================
+// Drug Interaction
+// ==========================
+
+let interactionMessage="";
+
+if(drug2Id){
+
+const key1 = drugId + "-" + drug2Id;
+
+const key2 = drug2Id + "-" + drugId;
+
+interactionMessage =
+
+interactions[key1]
+
+||
+
+interactions[key2]
+
+||
+
+"✅ لا يوجد تداخل دوائي مهم معروف.";
+
+}
+    // ==========================
+// Result
+// ==========================
+
+result.innerHTML = `
 
 <div class="result-card">
 
-<h2>${drug.name}</h2>
+<h2>💊 ${drug.name}</h2>
 
 <div class="result-item">
 <span>👶 العمر</span>
@@ -536,7 +617,7 @@ const singleDose = doseMg;
 </div>
 
 <div class="result-item">
-<span>📂 الفئة</span>
+<span>📂 التصنيف</span>
 <strong>${drug.category}</strong>
 </div>
 
@@ -575,88 +656,157 @@ const singleDose = doseMg;
 <strong>${drug.notes}</strong>
 </div>
 
+<div class="result-item">
+<span>⚠️ التحذيرات</span>
+<strong>${drug.warnings}</strong>
+</div>
+
 ${warning}
-${drug2Id ? `
+
+${
+drug2Id ?
+
+`
+
 <div class="warning-box">
+
 <h3>💊 Drug Interaction Checker</h3>
+
 <p>${interactionMessage}</p>
+
 </div>
-` : ""}
-</div>
-`;
 
-    saveHistory(
-        drug.name,
-        weight,
-        doseMg,
-        doseMl
-    );
-const loading = document.getElementById("loading");
+`
 
-loading.style.display = "block";
+:
 
-result.innerHTML = "";
-});
-
-// ==========================
-// السجل
-// ==========================
-
-function saveHistory(drug, weight, dose, ml) {
-
-    // تحديث الإحصائيات
-
-    let count =
-    parseInt(localStorage.getItem("calcCount")) || 0;
-
-    count++;
-
-    localStorage.setItem("calcCount", count);
-
-    localStorage.setItem("lastDrug", drug);
-
-    updateDashboard();
-
-    // حفظ السجل
-
-    let history =
-    JSON.parse(localStorage.getItem("history")) || [];
-
-    history.unshift({
-
-        drug,
-        weight,
-        dose: dose.toFixed(1),
-        ml: ml.toFixed(1)
-
-    });
-
-    history = history.slice(0,5);
-
-    localStorage.setItem(
-        "history",
-        JSON.stringify(history)
-    );
-
-    loadHistory();
+""
 
 }
 
+</div>
+
+`;
+
+
+// ==========================
+// Save History
+// ==========================
+
+saveHistory(
+
+drug.name,
+
+weight,
+
+doseMg,
+
+doseMl
+
+);
+
+
+// حفظ آخر دواء
+
+localStorage.setItem("favoriteDrug", drugId);
+
+});
+// ==========================
+// Frequency Helper
+// ==========================
+
+function getFrequencyNumber(freq){
+
+if(freq.includes("4")) return 6;
+
+if(freq.includes("6")) return 4;
+
+if(freq.includes("8")) return 3;
+
+if(freq.includes("12")) return 2;
+
+if(freq.includes("مرة")) return 1;
+
+return 1;
+
+}
+// ==========================
+// History
+// ==========================
+
+function saveHistory(drug, weight, dose, ml){
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+// إضافة العملية الجديدة
+
+history.unshift({
+
+drug: drug,
+
+weight: weight,
+
+dose: dose.toFixed(1),
+
+ml: ml.toFixed(1)
+
+});
+
+// الاحتفاظ بآخر 5 عمليات فقط
+
+history = history.slice(0,5);
+
+localStorage.setItem(
+
+"history",
+
+JSON.stringify(history)
+
+);
+
+
+// تحديث Dashboard
+
+let count = parseInt(localStorage.getItem("calcCount")) || 0;
+
+count++;
+
+localStorage.setItem("calcCount", count);
+
+localStorage.setItem("lastDrug", drug);
+
+updateDashboard();
+
+loadHistory();
+
+}
+
+
+// ==========================
+// Load History
+// ==========================
+
 function loadHistory(){
 
-    const history =
-    JSON.parse(localStorage.getItem("history")) || [];
+const history = JSON.parse(localStorage.getItem("history")) || [];
 
-    historyDiv.innerHTML =
-    "<h3>آخر العمليات</h3>";
+historyDiv.innerHTML = "<h3>📋 آخر العمليات</h3>";
 
-    history.forEach(item=>{
+if(history.length===0){
 
-        historyDiv.innerHTML += `
+historyDiv.innerHTML += "<p>لا توجد عمليات بعد.</p>";
+
+return;
+
+}
+
+history.forEach(item=>{
+
+historyDiv.innerHTML += `
 
 <div class="history-item">
 
-💊 ${item.drug}<br>
+💊 <b>${item.drug}</b><br>
 
 ⚖️ ${item.weight} Kg<br>
 
@@ -668,81 +818,87 @@ function loadHistory(){
 
 `;
 
-    });
+});
 
 }
 
 loadHistory();
+
+
 // ==========================
-// إعادة التعيين
+// Reset
 // ==========================
 
-document.getElementById("reset").addEventListener("click", function () {
+document.getElementById("reset").addEventListener("click",function(){
 
-    document.getElementById("age").value = "";
-    document.getElementById("weight").value = "";
+document.getElementById("age").value="";
 
-    drugSelect.value = "";
-    strengthSelect.innerHTML =
-    '<option value="">اختر التركيز</option>';
-loading.style.display = "none";
-    result.innerHTML = "";
+document.getElementById("weight").value="";
 
-    document.getElementById("drugCard").style.display = "none";
+drugSelect.value="";
+
+strengthSelect.innerHTML=`
+
+<option value="">اختر التركيز</option>
+
+`;
+
+result.innerHTML="";
+
+drugCard.style.display="none";
 
 });
 
+
 // ==========================
-// نسخ النتيجة
+// Copy Result
 // ==========================
 
-document.getElementById("copy").addEventListener("click", function () {
+document.getElementById("copy").addEventListener("click",function(){
 
-    if (result.innerText.trim() === "") {
+if(result.innerText.trim()===""){
 
-        alert("لا توجد نتيجة.");
-        return;
+alert("لا توجد نتيجة لنسخها.");
 
-    }
+return;
 
-    navigator.clipboard.writeText(result.innerText);
+}
 
-    alert("✅ تم النسخ");
+navigator.clipboard.writeText(result.innerText);
+
+alert("✅ تم نسخ النتيجة.");
 
 });
-
 // ==========================
-// المفضلة
+// Favorites
 // ==========================
 
-const favoritesList =
-document.getElementById("favoritesList");
+const favoritesList = document.getElementById("favoritesList");
 
 function loadFavorites(){
 
-    let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
 
-    if(favorites.length===0){
+if(favorites.length===0){
 
-        favoritesList.innerHTML =
-        "لا توجد أدوية محفوظة.";
+favoritesList.innerHTML="لا توجد أدوية محفوظة.";
 
-        updateDashboard();
+updateDashboard();
 
-        return;
+return;
 
-    }
+}
 
-    favoritesList.innerHTML = "";
+favoritesList.innerHTML="";
 
-    favorites.forEach((drug,index)=>{
+favorites.forEach((drug,index)=>{
 
-        favoritesList.innerHTML += `
+favoritesList.innerHTML+=`
 
 <div class="history-item">
 
-💊 ${drug}
+💊 <b>${drug}</b>
 
 <br><br>
 
@@ -764,347 +920,375 @@ cursor:pointer;">
 
 `;
 
-    });
-
-    updateDashboard();
-
-}
-
-document.getElementById("favorite").addEventListener("click",function(){
-
-    if(!drugSelect.value){
-
-        alert("اختر دواء أولاً");
-
-        return;
-
-    }
-
-    let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
-
-    const drugName =
-    drugs[drugSelect.value].name;
-
-    if(!favorites.includes(drugName)){
-
-        favorites.push(drugName);
-
-        localStorage.setItem(
-            "favorites",
-            JSON.stringify(favorites)
-        );
-
-    }
-
-    loadFavorites();
-
-    alert("⭐ تمت الإضافة للمفضلة");
-
 });
 
-function removeFavorite(index){
-
-    let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
-
-    favorites.splice(index,1);
-
-    localStorage.setItem(
-        "favorites",
-        JSON.stringify(favorites)
-    );
-
-    loadFavorites();
+updateDashboard();
 
 }
 
 loadFavorites();
 
-// ==========================
-// إظهار وإخفاء المفضلة
-// ==========================
 
-document.getElementById("showFavorites").addEventListener("click",function(){
+// إضافة للمفضلة
 
-    const fav =
-    document.getElementById("favorites");
+document.getElementById("favorite").addEventListener("click",function(){
 
-    if(fav.style.display==="none" || fav.style.display===""){
+if(!drugSelect.value){
 
-        fav.style.display="block";
+alert("اختر دواء أولاً.");
 
-    }else{
+return;
 
-        fav.style.display="none";
+}
 
-    }
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
+
+const drugName = drugs[drugSelect.value].name;
+
+if(!favorites.includes(drugName)){
+
+favorites.push(drugName);
+
+localStorage.setItem(
+
+"favorites",
+
+JSON.stringify(favorites)
+
+);
+
+}
+
+loadFavorites();
+
+alert("⭐ تمت الإضافة للمفضلة.");
 
 });
 
-// ==========================
-// معلومات الدواء
-// ==========================
 
-const infoBtn = document.getElementById("info");
+// حذف من المفضلة
 
-if (infoBtn) {
+function removeFavorite(index){
 
-    infoBtn.addEventListener("click", function () {
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
 
-        if (!drugSelect.value) {
+favorites.splice(index,1);
 
-            alert("اختر دواء أولاً");
+localStorage.setItem(
 
-            return;
+"favorites",
 
-        }
+JSON.stringify(favorites)
 
-        const drug = drugs[drugSelect.value];
+);
 
-        document.getElementById("drugInfoContent").innerHTML = `
-
-<h2>💊 ${drug.name}</h2>
-
-<p><b>📂 التصنيف:</b> ${drug.category}</p>
-
-<p><b>⚙️ آلية العمل:</b><br>${drug.mechanism}</p>
-
-<p><b>✅ الاستعمالات:</b><br>${drug.indications}</p>
-
-<p><b>⛔ موانع الاستعمال:</b><br>${drug.contraindications}</p>
-
-<p><b>⚠️ الآثار الجانبية:</b><br>${drug.sideEffects}</p>
-
-<p><b>👶 العمر:</b> ${drug.minAge} - ${drug.maxAge} سنة</p>
-
-<p><b>🤰 الحمل:</b><br>${drug.pregnancy}</p>
-
-<p><b>📦 التخزين:</b><br>${drug.storage}</p>
-
-<p><b>📝 ملاحظات:</b><br>${drug.notes}</p>
-
-`;
-
-        document.getElementById("drugInfoModal").style.display = "block";
-
-    });
+loadFavorites();
 
 }
 
-// زر الإغلاق
 
-document.getElementById("closeModal").onclick = function () {
+// إظهار وإخفاء المفضلة
 
-    document.getElementById("drugInfoModal").style.display = "none";
+document.getElementById("showFavorites").addEventListener("click",function(){
 
-};
+const fav=document.getElementById("favorites");
 
-// إغلاق عند الضغط خارج النافذة
+if(fav.style.display==="none" || fav.style.display===""){
 
-window.onclick = function (event) {
+fav.style.display="block";
 
-    const modal = document.getElementById("drugInfoModal");
+}else{
 
-    if (event.target == modal) {
-
-        modal.style.display = "none";
-
-    }
-
-};
-// ==========================
-// الوضع الليلي
-// ==========================
-
-const themeBtn = document.getElementById("themeBtn");
-
-if (themeBtn) {
-
-    // استرجاع الوضع المحفوظ
-
-    if (localStorage.getItem("theme") === "dark") {
-
-        document.body.classList.add("dark");
-
-        themeBtn.innerHTML = "☀️ الوضع النهاري";
-
-    }
-
-    themeBtn.addEventListener("click", function () {
-
-        document.body.classList.toggle("dark");
-
-        if (document.body.classList.contains("dark")) {
-
-            localStorage.setItem("theme", "dark");
-
-            themeBtn.innerHTML = "☀️ الوضع النهاري";
-
-        } else {
-
-            localStorage.setItem("theme", "light");
-
-            themeBtn.innerHTML = "🌙 الوضع الليلي";
-
-        }
-
-    });
+fav.style.display="none";
 
 }
 
-// ==========================
-// تغيير اللون الرئيسي
-// ==========================
+});
 
-const colorBtn = document.getElementById("colorBtn");
-
-const colors = [
-    "#2563eb",
-    "#16a34a",
-    "#dc2626",
-    "#7c3aed",
-    "#ea580c",
-    "#0891b2"
-];
-
-let colorIndex = 0;
-
-// استرجاع اللون المحفوظ
-
-const savedColor = localStorage.getItem("mainColor");
-
-if (savedColor) {
-
-    document.documentElement.style.setProperty(
-        "--main-color",
-        savedColor
-    );
-
-    colorIndex = colors.indexOf(savedColor);
-
-    if (colorIndex < 0) colorIndex = 0;
-
-}
-
-if (colorBtn) {
-
-    colorBtn.addEventListener("click", function () {
-
-        colorIndex++;
-
-        if (colorIndex >= colors.length) {
-
-            colorIndex = 0;
-
-        }
-
-        document.documentElement.style.setProperty(
-            "--main-color",
-            colors[colorIndex]
-        );
-
-        localStorage.setItem(
-            "mainColor",
-            colors[colorIndex]
-        );
-
-    });
-
-}
 
 // ==========================
 // Dashboard
 // ==========================
 
-function updateDashboard() {
+function updateDashboard(){
 
-    // عدد العمليات
+// عدد العمليات
 
-    let calcCount =
-    parseInt(localStorage.getItem("calcCount")) || 0;
+const calcCountEl=document.getElementById("calcCount");
 
-    const calcCountEl =
-    document.getElementById("calcCount");
+if(calcCountEl){
 
-    if (calcCountEl) {
+calcCountEl.innerText=
 
-        calcCountEl.innerText = calcCount;
-
-    }
-
-    // عدد المفضلة
-
-    let favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
-
-    const favCountEl =
-    document.getElementById("favCount");
-
-    if (favCountEl) {
-
-        favCountEl.innerText = favorites.length;
-
-    }
-
-    // آخر دواء
-
-    let lastDrug =
-    localStorage.getItem("lastDrug") || "-";
-
-    const lastDrugEl =
-    document.getElementById("lastDrug");
-
-    if (lastDrugEl) {
-
-        lastDrugEl.innerText = lastDrug;
-
-    }
+localStorage.getItem("calcCount") || 0;
 
 }
 
-// تشغيل Dashboard عند فتح الموقع
+
+// عدد المفضلة
+
+const favCountEl=document.getElementById("favCount");
+
+if(favCountEl){
+
+const favorites=
+
+JSON.parse(localStorage.getItem("favorites")) || [];
+
+favCountEl.innerText=favorites.length;
+
+}
+
+
+// آخر دواء
+
+const lastDrugEl=document.getElementById("lastDrug");
+
+if(lastDrugEl){
+
+lastDrugEl.innerText=
+
+localStorage.getItem("lastDrug") || "-";
+
+}
+
+}
 
 updateDashboard();
+// ==========================
+// Drug Information
+// ==========================
 
-console.log("✅ DoseCare v2.0 Loaded Successfully");
-function getFrequencyNumber(freq){
+const infoBtn = document.getElementById("info");
 
-if(freq.includes("4"))
-return 6;
+if(infoBtn){
 
-if(freq.includes("6"))
-return 4;
+infoBtn.addEventListener("click",function(){
 
-if(freq.includes("8"))
-return 3;
+if(!drugSelect.value){
 
-if(freq.includes("12"))
-return 2;
+alert("اختر دواء أولاً.");
 
-if(freq.includes("مرة"))
-return 1;
-
-return 1;
+return;
 
 }
+
+const drug = drugs[drugSelect.value];
+
+document.getElementById("drugInfoContent").innerHTML = `
+
+<h2>💊 ${drug.name}</h2>
+
+<p><b>📂 التصنيف:</b> ${drug.category}</p>
+
+<p><b>⚙️ آلية العمل:</b><br>${drug.mechanism || "-"}</p>
+
+<p><b>✅ الاستعمالات:</b><br>${drug.indications || "-"}</p>
+
+<p><b>⛔ موانع الاستعمال:</b><br>${drug.contraindications || "-"}</p>
+
+<p><b>⚠️ الآثار الجانبية:</b><br>${drug.sideEffects || "-"}</p>
+
+<p><b>👶 العمر المناسب:</b>
+
+${drug.minAge} - ${drug.maxAge} سنة
+
+</p>
+
+<p><b>🤰 الحمل:</b><br>
+
+${drug.pregnancy || "-"}
+
+</p>
+
+<p><b>📦 التخزين:</b><br>
+
+${drug.storage || "-"}
+
+</p>
+
+<p><b>📝 الملاحظات:</b><br>
+
+${drug.notes}
+
+</p>
+
+`;
+
+document.getElementById("drugInfoModal").style.display="block";
+
+});
+
+}
+
+
+// ==========================
+// Close Modal
+// ==========================
+
+const closeModal=document.getElementById("closeModal");
+
+if(closeModal){
+
+closeModal.onclick=function(){
+
+document.getElementById("drugInfoModal").style.display="none";
+
+};
+
+}
+
+
+// ==========================
+// Close Outside
+// ==========================
+
+window.addEventListener("click",function(event){
+
+const modal=document.getElementById("drugInfoModal");
+
+if(modal && event.target===modal){
+
+modal.style.display="none";
+
+}
+
+});
+// ==========================
+// Dark Mode
+// ==========================
+
+const themeBtn = document.getElementById("themeBtn");
+
+if(themeBtn){
+
+if(localStorage.getItem("theme")==="dark"){
+
+document.body.classList.add("dark");
+
+themeBtn.innerHTML="☀️ الوضع النهاري";
+
+}
+
+themeBtn.addEventListener("click",function(){
+
+document.body.classList.toggle("dark");
+
+if(document.body.classList.contains("dark")){
+
+localStorage.setItem("theme","dark");
+
+themeBtn.innerHTML="☀️ الوضع النهاري";
+
+}else{
+
+localStorage.setItem("theme","light");
+
+themeBtn.innerHTML="🌙 الوضع الليلي";
+
+}
+
+});
+
+}
+
+
+// ==========================
+// Color Theme
+// ==========================
+
+const colorBtn=document.getElementById("colorBtn");
+
+const colors=[
+
+"#2563eb",
+
+"#16a34a",
+
+"#dc2626",
+
+"#7c3aed",
+
+"#ea580c",
+
+"#0891b2"
+
+];
+
+let colorIndex=0;
+
+const savedColor=localStorage.getItem("mainColor");
+
+if(savedColor){
+
+document.documentElement.style.setProperty(
+
+"--main-color",
+
+savedColor
+
+);
+
+colorIndex=colors.indexOf(savedColor);
+
+if(colorIndex<0) colorIndex=0;
+
+}
+
+if(colorBtn){
+
+colorBtn.addEventListener("click",function(){
+
+colorIndex++;
+
+if(colorIndex>=colors.length){
+
+colorIndex=0;
+
+}
+
+document.documentElement.style.setProperty(
+
+"--main-color",
+
+colors[colorIndex]
+
+);
+
+localStorage.setItem(
+
+"mainColor",
+
+colors[colorIndex]
+
+);
+
+});
+
+}
+// ==========================
+// Export PDF
+// ==========================
+
 const pdfBtn = document.getElementById("pdf");
 
-if (pdfBtn) {
+if(pdfBtn){
 
-    pdfBtn.addEventListener("click", function () {
+pdfBtn.addEventListener("click",function(){
 
-        if (result.innerHTML.trim() === "") {
+if(result.innerHTML.trim()===""){
 
-            alert("لا توجد نتيجة لحفظها.");
+alert("لا توجد نتيجة لحفظها.");
 
-            return;
+return;
 
-        }
+}
 
-        html2pdf().from(result).save("DoseCare_Result.pdf");
+html2pdf().from(result).save("DoseCare_Result.pdf");
 
-    });
+});
 
 }
 // ==========================
@@ -1115,93 +1299,76 @@ let currentLang = localStorage.getItem("language") || "ar";
 
 function applyLanguage(lang){
 
-    currentLang = lang;
+currentLang = lang;
 
-    localStorage.setItem("language", lang);
+localStorage.setItem("language", lang);
 
-    const t = translations[lang];
+document.documentElement.lang = lang;
 
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+document.documentElement.dir = lang==="ar" ? "rtl" : "ltr";
 
-    document.querySelector("h1").innerText = t.title;
+const langBtn=document.getElementById("langBtn");
 
-    document.querySelector(".subtitle").innerText = t.subtitle;
+if(langBtn){
 
-    document.querySelector("label[for='disease']")?.innerText = t.searchDisease;
+langBtn.innerHTML=
 
-    document.querySelector("label[for='drug']")?.innerText = t.drug;
+lang==="ar"
 
-    document.querySelector("label[for='strength']")?.innerText = t.strength;
+?
 
-    document.querySelector("label[for='age']")?.innerText = t.age;
+"🌐 English"
 
-    document.querySelector("label[for='weight']")?.innerText = t.weight;
+:
 
-    document.getElementById("calculate").innerText = t.calculate;
-
-    document.getElementById("reset").innerText = t.reset;
-
-    document.getElementById("copy").innerText = t.copy;
-
-    document.getElementById("info").innerText = t.info;
-
-    document.getElementById("favorite").innerText = t.favorite;
-
-    document.getElementById("showFavorites").innerText = t.showFavorites;
-
-    document.getElementById("langBtn").innerText =
-        lang === "ar" ? "🌐 English" : "🌐 العربية";
+"🌐 العربية";
 
 }
-// تغيير Placeholders
 
-document.getElementById("searchDrug").placeholder =
-t.searchPlaceholder;
+}
 
-document.getElementById("age").placeholder =
-t.agePlaceholder;
-
-document.getElementById("weight").placeholder =
-t.weightPlaceholder;
-
-// تغيير أول خيار في القوائم
-
-document.querySelector("#disease option").textContent =
-t.selectDisease;
-
-document.querySelector("#drug option").textContent =
-t.selectDrug;
-
-document.querySelector("#strength option").textContent =
-t.selectStrength;
-
-document.querySelector("#drug2 option").textContent =
-t.selectDrug2;
 applyLanguage(currentLang);
 
-document.getElementById("langBtn").addEventListener("click",function(){
+const langBtn=document.getElementById("langBtn");
 
-    applyLanguage(currentLang === "ar" ? "en" : "ar");
+if(langBtn){
+
+langBtn.addEventListener("click",function(){
+
+applyLanguage(
+
+currentLang==="ar"
+
+?
+
+"en"
+
+:
+
+"ar"
+
+);
 
 });
+
+}
 // ==========================
 // Service Worker
 // ==========================
 
-if ("serviceWorker" in navigator) {
+if("serviceWorker" in navigator){
 
-window.addEventListener("load", () => {
+window.addEventListener("load",()=>{
 
 navigator.serviceWorker.register("sw.js")
 
-.then(() => {
+.then(()=>{
 
 console.log("✅ Service Worker Registered");
 
 })
 
-.catch(err => {
+.catch(err=>{
 
 console.log(err);
 
