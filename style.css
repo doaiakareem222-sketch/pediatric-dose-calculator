@@ -749,7 +749,11 @@ color:white;
 .purple{
     background:#7c3aed;
 }
+#fluidResult{
 
+margin-top:20px;
+
+}
 .purple:hover{
     background:#6d28d9;
 }
