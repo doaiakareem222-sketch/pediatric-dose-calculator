@@ -1,70 +1,102 @@
 const translations = {
 
-ar: {
+ar:{
 
-title: "🩺 DoseCare",
+appTitle:"🩺 DoseCare",
 
-subtitle: "حاسبة جرعات الأطفال بالاعتماد على الوزن",
+appSubtitle:"حاسبة جرعات الأطفال بالاعتماد على الوزن",
 
-searchDisease: "🔍 البحث حسب المرض",
+lblDisease:"🔍 البحث حسب المرض",
 
-searchDrug: "البحث عن الدواء",
+lblSearchDrug:"البحث عن الدواء",
 
-drug: "اسم الدواء",
+lblDrug:"اسم الدواء",
 
-strength: "تركيز الدواء",
+lblDrug2:"الدواء الثاني (اختياري)",
 
-secondDrug: "الدواء الثاني (اختياري)",
+lblStrength:"تركيز الدواء",
 
-age: "العمر (بالسنوات)",
+lblAge:"العمر (بالسنوات)",
 
-weight: "الوزن (Kg)",
+lblWeight:"الوزن (Kg)",
 
-calculate: "🧮 احسب الجرعة",
+btnCalculate:"احسب الجرعة",
 
-reset: "🔄 إعادة تعيين",
+btnReset:"إعادة تعيين",
 
-copy: "📋 نسخ النتيجة",
+btnCopy:"نسخ النتيجة",
 
-info: "ℹ️ معلومات الدواء",
+btnInfo:"معلومات الدواء",
 
-favorite: "⭐ إضافة إلى المفضلة",
+btnFavorite:"إضافة إلى المفضلة",
 
-showFavorites: "📖 عرض المفضلة"
+btnShowFavorites:"عرض المفضلة",
+
+dashboardTitle:"📊 لوحة الإحصائيات",
+
+txtCalcCount:"عدد الحسابات",
+
+txtFavorites:"المفضلة",
+
+txtLastDrug:"آخر دواء",
+
+favoritesTitle:"⭐ الأدوية المفضلة",
+
+aboutTitle:"ℹ️ About DoseCare",
+
+aboutText:"DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.",
+
+warningText:"⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي."
 
 },
 
-en: {
+en:{
 
-title: "🩺 DoseCare",
+appTitle:"🩺 DoseCare",
 
-subtitle: "Pediatric Dose Calculator",
+appSubtitle:"Pediatric Dose Calculator",
 
-searchDisease: "🔍 Search Disease",
+lblDisease:"🔍 Search by Disease",
 
-searchDrug: "Search Drug",
+lblSearchDrug:"Search Drug",
 
-drug: "Drug",
+lblDrug:"Drug",
 
-strength: "Drug Strength",
+lblDrug2:"Second Drug (Optional)",
 
-secondDrug: "Second Drug (Optional)",
+lblStrength:"Strength",
 
-age: "Age (Years)",
+lblAge:"Age (Years)",
 
-weight: "Weight (Kg)",
+lblWeight:"Weight (Kg)",
 
-calculate: "🧮 Calculate Dose",
+btnCalculate:"Calculate Dose",
 
-reset: "🔄 Reset",
+btnReset:"Reset",
 
-copy: "📋 Copy Result",
+btnCopy:"Copy Result",
 
-info: "ℹ️ Drug Information",
+btnInfo:"Drug Information",
 
-favorite: "⭐ Add to Favorites",
+btnFavorite:"Add to Favorites",
 
-showFavorites: "📖 Show Favorites"
+btnShowFavorites:"Show Favorites",
+
+dashboardTitle:"📊 Dashboard",
+
+txtCalcCount:"Calculations",
+
+txtFavorites:"Favorites",
+
+txtLastDrug:"Last Drug",
+
+favoritesTitle:"⭐ Favorite Drugs",
+
+aboutTitle:"ℹ️ About DoseCare",
+
+aboutText:"DoseCare is a pediatric dose calculator based on body weight and standard drug references.",
+
+warningText:"⚠️ Results are for educational purposes only and do not replace medical advice."
 
 }
 
