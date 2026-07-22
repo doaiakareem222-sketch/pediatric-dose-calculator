@@ -1084,7 +1084,30 @@ function applyLanguage(lang){
         lang === "ar" ? "🌐 English" : "🌐 العربية";
 
 }
+// تغيير Placeholders
 
+document.getElementById("searchDrug").placeholder =
+t.searchPlaceholder;
+
+document.getElementById("age").placeholder =
+t.agePlaceholder;
+
+document.getElementById("weight").placeholder =
+t.weightPlaceholder;
+
+// تغيير أول خيار في القوائم
+
+document.querySelector("#disease option").textContent =
+t.selectDisease;
+
+document.querySelector("#drug option").textContent =
+t.selectDrug;
+
+document.querySelector("#strength option").textContent =
+t.selectStrength;
+
+document.querySelector("#drug2 option").textContent =
+t.selectDrug2;
 applyLanguage(currentLang);
 
 document.getElementById("langBtn").addEventListener("click",function(){
