@@ -1377,3 +1377,68 @@ console.log(err);
 });
 
 }
+// ==========================
+// Pediatric Fluid Calculator
+// ==========================
+
+const fluidBtn = document.getElementById("fluidBtn");
+
+if(fluidBtn){
+
+fluidBtn.addEventListener("click",function(){
+
+const weight = Number(document.getElementById("weight").value);
+
+if(!weight){
+
+alert("يرجى إدخال الوزن أولاً.");
+
+return;
+
+}
+
+let fluid = 0;
+
+if(weight <= 10){
+
+fluid = weight * 100;
+
+}else if(weight <= 20){
+
+fluid = 1000 + ((weight - 10) * 50);
+
+}else{
+
+fluid = 1500 + ((weight - 20) * 20);
+
+}
+
+document.getElementById("fluidResult").innerHTML = `
+
+<div class="result-card">
+
+<h2>💧 Daily Fluid Requirement</h2>
+
+<div class="result-item">
+
+<span>⚖️ الوزن</span>
+
+<strong>${weight} Kg</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>💧 الاحتياج اليومي</span>
+
+<strong>${fluid.toFixed(0)} mL/day</strong>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
