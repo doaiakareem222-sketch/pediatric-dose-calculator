@@ -14,7 +14,19 @@ paracetamol:{
         {name:"120 mg / 5 mL", concentration:120},
         {name:"250 mg / 5 mL", concentration:250}
     ],
-    notes:"يعطى عند الألم والحمى."
+    notes:"يعطى عند الألم والحمى.",
+
+mechanism:"يثبط تصنيع البروستاغلاندينات داخل الجهاز العصبي المركزي.",
+
+indications:"الحمى والألم.",
+
+contraindications:"حساسية للباراسيتامول.",
+
+sideEffects:"غثيان، طفح جلدي.",
+
+pregnancy:"آمن عادة أثناء الحمل بالجرعات العلاجية.",
+
+storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 ibuprofen:{
