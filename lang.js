@@ -101,3 +101,64 @@ warningText:"⚠️ Results are for educational purposes only and do not replace
 }
 
 };
+// ==========================
+
+// Language Switcher
+
+// ==========================
+
+let currentLanguage =
+
+localStorage.getItem("language") || "ar";
+
+function setLanguage(lang){
+
+currentLanguage = lang;
+
+localStorage.setItem("language",lang);
+
+const t = translations[lang];
+
+document.documentElement.lang = lang;
+
+document.documentElement.dir =
+
+lang === "ar" ? "rtl" : "ltr";
+
+for(const key in t){
+
+const element =
+
+document.getElementById(key);
+
+if(element){
+
+element.innerHTML = t[key];
+
+}
+
+}
+
+document.getElementById("langBtn").innerHTML =
+
+lang==="ar" ?
+
+"🌐 English" :
+
+"🌐 العربية";
+
+}
+
+setLanguage(currentLanguage);
+
+document.getElementById("langBtn")
+
+.addEventListener("click",()=>{
+
+setLanguage(
+
+currentLanguage==="ar" ? "en" : "ar"
+
+);
+
+});
