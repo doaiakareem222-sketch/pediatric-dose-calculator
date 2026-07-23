@@ -18,7 +18,8 @@ const result = document.getElementById("result");
 const historyDiv = document.getElementById("history");
 
 const drugCard = document.getElementById("drugCard");
-
+const clinicalAlert =
+document.getElementById("clinicalAlert");
 
 // ==========================
 // Drug Interactions
