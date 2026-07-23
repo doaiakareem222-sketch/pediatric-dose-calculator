@@ -20,6 +20,7 @@
 <body>
 
 <!-- Splash Screen -->
+
 <div id="splash">
 
 <div class="logo">
@@ -67,11 +68,15 @@
 <h1>🩺 DoseCare</h1>
 
 <p class="subtitle">
+
 حاسبة جرعات الأطفال بالاعتماد على الوزن
+
 </p>
 
 <div class="card">
-  <!-- البحث حسب المرض -->
+  <!-- =========================
+البحث حسب المرض
+========================= -->
 
 <label for="disease">🔍 البحث حسب المرض</label>
 
@@ -80,95 +85,128 @@
 <option value="">اختر المرض</option>
 
 <option value="fever">Fever</option>
-
 <option value="pain">Pain</option>
-
 <option value="otitis">Otitis Media</option>
-
 <option value="pharyngitis">Pharyngitis</option>
-
 <option value="sinusitis">Sinusitis</option>
-
 <option value="pneumonia">Pneumonia</option>
-
 <option value="uti">UTI</option>
-
 <option value="diarrhea">Diarrhea</option>
-
 <option value="vomiting">Vomiting</option>
-
 <option value="asthma">Asthma</option>
-
 <option value="allergy">Allergy</option>
-
 <option value="fungal">Fungal Infection</option>
-
 <option value="worms">Worm Infestation</option>
 
 </select>
 
-<div id="diseaseGuide" class="guide-card" style="display:none;"></div>
+<div id="diseaseGuide"
+class="guide-card"
+style="display:none;">
+</div>
 
-<!-- البحث عن الدواء -->
+<!-- =========================
+البحث عن الدواء
+========================= -->
 
-<label for="searchDrug">🔎 البحث عن الدواء</label>
+<label for="searchDrug">
+🔎 البحث عن الدواء
+</label>
 
 <input
 type="text"
 id="searchDrug"
 placeholder="اكتب اسم الدواء...">
 
-<!-- اختيار الدواء -->
+<!-- =========================
+اختيار الدواء
+========================= -->
 
-<label for="drug">💊 اسم الدواء</label>
+<label for="drug">
+💊 اسم الدواء
+</label>
 
 <select id="drug">
 
-<option value="">اختر الدواء</option>
+<option value="">
+اختر الدواء
+</option>
 
 </select>
 
-<!-- الدواء الثاني -->
+<!-- =========================
+الدواء الثاني
+========================= -->
 
-<label for="drug2">💊 الدواء الثاني (اختياري)</label>
+<label for="drug2">
+💊 الدواء الثاني (اختياري)
+</label>
 
 <select id="drug2">
 
-<option value="">بدون</option>
+<option value="">
+بدون
+</option>
 
 </select>
 
-<!-- التركيز -->
+<!-- =========================
+تركيز الدواء
+========================= -->
 
-<label for="strength">🧪 تركيز الدواء</label>
+<label for="strength">
+🧪 تركيز الدواء
+</label>
 
 <select id="strength">
 
-<option value="">اختر التركيز</option>
+<option value="">
+اختر التركيز
+</option>
 
 </select>
 
-<div id="drugCard" class="drug-card" style="display:none;"></div>
+<!-- بطاقة الدواء -->
 
-<div id="clinicalAlert" class="clinical-alert" style="display:none;"></div>
+<div id="drugCard"
+class="drug-card"
+style="display:none;">
+</div>
 
-<!-- العمر -->
+<div id="clinicalAlert"
+class="clinical-alert"
+style="display:none;">
+</div>
 
-<label for="age">👶 العمر (بالسنوات)</label>
+<!-- =========================
+العمر
+========================= -->
+
+<label for="age">
+👶 العمر (بالسنوات)
+</label>
 
 <input
 type="number"
 id="age"
-placeholder="مثال 5">
+placeholder="مثال: 5">
 
-<!-- الوزن -->
+<!-- =========================
+الوزن
+========================= -->
 
-<label for="weight">⚖️ الوزن (Kg)</label>
+<label for="weight">
+⚖️ الوزن (Kg)
+</label>
 
 <input
 type="number"
 id="weight"
-placeholder="مثال 18">
+placeholder="مثال: 18">
+<!-- =========================
+الأزرار الرئيسية
+========================= -->
+
 <button id="calculate">
 🧮 احسب الجرعة
 </button>
@@ -182,7 +220,7 @@ placeholder="مثال 18">
 </button>
 
 <button id="favorite" class="favorite-btn">
-⭐ إضافة للمفضلة
+⭐ إضافة إلى المفضلة
 </button>
 
 <button id="showFavorites" class="favorite-btn">
@@ -194,13 +232,20 @@ placeholder="مثال 18">
 </button>
 
 <button id="pdf">
-📄 تحميل PDF
+📄 تحميل النتيجة PDF
 </button>
 
+<hr style="margin:25px 0;">
+
+<h3>💧 Pediatric Fluid Calculator</h3>
+
 <button id="fluidBtn">
-💧 احتياج السوائل
+💧 احسب احتياج السوائل
 </button>
+
 <div id="fluidResult"></div>
+
+<!-- شاشة التحميل -->
 
 <div id="loading" style="display:none;">
 
@@ -210,19 +255,31 @@ placeholder="مثال 18">
 
 </div>
 
+<!-- النتيجة -->
+
 <div id="result"></div>
 
+<!-- السجل -->
+
 <div id="history"></div>
+
+<!-- المفضلة -->
 
 <div id="favorites" class="history">
 
 <h2>⭐ الأدوية المفضلة</h2>
 
 <div id="favoritesList">
+
 لا توجد أدوية محفوظة.
+
 </div>
 
 </div>
+<!-- =========================
+Dashboard
+========================= -->
+
 <div class="dashboard">
 
 <h2>📊 Dashboard</h2>
@@ -230,19 +287,26 @@ placeholder="مثال 18">
 <div class="stats">
 
 <div class="stat-card">
+
 <h3 id="calcCount">0</h3>
+
 <p>عدد الحسابات</p>
+
 </div>
 
 <div class="stat-card">
+
 <h3 id="favCount">0</h3>
+
 <p>المفضلة</p>
+
 </div>
 
 <div class="stat-card">
+
 <h3 id="lastDrug">-</h3>
+
 <p>آخر دواء</p>
-</div>
 
 </div>
 
@@ -250,22 +314,32 @@ placeholder="مثال 18">
 
 </div>
 
-<!-- نهاية Card -->
+</div>
+<!-- نهاية card -->
+
+<!-- =========================
+About
+========================= -->
 
 <div class="about">
 
 <h2>ℹ️ About DoseCare</h2>
 
 <p>
-DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن
-والمراجع الدوائية القياسية.
+
+DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
+
 </p>
 
 <p>
-⚠️ النتائج لغرض التعليم فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
+
+⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
+
 </p>
 
 </div>
+
+<!-- Footer -->
 
 <div class="footer">
 
@@ -273,7 +347,9 @@ Developed by Doaa Kareem © 2026
 
 </div>
 
-<!-- نافذة معلومات الدواء -->
+<!-- =========================
+Drug Information Modal
+========================= -->
 
 <div id="drugInfoModal" class="modal">
 
@@ -285,10 +361,17 @@ Developed by Doaa Kareem © 2026
 
 </div>
 
-</div>
+  <!-- =========================
+JavaScript Files
+========================= -->
+
 <script src="lang.js"></script>
+
 <script src="drugs.js"></script>
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
+</div>
