@@ -929,3 +929,22 @@ button:active{
 .result-item strong{
     color:#111827;
 }
+.input-group{
+    position: relative;
+    margin-top: 15px;
+}
+
+.input-group input,
+.input-group select{
+    padding-right:50px;
+}
+
+.input-group .icon{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+    color:var(--main-color);
+    pointer-events:none;
+}
