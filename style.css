@@ -11,24 +11,30 @@
 }
 
 body{
-    background:linear-gradient(135deg,#eaf4ff,#dbeafe);
+    background:#f2f4f7;
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
-    padding:20px;
+    align-items:flex-start;
+    padding:25px;
 }
-
 .container{
     width:100%;
-    max-width:450px;
+    max-width:480px;
 }
 
 h1{
-    text-align:center;
-    color:var(--main-color);
-    font-size:34px;
-    margin-bottom:8px;
+
+font-size:38px;
+
+font-weight:800;
+
+text-align:center;
+
+color:var(--main-color);
+
+margin-bottom:8px;
+
 }
 
 .subtitle{
@@ -39,10 +45,11 @@ h1{
 }
 
 .card{
-    background:#fff;
-    border-radius:22px;
+    background:white;
+    border-radius:28px;
     padding:25px;
-    box-shadow:0 15px 35px rgba(37,99,235,.15);
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.06);
 }
 
 label{
@@ -78,6 +85,7 @@ button{
     width:100%;
     margin-top:22px;
     padding:16px;
+    border:none;
     background:#2563eb;
     color:#fff;
     border:none;
@@ -85,7 +93,7 @@ button{
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
-    transition:.3s;
+    transition:.25s;
 }
 
 button:hover{
@@ -853,7 +861,21 @@ background:#1f2937;
 
 input,
 select{
-    transition:0.25s;
+
+width:100%;
+
+padding:15px;
+
+border-radius:18px;
+
+border:2px solid #E5E7EB;
+
+background:#FAFAFA;
+
+font-size:16px;
+
+transition:.25s;
+
 }
 
 input:hover,
