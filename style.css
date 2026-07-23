@@ -594,7 +594,13 @@ justify-content:space-between;
 align-items:center;
 padding:12px 0;
 border-bottom:1px solid #e5e7eb;
-
+    gap:10px;
+    .result-item div{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:bold;
+}
 }
 
 .result-item:last-child{
