@@ -1470,3 +1470,16 @@ document.getElementById("fluidResult").innerHTML = `
 window.addEventListener("load", () => {
     diseaseSelect.dispatchEvent(new Event("change"));
 });
+// ==========================
+// Splash Screen
+// ==========================
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("splash").classList.add("hide");
+
+},2000);
+
+});
