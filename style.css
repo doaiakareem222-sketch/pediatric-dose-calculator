@@ -954,3 +954,48 @@ button:active{
     color:var(--main-color);
     pointer-events:none;
 }
+/* ==========================
+   Modern Inputs
+========================== */
+
+input,
+select{
+    background:#f8fbff;
+    border:2px solid #dbeafe;
+    transition:.25s;
+}
+
+input:hover,
+select:hover{
+    border-color:var(--main-color);
+}
+
+input:focus,
+select:focus{
+    transform:scale(1.02);
+}
+
+label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+/* تأثير خفيف للبطاقات */
+
+.card,
+.history,
+.dashboard,
+.about-card{
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
