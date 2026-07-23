@@ -4,916 +4,1030 @@ paracetamol:{
     name:"Paracetamol",
     category:"Pain & Fever",
     diseases:["fever","pain"],
+
     mgPerKg:15,
     frequency:"كل 4-6 ساعات",
     maxDose:1000,
-    warnings:"لا تتجاوز الجرعة اليومية القصوى.",
-    alerts:[
-"يمكن إعطاؤه مع الطعام أو بدونه.",
-"لا تجمعه مع أي دواء آخر يحتوي Paracetamol.",
-"راقب الجرعة اليومية القصوى."
-],
+
     minAge:0,
     maxAge:12,
+
+    warnings:"لا تتجاوز الجرعة اليومية القصوى.",
+
+    alerts:[
+        "يمكن إعطاؤه مع الطعام أو بدونه.",
+        "لا تجمعه مع أي دواء آخر يحتوي Paracetamol.",
+        "راقب الجرعة اليومية القصوى."
+    ],
+
     strengths:[
         {name:"120 mg / 5 mL", concentration:120},
         {name:"250 mg / 5 mL", concentration:250}
     ],
+
     notes:"يعطى عند الألم والحمى.",
 
-mechanism:
-"يثبط تصنيع البروستاغلاندينات داخل الجهاز العصبي المركزي مما يقلل الألم والحمى.",
+    mechanism:"يثبط تصنيع البروستاغلاندينات داخل الجهاز العصبي المركزي مما يقلل الألم والحمى.",
 
-indications:
-"الحمى، الألم الخفيف إلى المتوسط.",
+    indications:"الحمى، الألم الخفيف إلى المتوسط.",
 
-contraindications:
-"حساسية للباراسيتامول، مرض كبدي شديد.",
+    contraindications:"حساسية للباراسيتامول، مرض كبدي شديد.",
 
-sideEffects:
-"غثيان، طفح جلدي، سمية كبدية عند الجرعات العالية.",
+    sideEffects:"غثيان، طفح جلدي، سمية كبدية عند الجرعات العالية.",
 
-pregnancy:
-"يعتبر آمناً عند استخدامه بالجرعات الموصى بها.",
+    pregnancy:"يعتبر آمناً عند استخدامه بالجرعات الموصى بها.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة."
+    storage:"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة."
 },
 
 ibuprofen:{
     name:"Ibuprofen",
     category:"Pain & Fever",
     diseases:["fever","pain"],
+
     mgPerKg:10,
     frequency:"كل 6-8 ساعات",
     maxDose:400,
-    warnings:"يمنع عند الجفاف الشديد وقرحة المعدة.",
+
     minAge:0.5,
     maxAge:12,
+
+    warnings:"يمنع عند الجفاف الشديد وقرحة المعدة.",
+
+    alerts:[
+        "يفضل إعطاؤه بعد الطعام.",
+        "تجنب استخدامه عند الجفاف.",
+        "لا يستخدم عند قرحة المعدة."
+    ],
+
     strengths:[
         {name:"100 mg / 5 mL", concentration:100}
-        alerts:[
-"يفضل إعطاؤه بعد الطعام.",
-"تجنب استخدامه عند الجفاف.",
-"لا يستخدم عند قرحة المعدة."
-],
     ],
-    notes:"يفضل بعد الطعام."
-    mechanism:
-"يثبط إنزيمات COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات ويخفف الألم والحمى والالتهاب.",
 
-indications:
-"الحمى، الألم، الالتهابات.",
+    notes:"يفضل بعد الطعام.",
 
-contraindications:
-"قرحة المعدة، النزف، الحساسية لمضادات الالتهاب، الجفاف الشديد.",
+    mechanism:"يثبط إنزيمات COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات ويخفف الألم والحمى والالتهاب.",
 
-sideEffects:
-"ألم معدة، غثيان، قرحة، نزف معدي، اضطراب كلوي.",
+    indications:"الحمى، الألم، الالتهابات.",
 
-pregnancy:
-"يمنع في الثلث الأخير من الحمل ويستخدم بحذر في باقي الحمل.",
+    contraindications:"قرحة المعدة، النزف، الحساسية لمضادات الالتهاب، الجفاف الشديد.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"ألم معدة، غثيان، قرحة، نزف معدي، اضطراب كلوي.",
+
+    pregnancy:"يمنع في الثلث الأخير من الحمل ويستخدم بحذر في باقي الحمل.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 amoxicillin:{
     name:"Amoxicillin",
     category:"Antibiotics",
     diseases:["otitis","pharyngitis","sinusitis","pneumonia"],
+
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:500,
-    warnings:"تأكد من عدم وجود حساسية للبنسلين.",
-        alerts:[
-"أكمل مدة العلاج كاملة.",
-"رج العبوة جيداً قبل كل جرعة.",
-"لا توقف المضاد عند تحسن الأعراض."
-],
+
     minAge:0,
     maxAge:12,
+
+    warnings:"تأكد من عدم وجود حساسية للبنسلين.",
+
+    alerts:[
+        "أكمل مدة العلاج كاملة.",
+        "رج العبوة جيداً قبل كل جرعة.",
+        "لا توقف المضاد عند تحسن الأعراض."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125},
         {name:"250 mg / 5 mL", concentration:250}
     ],
-    notes:"أكمل العلاج للنهاية."
-    mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية.",
 
-indications:
-"التهاب الأذن، التهاب الحلق، الجيوب الأنفية، الالتهاب الرئوي.",
+    notes:"أكمل العلاج للنهاية.",
 
-contraindications:
-"حساسية البنسلين.",
+    mechanism:"يثبط تصنيع جدار الخلية البكتيرية.",
 
-sideEffects:
-"إسهال، طفح جلدي، غثيان.",
+    indications:"التهاب الأذن، التهاب الحلق، الجيوب الأنفية، الالتهاب الرئوي.",
 
-pregnancy:
-"آمن أثناء الحمل عند الحاجة.",
+    contraindications:"حساسية البنسلين.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة، والمعلق بعد التحضير في الثلاجة."
+    sideEffects:"إسهال، طفح جلدي، غثيان.",
+
+    pregnancy:"آمن أثناء الحمل عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة، والمعلق بعد التحضير في الثلاجة."
 },
 
 coamoxiclav:{
     name:"Co-amoxiclav",
     category:"Antibiotics",
     diseases:["otitis","sinusitis","pneumonia"],
+
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:875,
-        alerts:[
-"قد يسبب رجفة بسيطة.",
-"قد يسبب زيادة في نبض القلب.",
-"رج العبوة قبل الاستخدام."
-],
-    warnings:"يعطى بعد الطعام.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يعطى بعد الطعام.",
+
+    alerts:[
+        "قد يسبب اضطراباً هضمياً.",
+        "رج العبوة جيداً قبل الاستخدام.",
+        "يفضل تناوله بعد الوجبات."
+    ],
+
     strengths:[
         {name:"228 mg / 5 mL", concentration:228},
         {name:"457 mg / 5 mL", concentration:457}
     ],
-    notes:"يستخدم للالتهابات المتوسطة والشديدة."
-    mechanism:
-"أموكسيسيلين يثبط جدار الخلية، وحمض الكلافولانيك يمنع بيتا لاكتاماز.",
 
-indications:
-"التهابات الجهاز التنفسي، الأذن، الجيوب، الجلد.",
+    notes:"يستخدم للالتهابات المتوسطة والشديدة.",
 
-contraindications:
-"حساسية البنسلين أو اضطرابات الكبد السابقة بسبب الدواء.",
+    mechanism:"أموكسيسيلين يثبط جدار الخلية، والكلافولانيك يمنع بيتا لاكتاماز.",
 
-sideEffects:
-"إسهال، غثيان، طفح جلدي.",
+    indications:"التهابات الجهاز التنفسي، الأذن، الجيوب، الجلد.",
 
-pregnancy:
-"يعتبر آمناً عند الحاجة.",
+    contraindications:"حساسية البنسلين أو اضطرابات الكبد السابقة بسبب الدواء.",
 
-storage:
-"يحفظ المعلق في الثلاجة بعد التحضير."
+    sideEffects:"إسهال، غثيان، طفح جلدي.",
+
+    pregnancy:"يعتبر آمناً عند الحاجة.",
+
+    storage:"يحفظ المعلق في الثلاجة بعد التحضير."
 },
-
-azithromycin:{
+    azithromycin:{
     name:"Azithromycin",
     category:"Antibiotics",
     diseases:["pharyngitis","pneumonia"],
+
     mgPerKg:10,
     frequency:"مرة يومياً",
     maxDose:500,
-    warnings:"قد يسبب إطالة QT.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"قد يسبب إطالة QT.",
+
+    alerts:[
+        "يعطى مرة واحدة يومياً.",
+        "يمكن تناوله مع الطعام أو بدونه.",
+        "أكمل مدة العلاج كاملة."
+    ],
+
     strengths:[
         {name:"200 mg / 5 mL", concentration:200}
     ],
-    notes:"يعطى مرة واحدة يومياً."
-    mechanism:
-"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
 
-indications:
-"التهاب الحلق، الالتهاب الرئوي، التهابات الجهاز التنفسي.",
+    notes:"يعطى مرة واحدة يومياً.",
 
-contraindications:
-"حساسية الماكروليدات.",
+    mechanism:"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
 
-sideEffects:
-"إسهال، غثيان، ألم بطني، إطالة QT.",
+    indications:"التهاب الحلق، الالتهاب الرئوي، التهابات الجهاز التنفسي.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"حساسية الماكروليدات.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"إسهال، غثيان، ألم بطني، إطالة QT.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 cefixime:{
     name:"Cefixime",
     category:"Antibiotics",
     diseases:["uti","otitis"],
+
     mgPerKg:8,
     frequency:"مرة أو مرتين يومياً",
     maxDose:400,
-    warnings:"يعدل عند القصور الكلوي.",
+
     minAge:0.5,
     maxAge:12,
+
+    warnings:"يعدل عند القصور الكلوي.",
+
+    alerts:[
+        "يعطى مع أو بدون الطعام.",
+        "أكمل مدة العلاج كاملة."
+    ],
+
     strengths:[
         {name:"100 mg / 5 mL", concentration:100}
     ],
-    notes:"فعال ضد التهابات البول."
-    mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية.",
 
-indications:
-"التهابات البول، الأذن، الجهاز التنفسي.",
+    notes:"فعال ضد التهابات البول.",
 
-contraindications:
-"حساسية السيفالوسبورينات.",
+    mechanism:"يثبط تصنيع جدار الخلية البكتيرية.",
 
-sideEffects:
-"إسهال، طفح جلدي، غثيان.",
+    indications:"التهابات البول، الأذن، الجهاز التنفسي.",
 
-pregnancy:
-"آمن نسبياً.",
+    contraindications:"حساسية السيفالوسبورينات.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"إسهال، طفح جلدي، غثيان.",
+
+    pregnancy:"آمن نسبياً.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 cefuroxime:{
     name:"Cefuroxime",
     category:"Antibiotics",
     diseases:["sinusitis","otitis"],
+
     mgPerKg:15,
     frequency:"كل 12 ساعة",
     maxDose:500,
-    warnings:"يفضل بعد الطعام.",
+
     minAge:0.25,
     maxAge:12,
+
+    warnings:"يفضل بعد الطعام.",
+
+    alerts:[
+        "يعطى بعد الطعام لتحسين الامتصاص.",
+        "أكمل العلاج حتى النهاية."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125}
     ],
-    notes:"من الجيل الثاني للسيفالوسبورينات."
-    mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية.",
 
-indications:
-"التهاب الجيوب، الأذن، الجهاز التنفسي.",
+    notes:"من الجيل الثاني للسيفالوسبورينات.",
 
-contraindications:
-"حساسية السيفالوسبورينات.",
+    mechanism:"يثبط تصنيع جدار الخلية البكتيرية.",
 
-sideEffects:
-"غثيان، إسهال، طفح جلدي.",
+    indications:"التهاب الجيوب، الأذن، الجهاز التنفسي.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"حساسية السيفالوسبورينات.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"غثيان، إسهال، طفح جلدي.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
-    cephalexin:{
+
+cephalexin:{
     name:"Cephalexin",
     category:"Antibiotics",
     diseases:["skin","pharyngitis"],
+
     mgPerKg:25,
     frequency:"كل 8 ساعات",
     maxDose:500,
-    warnings:"يستخدم بحذر عند حساسية السيفالوسبورينات.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يستخدم بحذر عند حساسية السيفالوسبورينات.",
+
+    alerts:[
+        "أكمل مدة العلاج.",
+        "يمكن تناوله مع الطعام."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125},
         {name:"250 mg / 5 mL", concentration:250}
     ],
-    notes:"مفيد لالتهابات الجلد والبلعوم."
-        mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية.",
 
-indications:
-"التهابات الجلد، البلعوم، المسالك البولية.",
+    notes:"مفيد لالتهابات الجلد والبلعوم.",
 
-contraindications:
-"حساسية السيفالوسبورينات.",
+    mechanism:"يثبط تصنيع جدار الخلية البكتيرية.",
 
-sideEffects:
-"إسهال، غثيان، طفح جلدي.",
+    indications:"التهابات الجلد، البلعوم، المسالك البولية.",
 
-pregnancy:
-"يعتبر آمناً عند الحاجة.",
+    contraindications:"حساسية السيفالوسبورينات.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"إسهال، غثيان، طفح جلدي.",
+
+    pregnancy:"يعتبر آمناً عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 clarithromycin:{
     name:"Clarithromycin",
     category:"Antibiotics",
     diseases:["pneumonia","pharyngitis"],
+
     mgPerKg:7.5,
     frequency:"كل 12 ساعة",
     maxDose:500,
-    warnings:"قد يطيل QT ويتداخل مع أدوية عديدة.",
+
     minAge:0.5,
     maxAge:12,
+
+    warnings:"قد يطيل QT ويتداخل مع أدوية عديدة.",
+
+    alerts:[
+        "تجنب مشاركته مع أدوية تطيل QT.",
+        "أكمل العلاج كاملاً."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125},
         {name:"250 mg / 5 mL", concentration:250}
     ],
-    notes:"بديل عند حساسية البنسلين."
-    mechanism:
-"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
 
-indications:
-"التهابات الجهاز التنفسي، التهاب الحلق، الالتهاب الرئوي.",
+    notes:"بديل عند حساسية البنسلين.",
 
-contraindications:
-"حساسية الماكروليدات، إطالة QT.",
+    mechanism:"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S.",
 
-sideEffects:
-"غثيان، إسهال، اضطراب التذوق.",
+    indications:"التهابات الجهاز التنفسي، التهاب الحلق، الالتهاب الرئوي.",
 
-pregnancy:
-"يستخدم عند الضرورة فقط.",
+    contraindications:"حساسية الماكروليدات، إطالة QT.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"غثيان، إسهال، اضطراب التذوق.",
+
+    pregnancy:"يستخدم عند الضرورة فقط.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
-
-metronidazole:{
+    metronidazole:{
     name:"Metronidazole",
     category:"Antibiotics",
     diseases:["diarrhea"],
+
     mgPerKg:7.5,
     frequency:"كل 8 ساعات",
     maxDose:500,
-    warnings:"يمنع تناول الكحول معه.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يمنع تناول الكحول معه.",
+
+    alerts:[
+        "يعطى بعد الطعام إذا سبب اضطراب المعدة.",
+        "أكمل العلاج للنهاية."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125},
         {name:"200 mg / 5 mL", concentration:200}
     ],
-    notes:"فعال ضد الجراثيم اللاهوائية والطفيليات."
-    mechanism:
-"يثبط تصنيع الحمض النووي للكائنات اللاهوائية والطفيليات.",
 
-indications:
-"الجيارديا، الأميبيا، الالتهابات اللاهوائية.",
+    notes:"فعال ضد الجراثيم اللاهوائية والطفيليات.",
 
-contraindications:
-"الحساسية للدواء واستعمال الكحول.",
+    mechanism:"يثبط تصنيع الحمض النووي للكائنات اللاهوائية والطفيليات.",
 
-sideEffects:
-"طعم معدني، غثيان، صداع.",
+    indications:"الجيارديا، الأميبيا، الالتهابات اللاهوائية.",
 
-pregnancy:
-"يستخدم بحذر خاصة في الأشهر الأولى.",
+    contraindications:"الحساسية للدواء واستعمال الكحول.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"طعم معدني، غثيان، صداع.",
+
+    pregnancy:"يستخدم بحذر خاصة في الأشهر الأولى.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 cetirizine:{
     name:"Cetirizine",
     category:"Antihistamines",
     diseases:["allergy"],
+
     mgPerKg:0.25,
     frequency:"مرة يومياً",
     maxDose:10,
-    warnings:"قد يسبب نعاساً خفيفاً.",
+
     minAge:2,
     maxAge:12,
+
+    warnings:"قد يسبب نعاساً خفيفاً.",
+
+    alerts:[
+        "قد يسبب نعاساً عند بعض الأطفال.",
+        "يفضل مساءً إذا سبب النعاس."
+    ],
+
     strengths:[
         {name:"5 mg / 5 mL", concentration:5}
     ],
-    notes:"لعلاج الحساسية والشرى."
-    mechanism:
-"يثبط مستقبلات H1 للهيستامين.",
 
-indications:
-"الحساسية الموسمية، الشرى، الحكة.",
+    notes:"لعلاج الحساسية والشرى.",
 
-contraindications:
-"الحساسية للسيتيريزين.",
+    mechanism:"يثبط مستقبلات H1 للهيستامين.",
 
-sideEffects:
-"نعاس خفيف، جفاف الفم.",
+    indications:"الحساسية الموسمية، الشرى، الحكة.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"الحساسية للسيتيريزين.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"نعاس خفيف، جفاف الفم.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 loratadine:{
     name:"Loratadine",
     category:"Antihistamines",
     diseases:["allergy"],
+
     mgPerKg:0.2,
     frequency:"مرة يومياً",
     maxDose:10,
-    warnings:"أقل تسبباً للنعاس.",
+
     minAge:2,
     maxAge:12,
+
+    warnings:"أقل تسبباً للنعاس.",
+
+    alerts:[
+        "يعطى مرة واحدة يومياً.",
+        "يمكن تناوله مع الطعام أو بدونه."
+    ],
+
     strengths:[
         {name:"5 mg / 5 mL", concentration:5}
     ],
-    notes:"مضاد هيستامين طويل المفعول."
-    mechanism:
-"يثبط مستقبلات H1 دون عبور كبير للدماغ.",
 
-indications:
-"الحساسية الموسمية والشرى.",
+    notes:"مضاد هيستامين طويل المفعول.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يثبط مستقبلات H1 دون عبور كبير للدماغ.",
 
-sideEffects:
-"صداع، جفاف الفم.",
+    indications:"الحساسية الموسمية والشرى.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"صداع، جفاف الفم.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 chlorpheniramine:{
     name:"Chlorpheniramine",
     category:"Antihistamines",
     diseases:["allergy"],
+
     mgPerKg:0.1,
     frequency:"كل 6-8 ساعات",
     maxDose:4,
-    warnings:"يسبب النعاس.",
+
     minAge:2,
     maxAge:12,
+
+    warnings:"يسبب النعاس.",
+
+    alerts:[
+        "قد يسبب النعاس الشديد.",
+        "تجنب استخدامه مع أدوية مهدئة."
+    ],
+
     strengths:[
         {name:"2 mg / 5 mL", concentration:2}
     ],
-    notes:"يستخدم للحساسية والحكة."
-    mechanism:
-"يثبط مستقبلات H1 ويعبر الحاجز الدماغي.",
 
-indications:
-"الحساسية، الحكة، الرشح.",
+    notes:"يستخدم للحساسية والحكة.",
 
-contraindications:
-"الزرق ضيق الزاوية وحديثي الولادة.",
+    mechanism:"يثبط مستقبلات H1 ويعبر الحاجز الدماغي.",
 
-sideEffects:
-"نعاس شديد، جفاف الفم، دوخة.",
+    indications:"الحساسية، الحكة، الرشح.",
 
-pregnancy:
-"يستخدم بحذر.",
+    contraindications:"الزرق ضيق الزاوية وحديثي الولادة.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
-    
+    sideEffects:"نعاس شديد، جفاف الفم، دوخة.",
+
+    pregnancy:"يستخدم بحذر.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
-
-salbutamol:{
+    salbutamol:{
     name:"Salbutamol",
     category:"Asthma",
     diseases:["asthma"],
+
     mgPerKg:0.15,
     frequency:"كل 6 ساعات",
     maxDose:4,
-    warnings:"قد يسبب رجفة وتسارع القلب.",
+
     minAge:2,
     maxAge:12,
+
+    warnings:"قد يسبب رجفة وتسارع القلب.",
+
+    alerts:[
+        "قد يسبب رجفة بسيطة.",
+        "قد يزيد نبض القلب.",
+        "يستخدم عند الحاجة."
+    ],
+
     strengths:[
         {name:"2 mg / 5 mL", concentration:2}
     ],
-    notes:"موسع قصبي سريع المفعول."
+
+    notes:"موسع قصبي سريع المفعول.",
+
+    mechanism:"ينبه مستقبلات β2 مما يؤدي إلى توسع القصبات الهوائية.",
+
+    indications:"الربو، التشنج القصبي.",
+
+    contraindications:"الحساسية للدواء.",
+
+    sideEffects:"رجفة، تسارع القلب، عصبية.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
-    budesonide:{
+
+budesonide:{
     name:"Budesonide",
     category:"Asthma",
     diseases:["asthma"],
+
     mgPerKg:0.5,
     frequency:"مرتين يومياً",
     maxDose:2,
-    warnings:"يجب المضمضة بعد الاستخدام لتجنب فطريات الفم.",
+
     minAge:1,
     maxAge:12,
+
+    warnings:"يجب المضمضة بعد الاستخدام.",
+
+    alerts:[
+        "المضمضة بعد كل استخدام.",
+        "ليس لإيقاف نوبة الربو الحادة."
+    ],
+
     strengths:[
         {name:"0.5 mg / 2 mL", concentration:1.25}
     ],
-    notes:"كورتيزون استنشاقي للسيطرة على الربو."
+
+    notes:"كورتيزون استنشاقي.",
+
+    mechanism:"كورتيكوستيرويد يقلل الالتهاب داخل الشعب الهوائية.",
+
+    indications:"السيطرة على الربو.",
+
+    contraindications:"الحساسية للدواء.",
+
+    sideEffects:"فطريات الفم، بحة الصوت.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 montelukast:{
     name:"Montelukast",
     category:"Asthma",
     diseases:["asthma","allergy"],
+
     mgPerKg:0.2,
     frequency:"مرة مساءً",
     maxDose:5,
-    warnings:"قد يسبب تغيرات سلوكية نادرة.",
+
     minAge:2,
     maxAge:12,
+
+    warnings:"قد يسبب تغيرات سلوكية نادرة.",
+
+    alerts:[
+        "يفضل مساءً.",
+        "ليس لإيقاف نوبة الربو."
+    ],
+
     strengths:[
         {name:"4 mg Chewable", concentration:4},
         {name:"5 mg Chewable", concentration:5}
     ],
-    notes:"للوقاية من الربو والحساسية."
-    mechanism:
-"يثبط مستقبلات الليكوترينات ويقلل التهاب الشعب الهوائية.",
 
-indications:
-"الربو، حساسية الأنف.",
+    notes:"للوقاية من الربو والحساسية.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يثبط مستقبلات الليكوترينات ويقلل التهاب الشعب الهوائية.",
 
-sideEffects:
-"صداع، اضطرابات نوم، تغيرات سلوكية نادرة.",
+    indications:"الربو، حساسية الأنف.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"صداع، اضطرابات نوم، تغيرات سلوكية نادرة.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 ondansetron:{
     name:"Ondansetron",
     category:"Antiemetic",
     diseases:["vomiting"],
+
     mgPerKg:0.15,
     frequency:"كل 8 ساعات",
     maxDose:8,
-    warnings:"قد يسبب إطالة QT.",
+
     minAge:0.5,
     maxAge:12,
+
+    warnings:"قد يسبب إطالة QT.",
+
+    alerts:[
+        "يراقب عند مرضى القلب.",
+        "قد يسبب صداعاً أو إمساكاً."
+    ],
+
     strengths:[
         {name:"4 mg / 5 mL", concentration:4}
     ],
-    notes:"لعلاج الغثيان والتقيؤ."
-    mechanism:
-"يثبط مستقبلات 5-HT3 المضادة للغثيان.",
 
-indications:
-"الغثيان والتقيؤ.",
+    notes:"لعلاج الغثيان والتقيؤ.",
 
-contraindications:
-"الحساسية للدواء، إطالة QT.",
+    mechanism:"يثبط مستقبلات 5-HT3 المضادة للغثيان.",
 
-sideEffects:
-"صداع، إمساك، دوخة.",
+    indications:"الغثيان والتقيؤ.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"الحساسية للدواء، إطالة QT.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"صداع، إمساك، دوخة.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
-
-fluconazole:{
+    fluconazole:{
     name:"Fluconazole",
     category:"Antifungal",
     diseases:["fungal"],
+
     mgPerKg:6,
     frequency:"مرة يومياً",
     maxDose:400,
-    warnings:"يراقب عند مرضى الكبد.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يراقب عند مرضى الكبد.",
+
+    alerts:[
+        "قد يرفع إنزيمات الكبد.",
+        "تجنب استخدامه مع الأدوية التي تطيل QT."
+    ],
+
     strengths:[
         {name:"50 mg / 5 mL", concentration:50}
     ],
-    notes:"لعلاج العدوى الفطرية."
-    mechanism:
-"يثبط تصنيع الإرغوستيرول في جدار الفطريات.",
 
-indications:
-"العدوى الفطرية المختلفة.",
+    notes:"لعلاج العدوى الفطرية.",
 
-contraindications:
-"الحساسية للأزولات.",
+    mechanism:"يثبط تصنيع الإرغوستيرول في جدار الفطريات.",
 
-sideEffects:
-"غثيان، ارتفاع إنزيمات الكبد، طفح.",
+    indications:"العدوى الفطرية المختلفة.",
 
-pregnancy:
-"يتجنب بجرعات عالية.",
+    contraindications:"الحساسية للأزولات.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"غثيان، ارتفاع إنزيمات الكبد، طفح.",
+
+    pregnancy:"يتجنب بجرعات عالية.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 albendazole:{
     name:"Albendazole",
     category:"Antiparasitic",
     diseases:["worms"],
+
     mgPerKg:15,
     frequency:"جرعة واحدة",
     maxDose:400,
-    warnings:"يعاد بعد أسبوعين لبعض أنواع الديدان.",
+
     minAge:1,
     maxAge:12,
+
+    warnings:"تعاد الجرعة بعد أسبوعين لبعض أنواع الديدان.",
+
+    alerts:[
+        "يفضل بعد الطعام.",
+        "تعالج جميع أفراد الأسرة عند الحاجة."
+    ],
+
     strengths:[
         {name:"200 mg / 5 mL", concentration:200}
     ],
-    notes:"لعلاج معظم الديدان المعوية."
-    mechanism:
-"يثبط امتصاص الجلوكوز داخل الديدان.",
 
-indications:
-"الديدان المعوية.",
+    notes:"لعلاج معظم الديدان المعوية.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يثبط امتصاص الجلوكوز داخل الديدان.",
 
-sideEffects:
-"ألم بطني، غثيان، صداع.",
+    indications:"الديدان المعوية.",
 
-pregnancy:
-"يمنع أثناء الحمل.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"ألم بطني، غثيان، صداع.",
+
+    pregnancy:"يمنع أثناء الحمل.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 zinc:{
     name:"Zinc",
     category:"Vitamins",
     diseases:["diarrhea"],
+
     mgPerKg:1,
     frequency:"مرة يومياً",
     maxDose:20,
-    warnings:"قد يسبب اضطراباً بسيطاً بالمعدة.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"قد يسبب اضطراباً بسيطاً بالمعدة.",
+
+    alerts:[
+        "يعطى مع ORS في حالات الإسهال.",
+        "يفضل بعد الطعام."
+    ],
+
     strengths:[
         {name:"20 mg / 5 mL", concentration:20}
     ],
-    notes:"يعطى مع ORS في الإسهال."
-    mechanism:
-"يعوض نقص الزنك ويساعد على إصلاح الغشاء المخاطي للأمعاء.",
 
-indications:
-"الإسهال، نقص الزنك.",
+    notes:"يعطى مع ORS في الإسهال.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يعوض نقص الزنك ويساعد على إصلاح الغشاء المخاطي للأمعاء.",
 
-sideEffects:
-"غثيان خفيف، اضطراب معدي.",
+    indications:"الإسهال، نقص الزنك.",
 
-pregnancy:
-"آمن.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
-},
-
-vitaminD:{
-    name:"Vitamin D",
-    category:"Vitamins",
-    diseases:["vitaminD"],
-    mgPerKg:10,
-    frequency:"مرة يومياً",
-    maxDose:1000,
-    warnings:"لا تتجاوز الجرعة دون وصفة.",
-    minAge:0,
-    maxAge:12,
-    strengths:[
-        {name:"400 IU / mL", concentration:400}
-    ],
-    notes:"للوقاية وعلاج نقص فيتامين D."
-    mechanism:
-"يزيد امتصاص الكالسيوم والفوسفور من الأمعاء.",
-
-indications:
-"الوقاية وعلاج نقص فيتامين D.",
-
-contraindications:
-"فرط كالسيوم الدم.",
-
-sideEffects:
-"ارتفاع الكالسيوم عند الجرعات العالية.",
-
-pregnancy:
-"آمن بالجرعات الموصى بها.",
-
-storage:
-"يحفظ بدرجة حرارة الغرفة."
-},
+    sideEffects
     iron:{
     name:"Iron",
     category:"Vitamins",
     diseases:["anemia"],
+
     mgPerKg:3,
     frequency:"مرة يومياً",
     maxDose:60,
-    warnings:"قد يسبب إمساكاً وتغير لون البراز.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"قد يسبب إمساكاً وتغير لون البراز.",
+
+    alerts:[
+        "يفضل إعطاؤه على معدة فارغة إن أمكن.",
+        "لا يعطى مع الحليب أو الكالسيوم.",
+        "يعطى مع فيتامين C لتحسين الامتصاص."
+    ],
+
     strengths:[
         {name:"30 mg / 5 mL", concentration:30}
     ],
-    notes:"لعلاج فقر الدم الناتج عن نقص الحديد."
-        mechanism:
-"يعوض نقص الحديد اللازم لتكوين الهيموغلوبين.",
 
-indications:
-"فقر الدم بنقص الحديد.",
+    notes:"لعلاج فقر الدم الناتج عن نقص الحديد.",
 
-contraindications:
-"زيادة مخزون الحديد.",
+    mechanism:"يعوض نقص الحديد اللازم لتكوين الهيموغلوبين.",
 
-sideEffects:
-"إمساك، غثيان، تغير لون البراز.",
+    indications:"فقر الدم بنقص الحديد.",
 
-pregnancy:
-"آمن ويوصى به عند الحاجة.",
+    contraindications:"زيادة مخزون الحديد.",
 
-storage:
-"يحفظ بعيداً عن الأطفال."
+    sideEffects:"إمساك، غثيان، تغير لون البراز.",
+
+    pregnancy:"آمن ويوصى به عند الحاجة.",
+
+    storage:"يحفظ بعيداً عن الأطفال."
 },
 
 calcium:{
     name:"Calcium",
     category:"Vitamins",
     diseases:["calcium"],
+
     mgPerKg:50,
     frequency:"مرة أو مرتين يومياً",
     maxDose:1000,
-    warnings:"يفضل تناوله بعيداً عن الحديد.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يفضل تناوله بعيداً عن الحديد.",
+
+    alerts:[
+        "يفصل ساعتين عن الحديد.",
+        "يفضل مع الطعام."
+    ],
+
     strengths:[
         {name:"125 mg / 5 mL", concentration:125}
     ],
-    notes:"لعلاج نقص الكالسيوم."
-    mechanism:
-"يعوض نقص الكالسيوم الضروري للعظام والعضلات.",
 
-indications:
-"نقص الكالسيوم.",
+    notes:"لعلاج نقص الكالسيوم.",
 
-contraindications:
-"فرط كالسيوم الدم.",
+    mechanism:"يعوض نقص الكالسيوم الضروري للعظام والعضلات.",
 
-sideEffects:
-"إمساك، انتفاخ.",
+    indications:"نقص الكالسيوم.",
 
-pregnancy:
-"آمن.",
+    contraindications:"فرط كالسيوم الدم.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"إمساك، انتفاخ.",
+
+    pregnancy:"آمن.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 oralRehydration:{
     name:"ORS",
     category:"Vitamins",
     diseases:["diarrhea"],
+
     mgPerKg:10,
     frequency:"بعد كل إسهال",
     maxDose:1000,
-    warnings:"يحضر حسب التعليمات.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يحضر حسب التعليمات.",
+
+    alerts:[
+        "يحضر بالماء النظيف فقط.",
+        "يرمى بعد 24 ساعة من التحضير."
+    ],
+
     strengths:[
         {name:"جاهز للاستعمال", concentration:1}
     ],
-    notes:"يعوض السوائل والأملاح."
-    mechanism:
-"يعوض الماء والأملاح المفقودة أثناء الإسهال.",
 
-indications:
-"الجفاف والإسهال.",
+    notes:"يعوض السوائل والأملاح.",
 
-contraindications:
-"انسداد الأمعاء أو القيء غير المسيطر عليه.",
+    mechanism:"يعوض الماء والأملاح المفقودة أثناء الإسهال.",
 
-sideEffects:
-"نادراً اضطراب معدي.",
+    indications:"الجفاف والإسهال.",
 
-pregnancy:
-"آمن.",
+    contraindications:"انسداد الأمعاء أو القيء غير المسيطر عليه.",
 
-storage:
-"يحفظ في مكان جاف، وبعد التحضير يستخدم خلال المدة الموصى بها."
+    sideEffects:"نادراً اضطراب معدي.",
+
+    pregnancy:"آمن.",
+
+    storage:"يحفظ في مكان جاف، وبعد التحضير يستخدم خلال المدة الموصى بها."
 },
 
 nystatin:{
     name:"Nystatin",
     category:"Antifungal",
     diseases:["fungal"],
+
     mgPerKg:1,
     frequency:"4 مرات يومياً",
     maxDose:5,
-    warnings:"يرج جيداً قبل الاستعمال.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يرج جيداً قبل الاستعمال.",
+
+    alerts:[
+        "يحفظ داخل الفم أطول مدة ممكنة قبل البلع.",
+        "يكمل العلاج عدة أيام بعد اختفاء الأعراض."
+    ],
+
     strengths:[
         {name:"100000 IU / mL", concentration:100000}
     ],
-    notes:"لعلاج فطريات الفم."
-    mechanism:
-"يرتبط بالإرغوستيرول ويؤدي إلى تدمير غشاء الخلية الفطرية.",
 
-indications:
-"فطريات الفم.",
+    notes:"لعلاج فطريات الفم.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يرتبط بالإرغوستيرول ويؤدي إلى تدمير غشاء الخلية الفطرية.",
 
-sideEffects:
-"تهيج بسيط أو غثيان.",
+    indications:"فطريات الفم.",
 
-pregnancy:
-"آمن.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"تهيج بسيط أو غثيان.",
+
+    pregnancy:"آمن.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 cetirizineDrops:{
     name:"Cetirizine Drops",
     category:"Antihistamines",
     diseases:["allergy"],
+
     mgPerKg:0.25,
     frequency:"مرة يومياً",
     maxDose:10,
-    warnings:"قد يسبب نعاساً خفيفاً.",
+
     minAge:0.5,
     maxAge:12,
+
+    warnings:"قد يسبب نعاساً خفيفاً.",
+
+    alerts:[
+        "مناسب للأطفال الصغار.",
+        "قد يسبب نعاساً بسيطاً."
+    ],
+
     strengths:[
         {name:"10 mg / mL", concentration:10}
     ],
-    notes:"مناسب للأطفال الصغار."
-    mechanism:
-"يثبط مستقبلات H1 للهيستامين.",
 
-indications:
-"الحساسية عند الأطفال الصغار.",
+    notes:"مناسب للأطفال الصغار.",
 
-contraindications:
-"الحساسية للدواء.",
+    mechanism:"يثبط مستقبلات H1 للهيستامين.",
 
-sideEffects:
-"نعاس خفيف.",
+    indications:"الحساسية عند الأطفال.",
 
-pregnancy:
-"يستخدم عند الحاجة.",
+    contraindications:"الحساسية للدواء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"نعاس خفيف.",
+
+    pregnancy:"يستخدم عند الحاجة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 dexamethasone:{
     name:"Dexamethasone",
     category:"Steroids",
     diseases:["asthma","allergy"],
+
     mgPerKg:0.15,
     frequency:"حسب وصف الطبيب",
     maxDose:10,
-    warnings:"لا يوقف بشكل مفاجئ بعد الاستخدام الطويل.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"لا يوقف بشكل مفاجئ بعد الاستخدام الطويل.",
+
+    alerts:[
+        "يستخدم للحالات الخاصة فقط.",
+        "لا يستعمل لفترات طويلة دون إشراف طبي."
+    ],
+
     strengths:[
         {name:"0.5 mg / 5 mL", concentration:0.5}
     ],
-    notes:"كورتيكوستيرويد للحالات الخاصة."
-    mechanism:
-"كورتيكوستيرويد قوي مضاد للالتهاب ومثبط للمناعة.",
 
-indications:
-"الحساسية الشديدة، الربو، الوذمة.",
+    notes:"كورتيكوستيرويد للحالات الخاصة.",
 
-contraindications:
-"العدوى الفطرية الجهازية غير المعالجة.",
+    mechanism:"كورتيكوستيرويد قوي مضاد للالتهاب ومثبط للمناعة.",
 
-sideEffects:
-"ارتفاع السكر، زيادة الشهية، تثبيط المناعة.",
+    indications:"الحساسية الشديدة، الربو، الوذمة.",
 
-pregnancy:
-"يستخدم عند الضرورة.",
+    contraindications:"العدوى الفطرية الجهازية غير المعالجة.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"ارتفاع السكر، زيادة الشهية، تثبيط المناعة.",
+
+    pregnancy:"يستخدم عند الضرورة.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 },
 
 prednisolone:{
     name:"Prednisolone",
     category:"Steroids",
     diseases:["asthma","allergy"],
+
     mgPerKg:1,
     frequency:"مرة يومياً",
     maxDose:60,
-    warnings:"يؤخذ بعد الطعام.",
+
     minAge:0,
     maxAge:12,
+
+    warnings:"يؤخذ بعد الطعام.",
+
+    alerts:[
+        "لا يوقف فجأة بعد الاستخدام الطويل.",
+        "يفضل صباحاً."
+    ],
+
     strengths:[
         {name:"15 mg / 5 mL", concentration:15}
     ],
-    notes:"يستخدم لنوبات الربو والحساسية."
-    mechanism:
-"كورتيكوستيرويد يقلل الالتهاب ويثبط الاستجابة المناعية.",
 
-indications:
-"الربو، الحساسية، الأمراض الالتهابية.",
+    notes:"يستخدم لنوبات الربو والحساسية.",
 
-contraindications:
-"العدوى الفطرية الجهازية غير المعالجة.",
+    mechanism:"كورتيكوستيرويد يقلل الالتهاب ويثبط الاستجابة المناعية.",
 
-sideEffects:
-"زيادة الشهية، ارتفاع السكر، اضطراب النوم.",
+    indications:"الربو، الحساسية، الأمراض الالتهابية.",
 
-pregnancy:
-"يستخدم عند الحاجة وتحت إشراف طبي.",
+    contraindications:"العدوى الفطرية الجهازية غير المعالجة.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة."
+    sideEffects:"زيادة الشهية، ارتفاع السكر، اضطراب النوم.",
+
+    pregnancy:"يستخدم عند الحاجة وتحت إشراف طبي.",
+
+    storage:"يحفظ بدرجة حرارة الغرفة."
 }
 
 };
