@@ -1114,3 +1114,48 @@ opacity:1;
 }
 
 }
+/*=========================
+Welcome Card
+=========================*/
+
+.welcome-card{
+
+background:linear-gradient(
+135deg,
+var(--main-color),
+#60a5fa
+);
+
+color:white;
+
+padding:22px;
+
+border-radius:22px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+box-shadow:0 12px 30px rgba(37,99,235,.25);
+
+animation:fadeUp .7s;
+
+}
+
+.welcome-card h2{
+
+color:white;
+
+margin-bottom:10px;
+
+font-size:28px;
+
+}
+
+.welcome-card p{
+
+color:#eef6ff;
+
+font-size:16px;
+
+}
