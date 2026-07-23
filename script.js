@@ -678,3 +678,507 @@ navigator.clipboard.writeText(result.innerText);
 alert("✅ تم نسخ النتيجة");
 
 });
+// ==========================
+// Reset
+// ==========================
+
+resetBtn.addEventListener("click", () => {
+
+    ageInput.value = "";
+    weightInput.value = "";
+
+    diseaseSelect.value = "";
+    drugSelect.value = "";
+    drug2Select.value = "";
+
+    strengthSelect.innerHTML =
+        '<option value="">اختر التركيز</option>';
+
+    result.innerHTML = "";
+    drugCard.style.display = "none";
+
+    const guide = document.getElementById("diseaseGuide");
+    if (guide) {
+        guide.style.display = "none";
+    }
+
+    const fluidResult = document.getElementById("fluidResult");
+    if (fluidResult) {
+        fluidResult.innerHTML = "";
+    }
+
+});
+
+
+// ==========================
+// Favorites
+// ==========================
+
+const favoritesList =
+document.getElementById("favoritesList");
+
+function loadFavorites() {
+
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.length === 0) {
+
+        favoritesList.innerHTML =
+            "لا توجد أدوية محفوظة.";
+
+        updateDashboard();
+        return;
+    }
+
+    favoritesList.innerHTML = "";
+
+    favorites.forEach((drug, index) => {
+
+        favoritesList.innerHTML += `
+
+<div class="history-item">
+
+💊 <b>${drug}</b>
+
+<br><br>
+
+<button onclick="removeFavorite(${index})">
+
+❌ حذف
+
+</button>
+
+</div>
+
+`;
+
+    });
+
+    updateDashboard();
+
+}
+
+loadFavorites();
+
+favoriteBtn.addEventListener("click", () => {
+
+    if (!drugSelect.value) {
+
+        alert("اختر دواء أولاً");
+
+        return;
+    }
+
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const drugName =
+        drugs[drugSelect.value].name;
+
+    if (!favorites.includes(drugName)) {
+
+        favorites.push(drugName);
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(favorites)
+        );
+
+    }
+
+    loadFavorites();
+
+    alert("⭐ تمت الإضافة للمفضلة");
+
+});
+
+function removeFavorite(index) {
+
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    favorites.splice(index, 1);
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+
+    loadFavorites();
+
+}
+
+showFavoritesBtn.addEventListener("click", () => {
+
+    const fav =
+        document.getElementById("favorites");
+
+    fav.style.display =
+        fav.style.display === "block"
+        ? "none"
+        : "block";
+
+});
+
+
+// ==========================
+// Dashboard
+// ==========================
+
+function updateDashboard() {
+
+    document.getElementById("calcCount").innerText =
+        localStorage.getItem("calcCount") || 0;
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    document.getElementById("favCount").innerText =
+        favorites.length;
+
+    document.getElementById("lastDrug").innerText =
+        localStorage.getItem("lastDrug") || "-";
+
+}
+
+updateDashboard();
+// ==========================
+// Drug Information
+// ==========================
+
+if (infoBtn) {
+
+    infoBtn.addEventListener("click", () => {
+
+        if (!drugSelect.value) {
+            alert("اختر دواء أولاً.");
+            return;
+        }
+
+        const drug = drugs[drugSelect.value];
+
+        document.getElementById("drugInfoContent").innerHTML = `
+
+<h2>💊 ${drug.name}</h2>
+
+<p><b>📂 التصنيف:</b> ${drug.category}</p>
+
+<p><b>⚙️ آلية العمل:</b><br>${drug.mechanism || "-"}</p>
+
+<p><b>✅ الاستعمالات:</b><br>${drug.indications || "-"}</p>
+
+<p><b>⛔ موانع الاستعمال:</b><br>${drug.contraindications || "-"}</p>
+
+<p><b>⚠️ الآثار الجانبية:</b><br>${drug.sideEffects || "-"}</p>
+
+<p><b>👶 العمر المناسب:</b>
+${drug.minAge} - ${drug.maxAge} سنة
+</p>
+
+<p><b>🤰 الحمل:</b><br>
+${drug.pregnancy || "-"}
+</p>
+
+<p><b>📦 التخزين:</b><br>
+${drug.storage || "-"}
+</p>
+
+<p><b>📝 الملاحظات:</b><br>
+${drug.notes}
+</p>
+
+`;
+
+        document.getElementById("drugInfoModal").style.display = "block";
+
+    });
+
+}
+
+// ==========================
+// Close Modal
+// ==========================
+
+const closeModal = document.getElementById("closeModal");
+
+if (closeModal) {
+
+    closeModal.onclick = () => {
+
+        document.getElementById("drugInfoModal").style.display = "none";
+
+    };
+
+}
+
+window.onclick = (e) => {
+
+    const modal = document.getElementById("drugInfoModal");
+
+    if (e.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
+
+
+// ==========================
+// Dark Mode
+// ==========================
+
+if (localStorage.getItem("theme") === "dark") {
+
+    document.body.classList.add("dark");
+
+}
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+
+});
+
+
+// ==========================
+// Color Themes
+// ==========================
+
+const colors = [
+
+"#2563eb",
+"#16a34a",
+"#dc2626",
+"#7c3aed",
+"#ea580c",
+"#0891b2"
+
+];
+
+let colorIndex = 0;
+
+const savedColor = localStorage.getItem("mainColor");
+
+if (savedColor) {
+
+    document.documentElement.style.setProperty(
+        "--main-color",
+        savedColor
+    );
+
+    colorIndex = colors.indexOf(savedColor);
+
+    if (colorIndex < 0) colorIndex = 0;
+
+}
+
+colorBtn.addEventListener("click", () => {
+
+    colorIndex++;
+
+    if (colorIndex >= colors.length)
+        colorIndex = 0;
+
+    document.documentElement.style.setProperty(
+        "--main-color",
+        colors[colorIndex]
+    );
+
+    localStorage.setItem(
+        "mainColor",
+        colors[colorIndex]
+    );
+
+});
+
+
+// ==========================
+// Language
+// ==========================
+
+let currentLang =
+localStorage.getItem("language") || "ar";
+
+applyLanguage(currentLang);
+
+langBtn.addEventListener("click", () => {
+
+    currentLang =
+    currentLang === "ar"
+    ? "en"
+    : "ar";
+
+    applyLanguage(currentLang);
+
+});
+
+function applyLanguage(lang){
+
+    localStorage.setItem("language", lang);
+
+    document.documentElement.lang = lang;
+
+    document.documentElement.dir =
+    lang === "ar"
+    ? "rtl"
+    : "ltr";
+
+}
+// ==========================
+// Export PDF
+// ==========================
+
+if (pdfBtn) {
+
+    pdfBtn.addEventListener("click", () => {
+
+        if (result.innerHTML.trim() === "") {
+
+            alert("لا توجد نتيجة لحفظها.");
+            return;
+
+        }
+
+        html2pdf()
+            .from(result)
+            .save("DoseCare_Result.pdf");
+
+    });
+
+}
+
+
+// ==========================
+// Pediatric Fluid Calculator
+// ==========================
+
+if (fluidBtn) {
+
+    fluidBtn.addEventListener("click", () => {
+
+        const weight = Number(weightInput.value);
+
+        if (!weight) {
+
+            alert("يرجى إدخال الوزن أولاً.");
+            return;
+
+        }
+
+        let fluid = 0;
+
+        if (weight <= 10) {
+
+            fluid = weight * 100;
+
+        } else if (weight <= 20) {
+
+            fluid = 1000 + ((weight - 10) * 50);
+
+        } else {
+
+            fluid = 1500 + ((weight - 20) * 20);
+
+        }
+
+        document.getElementById("fluidResult").innerHTML = `
+
+<div class="result-card">
+
+<h2>💧 Daily Fluid Requirement</h2>
+
+<div class="result-item">
+
+<span>⚖️ الوزن</span>
+
+<strong>${weight} Kg</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>💧 الاحتياج اليومي</span>
+
+<strong>${fluid.toFixed(0)} mL/day</strong>
+
+</div>
+
+</div>
+
+`;
+
+    });
+
+}
+
+
+// ==========================
+// Helper Function
+// ==========================
+
+function getFrequencyNumber(freq) {
+
+    if (freq.includes("4")) return 6;
+    if (freq.includes("6")) return 4;
+    if (freq.includes("8")) return 3;
+    if (freq.includes("12")) return 2;
+    return 1;
+
+}
+
+
+// ==========================
+// Service Worker
+// ==========================
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker
+            .register("sw.js")
+            .then(() => {
+
+                console.log("✅ Service Worker Registered");
+
+            })
+            .catch(err => {
+
+                console.log(err);
+
+            });
+
+    });
+
+}
+
+
+// ==========================
+// Splash Screen
+// ==========================
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        const splash =
+        document.getElementById("splash");
+
+        if (splash) {
+
+            splash.classList.add("hide");
+
+        }
+
+    }, 2000);
+
+});
