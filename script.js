@@ -463,21 +463,46 @@ const drug2Id = document.getElementById("drug2").value;
 
 if(!age){
 
-result.innerHTML=`
-<div class="warning-box">
-⚠️ يرجى إدخال العمر.
+<div class="result-item">
+<div>
+👶 <span>العمر</span>
 </div>
-`;
+<strong>${age} سنة</strong>
+</div>
 
-return;
+<div class="result-item">
+<div>
+⚖️ <span>الوزن</span>
+</div>
+<strong>${weight} Kg</strong>
+</div>
 
-}
+<div class="result-item">
+<div>
+💊 <span>الجرعة</span>
+</div>
+<strong>${singleDose.toFixed(1)} mg</strong>
+</div>
 
-if(!weight){
+<div class="result-item">
+<div>
+🥄 <span>الحجم</span>
+</div>
+<strong>${doseMl.toFixed(1)} mL</strong>
+</div>
 
-result.innerHTML=`
-<div class="warning-box">
-⚠️ يرجى إدخال الوزن.
+<div class="result-item">
+<div>
+⏰ <span>التكرار</span>
+</div>
+<strong>${drug.frequency}</strong>
+</div>
+
+<div class="result-item">
+<div>
+🚫 <span>الحد الأقصى</span>
+</div>
+<strong>${drug.maxDose} mg</strong>
 </div>
 `;
 
