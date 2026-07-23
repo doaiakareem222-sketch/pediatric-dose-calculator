@@ -9,14 +9,18 @@
 <title>DoseCare</title>
 
 <link rel="icon" href="favicon.svg">
-  <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json">
+
 <link rel="stylesheet" href="style.css">
- <script src="https://unpkg.com/html5-qrcode"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 </head>
 
 <body>
 
-  <div id="splash">
+<!-- Splash Screen -->
+<div id="splash">
 
 <div class="logo">
 🩺
@@ -27,6 +31,9 @@
 <p>Pediatric Dose Calculator</p>
 
 </div>
+
+<!-- Header -->
+
 <header class="header">
 
 <div class="logo">
@@ -48,267 +55,226 @@
 </header>
 
 <div class="container">
-  <div class="welcome-card">
+
+<div class="welcome-card">
 
 <h2>👋 Welcome to DoseCare</h2>
 
-<p>
-Your Smart Pediatric Dose Calculator
-</p>
+<p>Your Smart Pediatric Dose Calculator</p>
 
 </div>
 
-<h1 id="appTitle">🩺 DoseCare</h1>
+<h1>🩺 DoseCare</h1>
 
-<p class="subtitle" id="appSubtitle">
+<p class="subtitle">
 حاسبة جرعات الأطفال بالاعتماد على الوزن
 </p>
 
 <div class="card">
+  <!-- البحث حسب المرض -->
 
-<label id="lblDisease" for="disease">
-🔍 البحث حسب المرض
-</label>
+<label for="disease">🔍 البحث حسب المرض</label>
 
 <select id="disease">
 
 <option value="">اختر المرض</option>
 
 <option value="fever">Fever</option>
+
 <option value="pain">Pain</option>
+
 <option value="otitis">Otitis Media</option>
+
 <option value="pharyngitis">Pharyngitis</option>
+
 <option value="sinusitis">Sinusitis</option>
+
 <option value="pneumonia">Pneumonia</option>
+
 <option value="uti">UTI</option>
+
 <option value="diarrhea">Diarrhea</option>
+
 <option value="vomiting">Vomiting</option>
+
 <option value="asthma">Asthma</option>
+
 <option value="allergy">Allergy</option>
+
 <option value="fungal">Fungal Infection</option>
+
 <option value="worms">Worm Infestation</option>
 
 </select>
-<div id="diseaseGuide"
-class="guide-card"
-style="display:none;">
-</div>
-<label id="lblSearchDrug" for="searchDrug">
-البحث عن الدواء
-</label>
+
+<div id="diseaseGuide" class="guide-card" style="display:none;"></div>
+
+<!-- البحث عن الدواء -->
+
+<label for="searchDrug">🔎 البحث عن الدواء</label>
 
 <input
 type="text"
 id="searchDrug"
 placeholder="اكتب اسم الدواء...">
 
-<label id="lblDrug" for="drug">
-اسم الدواء
-</label>
+<!-- اختيار الدواء -->
 
-<div class="input-group">
-
-<span class="icon">💊</span>
+<label for="drug">💊 اسم الدواء</label>
 
 <select id="drug">
-...
-</select>
-
-</div>
 
 <option value="">اختر الدواء</option>
 
-<optgroup label="💊 Pain & Fever">
-<option value="paracetamol">Paracetamol</option>
-<option value="ibuprofen">Ibuprofen</option>
-</optgroup>
-
-<optgroup label="🦠 Antibiotics">
-<option value="amoxicillin">Amoxicillin</option>
-<option value="coamoxiclav">Co-amoxiclav</option>
-<option value="azithromycin">Azithromycin</option>
-<option value="cefixime">Cefixime</option>
-<option value="cefuroxime">Cefuroxime</option>
-<option value="cephalexin">Cephalexin</option>
-<option value="clarithromycin">Clarithromycin</option>
-<option value="metronidazole">Metronidazole</option>
-</optgroup>
-
-<optgroup label="🤧 Antihistamines">
-<option value="cetirizine">Cetirizine</option>
-<option value="loratadine">Loratadine</option>
-<option value="chlorpheniramine">Chlorpheniramine</option>
-</optgroup>
-
-<optgroup label="🫁 Asthma">
-<option value="salbutamol">Salbutamol</option>
-<option value="budesonide">Budesonide</option>
-<option value="montelukast">Montelukast</option>
-</optgroup>
-
-<optgroup label="🤢 Antiemetic">
-<option value="ondansetron">Ondansetron</option>
-</optgroup>
-
-<optgroup label="🍄 Antifungal">
-<option value="fluconazole">Fluconazole</option>
-</optgroup>
-
-<optgroup label="🪱 Antiparasitic">
-<option value="albendazole">Albendazole</option>
-</optgroup>
-
-<optgroup label="💊 Vitamins">
-<option value="zinc">Zinc</option>
-</optgroup>
-
 </select>
-<label id="lblDrug2" for="drug2">
-الدواء الثاني (اختياري)
-</label>
+
+<!-- الدواء الثاني -->
+
+<label for="drug2">💊 الدواء الثاني (اختياري)</label>
 
 <select id="drug2">
 
 <option value="">بدون</option>
 
-<optgroup label="💊 Pain & Fever">
-<option value="paracetamol">Paracetamol</option>
-<option value="ibuprofen">Ibuprofen</option>
-</optgroup>
-
-<optgroup label="🦠 Antibiotics">
-<option value="amoxicillin">Amoxicillin</option>
-<option value="coamoxiclav">Co-amoxiclav</option>
-<option value="azithromycin">Azithromycin</option>
-<option value="cefixime">Cefixime</option>
-<option value="cefuroxime">Cefuroxime</option>
-<option value="cephalexin">Cephalexin</option>
-<option value="clarithromycin">Clarithromycin</option>
-<option value="metronidazole">Metronidazole</option>
-</optgroup>
-
-<optgroup label="🤧 Antihistamines">
-<option value="cetirizine">Cetirizine</option>
-<option value="loratadine">Loratadine</option>
-<option value="chlorpheniramine">Chlorpheniramine</option>
-</optgroup>
-
-<optgroup label="🫁 Asthma">
-<option value="salbutamol">Salbutamol</option>
-<option value="budesonide">Budesonide</option>
-<option value="montelukast">Montelukast</option>
-</optgroup>
-
-<optgroup label="🤢 Antiemetic">
-<option value="ondansetron">Ondansetron</option>
-</optgroup>
-
-<optgroup label="🍄 Antifungal">
-<option value="fluconazole">Fluconazole</option>
-</optgroup>
-
-<optgroup label="🪱 Antiparasitic">
-<option value="albendazole">Albendazole</option>
-</optgroup>
-
-<optgroup label="💊 Vitamins">
-<option value="zinc">Zinc</option>
-</optgroup>
-
 </select>
-<label id="lblStrength" for="strength">
-تركيز الدواء
-</label>
+
+<!-- التركيز -->
+
+<label for="strength">🧪 تركيز الدواء</label>
 
 <select id="strength">
+
 <option value="">اختر التركيز</option>
+
 </select>
 
 <div id="drugCard" class="drug-card" style="display:none;"></div>
+
 <div id="clinicalAlert" class="clinical-alert" style="display:none;"></div>
-<button id="favorite">
-⭐ <span id="btnFavorite">إضافة إلى المفضلة</span>
-</button>
 
-<button id="showFavorites" class="favorite-btn">
-📖 <span id="btnShowFavorites">عرض المفضلة</span>
-</button>
-<label id="lblAge" for="age">
-العمر (بالسنوات)
-</label>
+<!-- العمر -->
 
-<div class="input-group">
-
-<span class="icon">👶</span>
+<label for="age">👶 العمر (بالسنوات)</label>
 
 <input
 type="number"
 id="age"
-placeholder="مثال: 5">
+placeholder="مثال 5">
 
-</div>
+<!-- الوزن -->
 
-<label id="lblWeight" for="weight">
-الوزن (Kg)
-</label>
-
-<div class="input-group">
-
-<span class="icon">⚖️</span>
+<label for="weight">⚖️ الوزن (Kg)</label>
 
 <input
 type="number"
 id="weight"
-placeholder="مثال: 18">
-
-</div>
-
-  <div class="input-group">
-
-<span class="icon">🔎</span>
-
-<input
-type="text"
-id="searchDrug"
-placeholder="اكتب اسم الدواء...">
-
-</div>
-  <hr style="margin:20px 0;">
-
-<h3>💧 Pediatric Fluid Calculator</h3>
-
-<button id="fluidBtn" class="blue">
-💧 احسب احتياج السوائل
-</button>
-
-<div id="fluidResult"></div>
+placeholder="مثال 18">
 <button id="calculate">
-🧮 <span id="btnCalculate">احسب الجرعة</span>
+🧮 احسب الجرعة
 </button>
 
-<button id="reset" class="red">
-🔄 <span id="btnReset">إعادة تعيين</span>
+<button id="reset" class="reset-btn">
+🔄 إعادة تعيين
 </button>
 
-<button id="copy" class="green">
-📋 <span id="btnCopy">نسخ النتيجة</span>
+<button id="copy" class="copy-btn">
+📋 نسخ النتيجة
 </button>
 
-  <button id="pdf" class="blue">
+<button id="favorite" class="favorite-btn">
+⭐ إضافة للمفضلة
+</button>
+
+<button id="showFavorites" class="favorite-btn">
+📖 عرض المفضلة
+</button>
+
+<button id="info" class="info-btn">
+ℹ️ معلومات الدواء
+</button>
+
+<button id="pdf">
 📄 تحميل PDF
 </button>
 
-<button id="info" class="purple">
-ℹ️ <span id="btnInfo">معلومات الدواء</span>
+<button id="fluidBtn">
+💧 احتياج السوائل
 </button>
-  <div id="loading" class="loading-box" style="display:none;">
+<div id="fluidResult"></div>
+
+<div id="loading" style="display:none;">
 
 <div class="loader"></div>
 
 <p>Calculating Dose...</p>
 
 </div>
-<div id="result" class="fade-result"></div>
+
+<div id="result"></div>
+
+<div id="history"></div>
+
+<div id="favorites" class="history">
+
+<h2>⭐ الأدوية المفضلة</h2>
+
+<div id="favoritesList">
+لا توجد أدوية محفوظة.
+</div>
+
+</div>
+<div class="dashboard">
+
+<h2>📊 Dashboard</h2>
+
+<div class="stats">
+
+<div class="stat-card">
+<h3 id="calcCount">0</h3>
+<p>عدد الحسابات</p>
+</div>
+
+<div class="stat-card">
+<h3 id="favCount">0</h3>
+<p>المفضلة</p>
+</div>
+
+<div class="stat-card">
+<h3 id="lastDrug">-</h3>
+<p>آخر دواء</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- نهاية Card -->
+
+<div class="about">
+
+<h2>ℹ️ About DoseCare</h2>
+
+<p>
+DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن
+والمراجع الدوائية القياسية.
+</p>
+
+<p>
+⚠️ النتائج لغرض التعليم فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
+</p>
+
+</div>
+
+<div class="footer">
+
+Developed by Doaa Kareem © 2026
+
+</div>
+
+<!-- نافذة معلومات الدواء -->
+
 <div id="drugInfoModal" class="modal">
 
 <div class="modal-content">
@@ -320,95 +286,9 @@ placeholder="اكتب اسم الدواء...">
 </div>
 
 </div>
-<div id="history"></div>
-
-<div class="dashboard">
-
-<h2 id="dashboardTitle">📊 Dashboard</h2>
-
-<div class="stats">
-
-<div class="stat-card">
-<h3 id="calcCount">0</h3>
-<p id="txtCalcCount">عدد الحسابات</p>
-</div>
-
-<div class="stat-card">
-<h3 id="favCount">0</h3>
-<p id="txtFavorites">المفضلة</p>
-</div>
-
-<div class="stat-card">
-<h3 id="lastDrug">-</h3>
-<p id="txtLastDrug">آخر دواء</p>
-</div>
-
-</div>
-
-</div>
-
-<div id="favorites" class="history">
-
-<h2 id="favoritesTitle">
-⭐ الأدوية المفضلة
-</h2>
-
-<div id="favoritesList">
-لا توجد أدوية محفوظة.
-</div>
-
-</div>
-</div>
-
-<div class="about-card">
-
-<h2 id="aboutTitle">ℹ️ About DoseCare</h2>
-
-<p id="aboutText">
-DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
-</p>
-<p><p id="warningText">
-⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
-</p>
-<p class="copyright">
-Developed by Doaa Kareem © 2026
-</p>
-
-</div>
-
-</div>
-
-  <script src="lang.js"></script>
+<script src="lang.js"></script>
 <script src="drugs.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="script.js"></script>
+
 </body>
-
 </html>
-
-
-.loader{
-
-width:55px;
-
-height:55px;
-
-border:6px solid #334155;
-
-border-top:6px solid #7c3aed;
-
-border-radius:50%;
-
-margin:auto;
-
-animation:spin 1s linear infinite;
-
-}
-
-@keyframes spin{
-
-0%{transform:rotate(0deg);}
-
-100%{transform:rotate(360deg);}
-
-}
