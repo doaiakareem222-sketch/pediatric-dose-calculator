@@ -762,7 +762,13 @@ zinc:{
 
     contraindications:"الحساسية للدواء.",
 
-    sideEffects
+    sideEffects:"غثيان خفيف، اضطراب معدي.",
+
+pregnancy:"آمن.",
+
+storage:"يحفظ بدرجة حرارة الغرفة."
+},
+
     iron:{
     name:"Iron",
     category:"Vitamins",
