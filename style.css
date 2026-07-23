@@ -1159,3 +1159,44 @@ color:#eef6ff;
 font-size:16px;
 
 }
+/* ==========================
+Clinical Alerts
+========================== */
+
+.clinical-alert{
+
+margin-top:15px;
+padding:18px;
+border-radius:15px;
+background:#fff8e1;
+border-right:6px solid #f59e0b;
+animation:fade .3s;
+
+}
+
+.clinical-alert h3{
+
+margin-bottom:10px;
+color:#b45309;
+
+}
+
+.clinical-alert ul{
+
+padding-right:20px;
+
+}
+
+.clinical-alert li{
+
+margin-bottom:8px;
+line-height:1.7;
+
+}
+
+body.dark .clinical-alert{
+
+background:#3b2f1d;
+color:white;
+
+}
