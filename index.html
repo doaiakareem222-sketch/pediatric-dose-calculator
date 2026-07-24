@@ -1,449 +1,331 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <title>DoseCare</title>
+<title>DoseCare</title>
 
-    <meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="#0B0F19">
 
-    <meta name="description"
-        content="DoseCare - Pediatric Dose Calculator">
+<meta
+name="description"
+content="DoseCare Pediatric Dose Calculator">
 
-    <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json">
 
-    <link rel="icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- Splash Screen -->
+<!-- ========================= -->
+<!-- Welcome Screen -->
+<!-- ========================= -->
 
-    <div id="splash">
+<div id="welcomeScreen">
 
-        <div class="splash-content">
+<div class="welcome-content">
 
-            <h1>Welcome</h1>
+<h1 class="welcome-title">
 
-            <h2>DoseCare</h2>
+WELCOME
 
-            <p>Pediatric Dose Calculator</p>
+</h1>
 
-            <div class="loader">
+<h2 class="app-title">
 
-                <div class="loader-bar"></div>
+DoseCare
 
-            </div>
+</h2>
 
-        </div>
+<p class="developer-name">
 
-    </div>
+By Duaa
 
-    <!-- Main App -->
-
-    <div class="container">
-
-        <!-- Header -->
-
-        <header class="header">
-
-            <div>
-
-                <h1>DoseCare</h1>
-
-                <p class="subtitle">
-                    Pediatric Dose Calculator
-                </p>
-            </div>
-
-            <button id="themeBtn"
-                class="theme-btn">
-
-                🌙
-
-            </button>
-
-        </header>
-
-        <!-- Welcome Card -->
-
-        <section class="welcome-card">
-
-            <h2>Welcome</h2>
-
-            <p>
-
-                Calculate pediatric doses safely and quickly.
-
-            </p>
-
-        </section>
-
-            <!-- Calculator Card -->
-
-        <section class="card">
-
-            <label for="disease">
-
-                Disease
-
-            </label>
-
-            <select id="disease">
-
-                <option value="">Select Disease</option>
-
-                <option value="fever">Fever</option>
-
-                <option value="pain">Pain</option>
-
-                <option value="otitis">Otitis Media</option>
-
-                <option value="pharyngitis">Pharyngitis</option>
-
-                <option value="sinusitis">Sinusitis</option>
-
-                <option value="pneumonia">Pneumonia</option>
-
-                <option value="uti">Urinary Tract Infection</option>
-
-                <option value="diarrhea">Diarrhea</option>
-
-                <option value="vomiting">Vomiting</option>
-
-                <option value="asthma">Asthma</option>
-
-                <option value="allergy">Allergy</option>
-
-                <option value="fungal">Fungal Infection</option>
-
-                <option value="worms">Worm Infestation</option>
-
-            </select>
-
-            <div id="diseaseGuide"></div>
-<!-- Clinical Calculator -->
-
-<section class="clinical-tools">
-
-    <h3>Clinical Tools</h3>
-
-    <div class="tool-grid">
-
-        <button id="fluidBtn" class="tool-btn">
-            Daily Fluid
-        </button>
-
-        <button id="bsaBtn" class="tool-btn">
-            BSA
-        </button>
-
-        <button id="paracetamolToxicBtn" class="tool-btn">
-            Paracetamol Toxicity
-        </button>
-
-        <button id="burnFluidBtn" class="tool-btn">
-            Burn Fluid
-        </button>
-<button id="renalBtn" class="tool-btn">
-    Renal Dose
-</button>
-        <button id="compareBtn" class="tool-btn">
-    Compare Drugs
-</button>
-        <button id="emergencyBtn" class="tool-btn">
-    Emergency Drugs
-</button>
-        
-    </div>
-
-</section>
-
-<div id="clinicalResult"></div>
-            <div id="compareResult"></div>
-            <label for="searchDrug">
-
-                Search Drug
-
-            </label>
-
-            <input
-                type="text"
-                id="searchDrug"
-                placeholder="Search...">
-
-            <label for="drug">
-
-                Drug
-
-            </label>
-
-            <select id="drug">
-
-                <option value="">Select Drug</option>
-
-            </select>
-
-            <label for="strength">
-
-                Strength
-
-            </label>
-
-            <select id="strength">
-
-                <option value="">Select Strength</option>
-
-            </select>
-
-            <label for="drug2">
-
-                Second Drug (Interaction Checker)
-
-            </label>
-
-            <select id="drug2">
-
-                <option value="">None</option>
-
-            </select>
-
-            <label for="age">
-
-                Age (Years)
-
-            </label>
-
-            <input
-                type="number"
-                id="age"
-                placeholder="Enter Age">
-
-            <label for="weight">
-
-                Weight (Kg)
-
-            </label>
-
-            <input
-                type="number"
-                id="weight"
-                placeholder="Enter Weight">
-
-            <button id="calculate">
-
-                Calculate Dose
-
-            </button>
-
-        </section>
-              <!-- Dose Result -->
-
-        <section id="result"></section>
-        <section class="calculation-box">
-
-    <h2>Calculation Steps</h2>
-
-    <div id="calculationSteps">
-
-        No calculation yet.
-
-    </div>
-
-</section>
-<section id="clinicalDecision" class="clinical-decision">
-
-    <h2>Clinical Decision Support</h2>
-
-    <div id="clinicalDecisionContent">
-
-        No alerts
-
-    </div>
-
-</section>
-        <!-- Drug Card -->
-
-        <section
-            id="drugCard"
-            class="drug-card"
-            style="display:none;">
-
-        </section>
-
-        <!-- Clinical Alerts -->
-
-        <section
-            id="clinicalAlert"
-            class="clinical-alert"
-            style="display:none;">
-
-        </section>
-
-        <!-- History -->
-
-        <section
-            class="history">
-
-            <h2>
-
-                Recent Calculations
-
-            </h2>
-
-            <div id="history">
-
-            </div>
-
-        </section>
-
-        <!-- Dashboard -->
-
-        <section class="dashboard">
-
-            <h2>
-
-                Dashboard
-
-            </h2>
-
-            <div class="stats">
-
-                <div class="stat-card">
-
-                    <h3 id="calcCount">
-
-                        0
-
-                    </h3>
-
-                    <p>
-
-                        Calculations
-
-                    </p>
-
-                </div>
-
-                <div class="stat-card">
-
-                    <h3 id="lastDrug">
-
-                        -
-
-                    </h3>
-
-                    <p>
-
-                        Last Drug
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Drug Information Modal -->
-
-        <div
-            id="drugInfoModal"
-            class="modal">
-
-            <div class="modal-content">
-
-                <span
-                    id="closeModal"
-                    class="close">
-
-                    &times;
-
-                </span>
-
-                <div id="drugInfoContent">
-
-    <div class="drug-tabs">
-
-        <button class="tab-btn active" data-tab="overview">
-            Overview
-        </button>
-
-        <button class="tab-btn" data-tab="dose">
-            Dose
-        </button>
-
-        <button class="tab-btn" data-tab="warnings">
-            Warnings
-        </button>
-
-        <button class="tab-btn" data-tab="monitoring">
-            Monitoring
-        </button>
-
-        <button class="tab-btn" data-tab="pregnancy">
-            Pregnancy
-        </button>
-
-        <button class="tab-btn" data-tab="pk">
-            PK
-        </button>
-
-    </div>
-
-    <div id="tabContent"></div>
+</p>
 
 </div>
 
-            </div>
+</div>
 
-        </div>
-      
-                <!-- About -->
+<!-- ========================= -->
+<!-- Main App -->
+<!-- ========================= -->
 
-        <section class="about">
+<div id="app" class="container">
 
-            <h2>
+<header class="header">
 
-                About DoseCare
+<h1>
 
-            </h2>
+DoseCare
 
-            <p>
+</h1>
 
-                DoseCare is a pediatric dose calculator designed to help healthcare professionals estimate medication doses quickly using weight-based calculations.
+<p>
 
-            </p>
+Pediatric Dose Calculator
 
-            <p>
+</p>
 
-                Always verify doses using official clinical references before prescribing.
+</header>
+<!-- ========================= -->
+<!-- Calculator Card -->
+<!-- ========================= -->
 
-            </p>
+<section class="card">
 
-        </section>
+<label>Disease</label>
 
-    </div>
+<select id="disease">
 
-    <!-- Libraries -->
+<option value="">Select Disease</option>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<option value="fever">Fever</option>
 
-    <!-- Drug Database -->
+<option value="pain">Pain</option>
 
-    <script src="drugs.js"></script>
+<option value="otitis">Otitis Media</option>
 
-    <!-- Main Script -->
+<option value="pharyngitis">Pharyngitis</option>
 
-    <script src="script.js"></script>
+<option value="sinusitis">Sinusitis</option>
+
+<option value="pneumonia">Pneumonia</option>
+
+<option value="uti">Urinary Tract Infection</option>
+
+<option value="diarrhea">Diarrhea</option>
+
+<option value="vomiting">Vomiting</option>
+
+<option value="asthma">Asthma</option>
+
+<option value="allergy">Allergy</option>
+
+<option value="fungal">Fungal Infection</option>
+
+<option value="worms">Worm Infestation</option>
+
+</select>
+
+<div id="diseaseGuide"></div>
+
+<label>Search Drug</label>
+
+<input
+type="text"
+id="searchDrug"
+placeholder="Search...">
+
+<label>Drug</label>
+
+<select id="drug">
+
+<option value="">Select Drug</option>
+
+</select>
+
+<label>Strength</label>
+
+<select id="strength">
+
+<option value="">Select Strength</option>
+
+</select>
+
+<label>Age (Years)</label>
+
+<input
+type="number"
+id="age"
+placeholder="Enter Age">
+
+<label>Weight (Kg)</label>
+
+<input
+type="number"
+id="weight"
+placeholder="Enter Weight">
+
+<button id="calculate">
+
+Calculate Dose
+
+</button>
+
+</section>
+
+<!-- ========================= -->
+<!-- Result -->
+<!-- ========================= -->
+
+<section id="result"></section>
+    <!-- ========================= -->
+<!-- Drug Information -->
+<!-- ========================= -->
+
+<section
+id="drugCard"
+class="card"
+style="display:none;">
+
+</section>
+
+<!-- ========================= -->
+<!-- Clinical Alerts -->
+<!-- ========================= -->
+
+<section
+id="clinicalAlert"
+class="card"
+style="display:none;">
+
+</section>
+
+<!-- ========================= -->
+<!-- History -->
+<!-- ========================= -->
+
+<section class="card">
+
+<h2>
+
+Recent Calculations
+
+</h2>
+
+<div id="history">
+
+No calculations yet.
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Dashboard -->
+<!-- ========================= -->
+
+<section class="card">
+
+<h2>
+
+Dashboard
+
+</h2>
+
+<div class="dashboard-grid">
+
+<div class="dashboard-box">
+
+<h3 id="calcCount">
+
+0
+
+</h3>
+
+<p>
+
+Calculations
+
+</p>
+
+</div>
+
+<div class="dashboard-box">
+
+<h3 id="lastDrug">
+
+-
+
+</h3>
+
+<p>
+
+Last Drug
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- About -->
+<!-- ========================= -->
+
+<section class="card about">
+
+<h2>
+
+About DoseCare
+
+</h2>
+
+<p>
+
+DoseCare helps healthcare professionals calculate pediatric medication doses quickly using weight-based calculations.
+
+</p>
+
+<p>
+
+Always verify all doses using trusted clinical references before prescribing.
+
+</p>
+
+</section>
+
+</div>
+
+<!-- ========================= -->
+<!-- Drug Information Modal -->
+<!-- ========================= -->
+
+<div
+id="drugInfoModal"
+class="modal">
+
+<div class="modal-content">
+
+<span
+id="closeModal"
+class="close">
+
+&times;
+
+</span>
+
+<div id="modalBody">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Libraries -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<!-- Database -->
+
+<script src="drugs.js"></script>
+
+<!-- Main Script -->
+
+<script src="script.js"></script>
 
 </body>
 
