@@ -156,3 +156,221 @@ drugSelect.addEventListener("change", () => {
     `;
 
 });
+/* =========================================
+   Disease Filter
+========================================= */
+
+if (diseaseSelect) {
+
+    diseaseSelect.addEventListener("change", () => {
+
+        const disease = diseaseSelect.value;
+
+        drugSelect.innerHTML =
+            '<option value="">Select Drug</option>';
+
+        Object.keys(drugs).forEach(id => {
+
+            const drug = drugs[id];
+
+            if (
+
+                disease === "" ||
+
+                (
+                    drug.diseases &&
+                    drug.diseases.includes(disease)
+                )
+
+            ) {
+
+                const option = document.createElement("option");
+
+                option.value = id;
+
+                option.textContent = drug.name;
+
+                drugSelect.appendChild(option);
+
+            }
+
+        });
+
+        strengthSelect.innerHTML =
+            '<option value="">Select Strength</option>';
+
+        drugCard.style.display = "none";
+
+    });
+
+}
+
+
+/* =========================================
+   Strength Loader
+========================================= */
+
+function loadStrengths(drugId){
+
+    strengthSelect.innerHTML =
+        '<option value="">Select Strength</option>';
+
+    const drug = drugs[drugId];
+
+    if(!drug) return;
+
+    loadStrengths(drugSelect.value);
+}
+/* =========================================
+   Dose Calculator
+========================================= */
+
+calculateBtn.addEventListener("click", () => {
+
+    const age = Number(ageInput.value);
+
+    const weight = Number(weightInput.value);
+
+    const drugId = drugSelect.value;
+
+    const strengthIndex = strengthSelect.value;
+
+    if (!age) {
+
+        alert("Enter Age");
+
+        return;
+
+    }
+
+    if (!weight) {
+
+        alert("Enter Weight");
+
+        return;
+
+    }
+
+    if (!drugId) {
+
+        alert("Select Drug");
+
+        return;
+
+    }
+
+    if (strengthIndex === "") {
+
+        alert("Select Strength");
+
+        return;
+
+    }
+
+    const drug = drugs[drugId];
+
+    if (
+
+        age < drug.minAge ||
+
+        age > drug.maxAge
+
+    ) {
+
+        result.innerHTML = `
+
+<div class="warning-box">
+
+This drug is not suitable for this age.
+
+</div>
+
+`;
+
+        return;
+
+    }
+
+    const concentration =
+
+    drug.strengths[strengthIndex].concentration;
+
+    let doseMg =
+
+    weight * drug.mgPerKg;
+
+    let warning = "";
+
+    if (doseMg > drug.maxDose) {
+
+        doseMg = drug.maxDose;
+
+        warning = `
+
+<div class="warning-box">
+
+Maximum dose reached.
+
+</div>
+
+`;
+
+    }
+
+    const doseMl =
+
+    (doseMg / concentration) * 5;
+
+    result.innerHTML = `
+
+<div class="result-card">
+
+<h2>${drug.name}</h2>
+
+<div class="result-item">
+
+<span>Age</span>
+
+<strong>${age} Years</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>Weight</span>
+
+<strong>${weight} Kg</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>Dose</span>
+
+<strong>${doseMg.toFixed(1)} mg</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>Volume</span>
+
+<strong>${doseMl.toFixed(1)} mL</strong>
+
+</div>
+
+<div class="result-item">
+
+<span>Frequency</span>
+
+<strong>${drug.frequency}</strong>
+
+</div>
+
+${warning}
+
+</div>
+
+`;
+
+});
