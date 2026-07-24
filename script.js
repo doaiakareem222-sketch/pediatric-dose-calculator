@@ -70,3 +70,55 @@ console.log(`${APP.name} ${APP.version} Loaded Successfully`);
 let selectedDrug = null;
 
 let selectedStrength = null;
+
+// =========================================
+// Load Drugs
+// =========================================
+
+function loadDrugs() {
+
+    if (typeof drugs === "undefined") {
+
+        console.error("❌ drugs.js not loaded");
+
+        return;
+
+    }
+
+    drugSelect.innerHTML =
+        '<option value="">Select Drug</option>';
+
+    drug2Select.innerHTML =
+        '<option value="">None</option>';
+
+    Object.keys(drugs).forEach((id) => {
+
+        const drug = drugs[id];
+
+        // القائمة الرئيسية
+        const option1 = document.createElement("option");
+        option1.value = id;
+        option1.textContent = drug.name;
+        drugSelect.appendChild(option1);
+
+        // قائمة المقارنة
+        const option2 = document.createElement("option");
+        option2.value = id;
+        option2.textContent = drug.name;
+        drug2Select.appendChild(option2);
+
+    });
+
+    console.log("✅ Drugs Loaded :", Object.keys(drugs).length);
+
+}
+
+// =========================================
+// Start App
+// =========================================
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    loadDrugs();
+
+});
