@@ -104,3 +104,55 @@ function loadDrugs() {
 }
 
 loadDrugs();
+/* =========================================
+   Drug Selection
+========================================= */
+
+drugSelect.addEventListener("change", () => {
+
+    strengthSelect.innerHTML =
+        '<option value="">Select Strength</option>';
+
+    const drug = drugs[drugSelect.value];
+
+    if (!drug) {
+
+        drugCard.style.display = "none";
+
+        return;
+
+    }
+
+    drug.strengths.forEach((strength, index) => {
+
+        const option = document.createElement("option");
+
+        option.value = index;
+
+        option.textContent = strength.name;
+
+        strengthSelect.appendChild(option);
+
+    });
+
+    drugCard.style.display = "block";
+
+    drugCard.innerHTML = `
+
+        <h3>${drug.name}</h3>
+
+        <p><b>Category:</b> ${drug.category}</p>
+
+        <p><b>Dose:</b> ${drug.mgPerKg} mg/kg</p>
+
+        <p><b>Frequency:</b> ${drug.frequency}</p>
+
+        <p><b>Maximum:</b> ${drug.maxDose} mg</p>
+
+        <p><b>Age:</b> ${drug.minAge} - ${drug.maxAge} years</p>
+
+        <p>${drug.notes}</p>
+
+    `;
+
+});
