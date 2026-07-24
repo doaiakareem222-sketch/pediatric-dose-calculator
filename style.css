@@ -1101,3 +1101,38 @@ border-right:5px solid #f59e0b;
 font-weight:600;
 
 }
+.calculation-box{
+
+margin-top:20px;
+
+padding:20px;
+
+background:white;
+
+border-radius:18px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.calculation-box h2{
+
+margin-bottom:15px;
+
+}
+
+.calculation-step{
+
+padding:12px;
+
+margin:8px 0;
+
+background:#f8fafc;
+
+border-radius:10px;
+
+font-family:monospace;
+
+font-size:15px;
+
+}
