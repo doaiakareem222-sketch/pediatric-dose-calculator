@@ -1023,3 +1023,44 @@ body.dark .clinical-alert{
 /* ==========================================
    End Of File
 ========================================== */
+/* ==========================
+   Drug Comparison
+========================== */
+
+.compare-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:15px;
+
+font-size:14px;
+
+}
+
+.compare-table th{
+
+background:var(--main-color);
+
+color:white;
+
+padding:10px;
+
+}
+
+.compare-table td{
+
+border:1px solid #ddd;
+
+padding:10px;
+
+text-align:center;
+
+}
+
+.compare-table tr:nth-child(even){
+
+background:#f8f8f8;
+
+}
