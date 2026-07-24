@@ -710,6 +710,219 @@ splash.classList.add("hide");
 
 });
 
+// ==========================
+// BSA Calculator
+// ==========================
+
+const bsaBtn = document.getElementById("bsaBtn");
+
+if (bsaBtn) {
+
+    bsaBtn.addEventListener("click", () => {
+
+        const weight = Number(weightInput.value);
+        const age = Number(ageInput.value);
+
+        if (!weight || !age) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                أدخل العمر والوزن أولاً.
+            </div>
+            `;
+            return;
+
+        }
+
+        // تقدير الطول للأطفال
+        let height = age * 6 + 77;
+
+        const bsa = Math.sqrt((height * weight) / 3600);
+
+        clinicalResult.innerHTML = `
+
+        <div class="result-card">
+
+            <h2>Body Surface Area</h2>
+
+            <div class="result-item">
+                <span>Estimated Height</span>
+                <strong>${height.toFixed(0)} cm</strong>
+            </div>
+
+            <div class="result-item">
+                <span>BSA</span>
+                <strong>${bsa.toFixed(2)} m²</strong>
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+// ==========================
+// Burn Fluid Calculator
+// ==========================
+
+const burnFluidBtn = document.getElementById("burnFluidBtn");
+
+if (burnFluidBtn) {
+
+    burnFluidBtn.addEventListener("click", () => {
+
+        const weight = Number(weightInput.value);
+
+        if (!weight) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                أدخل الوزن أولاً.
+            </div>
+            `;
+            return;
+
+        }
+
+        let burnPercent = prompt("Burn %TBSA");
+
+        if (burnPercent === null) return;
+
+        burnPercent = Number(burnPercent);
+
+        if (!burnPercent || burnPercent <= 0) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                نسبة الحرق غير صحيحة.
+            </div>
+            `;
+            return;
+
+        }
+
+        const totalFluid = 4 * weight * burnPercent;
+
+        const first8 = totalFluid / 2;
+
+        const next16 = totalFluid / 2;
+
+        clinicalResult.innerHTML = `
+
+        <div class="result-card">
+
+            <h2>Parkland Formula</h2>
+
+            <div class="result-item">
+                <span>Total Fluid</span>
+                <strong>${totalFluid.toFixed(0)} mL</strong>
+            </div>
+
+            <div class="result-item">
+                <span>First 8 Hours</span>
+                <strong>${first8.toFixed(0)} mL</strong>
+            </div>
+
+            <div class="result-item">
+                <span>Next 16 Hours</span>
+                <strong>${next16.toFixed(0)} mL</strong>
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+// ==========================
+// Paracetamol Toxicity Calculator
+// ==========================
+
+const paracetamolToxicBtn = document.getElementById("paracetamolToxicBtn");
+
+if (paracetamolToxicBtn) {
+
+    paracetamolToxicBtn.addEventListener("click", () => {
+
+        const weight = Number(weightInput.value);
+
+        if (!weight) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                أدخل الوزن أولاً.
+            </div>
+            `;
+            return;
+
+        }
+
+        let takenDose = prompt("Amount Taken (mg)");
+
+        if (takenDose === null) return;
+
+        takenDose = Number(takenDose);
+
+        if (!takenDose || takenDose <= 0) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                الجرعة غير صحيحة.
+            </div>
+            `;
+            return;
+
+        }
+
+        const mgKg = takenDose / weight;
+
+        let status = "";
+        let color = "";
+
+        if (mgKg < 150) {
+
+            status = "Low Risk";
+            color = "#16a34a";
+
+        } else if (mgKg < 200) {
+
+            status = "Observe Patient";
+            color = "#f59e0b";
+
+        } else {
+
+            status = "Possible Toxic Dose";
+            color = "#dc2626";
+
+        }
+
+        clinicalResult.innerHTML = `
+
+        <div class="result-card">
+
+            <h2>Paracetamol Toxicity</h2>
+
+            <div class="result-item">
+                <span>Dose / Kg</span>
+                <strong>${mgKg.toFixed(1)} mg/kg</strong>
+            </div>
+
+            <div class="result-item">
+                <span>Status</span>
+                <strong style="color:${color}">
+                    ${status}
+                </strong>
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
 
 // ========================================
 // Service Worker
