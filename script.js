@@ -41,16 +41,18 @@ const calcCount = document.getElementById("calcCount");
 const lastDrug = document.getElementById("lastDrug");
 
 /* =========================================
-   Welcome Screen
+   Welcome Screen Test
 ========================================= */
 
 window.addEventListener("load", () => {
+
+alert("JavaScript Works");
 
 setTimeout(() => {
 
 welcomeScreen.classList.add("hide");
 
-}, 1800);
+}, 2000);
 
 });
 /* =========================================
