@@ -923,6 +923,179 @@ if (paracetamolToxicBtn) {
     });
 
 }
+// ==========================
+// Renal Dose Calculator
+// ==========================
+
+const renalBtn = document.getElementById("renalBtn");
+
+if (renalBtn) {
+
+    renalBtn.addEventListener("click", () => {
+
+        const age = Number(ageInput.value);
+
+        const weight = Number(weightInput.value);
+
+        if (!age || !weight) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                أدخل العمر والوزن أولاً.
+            </div>`;
+            return;
+
+        }
+
+        let scr = prompt("Serum Creatinine (mg/dL)");
+
+        if (scr === null) return;
+
+        scr = Number(scr);
+
+        if (!scr || scr <= 0) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                قيمة الكرياتينين غير صحيحة.
+            </div>`;
+            return;
+
+        }
+
+        const crcl = ((140 - age) * weight) / (72 * scr);
+
+        let advice = "";
+
+        if (crcl >= 90) {
+
+            advice = "Normal Renal Function";
+
+        } else if (crcl >= 60) {
+
+            advice = "Mild Renal Impairment";
+
+        } else if (crcl >= 30) {
+
+            advice = "Moderate Renal Impairment";
+
+        } else {
+
+            advice = "Severe Renal Impairment";
+
+        }
+
+        clinicalResult.innerHTML = `
+
+        <div class="result-card">
+
+            <h2>Renal Function</h2>
+
+            <div class="result-item">
+
+                <span>Creatinine Clearance</span>
+
+                <strong>${crcl.toFixed(1)} mL/min</strong>
+
+            </div>
+
+            <div class="result-item">
+
+                <span>Assessment</span>
+
+                <strong>${advice}</strong>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+// ==========================
+// Drug Comparison
+// ==========================
+
+const compareBtn = document.getElementById("compareBtn");
+
+if (compareBtn) {
+
+    compareBtn.addEventListener("click", () => {
+
+        const drug1 = drugs[drugSelect.value];
+        const drug2 = drugs[drug2Select.value];
+
+        if (!drug1 || !drug2) {
+
+            compareResult.innerHTML = `
+            <div class="warning-box">
+                اختر دوائين للمقارنة.
+            </div>`;
+            return;
+
+        }
+
+        compareResult.innerHTML = `
+
+<div class="result-card">
+
+<h2>Drug Comparison</h2>
+
+<table class="compare-table">
+
+<tr>
+<th></th>
+<th>${drug1.name}</th>
+<th>${drug2.name}</th>
+</tr>
+
+<tr>
+<td>Category</td>
+<td>${drug1.category}</td>
+<td>${drug2.category}</td>
+</tr>
+
+<tr>
+<td>Dose</td>
+<td>${drug1.mgPerKg} mg/kg</td>
+<td>${drug2.mgPerKg} mg/kg</td>
+</tr>
+
+<tr>
+<td>Frequency</td>
+<td>${drug1.frequency}</td>
+<td>${drug2.frequency}</td>
+</tr>
+
+<tr>
+<td>Maximum</td>
+<td>${drug1.maxDose} mg</td>
+<td>${drug2.maxDose} mg</td>
+</tr>
+
+<tr>
+<td>Mechanism</td>
+<td>${drug1.mechanism}</td>
+<td>${drug2.mechanism}</td>
+</tr>
+
+<tr>
+<td>Warnings</td>
+<td>${drug1.warnings}</td>
+<td>${drug2.warnings}</td>
+</tr>
+
+</table>
+
+</div>
+
+`;
+
+    });
+
+}
 
 // ========================================
 // Service Worker
