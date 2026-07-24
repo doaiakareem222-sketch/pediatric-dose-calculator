@@ -1096,6 +1096,71 @@ if (compareBtn) {
     });
 
 }
+// ==========================
+// Emergency Drug Calculator
+// ==========================
+
+const emergencyBtn = document.getElementById("emergencyBtn");
+
+if (emergencyBtn) {
+
+    emergencyBtn.addEventListener("click", () => {
+
+        const weight = Number(weightInput.value);
+
+        if (!weight) {
+
+            clinicalResult.innerHTML = `
+            <div class="warning-box">
+                أدخل الوزن أولاً.
+            </div>
+            `;
+
+            return;
+
+        }
+
+        const adrenaline = (0.01 * weight).toFixed(2);
+
+        const atropine = (0.02 * weight).toFixed(2);
+
+        const amiodarone = (5 * weight).toFixed(1);
+
+        const calcium = (20 * weight).toFixed(1);
+
+        clinicalResult.innerHTML = `
+
+<div class="result-card">
+
+<h2>Emergency Drugs</h2>
+
+<div class="result-item">
+<span>Adrenaline</span>
+<strong>${adrenaline} mg</strong>
+</div>
+
+<div class="result-item">
+<span>Atropine</span>
+<strong>${atropine} mg</strong>
+</div>
+
+<div class="result-item">
+<span>Amiodarone</span>
+<strong>${amiodarone} mg</strong>
+</div>
+
+<div class="result-item">
+<span>Calcium Gluconate</span>
+<strong>${calcium} mg</strong>
+</div>
+
+</div>
+
+`;
+
+    });
+
+}
 
 // ========================================
 // Service Worker
