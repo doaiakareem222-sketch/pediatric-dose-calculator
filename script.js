@@ -327,6 +327,58 @@ calculateBtn.addEventListener("click", () => {
     }
 
     const drug = drugs[drugId];
+    // ==========================
+// Calculation Steps
+// ==========================
+
+const calculationBox =
+document.getElementById("calculationSteps");
+
+if(calculationBox){
+
+calculationBox.innerHTML = `
+
+<div class="calculation-step">
+
+Weight = ${weight} Kg
+
+</div>
+
+<div class="calculation-step">
+
+Dose = ${drug.mgPerKg} mg/kg
+
+</div>
+
+<div class="calculation-step">
+
+${weight} × ${drug.mgPerKg}
+=
+${doseMg.toFixed(1)} mg
+
+</div>
+
+<div class="calculation-step">
+
+Selected Strength
+
+=
+${drug.strengths[strengthIndex].name}
+
+</div>
+
+<div class="calculation-step">
+
+(${doseMg.toFixed(1)} ÷ ${concentration}) × 5
+
+=
+${doseMl.toFixed(1)} mL
+
+</div>
+
+`;
+
+}
 
     // =====================
     // Age Check
