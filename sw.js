@@ -1,4 +1,4 @@
-const CACHE_NAME = "dosecare-v1";
+const CACHE_NAME = "dosecare-v2";
 
 const urlsToCache = [
 
