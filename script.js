@@ -66,19 +66,12 @@ console.log(`${APP.name} ${APP.version} Loaded`);
 // Load Drugs
 // ===============================
 
-function loadDrugs() {
+function window.addEventListener("DOMContentLoaded", () => {
 
-    if (typeof drugs === "undefined") {
+    loadDrugs();
 
-        console.error("drugs.js not loaded");
-
-        return;
-
-    }
-
-    drugSelect.innerHTML =
-    '<option value="">Select Drug</option>';
-
+});
+console.log(drugs);
     drug2Select.innerHTML =
     '<option value="">None</option>';
 
