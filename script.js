@@ -286,7 +286,21 @@ This drug is not suitable for this age.
 </div>
 
 `;
+saveHistory(
 
+    drug.name,
+
+    weight,
+
+    doseMg,
+
+    doseMl
+
+);
+
+loadHistory();
+
+updateDashboard();
         return;
 
     }
@@ -374,3 +388,110 @@ ${warning}
 `;
 
 });
+
+/* =========================================
+   Save History
+========================================= */
+
+function saveHistory(drugName, weight, doseMg, doseMl){
+
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+
+    history.unshift({
+
+        drug: drugName,
+
+        weight: weight,
+
+        dose: doseMg.toFixed(1),
+
+        volume: doseMl.toFixed(1),
+
+        date: new Date().toLocaleDateString()
+
+    });
+
+    history = history.slice(0,5);
+
+    localStorage.setItem("history",JSON.stringify(history));
+
+}
+
+
+/* =========================================
+   Load History
+========================================= */
+
+function loadHistory(){
+
+    if(!historyBox) return;
+
+    const history = JSON.parse(localStorage.getItem("history")) || [];
+
+    historyBox.innerHTML="<h2>Recent Calculations</h2>";
+
+    if(history.length===0){
+
+        historyBox.innerHTML += "<p>No calculations yet.</p>";
+
+        return;
+
+    }
+
+    history.forEach(item=>{
+
+        historyBox.innerHTML += `
+
+<div class="history-item">
+
+<b>${item.drug}</b><br>
+
+Weight : ${item.weight} Kg<br>
+
+Dose : ${item.dose} mg<br>
+
+Volume : ${item.volume} mL<br>
+
+${item.date}
+
+</div>
+
+`;
+
+    });
+
+}
+
+
+/* =========================================
+   Dashboard
+========================================= */
+
+function updateDashboard(){
+
+    const history = JSON.parse(localStorage.getItem("history")) || [];
+
+    if(dashboard.calcCount){
+
+        dashboard.calcCount.textContent = history.length;
+
+    }
+
+    if(dashboard.lastDrug){
+
+        dashboard.lastDrug.textContent =
+
+        history.length ?
+
+        history[0].drug :
+
+        "-";
+
+    }
+
+}
+
+
+loadHistory();
+
+updateDashboard();
