@@ -1,927 +1,1025 @@
+/* ==========================================
+   DoseCare v5.0
+   Modern UI
+========================================== */
+
 :root{
-    --main-color:#2563eb;
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+
+    --bg:#eef4ff;
+    --card:#ffffff;
+
+    --text:#111827;
+    --text-light:#6b7280;
+
+    --border:#dbeafe;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:24px;
+
 }
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
 }
 
 body{
-    background:#f2f4f7;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    background:linear-gradient(
+    180deg,
+    #eef5ff,
+    #f8fbff
+    );
+
+    color:var(--text);
+
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:25px;
+
 }
+
+/* ==========================
+Container
+========================== */
 
 .container{
+
     width:100%;
-    max-width:480px;
+    max-width:520px;
+
+    margin:auto;
+
+    padding:20px;
+
 }
 
-h1{
-    font-size:38px;
+/* ==========================
+Loading Screen
+========================== */
+
+#loadingScreen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+    135deg,
+    #2563eb,
+    #60a5fa
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:99999;
+
+    transition:opacity .8s;
+
+}
+
+#loadingScreen.hide{
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+/* Logo */
+
+.loading-logo{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:35px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:54px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+    animation:pop .7s;
+
+}
+
+/* Welcome */
+
+.loading-title{
+
+    margin-top:28px;
+
+    font-size:34px;
+
     font-weight:800;
-    text-align:center;
-    color:var(--main-color);
-    margin-bottom:8px;
+
+    color:white;
+
 }
 
-.subtitle{
-    text-align:center;
-    color:#6b7280;
-    margin-bottom:25px;
-    font-size:15px;
+.loading-app{
+
+    margin-top:10px;
+
+    font-size:46px;
+
+    font-weight:900;
+
+    color:white;
+
+    letter-spacing:1px;
+
 }
+
+.loading-version{
+
+    margin-top:10px;
+
+    color:white;
+
+    opacity:.9;
+
+    font-size:18px;
+
+}
+
+/* Progress */
+
+.loading-bar{
+
+    margin-top:35px;
+
+    width:240px;
+
+    height:8px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.loading-progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:white;
+
+    animation:progress 2s linear forwards;
+
+}
+
+@keyframes progress{
+
+    from{
+        width:0%;
+    }
+
+    to{
+        width:100%;
+    }
+
+}
+
+@keyframes pop{
+
+    from{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+/* ==========================================
+   Header
+========================================== */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.logo{
+
+    font-size:34px;
+
+    font-weight:900;
+
+    color:var(--primary);
+
+    letter-spacing:.5px;
+
+}
+
+.version{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+   Welcome Card
+========================================== */
+
+.welcome-card{
+
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    #60a5fa
+    );
+
+    border-radius:28px;
+
+    padding:28px;
+
+    color:white;
+
+    margin-bottom:22px;
+
+    box-shadow:0 18px 45px rgba(37,99,235,.25);
+
+}
+
+.welcome-card h2{
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+    font-weight:900;
+
+}
+
+.welcome-card h1{
+
+    font-size:44px;
+
+    margin-bottom:15px;
+
+    font-weight:900;
+
+}
+
+.welcome-card p{
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    opacity:.95;
+
+}
+
+/* ==========================================
+   Main Card
+========================================== */
 
 .card{
-    background:white;
+
+    background:var(--card);
+
     border-radius:28px;
-    padding:25px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-    animation:fadeUp .5s ease;
-    transition:.3s;
+
+    padding:24px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:22px;
+
 }
 
-.card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
-}
+/* ==========================================
+   Labels
+========================================== */
 
 label{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-top:15px;
+
+    display:block;
+
+    margin-top:18px;
+
     margin-bottom:8px;
+
+    font-size:16px;
+
     font-weight:bold;
-    color:#374151;
-    font-size:17px;
+
+    color:var(--text);
+
 }
+
+/* ==========================================
+   Inputs
+========================================== */
 
 input,
 select{
+
     width:100%;
+
     padding:15px;
-    border-radius:18px;
-    border:2px solid #dbeafe;
-    background:#f8fbff;
-    font-size:16px;
+
+    border-radius:16px;
+
+    border:2px solid var(--border);
+
+    background:white;
+
     outline:none;
+
+    font-size:16px;
+
     transition:.25s;
+
 }
 
 input:hover,
 select:hover{
-    border-color:var(--main-color);
+
+    border-color:var(--primary);
+
 }
 
 input:focus,
 select:focus{
-    border-color:var(--main-color);
-    transform:scale(1.02);
-    box-shadow:0 0 10px rgba(37,99,235,.15);
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 12px rgba(37,99,235,.18);
+
 }
 
-.input-group{
-    position:relative;
+/* ==========================================
+   Search Box
+========================================== */
+
+.search-box{
+
     margin-top:15px;
-}
 
-.input-group input,
-.input-group select{
-    padding-right:50px;
 }
-
-.input-group .icon{
-    position:absolute;
-    right:16px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:20px;
-    color:var(--main-color);
-    pointer-events:none;
-}
-/*=========================
-Buttons
-=========================*/
+/* ==========================================
+   Main Button
+========================================== */
 
 button{
+
     width:100%;
+
+    margin-top:20px;
+
     padding:16px;
+
     border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-size:17px;
-    font-weight:bold;
-    transition:.25s;
+
+    border-radius:18px;
+
     background:linear-gradient(
-        135deg,
-        var(--main-color),
-        #3b82f6
+    135deg,
+    var(--primary),
+    var(--primary-dark)
     );
+
     color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
 }
 
 button:hover{
+
     transform:translateY(-3px);
-    filter:brightness(1.05);
-    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.25);
+
 }
 
 button:active{
+
     transform:scale(.98);
+
 }
 
-/*=========================
-Special Buttons
-=========================*/
-
-.reset-btn{
-    margin-top:12px;
-    background:#ef4444;
-}
-
-.reset-btn:hover{
-    background:#dc2626;
-}
-
-.copy-btn{
-    margin-top:12px;
-    background:#10b981;
-}
-
-.copy-btn:hover{
-    background:#059669;
-}
-
-.favorite-btn{
-    margin-top:12px;
-    background:#f59e0b;
-}
-
-.favorite-btn:hover{
-    background:#d97706;
-}
-
-.info-btn{
-    margin-top:12px;
-    background:#6366f1;
-}
-
-.info-btn:hover{
-    background:#4f46e5;
-}
-
-/*=========================
-Header
-=========================*/
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-    background:white;
-    padding:18px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:28px;
-    font-weight:bold;
-    color:var(--main-color);
-}
-
-.header-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.header-buttons button{
-    width:50px;
-    height:50px;
-    padding:0;
-    border-radius:14px;
-    font-size:20px;
-}
-/*=========================
-Drug Card
-=========================*/
-
-.drug-card{
-    margin-top:18px;
-    padding:18px;
-    background:#eef5ff;
-    border-left:6px solid var(--main-color);
-    border-radius:14px;
-    line-height:2;
-    font-size:15px;
-    animation:fade .3s;
-}
-
-.drug-card h3{
-    color:var(--main-color);
-    margin-bottom:10px;
-}
-
-.drug-blue{
-    border-left:6px solid var(--main-color);
-}
-
-.drug-red{
-    border-left:6px solid #dc2626;
-    background:#fef2f2;
-}
-
-.drug-green{
-    border-left:6px solid #16a34a;
-    background:#f0fdf4;
-}
-
-.drug-purple{
-    border-left:6px solid #7c3aed;
-    background:#f5f3ff;
-}
-
-.drug-yellow{
-    border-left:6px solid #ca8a04;
-    background:#fefce8;
-}
-
-.drug-orange{
-    border-left:6px solid #ea580c;
-    background:#fff7ed;
-}
-
-.drug-brown{
-    border-left:6px solid #92400e;
-    background:#fef3c7;
-}
-
-/*=========================
-Result Card
-=========================*/
+/* ==========================================
+   Result Card
+========================================== */
 
 .result-card{
-    margin-top:20px;
-    padding:20px;
+
+    margin-top:25px;
+
     background:white;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    animation:fade .4s;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .35s;
+
 }
 
 .result-card h2{
+
     text-align:center;
-    color:var(--main-color);
+
+    color:var(--primary);
+
     margin-bottom:20px;
-    font-size:24px;
+
+    font-size:26px;
+
 }
 
 .result-item{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
-    gap:10px;
-    padding:12px 0;
-    border-bottom:1px solid #e5e7eb;
+
+    padding:13px 0;
+
+    border-bottom:1px solid #edf2f7;
+
 }
 
 .result-item:last-child{
-    border-bottom:none;
-}
 
-.result-item div{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-weight:bold;
+    border-bottom:none;
+
 }
 
 .result-item span{
-    font-weight:bold;
-    color:#374151;
+
+    color:var(--text-light);
+
+    font-weight:600;
+
 }
 
 .result-item strong{
-    color:#111827;
+
+    color:var(--text);
+
     font-size:16px;
+
 }
 
+/* ==========================================
+   Warning Box
+========================================== */
+
 .warning-box{
+
     margin-top:18px;
-    padding:14px;
+
     background:#fef2f2;
-    border-left:5px solid #dc2626;
-    border-radius:12px;
+
+    border-right:6px solid #ef4444;
+
     color:#991b1b;
-    font-weight:bold;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================
+   Success Box
+========================================== */
+
+.success-box{
+
+    margin-top:18px;
+
+    background:#ecfdf5;
+
+    border-right:6px solid #22c55e;
+
+    color:#166534;
+
+    padding:16px;
+
+    border-radius:16px;
+
+}
+
+/* ==========================================
+   Clinical Alert
+========================================== */
+
+.clinical-alert{
+
+    margin-top:20px;
+
+    background:#fff7ed;
+
+    border-right:6px solid #f59e0b;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    line-height:1.8;
+
+}
+
+.clinical-alert h3{
+
+    color:#b45309;
+
+    margin-bottom:10px;
+
+}
+
+/* ==========================================
+   Fade Animation
+========================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================
+   Drug Card
+========================================== */
+
+.drug-card{
+
+    display:none;
+
+    margin-top:22px;
+
+    padding:22px;
+
+    background:#eef5ff;
+
+    border-left:6px solid var(--primary);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .35s;
+
+}
+
+.drug-card h3{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.drug-card p{
+
+    margin:10px 0;
+
+    line-height:1.8;
+
 }
 
 .info-row{
-    margin-top:12px;
-    padding:10px;
-    background:#fff7ed;
-    border-right:4px solid #f59e0b;
-    border-radius:10px;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    background:#ffffff;
+
+    border-radius:14px;
+
+    border:1px solid #dbeafe;
+
 }
-/*=========================
-History
-=========================*/
+
+/* ==========================================
+   History
+========================================== */
 
 .history{
+
     margin-top:25px;
-    padding:20px;
+
     background:white;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    animation:fadeUp .5s ease;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
 }
 
 .history h2{
-    color:var(--main-color);
-    margin-bottom:15px;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
 }
 
 .history-item{
-    padding:12px;
-    margin-bottom:10px;
-    background:#eef4ff;
-    border-radius:12px;
-    line-height:1.7;
-    font-size:15px;
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    background:#f8fbff;
+
+    border-radius:16px;
+
+    border:1px solid #e5eefc;
+
+    line-height:1.8;
+
 }
 
-/*=========================
-Favorites
-=========================*/
-
-#favorites{
-    display:none;
-}
-
-/*=========================
-Dashboard
-=========================*/
+/* ==========================================
+   Dashboard
+========================================== */
 
 .dashboard{
+
     margin-top:25px;
-    padding:20px;
+
     background:white;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    animation:fadeUp .5s ease;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
 }
 
 .dashboard h2{
-    color:var(--main-color);
-    margin-bottom:15px;
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
 }
 
 .stats{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:10px;
+
+    gap:12px;
+
 }
 
 .stat-card{
-    background:#eef4ff;
-    padding:15px;
-    border-radius:15px;
+
+    background:#f8fbff;
+
+    border-radius:18px;
+
+    padding:18px;
+
     text-align:center;
+
 }
 
 .stat-card h3{
-    color:var(--main-color);
-    font-size:24px;
+
+    color:var(--primary);
+
+    font-size:28px;
+
 }
 
 .stat-card p{
+
     margin-top:8px;
+
+    color:var(--text-light);
+
     font-size:14px;
-    color:#555;
+
 }
 
-/*=========================
-About
-=========================*/
+/* ==========================================
+   Drug Information Modal
+========================================== */
 
-.about{
-    margin-top:25px;
-    text-align:center;
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:9999;
+
 }
 
-.about h2{
-    color:#111827;
-    margin-bottom:10px;
+.modal-content{
+
+    width:92%;
+
+    max-width:700px;
+
+    margin:45px auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    animation:fadeUp .35s;
+
 }
 
-.about p{
-    color:#4b5563;
-    line-height:1.8;
-    margin-bottom:8px;
+.modal-content h2{
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
 }
 
-/*=========================
-Footer
-=========================*/
+.modal-content p{
 
-.footer{
-    margin-top:18px;
-    text-align:center;
-    color:#6b7280;
-    font-size:15px;
+    line-height:1.9;
+
+    margin:12px 0;
+
 }
-/*=========================
-Dark Mode
-=========================*/
+
+.close{
+
+    float:left;
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    color:#ef4444;
+
+    font-weight:bold;
+
+}
+/* ==========================================
+   Dark Mode
+========================================== */
 
 body.dark{
+
     background:#0f172a;
+
 }
 
-body.dark .header,
 body.dark .card,
 body.dark .history,
 body.dark .dashboard,
-body.dark .about,
-body.dark .result-card,
 body.dark .drug-card,
-body.dark #result{
-    background:#1f2937;
-    color:white;
-}
+body.dark .modal-content,
+body.dark .result-card{
 
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark p,
-body.dark label{
+    background:#1e293b;
+
     color:white;
+
 }
 
 body.dark input,
 body.dark select{
+
     background:#334155;
+
     color:white;
-    border:2px solid #475569;
+
+    border-color:#475569;
+
+}
+
+body.dark label,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark span,
+body.dark strong{
+
+    color:white;
+
 }
 
 body.dark .history-item,
-body.dark .stat-card{
+body.dark .stat-card,
+body.dark .info-row{
+
     background:#334155;
-    color:white;
-}
 
-body.dark .result-item{
-    border-bottom:1px solid #475569;
-}
+    border-color:#475569;
 
-body.dark .result-item span,
-body.dark .result-item strong{
-    color:white;
 }
 
 body.dark .warning-box{
-    background:#3b1d1d;
+
+    background:#452020;
+
     color:#fecaca;
-}
 
-body.dark .info-row{
-    background:#3b2f1d;
-}
-
-/*=========================
-Drug Information Modal
-=========================*/
-
-.modal{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.6);
-    z-index:999;
-}
-
-.modal-content{
-    background:white;
-    width:90%;
-    max-width:650px;
-    margin:40px auto;
-    padding:25px;
-    border-radius:18px;
-    max-height:85vh;
-    overflow-y:auto;
-    animation:fade .3s;
-}
-
-.close{
-    float:left;
-    font-size:30px;
-    font-weight:bold;
-    cursor:pointer;
-    color:#ef4444;
-}
-
-.modal h2{
-    color:var(--main-color);
-    margin-bottom:20px;
-}
-
-.modal p{
-    margin:12px 0;
-    line-height:1.8;
-}
-
-body.dark .modal-content{
-    background:#1f2937;
-    color:white;
-}
-
-/*=========================
-Clinical Alerts
-=========================*/
-
-.clinical-alert{
-    margin-top:15px;
-    padding:18px;
-    border-radius:15px;
-    background:#fff8e1;
-    border-right:6px solid #f59e0b;
-    animation:fade .3s;
-}
-
-.clinical-alert h3{
-    margin-bottom:10px;
-    color:#b45309;
-}
-
-.clinical-alert ul{
-    padding-right:20px;
-}
-
-.clinical-alert li{
-    margin-bottom:8px;
-    line-height:1.7;
 }
 
 body.dark .clinical-alert{
+
     background:#3b2f1d;
-    color:white;
-}
-/*=========================
-Splash Screen
-=========================*/
 
-#splash{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #60a5fa
-    );
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    transition:opacity .8s;
+    color:#fde68a;
+
 }
 
-#splash.hide{
-    opacity:0;
-    pointer-events:none;
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
 }
 
-#splash .logo{
-    width:120px;
-    height:120px;
-    background:white;
-    border-radius:30px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:60px;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-    animation:pop .8s;
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
 }
 
-#splash h1{
-    margin-top:25px;
-    font-size:42px;
-    color:white;
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
 }
 
-#splash p{
-    margin-top:8px;
-    font-size:18px;
-    color:white;
-    opacity:.9;
-}
-
-/*=========================
-Welcome Card
-=========================*/
-
-.welcome-card{
-    background:linear-gradient(
-        135deg,
-        var(--main-color),
-        #60a5fa
-    );
-    color:white;
-    padding:22px;
-    border-radius:22px;
-    margin-bottom:20px;
-    text-align:center;
-    box-shadow:0 12px 30px rgba(37,99,235,.25);
-    animation:fadeUp .7s;
-}
-
-.welcome-card h2{
-    color:white;
-    margin-bottom:10px;
-    font-size:28px;
-}
-
-.welcome-card p{
-    color:#eef6ff;
-    font-size:16px;
-}
-
-/*=========================
-Loading
-=========================*/
-
-#loading{
-    text-align:center;
-    margin-top:20px;
-}
-
-.loader{
-    width:45px;
-    height:45px;
-    border:5px solid #dbeafe;
-    border-top:5px solid var(--main-color);
-    border-radius:50%;
-    margin:auto;
-    animation:spin 1s linear infinite;
-}
-
-#loading p{
-    margin-top:10px;
-    color:#6b7280;
-    font-weight:bold;
-}
-
-body.dark #loading p{
-    color:white;
-}
-
-/*=========================
-Animations
-=========================*/
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes pop{
-    0%{
-        transform:scale(.5);
-        opacity:0;
-    }
-    100%{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-@keyframes spin{
-    from{
-        transform:rotate(0deg);
-    }
-    to{
-        transform:rotate(360deg);
-    }
-}
-/*=========================
-Fluid Calculator
-=========================*/
-
-#fluidResult{
-    margin-top:20px;
-    padding:18px;
-    background:#eef5ff;
-    border-radius:15px;
-    line-height:1.8;
-    animation:fade .3s;
-}
-
-body.dark #fluidResult{
-    background:#334155;
-    color:white;
-}
-
-/*=========================
-Input Group
-=========================*/
-
-.input-group{
-    position:relative;
-    margin-top:15px;
-}
-
-.input-group input,
-.input-group select{
-    padding-right:50px;
-}
-
-.input-group .icon{
-    position:absolute;
-    right:16px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:20px;
-    color:var(--main-color);
-    pointer-events:none;
-}
-
-/*=========================
-Color Classes
-=========================*/
-
-.red{
-    background:#ef4444;
-}
-
-.red:hover{
-    background:#dc2626;
-}
-
-.green{
-    background:#10b981;
-}
-
-.green:hover{
-    background:#059669;
-}
-
-.blue{
-    background:#2563eb;
-}
-
-.blue:hover{
-    background:#1d4ed8;
-}
-
-.purple{
-    background:#7c3aed;
-}
-
-.purple:hover{
-    background:#6d28d9;
-}
-
-/*=========================
-Hover Effects
-=========================*/
-
-.card,
-.history,
-.dashboard,
-.about,
-.result-card,
-.drug-card{
-    transition:.3s;
-}
-
-.card:hover,
-.history:hover,
-.dashboard:hover,
-.result-card:hover,
-.drug-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 18px 40px rgba(0,0,0,.12);
-}
-
-/*=========================
-Responsive
-=========================*/
+/* ==========================================
+   Responsive
+========================================== */
 
 @media(max-width:600px){
 
-body{
-    padding:15px;
-}
-
 .container{
+
     max-width:100%;
+
 }
 
-.header{
-    padding:14px;
+.welcome-card h1{
+
+    font-size:34px;
+
+}
+
+.welcome-card h2{
+
+    font-size:28px;
+
 }
 
 .logo{
-    font-size:22px;
-}
 
-.header-buttons button{
-    width:44px;
-    height:44px;
-    font-size:18px;
-}
+    font-size:28px;
 
-h1{
-    font-size:32px;
 }
 
 .stats{
+
     grid-template-columns:1fr;
+
 }
 
 .result-item{
+
     flex-direction:column;
+
     align-items:flex-start;
+
     gap:6px;
+
+}
+
+.modal-content{
+
+    width:95%;
+
+    margin:20px auto;
+
+    padding:20px;
+
 }
 
 }
-/*=========================
-Clinical Alerts
-=========================*/
 
-.clinical-alert{
-    margin-top:15px;
-    padding:18px;
-    border-radius:15px;
-    background:#fff8e1;
-    border-right:6px solid #f59e0b;
-    animation:fade .3s;
-}
+/* ==========================================
+   Hidden Sections
+========================================== */
 
-.clinical-alert h3{
-    margin-bottom:10px;
-    color:#b45309;
-}
+.hidden{
 
-.clinical-alert ul{
-    padding-right:20px;
-}
-
-.clinical-alert li{
-    margin-bottom:8px;
-    line-height:1.7;
-}
-
-body.dark .clinical-alert{
-    background:#3b2f1d;
-    color:white;
-}
-
-/*=========================
-Favorites
-=========================*/
-
-#favorites{
     display:none;
+
 }
 
-/*=========================
-End of File
-=========================*/
+/* ==========================================
+   End Of File
+========================================== */
