@@ -479,6 +479,75 @@ ${secondDrug ? `
     );
 
 });
+// ==========================
+// Clinical Decision Support
+// ==========================
+
+function updateClinicalDecision(age, weight, drug, doseMg) {
+
+    const box = document.getElementById("clinicalDecisionContent");
+
+    if (!box) return;
+
+    let alerts = [];
+
+    if (age < 0.5) {
+
+        alerts.push("👶 Child أقل من 6 أشهر، يجب مراجعة الطبيب قبل استخدام أي دواء.");
+
+    }
+
+    if (weight < 5) {
+
+        alerts.push("⚖️ الوزن منخفض جداً، تأكد من إدخال الوزن الصحيح.");
+
+    }
+
+    if (doseMg >= drug.maxDose * 0.9) {
+
+        alerts.push("💊 الجرعة قريبة من الحد الأعلى المسموح.");
+
+    }
+
+    if (drug.category === "Antibiotics") {
+
+        alerts.push("🦠 أكمل مدة المضاد الحيوي كاملة حتى مع تحسن الأعراض.");
+
+    }
+
+    if (drug.category === "Steroids") {
+
+        alerts.push("⚠️ لا توقف الكورتيزون بشكل مفاجئ إذا كان مستخدماً لفترة طويلة.");
+
+    }
+
+    if (drug.category === "Asthma") {
+
+        alerts.push("🫁 راقب تحسن التنفس، وإذا لم يتحسن راجع الطبيب.");
+
+    }
+
+    if (alerts.length === 0) {
+
+        box.innerHTML = "<p>✅ لا توجد تنبيهات سريرية.</p>";
+
+        return;
+
+    }
+
+    box.innerHTML = "";
+
+    alerts.forEach(alert => {
+
+        box.innerHTML += `
+            <div class="alert-item">
+                ${alert}
+            </div>
+        `;
+
+    });
+
+}
 // ========================================
 // Save History
 // ========================================
@@ -499,7 +568,12 @@ function saveHistory(drug, weight, dose, ml) {
         ml:ml.toFixed(1),
 
         date:new Date().toLocaleDateString()
-
+updateClinicalDecision(
+    age,
+    weight,
+    drug,
+    doseMg
+);
     });
 
     history = history.slice(0,5);
