@@ -113,7 +113,11 @@ function loadDrugs() {
 
     });
 
-    console.log("✅ Drugs Loaded :", Object.keys(drugs).length);
+ console.log("Script Started");
+
+console.log(typeof drugs);
+
+console.log(drugs); Loaded :", Object.keys(drugs).length);
 
 }
 
