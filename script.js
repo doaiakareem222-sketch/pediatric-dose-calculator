@@ -383,6 +383,8 @@ Maximum dose reached.
 
 ${warning}
 
+${checkInteraction()}
+
 </div>
 
 `;
@@ -495,3 +497,164 @@ function updateDashboard(){
 loadHistory();
 
 updateDashboard();
+/* =========================================
+   Drug Interaction Checker
+========================================= */
+
+function checkInteraction() {
+
+    if (!drug2Select) return "";
+
+    const firstDrug = drugSelect.value;
+
+    const secondDrug = drug2Select.value;
+
+    if (!firstDrug || !secondDrug) return "";
+
+    if (firstDrug === secondDrug) {
+
+        return `
+
+<div class="warning-box">
+
+Cannot compare the same drug.
+
+</div>
+
+`;
+
+    }
+
+    const drugA = drugs[firstDrug];
+
+    const drugB = drugs[secondDrug];
+
+    if (
+
+        drugA.category === drugB.category
+
+    ) {
+
+        return `
+
+<div class="clinical-alert">
+
+<h3>Drug Interaction</h3>
+
+<p>
+
+These drugs belong to the same therapeutic category.
+
+Use together only if clinically indicated.
+
+</p>
+
+</div>
+
+`;
+
+    }
+
+    return `
+
+<div class="success-box">
+
+No major interaction found.
+
+</div>
+
+`;
+
+}
+   /* =========================================
+   Drug Information
+========================================= */
+
+function showDrugInfo() {
+
+    const drugId = drugSelect.value;
+
+    if (!drugId) return;
+
+    const drug = drugs[drugId];
+
+    modal.style.display = "block";
+
+    modalContent.innerHTML = `
+
+<h2>${drug.name}</h2>
+
+<p><b>Category:</b> ${drug.category}</p>
+
+<hr>
+
+<p><b>Mechanism</b></p>
+
+<p>${drug.mechanism}</p>
+
+<hr>
+
+<p><b>Indications</b></p>
+
+<p>${drug.indications}</p>
+
+<hr>
+
+<p><b>Contraindications</b></p>
+
+<p>${drug.contraindications}</p>
+
+<hr>
+
+<p><b>Side Effects</b></p>
+
+<p>${drug.sideEffects}</p>
+
+<hr>
+
+<p><b>Pregnancy</b></p>
+
+<p>${drug.pregnancy}</p>
+
+<hr>
+
+<p><b>Storage</b></p>
+
+<p>${drug.storage}</p>
+
+<hr>
+
+<p><b>Clinical Notes</b></p>
+
+<p>${drug.notes}</p>
+
+`;
+
+}
+
+
+/* =========================================
+   Close Modal
+========================================= */
+
+const closeModal = document.getElementById("closeModal");
+
+if (closeModal) {
+
+    closeModal.onclick = () => {
+
+        modal.style.display = "none";
+
+    };
+
+}
+
+window.onclick = (e) => {
+
+    if (e.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+};
