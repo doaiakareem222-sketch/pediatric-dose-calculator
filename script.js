@@ -568,12 +568,7 @@ function saveHistory(drug, weight, dose, ml) {
         ml:ml.toFixed(1),
 
         date:new Date().toLocaleDateString()
-updateClinicalDecision(
-    age,
-    weight,
-    drug,
-    doseMg
-);
+
     });
 
     history = history.slice(0,5);
