@@ -4,7 +4,11 @@
 // ======================================================
 
 "use strict";
+console.log("Script Started");
 
+console.log(typeof drugs);
+
+console.log(drugs);
 // =========================================
 // DOM Elements
 // =========================================
