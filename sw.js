@@ -1,36 +1,46 @@
 const CACHE_NAME = "dosecare-v1";
 
 const urlsToCache = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./script.js",
-  "./drugs.js",
-  "./lang.js",
-  "./manifest.json",
-  "./favicon.svg"
+
+"/",
+"index.html",
+"style.css",
+"script.js",
+"drugs.js",
+"manifest.json",
+"icon-192.png",
+"icon-512.png"
+
 ];
 
 self.addEventListener("install", event => {
 
-  event.waitUntil(
+event.waitUntil(
 
-    caches.open(CACHE_NAME)
+caches.open(CACHE_NAME)
 
-      .then(cache => cache.addAll(urlsToCache))
+.then(cache => {
 
-  );
+return cache.addAll(urlsToCache);
+
+})
+
+);
 
 });
 
 self.addEventListener("fetch", event => {
 
-  event.respondWith(
+event.respondWith(
 
-    caches.match(event.request)
+caches.match(event.request)
 
-      .then(response => response || fetch(event.request))
+.then(response => {
 
-  );
+return response || fetch(event.request);
+
+})
+
+);
 
 });
