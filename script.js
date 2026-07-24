@@ -1590,3 +1590,26 @@ tabContent.innerHTML=`
 `;
 
 }
+// ==========================
+// Register Service Worker
+// ==========================
+
+if ("serviceWorker" in navigator) {
+
+window.addEventListener("load", async () => {
+
+try{
+
+const registration = await navigator.serviceWorker.register("./sw.js");
+
+console.log("✅ Service Worker Registered");
+
+}catch(error){
+
+console.log("❌ Service Worker Error", error);
+
+}
+
+});
+
+}
