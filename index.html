@@ -3,371 +3,361 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>DoseCare</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" href="favicon.svg">
-<link rel="manifest" href="manifest.json">
+    <title>DoseCare</title>
 
-<meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#2563eb">
 
-<link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="DoseCare - Pediatric Dose Calculator">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- Splash Screen -->
+    <!-- Splash Screen -->
 
-<div id="splash">
+    <div id="splash">
 
-<div class="logo">
-🩺
-</div>
+        <div class="splash-content">
 
-<h1>DoseCare</h1>
+            <h1>Welcome</h1>
 
-<p>Pediatric Dose Calculator</p>
+            <h2>DoseCare</h2>
 
-</div>
+            <p>Pediatric Dose Calculator</p>
 
-<!-- Header -->
+            <div class="loader">
 
-<header class="header">
+                <div class="loader-bar"></div>
 
-<div class="logo">
+            </div>
 
-🩺 <span>DoseCare</span>
+        </div>
 
-</div>
+    </div>
 
-<div class="header-buttons">
+    <!-- Main App -->
 
-<button id="themeBtn">🌙</button>
+    <div class="container">
 
-<button id="colorBtn">🎨</button>
+        <!-- Header -->
 
-<button id="langBtn">🌐</button>
+        <header class="header">
 
-</div>
+            <div>
 
-</header>
+                <h1>DoseCare</h1>
 
-<div class="container">
+                <p class="subtitle">
+                    Pediatric Dose Calculator
+                </p>
+            </div>
 
-<div class="welcome-card">
+            <button id="themeBtn"
+                class="theme-btn">
 
-<h2>👋 Welcome to DoseCare</h2>
+                🌙
 
-<p>Your Smart Pediatric Dose Calculator</p>
+            </button>
 
-</div>
+        </header>
 
-<h1>🩺 DoseCare</h1>
+        <!-- Welcome Card -->
 
-<p class="subtitle">
+        <section class="welcome-card">
 
-حاسبة جرعات الأطفال بالاعتماد على الوزن
+            <h2>Welcome</h2>
 
-</p>
+            <p>
 
-<div class="card">
+                Calculate pediatric doses safely and quickly.
 
-<!-- =========================
-البحث حسب المرض
-========================= -->
+            </p>
 
-<label for="disease">🔍 البحث حسب المرض</label>
+        </section>
 
-<select id="disease">
+            <!-- Calculator Card -->
 
-<option value="">اختر المرض</option>
-<option value="fever">Fever</option>
-<option value="pain">Pain</option>
-<option value="otitis">Otitis Media</option>
-<option value="pharyngitis">Pharyngitis</option>
-<option value="sinusitis">Sinusitis</option>
-<option value="pneumonia">Pneumonia</option>
-<option value="uti">UTI</option>
-<option value="diarrhea">Diarrhea</option>
-<option value="vomiting">Vomiting</option>
-<option value="asthma">Asthma</option>
-<option value="allergy">Allergy</option>
-<option value="fungal">Fungal Infection</option>
-<option value="worms">Worm Infestation</option>
+        <section class="card">
 
-</select>
+            <label for="disease">
 
-<div id="diseaseGuide"
-class="guide-card"
-style="display:none;">
-</div>
+                Disease
 
-<!-- =========================
-البحث عن الدواء
-========================= -->
+            </label>
 
-<label for="searchDrug">
-🔎 البحث عن الدواء
-</label>
+            <select id="disease">
 
-<input
-type="text"
-id="searchDrug"
-placeholder="اكتب اسم الدواء...">
+                <option value="">Select Disease</option>
 
-<!-- =========================
-اختيار الدواء
-========================= -->
+                <option value="fever">Fever</option>
 
-<label for="drug">
-💊 اسم الدواء
-</label>
+                <option value="pain">Pain</option>
 
-<select id="drug">
+                <option value="otitis">Otitis Media</option>
 
-<option value="">
-اختر الدواء
-</option>
+                <option value="pharyngitis">Pharyngitis</option>
 
-</select>
+                <option value="sinusitis">Sinusitis</option>
 
-<!-- =========================
-الدواء الثاني
-========================= -->
+                <option value="pneumonia">Pneumonia</option>
 
-<label for="drug2">
-💊 الدواء الثاني (اختياري)
-</label>
+                <option value="uti">Urinary Tract Infection</option>
 
-<select id="drug2">
+                <option value="diarrhea">Diarrhea</option>
 
-<option value="">
-بدون
-</option>
+                <option value="vomiting">Vomiting</option>
 
-</select>
+                <option value="asthma">Asthma</option>
 
-<!-- =========================
-تركيز الدواء
-========================= -->
+                <option value="allergy">Allergy</option>
 
-<label for="strength">
-🧪 تركيز الدواء
-</label>
+                <option value="fungal">Fungal Infection</option>
 
-<select id="strength">
+                <option value="worms">Worm Infestation</option>
 
-<option value="">
-اختر التركيز
-</option>
+            </select>
 
-</select>
+            <div id="diseaseGuide"></div>
 
-<!-- بطاقة الدواء -->
+            <label for="searchDrug">
 
-<div id="drugCard"
-class="drug-card"
-style="display:none;">
-</div>
+                Search Drug
 
-<div id="clinicalAlert"
-class="clinical-alert"
-style="display:none;">
-</div>
+            </label>
 
-<!-- =========================
-العمر
-========================= -->
+            <input
+                type="text"
+                id="searchDrug"
+                placeholder="Search...">
 
-<label for="age">
-👶 العمر (بالسنوات)
-</label>
+            <label for="drug">
 
-<input
-type="number"
-id="age"
-placeholder="مثال: 5">
+                Drug
 
-<!-- =========================
-الوزن
-========================= -->
+            </label>
 
-<label for="weight">
-⚖️ الوزن (Kg)
-</label>
+            <select id="drug">
 
-<input
-type="number"
-id="weight"
-placeholder="مثال: 18">
-<!-- =========================
-الأزرار الرئيسية
-========================= -->
+                <option value="">Select Drug</option>
 
-<button id="calculate">
-🧮 احسب الجرعة
-</button>
+            </select>
 
-<button id="reset" class="reset-btn">
-🔄 إعادة تعيين
-</button>
+            <label for="strength">
 
-<button id="copy" class="copy-btn">
-📋 نسخ النتيجة
-</button>
+                Strength
 
-<button id="favorite" class="favorite-btn">
-⭐ إضافة إلى المفضلة
-</button>
+            </label>
 
-<button id="showFavorites" class="favorite-btn">
-📖 عرض المفضلة
-</button>
+            <select id="strength">
 
-<button id="info" class="info-btn">
-ℹ️ معلومات الدواء
-</button>
+                <option value="">Select Strength</option>
 
-<button id="pdf">
-📄 تحميل النتيجة PDF
-</button>
+            </select>
 
-<hr style="margin:25px 0;">
+            <label for="drug2">
 
-<h3>💧 Pediatric Fluid Calculator</h3>
+                Second Drug (Interaction Checker)
 
-<button id="fluidBtn">
-💧 احسب احتياج السوائل
-</button>
+            </label>
 
-<div id="fluidResult"></div>
+            <select id="drug2">
 
-<!-- شاشة التحميل -->
+                <option value="">None</option>
 
-<div id="loading" style="display:none;">
+            </select>
 
-<div class="loader"></div>
+            <label for="age">
 
-<p>Calculating Dose...</p>
+                Age (Years)
 
-</div>
+            </label>
 
-<!-- النتيجة -->
+            <input
+                type="number"
+                id="age"
+                placeholder="Enter Age">
 
-<div id="result"></div>
+            <label for="weight">
 
-<!-- السجل -->
+                Weight (Kg)
 
-<div id="history"></div>
+            </label>
 
-<!-- المفضلة -->
+            <input
+                type="number"
+                id="weight"
+                placeholder="Enter Weight">
 
-<div id="favorites" class="history">
+            <button id="calculate">
 
-<h2>⭐ الأدوية المفضلة</h2>
+                Calculate Dose
 
-<div id="favoritesList">
+            </button>
 
-لا توجد أدوية محفوظة.
+        </section>
+              <!-- Dose Result -->
 
-</div>
+        <section id="result">
 
-</div>
+        </section>
 
-<!-- =========================
-Dashboard
-========================= -->
+        <!-- Drug Card -->
 
-<div class="dashboard">
+        <section
+            id="drugCard"
+            class="drug-card"
+            style="display:none;">
 
-<h2>📊 Dashboard</h2>
+        </section>
 
-<div class="stats">
+        <!-- Clinical Alerts -->
 
-<div class="stat-card">
+        <section
+            id="clinicalAlert"
+            class="clinical-alert"
+            style="display:none;">
 
-<h3 id="calcCount">0</h3>
+        </section>
 
-<p>عدد الحسابات</p>
+        <!-- History -->
 
-</div>
+        <section
+            class="history">
 
-<div class="stat-card">
+            <h2>
 
-<h3 id="favCount">0</h3>
+                Recent Calculations
 
-<p>المفضلة</p>
+            </h2>
 
-</div>
+            <div id="history">
 
-<div class="stat-card">
+            </div>
 
-<h3 id="lastDrug">-</h3>
+        </section>
 
-<p>آخر دواء</p>
+        <!-- Dashboard -->
 
-</div>
+        <section class="dashboard">
 
-</div>
+            <h2>
 
-</div>
+                Dashboard
 
-</div>
-<!-- نهاية card -->
-  <!-- =========================
-About
-========================= -->
+            </h2>
 
-<div class="about">
+            <div class="stats">
 
-<h2>ℹ️ About DoseCare</h2>
+                <div class="stat-card">
 
-<p>
-DoseCare هو مشروع لحساب جرعات الأطفال اعتماداً على الوزن والمراجع الدوائية القياسية.
-</p>
+                    <h3 id="calcCount">
 
-<p>
-⚠️ النتائج لغرض التعليم والمراجعة فقط ولا تغني عن استشارة الطبيب أو الصيدلي.
-</p>
+                        0
 
-</div>
+                    </h3>
 
-<!-- Footer -->
+                    <p>
 
-<footer class="footer">
+                        Calculations
 
-<p>Developed by Doaa Kareem © 2026</p>
+                    </p>
 
-</footer>
+                </div>
 
-<!-- =========================
-Drug Information Modal
-========================= -->
+                <div class="stat-card">
 
-<div id="drugInfoModal" class="modal">
+                    <h3 id="lastDrug">
 
-<div class="modal-content">
+                        -
 
-<span id="closeModal" class="close">&times;</span>
+                    </h3>
 
-<div id="drugInfoContent"></div>
+                    <p>
 
-</div>
+                        Last Drug
 
-</div>
+                    </p>
 
-<!-- =========================
-JavaScript Files
-========================= -->
+                </div>
 
-<script src="lang.js"></script>
-<script src="drugs.js"></script>
-<script src="script.js"></script>
+            </div>
+
+        </section>
+
+        <!-- Drug Information Modal -->
+
+        <div
+            id="drugInfoModal"
+            class="modal">
+
+            <div class="modal-content">
+
+                <span
+                    id="closeModal"
+                    class="close">
+
+                    &times;
+
+                </span>
+
+                <div
+                    id="drugInfoContent">
+
+                </div>
+
+            </div>
+
+        </div>
+      
+                <!-- About -->
+
+        <section class="about">
+
+            <h2>
+
+                About DoseCare
+
+            </h2>
+
+            <p>
+
+                DoseCare is a pediatric dose calculator designed to help healthcare professionals estimate medication doses quickly using weight-based calculations.
+
+            </p>
+
+            <p>
+
+                Always verify doses using official clinical references before prescribing.
+
+            </p>
+
+        </section>
+
+    </div>
+
+    <!-- Libraries -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Drug Database -->
+
+    <script src="drugs.js"></script>
+
+    <!-- Main Script -->
+
+    <script src="script.js"></script>
 
 </body>
 
