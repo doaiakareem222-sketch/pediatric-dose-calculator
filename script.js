@@ -618,23 +618,31 @@ function getFrequencyNumber(freq){
     return 1;
 
 }
-// ========================================
+// ==========================
 // Drug Information
-// ========================================
+// ==========================
 
-if(infoBtn){
+if (infoBtn) {
 
-infoBtn.addEventListener("click",()=>{
+    infoBtn.addEventListener("click", () => {
 
-if(!drugSelect.value){
+        if (!drugSelect.value) {
 
-alert("اختر دواء أولاً");
+            alert("اختر دواء أولاً.");
 
-return;
+            return;
+
+        }
+
+        const drug = drugs[drugSelect.value];
+
+        document.getElementById("drugInfoModal").style.display = "block";
+
+        openDrugInfo(drug);
+
+    });
 
 }
-
-const drug=drugs[drugSelect.value];
 
 modalContent.innerHTML=`
 
@@ -1202,31 +1210,56 @@ loadHistory();
 updateDashboard();
 
 });
-// ========================================
-// Smart Search
-// ========================================
+// ==========================
+// Smart Clinical Search
+// ==========================
 
-searchInput?.addEventListener("keydown", (e) => {
-
-    if (e.key !== "Enter") return;
+searchInput.addEventListener("input", () => {
 
     const value = searchInput.value.trim().toLowerCase();
 
-    if (value === "") return;
+    drugSelect.innerHTML = '<option value="">Select Drug</option>';
 
     for (const id in drugs) {
 
-        if (
-            drugs[id].name.toLowerCase().includes(value)
-        ) {
+        const drug = drugs[id];
 
-            drugSelect.value = id;
+        let match = false;
 
-            drugSelect.dispatchEvent(
-                new Event("change")
-            );
+        // اسم الدواء
+        if (drug.name.toLowerCase().includes(value))
+            match = true;
 
-            break;
+        // الاسم التجاري
+        if (drug.brandNames) {
+            if (drug.brandNames.some(b => b.toLowerCase().includes(value)))
+                match = true;
+        }
+
+        // التصنيف العلاجي
+        if (drug.therapeuticClass &&
+            drug.therapeuticClass.toLowerCase().includes(value))
+            match = true;
+
+        // التصنيف الدوائي
+        if (drug.pharmacologicalClass &&
+            drug.pharmacologicalClass.toLowerCase().includes(value))
+            match = true;
+
+        // الأمراض
+        if (drug.diseases &&
+            drug.diseases.some(d => d.toLowerCase().includes(value)))
+            match = true;
+
+        if (match || value === "") {
+
+            const option = document.createElement("option");
+
+            option.value = id;
+
+            option.textContent = drug.name;
+
+            drugSelect.appendChild(option);
 
         }
 
@@ -1282,3 +1315,157 @@ console.log(
 `${APP.name} v${APP.version} Ready ✅`
 
 );
+// ==========================
+// Drug Information Tabs
+// ==========================
+
+function openDrugInfo(drug) {
+
+    const tabContent = document.getElementById("tabContent");
+
+    loadOverview(drug);
+
+    document
+        .querySelectorAll(".tab-btn")
+        .forEach(btn => {
+
+            btn.onclick = () => {
+
+                document
+                    .querySelectorAll(".tab-btn")
+                    .forEach(b => b.classList.remove("active"));
+
+                btn.classList.add("active");
+
+                switch (btn.dataset.tab) {
+
+                    case "overview":
+                        loadOverview(drug);
+                        break;
+
+                    case "dose":
+                        loadDose(drug);
+                        break;
+
+                    case "warnings":
+                        loadWarnings(drug);
+                        break;
+
+                    case "monitoring":
+                        loadMonitoring(drug);
+                        break;
+
+                    case "pregnancy":
+                        loadPregnancy(drug);
+                        break;
+
+                    case "pk":
+                        loadPK(drug);
+                        break;
+
+                }
+
+            };
+
+        });
+
+}
+function loadOverview(drug){
+
+tabContent.innerHTML=`
+
+<h2>${drug.name}</h2>
+
+<p><b>Brand:</b> ${drug.brandNames.join(", ")}</p>
+
+<p><b>Therapeutic Class:</b> ${drug.therapeuticClass}</p>
+
+<p><b>Pharmacological Class:</b> ${drug.pharmacologicalClass}</p>
+
+<p><b>Mechanism:</b><br>${drug.mechanism}</p>
+
+<p><b>Indications:</b><br>${drug.indications}</p>
+
+`;
+
+}
+
+function loadDose(drug){
+
+tabContent.innerHTML=`
+
+<h2>Dose</h2>
+
+<p><b>${drug.mgPerKg} mg/kg</b></p>
+
+<p>${drug.frequency}</p>
+
+<p>Maximum: ${drug.maxDose} mg</p>
+
+`;
+
+}
+
+function loadWarnings(drug){
+
+tabContent.innerHTML=`
+
+<h2>Warnings</h2>
+
+<p>${drug.warnings}</p>
+
+<p><b>Black Box:</b></p>
+
+<p>${drug.blackBox}</p>
+
+`;
+
+}
+
+function loadMonitoring(drug){
+
+tabContent.innerHTML=`
+
+<h2>Monitoring</h2>
+
+<ul>
+
+${drug.monitoring.map(x=>`<li>${x}</li>`).join("")}
+
+</ul>
+
+`;
+
+}
+
+function loadPregnancy(drug){
+
+tabContent.innerHTML=`
+
+<h2>Pregnancy & Lactation</h2>
+
+<p><b>Pregnancy:</b> ${drug.pregnancyCategory}</p>
+
+<p><b>Lactation:</b> ${drug.lactation}</p>
+
+`;
+
+}
+
+function loadPK(drug){
+
+tabContent.innerHTML=`
+
+<h2>Pharmacokinetics</h2>
+
+<p><b>Half-life:</b> ${drug.halfLife}</p>
+
+<p><b>Onset:</b> ${drug.onset}</p>
+
+<p><b>Duration:</b> ${drug.duration}</p>
+
+<p><b>Storage:</b> ${drug.storageTemp}</p>
+
+`;
+
+}
