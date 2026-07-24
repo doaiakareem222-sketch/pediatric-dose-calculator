@@ -658,3 +658,20 @@ window.onclick = (e) => {
     }
 
 };
+/* =========================================
+   App Initialization
+========================================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    console.log("DoseCare Ready ✅");
+
+    // Reload data
+
+    loadDrugs();
+
+    loadHistory();
+
+    updateDashboard();
+
+});
