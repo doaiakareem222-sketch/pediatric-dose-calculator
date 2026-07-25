@@ -1,27 +1,38 @@
-const CACHE_NAME = "dosecare-v2";
+/* =========================================
+   DoseCare Offline Cache
+========================================= */
 
-const urlsToCache = [
+const CACHE_NAME = "dosecare-v1";
+
+const FILES_TO_CACHE = [
 
 "/",
+
 "index.html",
+
 "style.css",
+
 "script.js",
+
 "drugs.js",
+
 "manifest.json",
+
 "icon-192.png",
+
 "icon-512.png"
 
 ];
 
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
 
 event.waitUntil(
 
 caches.open(CACHE_NAME)
 
-.then(cache => {
+.then((cache) => {
 
-return cache.addAll(urlsToCache);
+return cache.addAll(FILES_TO_CACHE);
 
 })
 
@@ -29,13 +40,13 @@ return cache.addAll(urlsToCache);
 
 });
 
-self.addEventListener("fetch", event => {
+self.addEventListener("fetch", (event) => {
 
 event.respondWith(
 
 caches.match(event.request)
 
-.then(response => {
+.then((response) => {
 
 return response || fetch(event.request);
 
