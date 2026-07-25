@@ -40,19 +40,26 @@ const calcCount = document.getElementById("calcCount");
 
 const lastDrug = document.getElementById("lastDrug");
 
-/* =========================================
-   Welcome Screen Test
-========================================= */
+// =========================================
+// Welcome Screen
+// =========================================
 
 window.addEventListener("load", () => {
 
-alert("JavaScript Works");
+    setTimeout(() => {
 
-setTimeout(() => {
+        const welcome = document.getElementById("welcomeScreen");
+        const app = document.getElementById("mainApp");
 
-welcomeScreen.classList.add("hide");
+        if (welcome) {
+            welcome.classList.add("hide");
+        }
 
-}, 2000);
+        if (app) {
+            app.classList.add("show");
+        }
+
+    }, 2200);
 
 });
 /* =========================================
