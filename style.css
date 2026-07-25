@@ -1274,43 +1274,19 @@ transform:scale(1.8);
 }
 
 }
-/* ===========================
-Drug Information Card
-=========================== */
-
-.drug-info-card{
-
-display:none;
-
-margin-top:20px;
-
-background:#ffffff;
-
-border-radius:18px;
-
-padding:20px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-animation:fadeIn .4s ease;
-
-}
-
-.drug-info-card h2{
-
-margin-bottom:15px;
-
-color:#1f4e79;
-
-font-size:22px;
+#drugCard h2{
 
 text-align:center;
+
+margin-bottom:18px;
+
+color:#1f4e79;
 
 }
 
 .info-item{
 
-margin-bottom:14px;
+margin-bottom:15px;
 
 }
 
@@ -1326,8 +1302,8 @@ margin-bottom:4px;
 
 .info-text{
 
-color:#444;
-
 line-height:1.7;
+
+color:#444;
 
 }
