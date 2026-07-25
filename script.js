@@ -120,8 +120,9 @@ drugSelect.addEventListener("change", () => {
     strengthSelect.innerHTML =
         '<option value="">Select Strength</option>';
 
-    const drug = drugs[drugSelect.value];
-showDrugInformation(selectedDrug);
+  const drug = drugs[drugSelect.value];
+
+showDrugInformation(drug);
     if (!drug) {
 
         drugCard.style.display = "none";
