@@ -121,7 +121,7 @@ drugSelect.addEventListener("change", () => {
         '<option value="">Select Strength</option>';
 
     const drug = drugs[drugSelect.value];
-
+showDrugInformation(selectedDrug);
     if (!drug) {
 
         drugCard.style.display = "none";
@@ -684,6 +684,72 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 if ("serviceWorker" in navigator) {
 
+   // ===========================
+// Show Drug Information
+// ===========================
+
+function showDrugInformation(drug){
+
+const card=document.getElementById("drugCard");
+const content=document.getElementById("drugInfoContent");
+
+if(!drug){
+
+card.style.display="none";
+
+return;
+
+}
+
+card.style.display="block";
+
+content.innerHTML=`
+
+<div class="info-item">
+<div class="info-title">Generic Name</div>
+<div class="info-text">${drug.genericName || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Brand Names</div>
+<div class="info-text">
+${drug.brandNames ? drug.brandNames.join(", ") : "-"}
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Mechanism</div>
+<div class="info-text">${drug.mechanism || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Indications</div>
+<div class="info-text">${drug.indications || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Contraindications</div>
+<div class="info-text">${drug.contraindications || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Side Effects</div>
+<div class="info-text">${drug.sideEffects || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Warnings</div>
+<div class="info-text">${drug.warnings || "-"}</div>
+</div>
+
+<div class="info-item">
+<div class="info-title">Clinical Notes</div>
+<div class="info-text">${drug.notes || "-"}</div>
+</div>
+
+`;
+
+}
 window.addEventListener("load", () => {
 
 navigator.serviceWorker
