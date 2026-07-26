@@ -294,21 +294,7 @@ This drug is not suitable for this age.
 </div>
 
 `;
-saveHistory(
 
-    drug.name,
-
-    weight,
-
-    doseMg,
-
-    doseMl
-
-);
-
-loadHistory();
-
-updateDashboard();
         return;
 
     }
@@ -342,7 +328,21 @@ Maximum dose reached.
     const doseMl =
 
     (doseMg / concentration) * 5;
+saveHistory(
 
+    drug.name,
+
+    weight,
+
+    doseMg,
+
+    doseMl
+
+);
+
+loadHistory();
+
+updateDashboard();
     result.innerHTML = `
 
 <div class="result-card">
