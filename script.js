@@ -39,6 +39,11 @@ const historyBox = document.getElementById("history");
 const calcCount = document.getElementById("calcCount");
 
 const lastDrug = document.getElementById("lastDrug");
+const modal =
+document.getElementById("modal");
+
+const modalContent =
+document.getElementById("modalContent");
 
 // =========================================
 // Welcome Screen
@@ -228,6 +233,17 @@ function loadStrengths(drugId){
     if(!drug) return;
 
     loadStrengths(drugSelect.value);
+
+        const option=document.createElement("option");
+
+        option.value=index;
+
+        option.textContent=strength.name;
+
+        strengthSelect.appendChild(option);
+
+    });
+
 }
 /* =========================================
    Dose Calculator
@@ -481,21 +497,18 @@ function updateDashboard(){
 
     const history = JSON.parse(localStorage.getItem("history")) || [];
 
-    if(dashboard.calcCount){
+    if(calcCount){
 
-        dashboard.calcCount.textContent = history.length;
+        calcCount.textContent = history.length;
 
     }
 
-    if(dashboard.lastDrug){
+    if(lastDrug){
 
-        dashboard.lastDrug.textContent =
-
-        history.length ?
-
-        history[0].drug :
-
-        "-";
+        lastDrug.textContent =
+        history.length
+        ? history[0].drug
+        : "-";
 
     }
 
