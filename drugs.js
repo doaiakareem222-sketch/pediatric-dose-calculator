@@ -4095,4 +4095,5 @@ alerts:[
 
 ]
 
-},
+};
+console.log(Object.keys(drugs).length);
