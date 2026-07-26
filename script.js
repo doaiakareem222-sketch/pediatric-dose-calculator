@@ -40,10 +40,10 @@ const calcCount = document.getElementById("calcCount");
 
 const lastDrug = document.getElementById("lastDrug");
 const modal =
-document.getElementById("modal");
+document.getElementById("drugInfoModal");
 
 const modalContent =
-document.getElementById("modalContent");
+document.getElementById("modalBody");
 
 // =========================================
 // Welcome Screen
@@ -136,7 +136,7 @@ showDrugInformation(drug);
 
     }
 
-    drug.strengths.forEach((strength, index) => {
+    
 
         const option = document.createElement("option");
 
@@ -150,23 +150,7 @@ showDrugInformation(drug);
 
     drugCard.style.display = "block";
 
-    drugCard.innerHTML = `
-
-        <h3>${drug.name}</h3>
-
-        <p><b>Category:</b> ${drug.category}</p>
-
-        <p><b>Dose:</b> ${drug.mgPerKg} mg/kg</p>
-
-        <p><b>Frequency:</b> ${drug.frequency}</p>
-
-        <p><b>Maximum:</b> ${drug.maxDose} mg</p>
-
-        <p><b>Age:</b> ${drug.minAge} - ${drug.maxAge} years</p>
-
-        <p>${drug.notes}</p>
-
-    `;
+    
 
 });
 /* =========================================
@@ -226,13 +210,13 @@ if (diseaseSelect) {
 function loadStrengths(drugId){
 
     strengthSelect.innerHTML =
-        '<option value="">Select Strength</option>';
+    '<option value="">Select Strength</option>';
 
     const drug = drugs[drugId];
 
     if(!drug) return;
 
-    loadStrengths(drugSelect.value);
+    drug.strengths.forEach((strength,index)=>{
 
         const option=document.createElement("option");
 
