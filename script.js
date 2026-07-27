@@ -251,4 +251,101 @@ calculateBtn.addEventListener("click", () => {
 
     note.textContent = drug.notes || "-";
 
+showDrugInfo(drug);
+
 });
+// ======================================================
+// Drug Information Card
+// ======================================================
+
+function showDrugInfo(drug){
+
+    if(!drug) return;
+
+    drugInfoCard.style.display = "block";
+
+    document.getElementById("genericName").textContent =
+        drug.genericName || "-";
+
+    document.getElementById("brandNames").textContent =
+        drug.brandNames ? drug.brandNames.join(", ") : "-";
+
+    document.getElementById("category").textContent =
+        drug.category || "-";
+
+    document.getElementById("therapeuticClass").textContent =
+        drug.therapeuticClass || "-";
+
+    document.getElementById("pharmacologicalClass").textContent =
+        drug.pharmacologicalClass || "-";
+
+    document.getElementById("mechanism").textContent =
+        drug.mechanism || "-";
+
+    document.getElementById("indications").textContent =
+        drug.indications || "-";
+
+    document.getElementById("contraindications").textContent =
+        drug.contraindications || "-";
+
+    document.getElementById("warnings").textContent =
+        drug.warnings || "-";
+
+    document.getElementById("sideEffects").textContent =
+        drug.sideEffects || "-";
+
+    document.getElementById("pregnancy").textContent =
+        drug.pregnancy || "-";
+
+    document.getElementById("lactation").textContent =
+        drug.lactation || "-";
+
+    document.getElementById("doseRange").textContent =
+        drug.doseRange || "-";
+
+    document.getElementById("onset").textContent =
+        drug.onset || "-";
+
+    document.getElementById("duration").textContent =
+        drug.duration || "-";
+
+    document.getElementById("halfLife").textContent =
+        drug.halfLife || "-";
+
+    document.getElementById("proteinBinding").textContent =
+        drug.proteinBinding || "-";
+
+    document.getElementById("metabolism").textContent =
+        drug.metabolism || "-";
+
+    document.getElementById("elimination").textContent =
+        drug.elimination || "-";
+
+    document.getElementById("storage").textContent =
+        drug.storage || "-";
+
+    document.getElementById("monitoring").textContent =
+        Array.isArray(drug.monitoring)
+            ? drug.monitoring.join(" • ")
+            : "-";
+
+    document.getElementById("clinicalPearls").textContent =
+        Array.isArray(drug.clinicalPearls)
+            ? drug.clinicalPearls.join(" • ")
+            : "-";
+
+    document.getElementById("interactions").textContent =
+        Array.isArray(drug.interactions)
+            ? drug.interactions.join(" • ")
+            : "-";
+
+    document.getElementById("alerts").textContent =
+        Array.isArray(drug.alerts)
+            ? drug.alerts.join(" • ")
+            : "-";
+
+    document.getElementById("blackBox").textContent =
+        drug.blackBox || "-";
+
+}
+
