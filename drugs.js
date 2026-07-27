@@ -1,4099 +1,3974 @@
 // ======================================================
-// DoseCare v5.0
+// DoseCare AI v7
 // Drugs Database
 // ======================================================
 
 const drugs = {
+    paracetamol: {
+  id: "paracetamol",
 
-paracetamol:{
+  name: "Paracetamol",
 
-id:"paracetamol",
+  genericName: "Paracetamol",
 
-name:"Paracetamol",
+  brandNames: [
+    "Panadol",
+    "Calpol",
+    "Adol",
+    "Fevadol"
+  ],
 
-genericName:"Paracetamol",
+  category: "Pain & Fever",
 
-brandNames:[
-"Panadol",
-"Calpol",
-"Adol",
-"Fevadol"
-],
+  therapeuticClass: "Analgesic & Antipyretic",
 
-category:"Pain & Fever",
+  pharmacologicalClass: "Para-aminophenol Derivative",
 
-therapeuticClass:"Analgesic & Antipyretic",
+  diseases: [
+    "fever",
+    "pain"
+  ],
 
-pharmacologicalClass:"Para-aminophenol Derivative",
+  mgPerKg: 15,
 
-diseases:[
-"fever",
-"pain"
-],
+  frequency: "كل 4–6 ساعات",
 
-mgPerKg:15,
+  maxDose: 1000,
 
-frequency:"كل 4-6 ساعات",
+  minAge: 0,
 
-maxDose:1000,
+  maxAge: 18,
 
-minAge:0,
+  strengths: [
+    {
+      name: "120 mg / 5 mL",
+      concentration: 120
+    },
+    {
+      name: "250 mg / 5 mL",
+      concentration: 250
+    }
+  ],
 
-maxAge:12,
+  mechanism:
+    "يثبط تصنيع البروستاغلاندينات داخل الجهاز العصبي المركزي، مما يقلل الألم والحمى مع تأثير مضاد التهاب ضعيف.",
 
-strengths:[
+  indications:
+    "الحمى، الألم الخفيف إلى المتوسط، الصداع، ألم الأسنان، الألم بعد التطعيم.",
 
-{
-name:"120 mg / 5 mL",
-concentration:120
+  contraindications:
+    "فرط الحساسية للباراسيتامول أو القصور الكبدي الشديد.",
+
+  warnings:
+    "لا تتجاوز الجرعة اليومية القصوى. يستخدم بحذر لدى مرضى الكبد أو عند تناول الكحول.",
+
+  sideEffects:
+    "غثيان، قيء، طفح جلدي، تفاعلات تحسسية. الجرعات العالية قد تسبب تسمماً كبدياً.",
+
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل عند استخدامه بالجرعات الموصى بها.",
+
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
+
+  doseRange:
+    "10–15 mg/kg كل 4–6 ساعات، بحد أقصى 75 mg/kg/day أو 4 g/day أيهما أقل.",
+
+  onset:
+    "30–60 دقيقة",
+
+  duration:
+    "4–6 ساعات",
+
+  halfLife:
+    "2–3 ساعات",
+
+  proteinBinding:
+    "10–25%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة Glucuronidation و Sulfation، وجزء صغير عبر CYP2E1.",
+
+  elimination:
+    "يطرح عن طريق الكلى على شكل مستقلبات.",
+
+  storage:
+    "يحفظ بدرجة حرارة أقل من 25°C بعيداً عن الرطوبة والضوء.",
+
+  monitoring: [
+    "مراقبة وظائف الكبد عند الاستخدام الطويل.",
+    "التأكد من عدم تجاوز الجرعة اليومية.",
+    "متابعة تحسن الحمى أو الألم."
+  ],
+
+  clinicalPearls: [
+    "الخيار الأول لخفض الحرارة عند الأطفال.",
+    "يمكن إعطاؤه مع أو بدون الطعام.",
+    "التسمم يعالج بـ N-acetylcysteine إذا أعطي مبكراً."
+  ],
+
+  blackBox:
+    "الجرعات الزائدة قد تسبب فشلاً كبدياً حاداً قد يؤدي إلى الوفاة.",
+
+  interactions: [
+    "Warfarin: قد يزيد INR عند الاستخدام الطويل.",
+    "Alcohol: يزيد خطر السمية الكبدية.",
+    "Phenytoin و Carbamazepine: قد يزيدان تكوين المستقلبات السامة."
+  ],
+
+  notes:
+    "رج الزجاجة جيداً قبل الاستخدام واستعمل أداة قياس دقيقة للجرعة.",
+
+  alerts: [
+    "لا تتجاوز الجرعة اليومية القصوى.",
+    "لا تجمعه مع أي دواء آخر يحتوي على Paracetamol.",
+    "راجع الطبيب إذا استمرت الحمى أكثر من 3 أيام."
+  ]
+},
+ ibuprofen: {
+  id: "ibuprofen",
+
+  name: "Ibuprofen",
+
+  genericName: "Ibuprofen",
+
+  brandNames: [
+    "Brufen",
+    "Nurofen",
+    "Advil",
+    "Profen"
+  ],
+
+  category: "Pain & Fever",
+
+  therapeuticClass: "NSAID",
+
+  pharmacologicalClass: "Propionic Acid Derivative",
+
+  diseases: [
+    "fever",
+    "pain"
+  ],
+
+  mgPerKg: 10,
+
+  frequency: "كل 6–8 ساعات",
+
+  maxDose: 400,
+
+  minAge: 0.5,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "100 mg / 5 mL",
+      concentration: 100
+    },
+    {
+      name: "200 mg / 5 mL",
+      concentration: 200
+    }
+  ],
+
+  mechanism:
+    "يثبط إنزيمي COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات وبالتالي يخفف الألم والحمى والالتهاب.",
+
+  indications:
+    "الحمى، الألم الخفيف إلى المتوسط، التهاب الأذن، التهاب الحلق، آلام الأسنان، وآلام العضلات.",
+
+  contraindications:
+    "فرط الحساسية للإيبوبروفين أو مضادات الالتهاب غير الستيرويدية، قرحة المعدة النشطة، النزيف الهضمي، الفشل الكلوي الشديد.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى الربو والجفاف وأمراض الكلى. يفضل إعطاؤه بعد الطعام لتقليل تهيج المعدة.",
+
+  sideEffects:
+    "ألم المعدة، غثيان، قيء، حرقة، طفح جلدي، دوخة، وقد يحدث نزيف معدي عند الاستخدام الطويل.",
+
+  pregnancy:
+    "يمنع استخدامه خلال الثلث الأخير من الحمل.",
+
+  lactation:
+    "يعد آمناً نسبياً أثناء الرضاعة الطبيعية.",
+
+  doseRange:
+    "5–10 mg/kg كل 6–8 ساعات، بحد أقصى 40 mg/kg/day.",
+
+  onset:
+    "30–60 دقيقة",
+
+  duration:
+    "6–8 ساعات",
+
+  halfLife:
+    "حوالي ساعتين",
+
+  proteinBinding:
+    "≈99%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP2C9.",
+
+  elimination:
+    "يطرح عن طريق الكلى على شكل مستقلبات.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة بعيداً عن الحرارة والرطوبة.",
+
+  monitoring: [
+    "مراقبة وظائف الكلى عند الاستخدام الطويل.",
+    "متابعة أعراض النزيف المعدي.",
+    "مراقبة تحسن الحمى أو الألم."
+  ],
+
+  clinicalPearls: [
+    "يفضل إعطاؤه بعد الطعام.",
+    "تجنب استخدامه عند الأطفال المصابين بالجفاف الشديد.",
+    "لا يستخدم للرضع أقل من 6 أشهر إلا بتوجيه طبي."
+  ],
+
+  blackBox:
+    "قد يزيد خطر الأحداث القلبية الوعائية والنزيف أو التقرحات الهضمية عند الاستخدام المطول.",
+
+  interactions: [
+    "Warfarin: يزيد خطر النزيف.",
+    "Aspirin: قد يقلل تأثير الأسبرين المضاد للصفيحات.",
+    "ACE Inhibitors: قد يقلل فعاليتها ويزيد خطر إصابة الكلى."
+  ],
+
+  notes:
+    "يستخدم مع الطعام أو الحليب إذا سبب اضطراباً بالمعدة.",
+
+  alerts: [
+    "لا يستخدم للأطفال أقل من 6 أشهر دون استشارة الطبيب.",
+    "تجنب استخدامه عند وجود جفاف شديد.",
+    "أوقف العلاج عند ظهور نزيف أو حساسية."
+  ]
+},ibuprofen: {
+  id: "ibuprofen",
+
+  name: "Ibuprofen",
+
+  genericName: "Ibuprofen",
+
+  brandNames: [
+    "Brufen",
+    "Nurofen",
+    "Advil",
+    "Profen"
+  ],
+
+  category: "Pain & Fever",
+
+  therapeuticClass: "NSAID",
+
+  pharmacologicalClass: "Propionic Acid Derivative",
+
+  diseases: [
+    "fever",
+    "pain"
+  ],
+
+  mgPerKg: 10,
+
+  frequency: "كل 6–8 ساعات",
+
+  maxDose: 400,
+
+  minAge: 0.5,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "100 mg / 5 mL",
+      concentration: 100
+    },
+    {
+      name: "200 mg / 5 mL",
+      concentration: 200
+    }
+  ],
+
+  mechanism:
+    "يثبط إنزيمي COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات وبالتالي يخفف الألم والحمى والالتهاب.",
+
+  indications:
+    "الحمى، الألم الخفيف إلى المتوسط، التهاب الأذن، التهاب الحلق، آلام الأسنان، وآلام العضلات.",
+
+  contraindications:
+    "فرط الحساسية للإيبوبروفين أو مضادات الالتهاب غير الستيرويدية، قرحة المعدة النشطة، النزيف الهضمي، الفشل الكلوي الشديد.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى الربو والجفاف وأمراض الكلى. يفضل إعطاؤه بعد الطعام لتقليل تهيج المعدة.",
+
+  sideEffects:
+    "ألم المعدة، غثيان، قيء، حرقة، طفح جلدي، دوخة، وقد يحدث نزيف معدي عند الاستخدام الطويل.",
+
+  pregnancy:
+    "يمنع استخدامه خلال الثلث الأخير من الحمل.",
+
+  lactation:
+    "يعد آمناً نسبياً أثناء الرضاعة الطبيعية.",
+
+  doseRange:
+    "5–10 mg/kg كل 6–8 ساعات، بحد أقصى 40 mg/kg/day.",
+
+  onset:
+    "30–60 دقيقة",
+
+  duration:
+    "6–8 ساعات",
+
+  halfLife:
+    "حوالي ساعتين",
+
+  proteinBinding:
+    "≈99%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP2C9.",
+
+  elimination:
+    "يطرح عن طريق الكلى على شكل مستقلبات.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة بعيداً عن الحرارة والرطوبة.",
+
+  monitoring: [
+    "مراقبة وظائف الكلى عند الاستخدام الطويل.",
+    "متابعة أعراض النزيف المعدي.",
+    "مراقبة تحسن الحمى أو الألم."
+  ],
+
+  clinicalPearls: [
+    "يفضل إعطاؤه بعد الطعام.",
+    "تجنب استخدامه عند الأطفال المصابين بالجفاف الشديد.",
+    "لا يستخدم للرضع أقل من 6 أشهر إلا بتوجيه طبي."
+  ],
+
+  blackBox:
+    "قد يزيد خطر الأحداث القلبية الوعائية والنزيف أو التقرحات الهضمية عند الاستخدام المطول.",
+
+  interactions: [
+    "Warfarin: يزيد خطر النزيف.",
+    "Aspirin: قد يقلل تأثير الأسبرين المضاد للصفيحات.",
+    "ACE Inhibitors: قد يقلل فعاليتها ويزيد خطر إصابة الكلى."
+  ],
+
+  notes:
+    "يستخدم مع الطعام أو الحليب إذا سبب اضطراباً بالمعدة.",
+
+  alerts: [
+    "لا يستخدم للأطفال أقل من 6 أشهر دون استشارة الطبيب.",
+    "تجنب استخدامه عند وجود جفاف شديد.",
+    "أوقف العلاج عند ظهور نزيف أو حساسية."
+  ]
+},
+amoxicillin: {
+  id: "amoxicillin",
+
+  name: "Amoxicillin",
+
+  genericName: "Amoxicillin",
+
+  brandNames: [
+    "Amoxil",
+    "Mox",
+    "Ospamox",
+    "Hiconcil"
+  ],
+
+  category: "Antibiotic",
+
+  therapeuticClass: "Penicillin Antibiotic",
+
+  pharmacologicalClass: "Aminopenicillin",
+
+  diseases: [
+    "otitis",
+    "pharyngitis",
+    "sinusitis",
+    "pneumonia"
+  ],
+
+  mgPerKg: 25,
+
+  frequency: "كل 12 ساعة",
+
+  maxDose: 1000,
+
+  minAge: 0,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "125 mg / 5 mL",
+      concentration: 125
+    },
+    {
+      name: "250 mg / 5 mL",
+      concentration: 250
+    }
+  ],
+
+  mechanism:
+    "يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins مما يؤدي إلى قتل البكتيريا.",
+
+  indications:
+    "التهاب الأذن الوسطى، التهاب اللوزتين، التهاب الجيوب الأنفية، ذات الرئة، والتهابات الجلد.",
+
+  contraindications:
+    "فرط الحساسية للبنسلين أو أي من مضادات البيتالاكتام.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى القصور الكلوي. يجب إكمال مدة العلاج كاملة.",
+
+  sideEffects:
+    "إسهال، غثيان، قيء، طفح جلدي، تفاعلات تحسسية.",
+
+  pregnancy:
+    "يعد آمناً أثناء الحمل عند الحاجة.",
+
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
+
+  doseRange:
+    "20–45 mg/kg/day مقسمة على جرعتين أو ثلاث حسب شدة العدوى.",
+
+  onset:
+    "1–2 ساعة",
+
+  duration:
+    "حوالي 8 ساعات",
+
+  halfLife:
+    "1–1.5 ساعة",
+
+  proteinBinding:
+    "17–20%",
+
+  metabolism:
+    "استقلاب محدود.",
+
+  elimination:
+    "يطرح بشكل رئيسي عن طريق الكلى.",
+
+  storage:
+    "يحفظ المعلق بعد التحضير في الثلاجة ويستخدم خلال 14 يوماً.",
+
+  monitoring: [
+    "متابعة التحسن السريري.",
+    "مراقبة الحساسية.",
+    "تقييم وظائف الكلى عند الاستخدام الطويل."
+  ],
+
+  clinicalPearls: [
+    "يرج المعلق جيداً قبل كل جرعة.",
+    "إكمال الكورس العلاجي حتى لو تحسنت الأعراض."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Warfarin: قد يزيد INR.",
+    "Allopurinol: يزيد احتمال الطفح الجلدي."
+  ],
+
+  notes:
+    "يمكن إعطاؤه مع أو بدون الطعام.",
+
+  alerts: [
+    "أوقف الدواء عند ظهور حساسية شديدة.",
+    "لا يستخدم لعلاج العدوى الفيروسية."
+  ]
 },
 
-{
-name:"250 mg / 5 mL",
-concentration:250
-}
+co_amoxiclav: {
+  id: "co_amoxiclav",
 
-],
+  name: "Co-amoxiclav",
 
-mechanism:
-"يثبط تصنيع البروستاغلاندينات داخل الجهاز العصبي المركزي، مما يقلل الألم والحمى مع تأثير مضاد التهاب ضعيف.",
+  genericName: "Amoxicillin + Clavulanic Acid",
 
-indications:
-"الحمى، الألم الخفيف إلى المتوسط، الصداع، ألم الأسنان، الألم بعد التطعيم.",
+  brandNames: [
+    "Augmentin",
+    "Curam",
+    "Amoclan"
+  ],
 
-contraindications:
-"حساسية الباراسيتامول، القصور الكبدي الشديد.",
+  category: "Antibiotic",
 
-warnings:
-"لا تتجاوز الجرعة اليومية القصوى. يستخدم بحذر لدى مرضى الكبد أو عند تناول الكحول.",
+  therapeuticClass: "Penicillin + Beta-lactamase Inhibitor",
 
-sideEffects:
-"غثيان، قيء، طفح جلدي، تفاعلات تحسسية. الجرعات العالية قد تسبب فشلاً كبدياً.",
+  pharmacologicalClass: "Aminopenicillin Combination",
 
-pregnancy:
-"يعد آمناً نسبياً أثناء الحمل عند استخدامه بالجرعات الموصى بها.",
+  diseases: [
+    "otitis",
+    "sinusitis",
+    "pneumonia",
+    "uti"
+  ],
 
-lactation:
-"آمن أثناء الرضاعة الطبيعية.",
+  mgPerKg: 22.5,
 
-doseRange:
-"10–15 mg/kg كل 4–6 ساعات، وبحد أقصى 75 mg/kg/day للأطفال.",
+  frequency: "كل 12 ساعة",
 
-onset:
-"30–60 دقيقة",
+  maxDose: 875,
 
-duration:
-"4–6 ساعات",
+  minAge: 0,
 
-halfLife:
-"2–3 ساعات",
+  maxAge: 18,
 
-proteinBinding:
-"10–25%",
+  strengths: [
+    {
+      name: "228.5 mg / 5 mL",
+      concentration: 200
+    },
+    {
+      name: "457 mg / 5 mL",
+      concentration: 400
+    }
+  ],
 
-metabolism:
-"يستقلب في الكبد بواسطة Glucuronidation و Sulfation.",
+  mechanism:
+    "الأموكسيسيلين يثبط تصنيع جدار الخلية البكتيرية، بينما يحميه الكلافولانيك أسيد من إنزيمات Beta-lactamase.",
 
-elimination:
-"يطرح عن طريق الكلى على شكل مستقلبات.",
+  indications:
+    "التهاب الأذن، التهاب الجيوب، ذات الرئة، التهابات المسالك البولية، والتهابات الجلد.",
 
-storage:
-"يحفظ بدرجة حرارة أقل من 25°C بعيداً عن الرطوبة والضوء.",
+  contraindications:
+    "فرط الحساسية للبنسلين أو وجود يرقان سابق مرتبط بالدواء.",
 
-monitoring:[
+  warnings:
+    "قد يسبب اضطرابات هضمية أو ارتفاع إنزيمات الكبد، ويستخدم بحذر عند مرضى الكبد.",
 
-"مراقبة وظائف الكبد عند الاستخدام الطويل.",
+  sideEffects:
+    "إسهال، غثيان، قيء، طفح جلدي، داء المبيضات.",
 
-"التأكد من عدم تجاوز الجرعة اليومية.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-"متابعة تحسن الحمى أو الألم."
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
 
-],
+  doseRange:
+    "يعتمد على محتوى الأموكسيسيلين: 25–45 mg/kg/day مقسمة كل 12 ساعة.",
 
-clinicalPearls:[
+  onset:
+    "1–2 ساعة",
 
-"الخيار الأول لخفض الحرارة عند الأطفال.",
+  duration:
+    "حوالي 12 ساعة",
 
-"يفضل على NSAIDs عند مرضى الربو في معظم الحالات.",
+  halfLife:
+    "حوالي ساعة واحدة",
 
-"التسمم يعالج بـ N-acetylcysteine إذا أعطي مبكراً."
+  proteinBinding:
+    "18–25%",
 
-],
+  metabolism:
+    "استقلاب جزئي في الكبد.",
 
-blackBox:
-"الجرعات الزائدة قد تسبب تسمماً كبدياً شديداً قد يؤدي إلى الوفاة.",
+  elimination:
+    "عن طريق الكلى.",
 
-interactions:[
+  storage:
+    "يحفظ المعلق بعد التحضير في الثلاجة ويستخدم خلال 7–10 أيام.",
 
-"Warfarin (يزيد INR عند الاستخدام الطويل).",
+  monitoring: [
+    "متابعة الاستجابة للعلاج.",
+    "مراقبة وظائف الكبد عند العلاج الطويل.",
+    "مراقبة الحساسية."
+  ],
 
-"Alcohol (يزيد خطر السمية الكبدية).",
+  clinicalPearls: [
+    "يفضل إعطاؤه مع بداية الطعام.",
+    "رج الزجاجة جيداً قبل كل جرعة."
+  ],
 
-"Phenytoin و Carbamazepine قد يزيدان السمية الكبدية."
+  blackBox:
+    "لا يوجد.",
 
-],
+  interactions: [
+    "Warfarin: قد يزيد INR.",
+    "Methotrexate: قد يزيد سميته."
+  ],
 
-notes:
-"يمكن إعطاؤه مع أو بدون الطعام.",
+  notes:
+    "يؤخذ مع الطعام لتقليل اضطرابات المعدة.",
 
-alerts:[
-
-"لا تتجاوز الجرعة اليومية القصوى.",
-
-"لا تجمعه مع أي دواء يحتوي على Paracetamol.",
-
-"راقب وظائف الكبد عند الاستخدام الطويل."
-
-]
-
+  alerts: [
+    "أوقف العلاج عند حدوث حساسية.",
+    "قد يسبب إسهالاً مرتبطاً بالمضادات الحيوية."
+  ] 
 },
-ibuprofen:{
+    cefixime: {
+  id: "cefixime",
 
-id:"ibuprofen",
+  name: "Cefixime",
 
-name:"Ibuprofen",
+  genericName: "Cefixime",
 
-genericName:"Ibuprofen",
+  brandNames: [
+    "Suprax",
+    "Cefspan",
+    "Taxim-O"
+  ],
 
-brandNames:[
-"Brufen",
-"Nurofen",
-"Advil",
-"Profen"
-],
+  category: "Antibiotic",
 
-category:"Pain & Fever",
+  therapeuticClass: "Cephalosporin Antibiotic",
 
-therapeuticClass:"NSAID",
+  pharmacologicalClass: "Third Generation Cephalosporin",
 
-pharmacologicalClass:"Propionic Acid Derivative",
+  diseases: [
+    "otitis",
+    "pharyngitis",
+    "sinusitis",
+    "uti"
+  ],
 
-diseases:[
-"fever",
-"pain"
-],
+  mgPerKg: 8,
 
-mgPerKg:10,
+  frequency: "مرة يومياً أو كل 12 ساعة",
 
-frequency:"كل 6-8 ساعات",
+  maxDose: 400,
 
-maxDose:400,
+  minAge: 0.5,
 
-minAge:0.5,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "100 mg / 5 mL",
+      concentration: 100
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط تصنيع جدار الخلية البكتيرية مما يؤدي إلى قتل البكتيريا.",
 
-{
-name:"100 mg / 5 mL",
-concentration:100
-}
+  indications:
+    "التهاب الأذن الوسطى، التهاب الحلق، التهاب الجيوب الأنفية، والتهابات المسالك البولية.",
 
-],
+  contraindications:
+    "فرط الحساسية للسيفالوسبورينات.",
 
-mechanism:
-"يثبط إنزيمي COX-1 و COX-2 مما يقلل تصنيع البروستاغلاندينات، وبالتالي يخفف الألم والالتهاب والحمى.",
+  warnings:
+    "يستخدم بحذر عند مرضى الكلى أو من لديهم حساسية للبنسلين.",
 
-indications:
-"الحمى، الألم الخفيف إلى المتوسط، التهاب الحلق، ألم الأسنان، التهاب الأذن، التهاب المفاصل.",
+  sideEffects:
+    "إسهال، غثيان، ألم بطني، طفح جلدي.",
 
-contraindications:
-"حساسية تجاه NSAIDs، قرحة المعدة النشطة، النزف الهضمي، القصور الكلوي الشديد، الجفاف الشديد.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-warnings:
-"يعطى بعد الطعام لتقليل تهيج المعدة. يستخدم بحذر عند مرضى الربو أو أمراض الكلى.",
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
 
-sideEffects:
-"ألم معدة، غثيان، قيء، نزف معدي، اضطراب كلوي، طفح جلدي، احتباس سوائل.",
+  doseRange:
+    "8 mg/kg/day مرة واحدة أو مقسمة كل 12 ساعة.",
 
-pregnancy:
-"يمنع استخدامه في الثلث الأخير من الحمل.",
+  onset:
+    "2–4 ساعات",
 
-lactation:
-"يمكن استخدامه أثناء الرضاعة الطبيعية عند الحاجة.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"5–10 mg/kg كل 6–8 ساعات، وبحد أقصى 40 mg/kg/day للأطفال.",
+  halfLife:
+    "3–4 ساعات",
 
-onset:
-"30 دقيقة",
+  proteinBinding:
+    "65%",
 
-duration:
-"6–8 ساعات",
+  metabolism:
+    "استقلاب محدود.",
 
-halfLife:
-"2 ساعات",
+  elimination:
+    "عن طريق الكلى.",
 
-proteinBinding:
-"≈99%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة، والمعلق يستخدم خلال 14 يوماً.",
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP2C9.",
+  monitoring: [
+    "متابعة الاستجابة للعلاج.",
+    "مراقبة الحساسية."
+  ],
 
-elimination:
-"يطرح عن طريق الكلى.",
+  clinicalPearls: [
+    "يمكن إعطاؤه مرة واحدة يومياً.",
+    "رج الزجاجة جيداً قبل الاستعمال."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة أقل من 25°C بعيداً عن الرطوبة.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Warfarin: قد يزيد INR."
+  ],
 
-"مراقبة علامات النزف الهضمي.",
+  notes:
+    "يمكن إعطاؤه مع أو بدون الطعام.",
 
-"مراقبة وظائف الكلى عند الاستخدام الطويل.",
-
-"متابعة تحسن الحمى أو الألم."
-
-],
-
-clinicalPearls:[
-
-"يفضل إعطاؤه بعد الطعام.",
-
-"لا يستخدم للأطفال أقل من 6 أشهر إلا بتوجيه طبي.",
-
-"تجنب إعطاءه مع NSAIDs أخرى."
-
-],
-
-blackBox:
-"قد يزيد خطر النزف الهضمي والأحداث القلبية الوعائية عند الاستخدام الطويل أو الجرعات العالية.",
-
-interactions:[
-
-"Warfarin (يزيد خطر النزف).",
-
-"Aspirin (يزيد خطر قرحة المعدة).",
-
-"Corticosteroids (يزيد خطر النزف الهضمي).",
-
-"ACE Inhibitors ومدرات البول (قد تقل كفاءة العلاج وتزداد خطورة إصابة الكلى)."
-
-],
-
-notes:
-"يفضل تناوله بعد الطعام مع كمية كافية من الماء.",
-
-alerts:[
-
-"قد يسبب نزفاً معدياً.",
-
-"تجنب استخدامه عند الجفاف.",
-
-"لا يعطى مع NSAIDs أخرى.",
-
-"يستخدم بحذر عند مرضى الربو."
-
-]
-
-},
-amoxicillin:{
-
-id:"amoxicillin",
-
-name:"Amoxicillin",
-
-genericName:"Amoxicillin",
-
-brandNames:[
-"Amoxil",
-"Ospamox",
-"Hymox",
-"Mox"
-],
-
-category:"Antibiotics",
-
-therapeuticClass:"Penicillin Antibiotic",
-
-pharmacologicalClass:"Aminopenicillin",
-
-diseases:[
-"otitis",
-"pharyngitis",
-"sinusitis",
-"pneumonia"
-],
-
-mgPerKg:25,
-
-frequency:"كل 8 ساعات",
-
-maxDose:500,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"125 mg / 5 mL",
-concentration:125
+  alerts: [
+    "أكمل مدة العلاج كاملة.",
+    "لا يستخدم لعلاج العدوى الفيروسية."
+  ]
 },
 
-{
-name:"250 mg / 5 mL",
-concentration:250
-}
+cephalexin: {
+  id: "cephalexin",
 
-],
+  name: "Cephalexin",
 
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins مما يؤدي إلى قتل البكتيريا.",
+  genericName: "Cephalexin",
 
-indications:
-"التهاب الأذن الوسطى، التهاب البلعوم، التهاب الجيوب الأنفية، الالتهاب الرئوي، التهابات الجلد، التهابات المسالك البولية وبعض التهابات الأسنان.",
+  brandNames: [
+    "Keflex",
+    "Ceporex",
+    "Sporidex"
+  ],
 
-contraindications:
-"حساسية الأموكسيسيلين أو أي من أدوية البنسلين.",
+  category: "Antibiotic",
 
-warnings:
-"يستخدم بحذر عند مرضى القصور الكلوي أو من لديهم تاريخ حساسية للبنسلين أو السيفالوسبورينات.",
+  therapeuticClass: "Cephalosporin Antibiotic",
 
-sideEffects:
-"إسهال، غثيان، قيء، طفح جلدي، حساسية، عدوى فطرية بالفم أو المهبل.",
+  pharmacologicalClass: "First Generation Cephalosporin",
 
-pregnancy:
-"يعد آمناً أثناء الحمل عند الحاجة.",
+  diseases: [
+    "pharyngitis",
+    "skin",
+    "uti"
+  ],
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  mgPerKg: 25,
 
-doseRange:
-"20–40 mg/kg/day مقسمة كل 8 ساعات حسب شدة العدوى.",
+  frequency: "كل 12 ساعة",
 
-onset:
-"1–2 ساعة",
+  maxDose: 1000,
 
-duration:
-"8 ساعات",
+  minAge: 0,
 
-halfLife:
-"حوالي 1 ساعة",
+  maxAge: 18,
 
-proteinBinding:
-"≈20%",
+  strengths: [
+    {
+      name: "125 mg / 5 mL",
+      concentration: 125
+    },
+    {
+      name: "250 mg / 5 mL",
+      concentration: 250
+    }
+  ],
 
-metabolism:
-"استقلاب بسيط في الكبد.",
+  mechanism:
+    "يثبط تصنيع جدار الخلية البكتيرية.",
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  indications:
+    "التهابات الجلد، التهاب الحلق، التهابات المسالك البولية، وبعض التهابات الجهاز التنفسي.",
 
-storage:
-"يحفظ المعلق بعد التحضير في الثلاجة ويستخدم خلال 14 يوماً.",
+  contraindications:
+    "فرط الحساسية للسيفالوسبورينات.",
 
-monitoring:[
+  warnings:
+    "يستخدم بحذر عند مرضى الكلى.",
 
-"متابعة تحسن أعراض العدوى.",
+  sideEffects:
+    "إسهال، غثيان، قيء، طفح جلدي.",
 
-"مراقبة ظهور الطفح أو الحساسية.",
+  pregnancy:
+    "يعد آمناً أثناء الحمل.",
 
-"تعديل الجرعة عند القصور الكلوي."
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
 
-],
+  doseRange:
+    "25–50 mg/kg/day مقسمة على جرعتين إلى أربع جرعات.",
 
-clinicalPearls:[
+  onset:
+    "1 ساعة",
 
-"يجب إكمال مدة العلاج كاملة.",
+  duration:
+    "6–8 ساعات",
 
-"رج الزجاجة جيداً قبل كل جرعة.",
+  halfLife:
+    "حوالي ساعة",
 
-"يمكن تناوله مع الطعام أو بدونه.",
+  proteinBinding:
+    "15%",
 
-"فعال فقط ضد العدوى البكتيرية."
+  metabolism:
+    "لا يستقلب بشكل ملحوظ.",
 
-],
+  elimination:
+    "عن طريق الكلى.",
 
-blackBox:
-"قد تحدث تفاعلات تحسسية شديدة (Anaphylaxis) عند المرضى الذين لديهم حساسية للبنسلين.",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة، والمعلق يستخدم خلال 14 يوماً.",
 
-interactions:[
+  monitoring: [
+    "متابعة التحسن السريري.",
+    "مراقبة الحساسية."
+  ],
 
-"Warfarin (قد يزيد INR).",
+  clinicalPearls: [
+    "يفضل إكمال الكورس العلاجي.",
+    "رج الزجاجة جيداً قبل الاستخدام."
+  ],
 
-"Allopurinol (يزيد احتمال الطفح الجلدي).",
+  blackBox:
+    "لا يوجد.",
 
-"Methotrexate (يزيد سميته).",
+  interactions: [
+    "Metformin: قد يزيد مستواه في الدم.",
+    "Warfarin: قد يزيد INR."
+  ],
 
-"Probenecid (يزيد تركيز الأموكسيسيلين في الدم)."
+  notes:
+    "يمكن إعطاؤه مع الطعام إذا سبب اضطراباً بالمعدة.",
 
-],
-
-notes:
-"أكمل العلاج حتى نهايته حتى مع تحسن الأعراض.",
-
-alerts:[
-
-"اسأل عن حساسية البنسلين.",
-
-"رج العبوة جيداً قبل الاستخدام.",
-
-"لا توقف المضاد الحيوي عند تحسن الأعراض.",
-
-"احفظ المعلق في الثلاجة بعد التحضير."
-
-]
-
+  alerts: [
+    "أوقف العلاج عند ظهور حساسية.",
+    "لا يستخدم دون وصفة طبية."
+  ]
 },
-coamoxiclav:{
+    cefuroxime: {
+  id: "cefuroxime",
 
-id:"coamoxiclav",
+  name: "Cefuroxime",
 
-name:"Co-amoxiclav",
+  genericName: "Cefuroxime Axetil",
 
-genericName:"Amoxicillin + Clavulanic Acid",
+  brandNames: [
+    "Zinnat",
+    "Ceftin"
+  ],
 
-brandNames:[
-"Augmentin",
-"Curam",
-"Clavulin",
-"Amoclan"
-],
+  category: "Antibiotic",
 
-category:"Antibiotics",
+  therapeuticClass: "Cephalosporin Antibiotic",
 
-therapeuticClass:"Penicillin Antibiotic",
+  pharmacologicalClass: "Second Generation Cephalosporin",
 
-pharmacologicalClass:"Aminopenicillin + Beta-lactamase Inhibitor",
+  diseases: [
+    "otitis",
+    "pharyngitis",
+    "sinusitis",
+    "pneumonia"
+  ],
 
-diseases:[
-"otitis",
-"sinusitis",
-"pneumonia"
-],
+  mgPerKg: 15,
 
-mgPerKg:25,
+  frequency: "كل 12 ساعة",
 
-frequency:"كل 8 ساعات",
+  maxDose: 500,
 
-maxDose:875,
+  minAge: 0.25,
 
-minAge:0,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "125 mg / 5 mL",
+      concentration: 125
+    },
+    {
+      name: "250 mg / 5 mL",
+      concentration: 250
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins.",
 
-{
-name:"228 mg / 5 mL",
-concentration:228
-},
+  indications:
+    "التهاب الأذن الوسطى، التهاب الجيوب الأنفية، التهاب اللوزتين، ذات الرئة.",
 
-{
-name:"457 mg / 5 mL",
-concentration:457
-}
+  contraindications:
+    "فرط الحساسية للسيفالوسبورينات.",
 
-],
+  warnings:
+    "يستخدم بحذر عند مرضى الكلى، ويؤخذ بعد الطعام لتحسين الامتصاص.",
 
-mechanism:
-"الأموكسيسيلين يثبط تصنيع جدار الخلية البكتيرية، بينما يمنع حمض الكلافولانيك إنزيمات Beta-lactamase مما يحمي الأموكسيسيلين من التحلل.",
+  sideEffects:
+    "إسهال، غثيان، قيء، ألم بطني، طفح جلدي.",
 
-indications:
-"التهاب الأذن الوسطى، التهاب الجيوب الأنفية، الالتهاب الرئوي، التهابات الجلد، التهابات الأسنان، والتهابات المسالك البولية.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-contraindications:
-"حساسية البنسلين أو السيفالوسبورينات، أو حدوث يرقان أو اضطراب كبدي سابق بسبب Co-amoxiclav.",
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
 
-warnings:
-"يستخدم بحذر عند مرضى الكبد أو القصور الكلوي، ويجب تعديل الجرعة عند انخفاض وظائف الكلى.",
+  doseRange:
+    "20–30 mg/kg/day مقسمة كل 12 ساعة.",
 
-sideEffects:
-"إسهال، غثيان، قيء، طفح جلدي، اضطرابات هضمية، ارتفاع إنزيمات الكبد، وعدوى فطرية.",
+  onset:
+    "2–3 ساعات",
 
-pregnancy:
-"يعتبر آمناً نسبياً أثناء الحمل عند الحاجة.",
+  duration:
+    "12 ساعة",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  halfLife:
+    "1–1.5 ساعة",
 
-doseRange:
-"25–45 mg/kg/day (Amoxicillin component) مقسمة كل 8 أو 12 ساعة حسب شدة العدوى.",
+  proteinBinding:
+    "35–50%",
 
-onset:
-"1–2 ساعة",
+  metabolism:
+    "لا يستقلب بشكل ملحوظ.",
 
-duration:
-"8 ساعات",
+  elimination:
+    "عن طريق الكلى.",
 
-halfLife:
-"حوالي 1 ساعة",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة، والمعلق يستخدم خلال 10 أيام.",
 
-proteinBinding:
-"Amoxicillin ≈20% ، Clavulanic Acid ≈25%",
+  monitoring: [
+    "متابعة التحسن السريري.",
+    "مراقبة الحساسية."
+  ],
 
-metabolism:
-"يستقلب جزئياً في الكبد.",
+  clinicalPearls: [
+    "يفضل تناوله بعد الطعام.",
+    "رج الزجاجة جيداً قبل الاستخدام."
+  ],
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  blackBox:
+    "لا يوجد.",
 
-storage:
-"يحفظ المعلق بعد التحضير في الثلاجة ويستخدم خلال 7–10 أيام حسب الشركة المصنعة.",
+  interactions: [
+    "Probenecid: يزيد تركيز الدواء.",
+    "Warfarin: قد يزيد INR."
+  ],
 
-monitoring:[
+  notes:
+    "يؤخذ بعد الطعام لتحسين الامتصاص.",
 
-"متابعة تحسن أعراض العدوى.",
-
-"مراقبة وظائف الكبد عند العلاج الطويل.",
-
-"تعديل الجرعة في القصور الكلوي."
-
-],
-
-clinicalPearls:[
-
-"يفضل تناوله بعد الطعام لتقليل اضطرابات المعدة.",
-
-"رج الزجاجة جيداً قبل كل جرعة.",
-
-"أكمل مدة العلاج كاملة.",
-
-"فعال ضد البكتيريا المنتجة لـ Beta-lactamase."
-
-],
-
-blackBox:
-"قد يسبب تفاعلات تحسسية شديدة أو اضطرابات كبدية نادرة.",
-
-interactions:[
-
-"Warfarin (قد يزيد INR).",
-
-"Allopurinol (يزيد احتمال الطفح الجلدي).",
-
-"Methotrexate (يزيد سميته).",
-
-"Probenecid (يزيد تركيز الأموكسيسيلين في الدم)."
-
-],
-
-notes:
-"يفضل تناوله بعد الطعام مع كمية كافية من الماء.",
-
-alerts:[
-
-"رج العبوة جيداً قبل الاستخدام.",
-
-"أكمل العلاج للنهاية.",
-
-"قد يسبب اضطراباً بالمعدة.",
-
-"احفظ المعلق في الثلاجة بعد التحضير."
-
-]
-
+  alerts: [
+    "أكمل مدة العلاج كاملة.",
+    "أوقف العلاج عند حدوث حساسية."
+  ]
 },
 
-azithromycin:{
+azithromycin: {
+  id: "azithromycin",
 
-id:"azithromycin",
+  name: "Azithromycin",
 
-name:"Azithromycin",
+  genericName: "Azithromycin",
 
-genericName:"Azithromycin",
+  brandNames: [
+    "Zithromax",
+    "Azithrocin",
+    "Zeto"
+  ],
 
-brandNames:[
-"Zithromax",
-"Azomax",
-"Z-Pak",
-"Azithrocin"
-],
+  category: "Antibiotic",
 
-category:"Antibiotics",
+  therapeuticClass: "Macrolide Antibiotic",
 
-therapeuticClass:"Macrolide Antibiotic",
+  pharmacologicalClass: "Azalide",
 
-pharmacologicalClass:"Azalide",
+  diseases: [
+    "pharyngitis",
+    "sinusitis",
+    "pneumonia"
+  ],
 
-diseases:[
-"pharyngitis",
-"pneumonia"
-],
+  mgPerKg: 10,
 
-mgPerKg:10,
+  frequency: "مرة يومياً",
 
-frequency:"مرة يومياً",
+  maxDose: 500,
 
-maxDose:500,
+  minAge: 0.5,
 
-minAge:0,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "100 mg / 5 mL",
+      concentration: 100
+    },
+    {
+      name: "200 mg / 5 mL",
+      concentration: 200
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S من الريبوسوم.",
 
-{
-name:"200 mg / 5 mL",
-concentration:200
-}
+  indications:
+    "التهاب الحلق، التهاب الجيوب الأنفية، ذات الرئة، وبعض التهابات الجلد.",
 
-],
+  contraindications:
+    "فرط الحساسية للأزيثرومايسين أو الماكروليدات.",
 
-mechanism:
-"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S من الريبوسوم، مما يمنع نمو البكتيريا.",
+  warnings:
+    "قد يسبب إطالة QT ويستخدم بحذر عند مرضى اضطرابات القلب.",
 
-indications:
-"التهاب البلعوم، الالتهاب الرئوي، التهاب الشعب الهوائية، التهاب الأذن الوسطى، التهاب الجيوب الأنفية، وبعض التهابات الجلد.",
+  sideEffects:
+    "إسهال، غثيان، ألم بطني، قيء، صداع.",
 
-contraindications:
-"حساسية الأزيثرومايسين أو أي من المضادات الحيوية من مجموعة الماكروليدات.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-warnings:
-"يستخدم بحذر عند مرضى الكبد أو المرضى المعرضين لإطالة QT أو اضطرابات نظم القلب.",
+  lactation:
+    "آمن أثناء الرضاعة الطبيعية.",
 
-sideEffects:
-"إسهال، غثيان، قيء، ألم بطني، صداع، طفح جلدي، إطالة QT، ارتفاع إنزيمات الكبد.",
+  doseRange:
+    "10 mg/kg في اليوم الأول ثم 5 mg/kg يومياً حسب نوع العدوى.",
 
-pregnancy:
-"يمكن استخدامه أثناء الحمل عند الحاجة.",
+  onset:
+    "2–3 ساعات",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"10 mg/kg مرة يومياً لمدة 3 أيام أو حسب نوع العدوى.",
+  halfLife:
+    "حوالي 68 ساعة",
 
-onset:
-"2–3 ساعات",
+  proteinBinding:
+    "7–50%",
 
-duration:
-"يستمر تأثيره عدة أيام بسبب عمره النصفي الطويل.",
+  metabolism:
+    "استقلاب كبدي محدود.",
 
-halfLife:
-"≈68 ساعات",
+  elimination:
+    "يطرح بشكل رئيسي مع الصفراء.",
 
-proteinBinding:
-"≈50%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"استقلاب كبدي محدود.",
+  monitoring: [
+    "متابعة الاستجابة للعلاج.",
+    "مراقبة أعراض اضطرابات القلب عند المرضى المعرضين."
+  ],
 
-elimination:
-"يطرح بشكل رئيسي مع الصفراء، وجزء بسيط عن طريق الكلى.",
+  clinicalPearls: [
+    "يعطى مرة واحدة يومياً.",
+    "مدة العلاج أقصر من معظم المضادات الحيوية."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Warfarin: قد يزيد INR.",
+    "Digoxin: قد يزيد مستواه."
+  ],
 
-"متابعة تحسن العدوى.",
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
 
-"مراقبة أعراض اضطراب نظم القلب عند المرضى المعرضين لذلك.",
-
-"مراقبة وظائف الكبد عند العلاج الطويل."
-
-],
-
-clinicalPearls:[
-
-"يعطى مرة واحدة يومياً مما يحسن التزام المريض.",
-
-"يمكن تناوله مع الطعام أو بدونه.",
-
-"يفضل إعطاؤه في نفس الوقت يومياً.",
-
-"أكمل مدة العلاج حتى نهايتها."
-
-],
-
-blackBox:
-"قد يسبب اضطرابات خطيرة في نظم القلب (QT prolongation) عند المرضى المعرضين لذلك.",
-
-interactions:[
-
-"Warfarin (قد يزيد INR).",
-
-"Digoxin (قد يزيد تركيزه).",
-
-"Antacids المحتوية على الألمنيوم أو المغنيسيوم تقلل الامتصاص؛ يفضل الفصل ساعتين.",
-
-"الأدوية التي تطيل QT مثل Amiodarone و Sotalol."
-
-],
-
-notes:
-"يعطى مرة واحدة يومياً ويمكن تناوله مع الطعام أو بدونه.",
-
-alerts:[
-
-"قد يسبب إطالة QT.",
-
-"يمكن إعطاؤه مع الطعام أو بدونه.",
-
-"أكمل العلاج كاملاً.",
-
-"يفضل عدم تناوله مع مضادات الحموضة في نفس الوقت."
-
-]
-
+  alerts: [
+    "لا يوقف العلاج قبل إكمال الكورس.",
+    "يستخدم بحذر عند مرضى اضطرابات نظم القلب."
+  ]
 },
-cefixime:{
+    clarithromycin: {
+  id: "clarithromycin",
 
-id:"cefixime",
+  name: "Clarithromycin",
 
-name:"Cefixime",
+  genericName: "Clarithromycin",
 
-genericName:"Cefixime",
+  brandNames: [
+    "Klacid",
+    "Biaxin"
+  ],
 
-brandNames:[
-"Suprax",
-"Cefspan",
-"Taxim-O",
-"Cefix"
-],
+  category: "Antibiotic",
 
-category:"Antibiotics",
+  therapeuticClass: "Macrolide Antibiotic",
 
-therapeuticClass:"Cephalosporin Antibiotic",
+  pharmacologicalClass: "Macrolide",
 
-pharmacologicalClass:"Third Generation Cephalosporin",
+  diseases: [
+    "pharyngitis",
+    "sinusitis",
+    "pneumonia"
+  ],
 
-diseases:[
-"uti",
-"otitis"
-],
+  mgPerKg: 7.5,
 
-mgPerKg:8,
+  frequency: "كل 12 ساعة",
 
-frequency:"مرة أو مرتين يومياً",
+  maxDose: 500,
 
-maxDose:400,
+  minAge: 0.5,
 
-minAge:0.5,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "125 mg / 5 mL",
+      concentration: 125
+    },
+    {
+      name: "250 mg / 5 mL",
+      concentration: 250
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S من الريبوسوم.",
 
-{
-name:"100 mg / 5 mL",
-concentration:100
-}
+  indications:
+    "التهاب اللوزتين، التهاب الجيوب الأنفية، التهاب الأذن الوسطى، ذات الرئة.",
 
-],
+  contraindications:
+    "فرط الحساسية للماكروليدات أو وجود إطالة QT.",
 
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins مما يؤدي إلى قتل البكتيريا.",
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد والقلب.",
 
-indications:
-"التهابات المسالك البولية، التهاب الأذن الوسطى، التهاب البلعوم، التهاب اللوزتين، التهاب الشعب الهوائية، وبعض التهابات الجهاز التنفسي.",
+  sideEffects:
+    "غثيان، إسهال، ألم بطني، اضطراب التذوق، صداع.",
 
-contraindications:
-"حساسية السيفالوسبورينات أو حدوث تفاعل تحسسي شديد سابق لها.",
+  pregnancy:
+    "يستخدم فقط إذا كانت الفائدة تفوق الخطر.",
 
-warnings:
-"يستخدم بحذر عند مرضى القصور الكلوي أو المرضى الذين لديهم حساسية للبنسلين.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-sideEffects:
-"إسهال، غثيان، قيء، ألم بطني، طفح جلدي، حساسية، وعدوى فطرية.",
+  doseRange:
+    "7.5 mg/kg كل 12 ساعة.",
 
-pregnancy:
-"يعتبر آمناً نسبياً أثناء الحمل عند الحاجة.",
+  onset:
+    "2 ساعة",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  duration:
+    "12 ساعة",
 
-doseRange:
-"8 mg/kg/day تعطى مرة واحدة يومياً أو تقسم إلى جرعتين، وبحد أقصى 400 mg/day.",
+  halfLife:
+    "3–7 ساعات",
 
-onset:
-"2–4 ساعات",
+  proteinBinding:
+    "70%",
 
-duration:
-"24 ساعة",
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4.",
 
-halfLife:
-"3–4 ساعات",
+  elimination:
+    "عن طريق الكلى والصفراء.",
 
-proteinBinding:
-"≈65%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"استقلاب محدود.",
+  monitoring: [
+    "مراقبة وظائف الكبد.",
+    "متابعة الاستجابة للعلاج."
+  ],
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  clinicalPearls: [
+    "يمكن تناوله مع الطعام.",
+    "أكمل الكورس العلاجي."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة، ويستخدم المعلق حسب تعليمات الشركة المصنعة بعد التحضير.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Warfarin.",
+    "Digoxin.",
+    "Carbamazepine."
+  ],
 
-"متابعة تحسن أعراض العدوى.",
+  notes:
+    "قد يسبب طعماً معدنياً بالفم.",
 
-"تعديل الجرعة عند القصور الكلوي.",
-
-"مراقبة حدوث الإسهال الشديد أو الحساسية."
-
-],
-
-clinicalPearls:[
-
-"يستخدم كثيراً لعلاج التهابات المسالك البولية.",
-
-"يمكن تناوله مع الطعام أو بدونه.",
-
-"أكمل مدة العلاج كاملة حتى مع تحسن الأعراض.",
-
-"رج الزجاجة جيداً قبل كل جرعة."
-
-],
-
-blackBox:
-"قد يسبب تفاعلات تحسسية شديدة أو التهاب قولون مرتبط بالمضادات الحيوية (C. difficile).",
-
-interactions:[
-
-"Warfarin (قد يزيد INR).",
-
-"Probenecid (يزيد تركيز Cefixime).",
-
-"Carbamazepine (قد يزيد تركيزه في الدم)."
-
-],
-
-notes:
-"يستخدم كثيراً في علاج التهابات البول والأذن عند الأطفال.",
-
-alerts:[
-
-"يعدل عند القصور الكلوي.",
-
-"أكمل العلاج كاملاً.",
-
-"اسأل عن حساسية البنسلين أو السيفالوسبورينات.",
-
-"رج العبوة جيداً قبل الاستخدام."
-
-]
-
+  alerts: [
+    "يستخدم بحذر مع الأدوية التي تطيل QT."
+  ]
 },
 
-cefuroxime:{
+metronidazole: {
+  id: "metronidazole",
 
-id:"cefuroxime",
+  name: "Metronidazole",
 
-name:"Cefuroxime",
+  genericName: "Metronidazole",
 
-genericName:"Cefuroxime Axetil",
+  brandNames: [
+    "Flagyl",
+    "Metrogyl"
+  ],
 
-brandNames:[
-"Zinnat",
-"Ceftin",
-"Cefurix",
-"Zinacef"
-],
+  category: "Antiprotozoal & Antibiotic",
 
-category:"Antibiotics",
+  therapeuticClass: "Nitroimidazole",
 
-therapeuticClass:"Cephalosporin Antibiotic",
+  pharmacologicalClass: "Nitroimidazole Derivative",
 
-pharmacologicalClass:"Second Generation Cephalosporin",
+  diseases: [
+    "diarrhea"
+  ],
 
-diseases:[
-"sinusitis",
-"otitis"
-],
+  mgPerKg: 7.5,
 
-mgPerKg:15,
+  frequency: "كل 8 ساعات",
 
-frequency:"كل 12 ساعة",
+  maxDose: 500,
 
-maxDose:500,
+  minAge: 0,
 
-minAge:0.25,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "125 mg / 5 mL",
+      concentration: 125
+    },
+    {
+      name: "200 mg / 5 mL",
+      concentration: 200
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يؤدي إلى إتلاف DNA للكائنات اللاهوائية والطفيليات.",
 
-{
-name:"125 mg / 5 mL",
-concentration:125
-}
+  indications:
+    "الأميبيا، الجيارديا، العدوى اللاهوائية، والتهابات الجهاز الهضمي.",
 
-],
+  contraindications:
+    "فرط الحساسية للدواء.",
 
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins مما يؤدي إلى قتل البكتيريا.",
+  warnings:
+    "يمنع تناول الكحول أثناء العلاج ولمدة 48 ساعة بعد انتهائه.",
 
-indications:
-"التهاب الجيوب الأنفية، التهاب الأذن الوسطى، التهاب اللوزتين، التهاب البلعوم، الالتهاب الرئوي، التهاب الشعب الهوائية، وبعض التهابات الجلد.",
+  sideEffects:
+    "غثيان، قيء، طعم معدني، صداع، دوخة.",
 
-contraindications:
-"حساسية السيفالوسبورينات أو حدوث تفاعل تحسسي شديد سابق لها.",
+  pregnancy:
+    "يستخدم عند الحاجة الطبية.",
 
-warnings:
-"يستخدم بحذر عند مرضى القصور الكلوي أو المرضى الذين لديهم حساسية للبنسلين.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-sideEffects:
-"غثيان، قيء، إسهال، ألم بطني، طفح جلدي، حساسية، وعدوى فطرية.",
+  doseRange:
+    "7.5 mg/kg كل 8 ساعات حسب نوع العدوى.",
 
-pregnancy:
-"يعتبر آمناً أثناء الحمل عند الحاجة.",
+  onset:
+    "1–2 ساعة",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  duration:
+    "8 ساعات",
 
-doseRange:
-"10–15 mg/kg كل 12 ساعة حسب شدة العدوى، وبحد أقصى 500 mg لكل جرعة.",
+  halfLife:
+    "8 ساعات",
 
-onset:
-"2–3 ساعات",
+  proteinBinding:
+    "20%",
 
-duration:
-"12 ساعة",
+  metabolism:
+    "يستقلب في الكبد.",
 
-halfLife:
-"1–2 ساعة",
+  elimination:
+    "عن طريق الكلى.",
 
-proteinBinding:
-"≈35–50%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يتم تحويل Cefuroxime Axetil إلى Cefuroxime الفعال بعد الامتصاص.",
+  monitoring: [
+    "متابعة تحسن الأعراض.",
+    "مراقبة وظائف الكبد عند العلاج الطويل."
+  ],
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  clinicalPearls: [
+    "يعالج معظم العدوى اللاهوائية.",
+    "تجنب الكحول أثناء العلاج."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة، ويستخدم المعلق حسب تعليمات الشركة المصنعة بعد التحضير.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Warfarin.",
+    "Alcohol.",
+    "Lithium."
+  ],
 
-"متابعة تحسن أعراض العدوى.",
+  notes:
+    "يفضل تناوله بعد الطعام.",
 
-"تعديل الجرعة عند القصور الكلوي.",
+  alerts: [
+    "يمنع شرب الكحول أثناء العلاج."
+  ]
+}, 
+    loratadine: {
+  id: "loratadine",
 
-"مراقبة ظهور الحساسية أو الإسهال الشديد."
+  name: "Loratadine",
 
-],
+  genericName: "Loratadine",
 
-clinicalPearls:[
+  brandNames: [
+    "Claritin",
+    "Lorano",
+    "Lorat"
+  ],
 
-"يفضل تناوله بعد الطعام لتحسين الامتصاص.",
+  category: "Antihistamine",
 
-"رج الزجاجة جيداً قبل كل جرعة.",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-"أكمل مدة العلاج كاملة.",
+  pharmacologicalClass: "Piperidine Derivative",
 
-"فعال ضد كثير من بكتيريا الجهاز التنفسي."
+  diseases: [
+    "allergy"
+  ],
 
-],
+  mgPerKg: 0.2,
 
-blackBox:
-"قد يسبب تفاعلات تحسسية شديدة أو التهاب قولون مرتبط بالمضادات الحيوية (C. difficile).",
+  frequency: "مرة يومياً",
 
-interactions:[
+  maxDose: 10,
 
-"Warfarin (قد يزيد INR).",
+  minAge: 2,
 
-"Probenecid (يزيد تركيز Cefuroxime).",
+  maxAge: 18,
 
-"Antacids قد تقلل امتصاص Cefuroxime Axetil."
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-],
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية مما يقلل أعراض الحساسية.",
 
-notes:
-"يفضل تناوله بعد الطعام لتحسين الامتصاص وتقليل اضطرابات المعدة.",
+  indications:
+    "التهاب الأنف التحسسي، الشرى، والحكة.",
 
-alerts:[
+  contraindications:
+    "فرط الحساسية للوراتادين.",
 
-"يحسن الطعام امتصاصه.",
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد.",
 
-"أكمل العلاج كاملاً.",
+  sideEffects:
+    "صداع، جفاف الفم، نعاس خفيف.",
 
-"اسأل عن حساسية البنسلين أو السيفالوسبورينات.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-"رج العبوة جيداً قبل الاستخدام."
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-]
+  doseRange:
+    "0.2 mg/kg مرة يومياً بحد أقصى 10 mg.",
 
+  onset:
+    "1–3 ساعات",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "97%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
+
+  elimination:
+    "عن طريق البول والبراز.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "لا يسبب النعاس غالباً.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "لا تتجاوز الجرعة اليومية."
+  ]
 },
 
-cephalexin:{
+cetirizine: {
+  id: "cetirizine",
 
-id:"cephalexin",
+  name: "Cetirizine",
 
-name:"Cephalexin",
+  genericName: "Cetirizine",
 
-genericName:"Cephalexin",
+  brandNames: [
+    "Zyrtec",
+    "Cetzine",
+    "Cetirin"
+  ],
 
-brandNames:[
-"Keflex",
-"Ceporex",
-"Rilexine",
-"Sporidex"
-],
+  category: "Antihistamine",
 
-category:"Antibiotics",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-therapeuticClass:"Cephalosporin Antibiotic",
+  pharmacologicalClass: "Piperazine Derivative",
 
-pharmacologicalClass:"First Generation Cephalosporin",
+  diseases: [
+    "allergy"
+  ],
 
-diseases:[
-"skin",
-"pharyngitis"
-],
+  mgPerKg: 0.25,
 
-mgPerKg:25,
+  frequency: "مرة يومياً",
 
-frequency:"كل 8 ساعات",
+  maxDose: 10,
 
-maxDose:500,
+  minAge: 0.5,
 
-minAge:0,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية ويخفف أعراض الحساسية.",
 
-{
-name:"125 mg / 5 mL",
-concentration:125
+  indications:
+    "التهاب الأنف التحسسي، الشرى، الحكة.",
+
+  contraindications:
+    "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
+
+  warnings:
+    "قد يسبب نعاساً عند بعض المرضى.",
+
+  sideEffects:
+    "نعاس، صداع، جفاف الفم، تعب.",
+
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "0.25 mg/kg/day بحد أقصى 10 mg.",
+
+  onset:
+    "30–60 دقيقة",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "93%",
+
+  metabolism:
+    "استقلاب محدود.",
+
+  elimination:
+    "عن طريق الكلى.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "قد يسبب نعاساً أكثر من Loratadine.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Alcohol.",
+    "CNS depressants."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "تجنب القيادة إذا سبب نعاساً."
+  ]
+},
+    loratadine: {
+  id: "loratadine",
+
+  name: "Loratadine",
+
+  genericName: "Loratadine",
+
+  brandNames: [
+    "Claritin",
+    "Lorano",
+    "Lorat"
+  ],
+
+  category: "Antihistamine",
+
+  therapeuticClass: "Second Generation H1 Antihistamine",
+
+  pharmacologicalClass: "Piperidine Derivative",
+
+  diseases: [
+    "allergy"
+  ],
+
+  mgPerKg: 0.2,
+
+  frequency: "مرة يومياً",
+
+  maxDose: 10,
+
+  minAge: 2,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
+
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية مما يقلل أعراض الحساسية.",
+
+  indications:
+    "التهاب الأنف التحسسي، الشرى، والحكة.",
+
+  contraindications:
+    "فرط الحساسية للوراتادين.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد.",
+
+  sideEffects:
+    "صداع، جفاف الفم، نعاس خفيف.",
+
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "0.2 mg/kg مرة يومياً بحد أقصى 10 mg.",
+
+  onset:
+    "1–3 ساعات",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "97%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
+
+  elimination:
+    "عن طريق البول والبراز.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "لا يسبب النعاس غالباً.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "لا تتجاوز الجرعة اليومية."
+  ]
 },
 
-{
-name:"250 mg / 5 mL",
-concentration:250
-}
+cetirizine: {
+  id: "cetirizine",
 
-],
+  name: "Cetirizine",
 
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع Penicillin-Binding Proteins مما يؤدي إلى قتل البكتيريا.",
+  genericName: "Cetirizine",
 
-indications:
-"التهابات الجلد والأنسجة الرخوة، التهاب البلعوم، التهاب اللوزتين، التهاب المسالك البولية، وبعض التهابات الجهاز التنفسي.",
+  brandNames: [
+    "Zyrtec",
+    "Cetzine",
+    "Cetirin"
+  ],
 
-contraindications:
-"حساسية السيفالوسبورينات أو حدوث تفاعل تحسسي شديد سابق لها.",
+  category: "Antihistamine",
 
-warnings:
-"يستخدم بحذر عند مرضى القصور الكلوي أو المرضى الذين لديهم حساسية للبنسلين.",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-sideEffects:
-"غثيان، قيء، إسهال، ألم بطني، طفح جلدي، حساسية، وعدوى فطرية.",
+  pharmacologicalClass: "Piperazine Derivative",
 
-pregnancy:
-"يعتبر آمناً أثناء الحمل عند الحاجة.",
+  diseases: [
+    "allergy"
+  ],
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  mgPerKg: 0.25,
 
-doseRange:
-"25–50 mg/kg/day مقسمة كل 6–8 ساعات، وقد تصل إلى 100 mg/kg/day في العدوى الشديدة.",
+  frequency: "مرة يومياً",
 
-onset:
-"1 ساعة",
+  maxDose: 10,
 
-duration:
-"6–8 ساعات",
+  minAge: 0.5,
 
-halfLife:
-"0.5–1.2 ساعة",
+  maxAge: 18,
 
-proteinBinding:
-"≈10–15%",
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-metabolism:
-"لا يستقلب بشكل ملحوظ.",
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية ويخفف أعراض الحساسية.",
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  indications:
+    "التهاب الأنف التحسسي، الشرى، الحكة.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة، ويستخدم المعلق حسب تعليمات الشركة المصنعة بعد التحضير.",
+  contraindications:
+    "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
 
-monitoring:[
+  warnings:
+    "قد يسبب نعاساً عند بعض المرضى.",
 
-"متابعة تحسن أعراض العدوى.",
+  sideEffects:
+    "نعاس، صداع، جفاف الفم، تعب.",
 
-"تعديل الجرعة عند القصور الكلوي.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-"مراقبة الحساسية أو الإسهال الشديد."
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-],
+  doseRange:
+    "0.25 mg/kg/day بحد أقصى 10 mg.",
 
-clinicalPearls:[
+  onset:
+    "30–60 دقيقة",
 
-"مناسب جداً لعلاج التهابات الجلد الناتجة عن Streptococcus و Staphylococcus الحساسة.",
+  duration:
+    "24 ساعة",
 
-"يمكن تناوله مع الطعام لتقليل اضطرابات المعدة.",
+  halfLife:
+    "8 ساعات",
 
-"أكمل مدة العلاج كاملة.",
+  proteinBinding:
+    "93%",
 
-"رج الزجاجة جيداً قبل كل جرعة."
+  metabolism:
+    "استقلاب محدود.",
 
-],
+  elimination:
+    "عن طريق الكلى.",
 
-blackBox:
-"قد يسبب تفاعلات تحسسية شديدة أو التهاب قولون مرتبط بالمضادات الحيوية (C. difficile).",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-interactions:[
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
 
-"Warfarin (قد يزيد INR).",
+  clinicalPearls: [
+    "قد يسبب نعاساً أكثر من Loratadine.",
+    "يعطى مرة واحدة يومياً."
+  ],
 
-"Metformin (قد يزيد تركيزه).",
+  blackBox:
+    "لا يوجد.",
 
-"Probenecid (يزيد تركيز Cephalexin)."
+  interactions: [
+    "Alcohol.",
+    "CNS depressants."
+  ],
 
-],
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
 
-notes:
-"يعد من أفضل الخيارات لعلاج التهابات الجلد البكتيرية البسيطة.",
-
-alerts:[
-
-"أكمل العلاج كاملاً.",
-
-"يمكن تناوله مع الطعام.",
-
-"اسأل عن حساسية البنسلين أو السيفالوسبورينات.",
-
-"رج العبوة جيداً قبل الاستخدام."
-
-]
-
+  alerts: [
+    "تجنب القيادة إذا سبب نعاساً."
+  ]
 },
-clarithromycin:{
+    loratadine: {
+  id: "loratadine",
 
-id:"clarithromycin",
+  name: "Loratadine",
 
-name:"Clarithromycin",
+  genericName: "Loratadine",
 
-genericName:"Clarithromycin",
+  brandNames: [
+    "Claritin",
+    "Lorano",
+    "Lorat"
+  ],
 
-brandNames:[
-"Klacid",
-"Biaxin",
-"Claritek",
-"Claromycin"
-],
+  category: "Antihistamine",
 
-category:"Antibiotics",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-therapeuticClass:"Macrolide Antibiotic",
+  pharmacologicalClass: "Piperidine Derivative",
 
-pharmacologicalClass:"Macrolide",
+  diseases: [
+    "allergy"
+  ],
 
-diseases:[
-"pneumonia",
-"pharyngitis"
-],
+  mgPerKg: 0.2,
 
-mgPerKg:7.5,
+  frequency: "مرة يومياً",
 
-frequency:"كل 12 ساعة",
+  maxDose: 10,
 
-maxDose:500,
+  minAge: 2,
 
-minAge:0.5,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية مما يقلل أعراض الحساسية.",
 
-{
-name:"125 mg / 5 mL",
-concentration:125
-},
+  indications:
+    "التهاب الأنف التحسسي، الشرى، والحكة.",
 
-{
-name:"250 mg / 5 mL",
-concentration:250
-}
+  contraindications:
+    "فرط الحساسية للوراتادين.",
 
-],
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد.",
 
-mechanism:
-"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 50S من الريبوسوم مما يمنع نمو البكتيريا.",
+  sideEffects:
+    "صداع، جفاف الفم، نعاس خفيف.",
 
-indications:
-"الالتهاب الرئوي، التهاب البلعوم، التهاب اللوزتين، التهاب الشعب الهوائية، التهاب الجيوب الأنفية، التهاب الأذن الوسطى وبعض التهابات الجلد.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-contraindications:
-"حساسية الكلاريثرومايسين أو أي من الماكروليدات، أو الاستخدام المتزامن مع أدوية تسبب اضطرابات نظم القلب.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-warnings:
-"يستخدم بحذر عند مرضى الكبد أو المرضى المعرضين لإطالة QT أو اضطرابات نظم القلب.",
+  doseRange:
+    "0.2 mg/kg مرة يومياً بحد أقصى 10 mg.",
 
-sideEffects:
-"غثيان، قيء، إسهال، ألم بطني، اضطراب التذوق، صداع، ارتفاع إنزيمات الكبد، إطالة QT.",
+  onset:
+    "1–3 ساعات",
 
-pregnancy:
-"يستخدم فقط عند الضرورة وتحت إشراف الطبيب.",
+  duration:
+    "24 ساعة",
 
-lactation:
-"يفرز بكميات قليلة في حليب الأم ويستخدم بحذر أثناء الرضاعة.",
+  halfLife:
+    "8 ساعات",
 
-doseRange:
-"7.5 mg/kg كل 12 ساعة، وبحد أقصى 500 mg لكل جرعة.",
+  proteinBinding:
+    "97%",
 
-onset:
-"2 ساعات",
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
 
-duration:
-"12 ساعة",
+  elimination:
+    "عن طريق البول والبراز.",
 
-halfLife:
-"3–7 ساعات",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-proteinBinding:
-"≈70%",
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4.",
+  clinicalPearls: [
+    "لا يسبب النعاس غالباً.",
+    "يعطى مرة واحدة يومياً."
+  ],
 
-elimination:
-"يطرح عن طريق الكبد والكلى.",
+  blackBox:
+    "لا يوجد.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة.",
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin."
+  ],
 
-monitoring:[
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
 
-"متابعة تحسن العدوى.",
-
-"مراقبة وظائف الكبد عند العلاج الطويل.",
-
-"مراقبة اضطرابات نظم القلب عند المرضى المعرضين لذلك."
-
-],
-
-clinicalPearls:[
-
-"بديل ممتاز عند حساسية البنسلين.",
-
-"يمكن تناوله مع الطعام أو بدونه.",
-
-"له تداخلات دوائية كثيرة بسبب CYP3A4.",
-
-"أكمل مدة العلاج كاملة."
-
-],
-
-blackBox:
-"قد يسبب اضطرابات خطيرة في نظم القلب (QT prolongation) وتداخلات دوائية مهمة.",
-
-interactions:[
-
-"Warfarin (يزيد INR).",
-
-"Digoxin (يزيد تركيزه).",
-
-"Simvastatin و Atorvastatin (يزيد خطر اعتلال العضلات).",
-
-"Carbamazepine (يزيد تركيزه).",
-
-"الأدوية التي تطيل QT مثل Amiodarone و Sotalol."
-
-],
-
-notes:
-"يعد بديلاً جيداً للمرضى الذين لديهم حساسية للبنسلين.",
-
-alerts:[
-
-"قد يسبب إطالة QT.",
-
-"يتداخل مع أدوية كثيرة.",
-
-"أكمل العلاج كاملاً.",
-
-"راجع جميع الأدوية التي يتناولها المريض قبل وصفه."
-
-]
-
-},
-    metronidazole:{
-
-id:"metronidazole",
-
-name:"Metronidazole",
-
-category:"Antibiotics",
-
-diseases:["diarrhea"],
-
-mgPerKg:7.5,
-
-frequency:"كل 8 ساعات",
-
-maxDose:500,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"125 mg / 5 mL",
-concentration:125
+  alerts: [
+    "لا تتجاوز الجرعة اليومية."
+  ]
 },
 
-{
-name:"200 mg / 5 mL",
-concentration:200
-}
+cetirizine: {
+  id: "cetirizine",
 
-],
+  name: "Cetirizine",
 
-mechanism:"يثبط تصنيع الحمض النووي للبكتيريا اللاهوائية والطفيليات.",
+  genericName: "Cetirizine",
 
-indications:"Giardiasis، Amoebiasis، الالتهابات اللاهوائية.",
+  brandNames: [
+    "Zyrtec",
+    "Cetzine",
+    "Cetirin"
+  ],
 
-contraindications:"الحساسية للدواء.",
+  category: "Antihistamine",
 
-sideEffects:"غثيان، طعم معدني، صداع.",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-pregnancy:"يستخدم بحذر.",
+  pharmacologicalClass: "Piperazine Derivative",
 
-storage:"يحفظ بدرجة حرارة الغرفة.",
+  diseases: [
+    "allergy"
+  ],
 
-notes:"يمنع تناول الكحول معه.",
+  mgPerKg: 0.25,
 
-alerts:[
+  frequency: "مرة يومياً",
 
-"يمنع تناول الكحول.",
+  maxDose: 10,
 
-"أكمل العلاج.",
+  minAge: 0.5,
 
-"قد يسبب طعماً معدنياً."
+  maxAge: 18,
 
-]
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية ويخفف أعراض الحساسية.",
+
+  indications:
+    "التهاب الأنف التحسسي، الشرى، الحكة.",
+
+  contraindications:
+    "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
+
+  warnings:
+    "قد يسبب نعاساً عند بعض المرضى.",
+
+  sideEffects:
+    "نعاس، صداع، جفاف الفم، تعب.",
+
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "0.25 mg/kg/day بحد أقصى 10 mg.",
+
+  onset:
+    "30–60 دقيقة",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "93%",
+
+  metabolism:
+    "استقلاب محدود.",
+
+  elimination:
+    "عن طريق الكلى.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "قد يسبب نعاساً أكثر من Loratadine.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Alcohol.",
+    "CNS depressants."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "تجنب القيادة إذا سبب نعاساً."
+  ]
+},
+    loratadine: {
+  id: "loratadine",
+
+  name: "Loratadine",
+
+  genericName: "Loratadine",
+
+  brandNames: [
+    "Claritin",
+    "Lorano",
+    "Lorat"
+  ],
+
+  category: "Antihistamine",
+
+  therapeuticClass: "Second Generation H1 Antihistamine",
+
+  pharmacologicalClass: "Piperidine Derivative",
+
+  diseases: [
+    "allergy"
+  ],
+
+  mgPerKg: 0.2,
+
+  frequency: "مرة يومياً",
+
+  maxDose: 10,
+
+  minAge: 2,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
+
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية مما يقلل أعراض الحساسية.",
+
+  indications:
+    "التهاب الأنف التحسسي، الشرى، والحكة.",
+
+  contraindications:
+    "فرط الحساسية للوراتادين.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد.",
+
+  sideEffects:
+    "صداع، جفاف الفم، نعاس خفيف.",
+
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "0.2 mg/kg مرة يومياً بحد أقصى 10 mg.",
+
+  onset:
+    "1–3 ساعات",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "97%",
+
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
+
+  elimination:
+    "عن طريق البول والبراز.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "لا يسبب النعاس غالباً.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "لا تتجاوز الجرعة اليومية."
+  ]
 },
 
-cetirizine:{
+cetirizine: {
+  id: "cetirizine",
 
-id:"cetirizine",
+  name: "Cetirizine",
 
-name:"Cetirizine",
+  genericName: "Cetirizine",
 
-category:"Antihistamines",
+  brandNames: [
+    "Zyrtec",
+    "Cetzine",
+    "Cetirin"
+  ],
 
-diseases:["allergy"],
+  category: "Antihistamine",
 
-mgPerKg:0.25,
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-frequency:"مرة يومياً",
+  pharmacologicalClass: "Piperazine Derivative",
 
-maxDose:10,
+  diseases: [
+    "allergy"
+  ],
 
-minAge:2,
+  mgPerKg: 0.25,
 
-maxAge:12,
+  frequency: "مرة يومياً",
 
-strengths:[
+  maxDose: 10,
 
-{
-name:"5 mg / 5 mL",
-concentration:5
-}
+  minAge: 0.5,
 
-],
+  maxAge: 18,
 
-mechanism:"يثبط مستقبلات H1.",
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-indications:"الحساسية والشرى.",
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية ويخفف أعراض الحساسية.",
 
-contraindications:"الحساسية للسيتيريزين.",
+  indications:
+    "التهاب الأنف التحسسي، الشرى، الحكة.",
 
-sideEffects:"نعاس خفيف، جفاف الفم.",
+  contraindications:
+    "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
 
-pregnancy:"آمن نسبياً.",
+  warnings:
+    "قد يسبب نعاساً عند بعض المرضى.",
 
-storage:"يحفظ بدرجة حرارة الغرفة.",
+  sideEffects:
+    "نعاس، صداع، جفاف الفم، تعب.",
 
-notes:"يمكن تناوله مع الطعام أو بدونه.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-alerts:[
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-"قد يسبب نعاساً.",
+  doseRange:
+    "0.25 mg/kg/day بحد أقصى 10 mg.",
 
-"يفضل مساءً إذا سبب النعاس."
+  onset:
+    "30–60 دقيقة",
 
-]
+  duration:
+    "24 ساعة",
 
+  halfLife:
+    "8 ساعات",
+
+  proteinBinding:
+    "93%",
+
+  metabolism:
+    "استقلاب محدود.",
+
+  elimination:
+    "عن طريق الكلى.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
+
+  clinicalPearls: [
+    "قد يسبب نعاساً أكثر من Loratadine.",
+    "يعطى مرة واحدة يومياً."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Alcohol.",
+    "CNS depressants."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "تجنب القيادة إذا سبب نعاساً."
+  ]
 },
 
-loratadine:{
+    loratadine: {
+  id: "loratadine",
 
-id:"loratadine",
+  name: "Loratadine",
 
-name:"Loratadine",
+  genericName: "Loratadine",
 
-genericName:"Loratadine",
+  brandNames: [
+    "Claritin",
+    "Lorano",
+    "Lorat"
+  ],
 
-brandNames:[
-"Claritin",
-"Lorano",
-"Lorine",
-"Lorat"
-],
+  category: "Antihistamine",
 
-category:"Antihistamines",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-therapeuticClass:"Second Generation Antihistamine",
+  pharmacologicalClass: "Piperidine Derivative",
 
-pharmacologicalClass:"Selective H1 Receptor Antagonist",
+  diseases: [
+    "allergy"
+  ],
 
-diseases:[
-"allergy"
-],
+  mgPerKg: 0.2,
 
-mgPerKg:0.2,
+  frequency: "مرة يومياً",
 
-frequency:"مرة يومياً",
+  maxDose: 10,
 
-maxDose:10,
+  minAge: 2,
 
-minAge:2,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية مما يقلل أعراض الحساسية.",
 
-{
-name:"5 mg / 5 mL",
-concentration:5
-}
+  indications:
+    "التهاب الأنف التحسسي، الشرى، والحكة.",
 
-],
+  contraindications:
+    "فرط الحساسية للوراتادين.",
 
-mechanism:
-"يثبط مستقبلات الهيستامين H1 بشكل انتقائي مع عبور محدود للحاجز الدماغي، لذلك يسبب نعاساً أقل من مضادات الهيستامين القديمة.",
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد.",
 
-indications:
-"الحساسية الموسمية، التهاب الأنف التحسسي، الشرى (Urticaria)، الحكة الجلدية.",
+  sideEffects:
+    "صداع، جفاف الفم، نعاس خفيف.",
 
-contraindications:
-"الحساسية للوراتادين أو لأي من مكونات المستحضر.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-warnings:
-"يستخدم بحذر عند مرضى القصور الكبدي الشديد، وقد يحتاج إلى تعديل الجرعة.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-sideEffects:
-"صداع، جفاف الفم، تعب، نعاس خفيف، غثيان (نادراً).",
+  doseRange:
+    "0.2 mg/kg مرة يومياً بحد أقصى 10 mg.",
 
-pregnancy:
-"يعتبر آمناً نسبياً أثناء الحمل عند الحاجة.",
+  onset:
+    "1–3 ساعات",
 
-lactation:
-"يفرز بكميات قليلة في حليب الأم ويستخدم بحذر أثناء الرضاعة.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"0.2 mg/kg مرة واحدة يومياً، وبحد أقصى 10 mg/day.",
+  halfLife:
+    "8 ساعات",
 
-onset:
-"1–3 ساعات",
+  proteinBinding:
+    "97%",
 
-duration:
-"24 ساعة",
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
 
-halfLife:
-"≈8 ساعات (المستقلب الفعال حوالي 27 ساعة).",
+  elimination:
+    "عن طريق البول والبراز.",
 
-proteinBinding:
-"≈97%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
 
-elimination:
-"يطرح عن طريق البول والبراز.",
+  clinicalPearls: [
+    "لا يسبب النعاس غالباً.",
+    "يعطى مرة واحدة يومياً."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة والحرارة.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin."
+  ],
 
-"متابعة تحسن أعراض الحساسية.",
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
 
-"مراقبة ظهور النعاس أو التحسس.",
-
-"تعديل الجرعة في القصور الكبدي عند الحاجة."
-
-],
-
-clinicalPearls:[
-
-"من أقل مضادات الهيستامين تسبباً للنعاس.",
-
-"يكفي إعطاؤه مرة واحدة يومياً.",
-
-"يمكن تناوله مع الطعام أو بدونه.",
-
-"يفضل لمرضى الحساسية الذين يحتاجون إلى التركيز أثناء الدراسة أو العمل."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Ketoconazole (قد يزيد تركيز Loratadine).",
-
-"Erythromycin (قد يزيد مستواه في الدم).",
-
-"Cimetidine (قد يزيد تركيز الدواء)."
-
-],
-
-notes:
-"يعد من أفضل مضادات الهيستامين غير المسببة للنعاس.",
-
-alerts:[
-
-"يعطى مرة واحدة يومياً.",
-
-"أقل تسبباً للنعاس من الجيل الأول.",
-
-"يمكن تناوله مع الطعام أو بدونه.",
-
-"لا تتجاوز الجرعة اليومية القصوى."
-
-]
-
+  alerts: [
+    "لا تتجاوز الجرعة اليومية."
+  ]
 },
 
-chlorpheniramine:{
+cetirizine: {
+  id: "cetirizine",
 
-id:"chlorpheniramine",
+  name: "Cetirizine",
 
-name:"Chlorpheniramine",
+  genericName: "Cetirizine",
 
-genericName:"Chlorpheniramine Maleate",
+  brandNames: [
+    "Zyrtec",
+    "Cetzine",
+    "Cetirin"
+  ],
 
-brandNames:[
-"Piriton",
-"Chlor-Trimeton",
-"Histafen",
-"Allermine"
-],
+  category: "Antihistamine",
 
-category:"Antihistamines",
+  therapeuticClass: "Second Generation H1 Antihistamine",
 
-therapeuticClass:"First Generation Antihistamine",
+  pharmacologicalClass: "Piperazine Derivative",
 
-pharmacologicalClass:"H1 Receptor Antagonist",
+  diseases: [
+    "allergy"
+  ],
 
-diseases:[
-"allergy"
-],
+  mgPerKg: 0.25,
 
-mgPerKg:0.1,
+  frequency: "مرة يومياً",
 
-frequency:"كل 6-8 ساعات",
+  maxDose: 10,
 
-maxDose:4,
+  minAge: 0.5,
 
-minAge:2,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط مستقبلات H1 الطرفية ويخفف أعراض الحساسية.",
 
-{
-name:"2 mg / 5 mL",
-concentration:2
-}
+  indications:
+    "التهاب الأنف التحسسي، الشرى، الحكة.",
 
-],
+  contraindications:
+    "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
 
-mechanism:
-"يثبط مستقبلات الهيستامين H1 ويعبر الحاجز الدماغي، لذلك يسبب تأثيراً مهدئاً ونعاساً واضحاً.",
+  warnings:
+    "قد يسبب نعاساً عند بعض المرضى.",
 
-indications:
-"التهاب الأنف التحسسي، الشرى، الحكة، الحساسية الجلدية، لسعات الحشرات.",
+  sideEffects:
+    "نعاس، صداع، جفاف الفم، تعب.",
 
-contraindications:
-"حديثو الولادة، الحساسية للدواء، الزرق ضيق الزاوية، احتباس البول الشديد.",
+  pregnancy:
+    "يعد آمناً نسبياً أثناء الحمل.",
 
-warnings:
-"قد يسبب نعاساً شديداً ويؤثر في التركيز. يستخدم بحذر عند مرضى الربو، تضخم البروستات، والزرق.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-sideEffects:
-"نعاس، دوخة، جفاف الفم، تشوش الرؤية، إمساك، احتباس البول، غثيان.",
+  doseRange:
+    "0.25 mg/kg/day بحد أقصى 10 mg.",
 
-pregnancy:
-"يستخدم فقط عند الضرورة وتحت إشراف الطبيب.",
+  onset:
+    "30–60 دقيقة",
 
-lactation:
-"لا يفضل أثناء الرضاعة لأنه قد يسبب نعاساً للرضيع ويقلل إدرار الحليب.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"0.1 mg/kg كل 6–8 ساعات، مع عدم تجاوز الجرعة القصوى المناسبة للعمر.",
+  halfLife:
+    "8 ساعات",
 
-onset:
-"30–60 دقيقة",
+  proteinBinding:
+    "93%",
 
-duration:
-"4–6 ساعات",
+  metabolism:
+    "استقلاب محدود.",
 
-halfLife:
-"20–24 ساعة",
+  elimination:
+    "عن طريق الكلى.",
 
-proteinBinding:
-"≈70%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب في الكبد.",
+  monitoring: [
+    "متابعة تحسن أعراض الحساسية."
+  ],
 
-elimination:
-"يطرح عن طريق الكلى.",
+  clinicalPearls: [
+    "قد يسبب نعاساً أكثر من Loratadine.",
+    "يعطى مرة واحدة يومياً."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة والضوء.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Alcohol.",
+    "CNS depressants."
+  ],
 
-"متابعة تحسن أعراض الحساسية.",
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
 
-"مراقبة النعاس والدوخة.",
-
-"الحذر عند استخدامه لفترات طويلة."
-
-],
-
-clinicalPearls:[
-
-"يسبب النعاس أكثر من مضادات الهيستامين الحديثة.",
-
-"يفضل إعطاؤه مساءً إذا سبب النعاس.",
-
-"يمكن تناوله مع الطعام لتقليل اضطراب المعدة.",
-
-"تجنب قيادة المركبات أو تشغيل الآلات بعد تناوله."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"المهدئات والمنومات (يزيد النعاس).",
-
-"الكحول (يزيد تثبيط الجهاز العصبي المركزي).",
-
-"مثبطات MAO قد تزيد الآثار الجانبية."
-
-],
-
-notes:
-"من مضادات الهيستامين من الجيل الأول، ويتميز بتأثيره المهدئ.",
-
-alerts:[
-
-"قد يسبب نعاساً شديداً.",
-
-"تجنب إعطاءه مع المهدئات أو الكحول.",
-
-"يفضل تناوله مساءً إذا سبب النعاس.",
-
-"لا تتجاوز الجرعة الموصى بها."
-
-]
-
-},
-salbutamol:{
-
-id:"salbutamol",
-
-name:"Salbutamol",
-
-genericName:"Salbutamol (Albuterol)",
-
-brandNames:[
-"Ventolin",
-"Asthalin",
-"Salamol",
-"Airomir"
-],
-
-category:"Asthma",
-
-therapeuticClass:"Bronchodilator",
-
-pharmacologicalClass:"Short-Acting β2 Agonist (SABA)",
-
-diseases:[
-"asthma"
-],
-
-mgPerKg:0.15,
-
-frequency:"كل 6 ساعات",
-
-maxDose:4,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"2 mg / 5 mL",
-concentration:2
-}
-
-],
-
-mechanism:
-"ينبه مستقبلات β2 في العضلات الملساء للقصبات الهوائية مما يؤدي إلى ارتخائها وتوسيع الشعب الهوائية بسرعة.",
-
-indications:
-"الربو، التشنج القصبي، الوقاية من التشنج القصبي الناتج عن الجهد، مرض الانسداد الرئوي المزمن (COPD).",
-
-contraindications:
-"الحساسية للسالبوتامول أو لأي من مكونات الدواء.",
-
-warnings:
-"يستخدم بحذر عند مرضى أمراض القلب، ارتفاع ضغط الدم، فرط نشاط الغدة الدرقية، وداء السكري.",
-
-sideEffects:
-"رجفة، تسرع القلب، خفقان، صداع، عصبية، تشنجات عضلية، نقص بوتاسيوم الدم عند الجرعات العالية.",
-
-pregnancy:
-"يمكن استخدامه أثناء الحمل عند الحاجة وتحت إشراف الطبيب.",
-
-lactation:
-"يعتبر متوافقاً مع الرضاعة الطبيعية.",
-
-doseRange:
-"0.1–0.15 mg/kg لكل جرعة كل 6–8 ساعات، وبحد أقصى 4 mg لكل جرعة.",
-
-onset:
-"15–30 دقيقة",
-
-duration:
-"4–6 ساعات",
-
-halfLife:
-"4–6 ساعات",
-
-proteinBinding:
-"≈10%",
-
-metabolism:
-"يستقلب جزئياً في الكبد.",
-
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
-
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة والحرارة.",
-
-monitoring:[
-
-"متابعة تحسن أعراض الربو.",
-
-"مراقبة معدل نبض القلب.",
-
-"مراقبة مستوى البوتاسيوم عند الجرعات العالية أو العلاج الطويل."
-
-],
-
-clinicalPearls:[
-
-"يعد موسعاً قصبياً سريع المفعول (Rescue Medication).",
-
-"لا يستخدم بشكل متكرر دون مراجعة الطبيب لأن ذلك قد يدل على سوء السيطرة على الربو.",
-
-"يفضل استخدام البخاخ عند توفره لأنه أكثر فعالية وأقل آثاراً جانبية من الشراب."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Beta-blockers مثل Propranolol تقلل تأثيره.",
-
-"Diuretics قد تزيد خطر نقص البوتاسيوم.",
-
-"MAO Inhibitors و Tricyclic Antidepressants قد تزيد التأثيرات القلبية."
-
-],
-
-notes:
-"يعد من أفضل موسعات الشعب الهوائية السريعة لعلاج نوبات الربو الحادة.",
-
-alerts:[
-
-"قد يسبب رجفة باليدين.",
-
-"قد يزيد نبض القلب.",
-
-"راجع الطبيب إذا احتجته أكثر من مرتين أسبوعياً.",
-
-"يفضل استخدام البخاخ عند توفره."
-
-]
-
+  alerts: [
+    "تجنب القيادة إذا سبب نعاساً."
+  ]
 },
 
-budesonide:{
+    chlorpheniramine: {
+  id: "chlorpheniramine",
 
-id:"budesonide",
+  name: "Chlorpheniramine",
 
-name:"Budesonide",
+  genericName: "Chlorpheniramine Maleate",
 
-genericName:"Budesonide",
+  brandNames: [
+    "Piriton",
+    "Chlor-Trimeton"
+  ],
 
-brandNames:[
-"Pulmicort",
-"Budecort",
-"Budeson",
-"Respules"
-],
+  category: "Antihistamine",
 
-category:"Asthma",
+  therapeuticClass: "First Generation H1 Antihistamine",
 
-therapeuticClass:"Inhaled Corticosteroid (ICS)",
+  pharmacologicalClass: "Alkylamine Derivative",
 
-pharmacologicalClass:"Glucocorticoid",
+  diseases: [
+    "allergy"
+  ],
 
-diseases:[
-"asthma"
-],
+  mgPerKg: 0.1,
 
-mgPerKg:0.5,
+  frequency: "كل 6-8 ساعات",
 
-frequency:"مرتين يومياً",
+  maxDose: 4,
 
-maxDose:2,
+  minAge: 2,
 
-minAge:1,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "2 mg / 5 mL",
+      concentration: 2
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يثبط مستقبلات H1 ويقلل تأثير الهيستامين على الجسم.",
 
-{
-name:"0.5 mg / 2 mL",
-concentration:1.25
-}
+  indications:
+    "الحساسية، الشرى، الحكة، التهاب الأنف التحسسي.",
 
-],
+  contraindications:
+    "فرط الحساسية، حديثو الولادة، الزرق مغلق الزاوية.",
 
-mechanism:
-"كورتيكوستيرويد مستنشق يقلل الالتهاب داخل الشعب الهوائية ويخفض فرط الاستجابة القصبية ويمنع نوبات الربو.",
+  warnings:
+    "قد يسبب النعاس ويستخدم بحذر مع مثبطات الجهاز العصبي المركزي.",
 
-indications:
-"العلاج الوقائي طويل الأمد للربو، والوقاية من نوبات الربو المتكررة.",
+  sideEffects:
+    "نعاس، دوخة، جفاف الفم، تشوش الرؤية.",
 
-contraindications:
-"الحساسية للبوديزونيد أو لأي من مكونات المستحضر.",
+  pregnancy:
+    "يستخدم عند الضرورة الطبية.",
 
-warnings:
-"ليس لعلاج نوبة الربو الحادة. يستخدم بحذر عند وجود عدوى فطرية أو فيروسية غير معالجة.",
+  lactation:
+    "يفضل تجنبه أثناء الرضاعة.",
 
-sideEffects:
-"فطريات الفم، بحة الصوت، تهيج الحلق، سعال، ونادراً تثبيط النمو عند الجرعات العالية طويلة الأمد.",
+  doseRange:
+    "0.1 mg/kg/day مقسمة كل 6-8 ساعات.",
 
-pregnancy:
-"يعتبر من أكثر الكورتيكوستيرويدات المستنشقة أماناً أثناء الحمل.",
+  onset:
+    "30 دقيقة",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  duration:
+    "4-6 ساعات",
 
-doseRange:
-"0.25–0.5 mg مرتين يومياً حسب شدة الربو، وبحد أقصى 2 mg/day.",
+  halfLife:
+    "20 ساعة",
 
-onset:
-"خلال 24 ساعة، بينما يظهر التأثير الكامل خلال 1–2 أسبوع.",
+  proteinBinding:
+    "72%",
 
-duration:
-"حوالي 12 ساعة",
+  metabolism:
+    "يستقلب في الكبد.",
 
-halfLife:
-"2–3 ساعات",
+  elimination:
+    "عن طريق الكلى.",
 
-proteinBinding:
-"≈85–90%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4.",
+  monitoring: [
+    "مراقبة النعاس.",
+    "متابعة تحسن أعراض الحساسية."
+  ],
 
-elimination:
-"يطرح عن طريق البول على شكل مستقلبات.",
+  clinicalPearls: [
+    "قد يسبب نعاساً واضحاً.",
+    "يفضل إعطاؤه ليلاً."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الضوء، وتستخدم الأمبولات مباشرة بعد فتحها.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Alcohol.",
+    "Sedatives.",
+    "MAO inhibitors."
+  ],
 
-"متابعة السيطرة على الربو.",
+  notes:
+    "يمكن تناوله مع الطعام إذا سبب اضطراباً بالمعدة.",
 
-"مراقبة سرعة النمو عند الأطفال عند الاستخدام الطويل.",
-
-"فحص الفم دورياً للكشف عن الفطريات."
-
-],
-
-clinicalPearls:[
-
-"ليس دواء إسعافياً لنوبة الربو.",
-
-"يجب المضمضة وغسل الفم بعد كل جرعة.",
-
-"الاستخدام المنتظم أهم من الاستخدام عند الحاجة.",
-
-"لا توقف الدواء فجأة دون استشارة الطبيب."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Ketoconazole يزيد تركيز Budesonide.",
-
-"Itraconazole يزيد مستواه في الدم.",
-
-"Ritonavir قد يزيد الآثار الجانبية للكورتيكوستيرويد."
-
-],
-
-notes:
-"يستخدم للسيطرة طويلة الأمد على الربو وليس لعلاج النوبة الحادة.",
-
-alerts:[
-
-"المضمضة بعد كل جرعة.",
-
-"ليس لإيقاف نوبة الربو.",
-
-"يستخدم بانتظام حتى مع اختفاء الأعراض.",
-
-"لا توقف العلاج فجأة."
-
-]
-
+  alerts: [
+    "قد يسبب النعاس.",
+    "تجنب القيادة أو تشغيل الآلات."
+  ]
 },
 
-montelukast:{
+salbutamol: {
+  id: "salbutamol",
 
-id:"montelukast",
+  name: "Salbutamol",
 
-name:"Montelukast",
+  genericName: "Salbutamol",
 
-genericName:"Montelukast",
+  brandNames: [
+    "Ventolin",
+    "Asthalin"
+  ],
 
-brandNames:[
-"Singulair",
-"Montiget",
-"Montair",
-"Lukast"
-],
+  category: "Bronchodilator",
 
-category:"Asthma",
+  therapeuticClass: "Short-Acting Beta2 Agonist",
 
-therapeuticClass:"Leukotriene Receptor Antagonist",
+  pharmacologicalClass: "Selective β2 Adrenergic Agonist",
 
-pharmacologicalClass:"CysLT1 Receptor Antagonist",
+  diseases: [
+    "asthma"
+  ],
 
-diseases:[
-"asthma",
-"allergy"
-],
+  mgPerKg: 0.15,
 
-mgPerKg:0.2,
+  frequency: "كل 6-8 ساعات",
 
-frequency:"مرة مساءً",
+  maxDose: 5,
 
-maxDose:5,
+  minAge: 2,
 
-minAge:2,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "2 mg / 5 mL",
+      concentration: 2
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "ينشط مستقبلات β2 في الشعب الهوائية مما يؤدي إلى ارتخاء العضلات الملساء وتوسع القصبات.",
 
-{
-name:"4 mg Chewable",
-concentration:4
+  indications:
+    "الربو، التشنج القصبي، أزيز الصدر.",
+
+  contraindications:
+    "فرط الحساسية للسالبوتامول.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى القلب وفرط نشاط الغدة الدرقية.",
+
+  sideEffects:
+    "رعشة، خفقان، صداع، عصبية، نقص بوتاسيوم الدم.",
+
+  pregnancy:
+    "يستخدم عند الحاجة الطبية.",
+
+  lactation:
+    "يعد آمناً نسبياً أثناء الرضاعة.",
+
+  doseRange:
+    "0.1-0.15 mg/kg/dose كل 6-8 ساعات.",
+
+  onset:
+    "15-30 دقيقة",
+
+  duration:
+    "4-6 ساعات",
+
+  halfLife:
+    "4-6 ساعات",
+
+  proteinBinding:
+    "10%",
+
+  metabolism:
+    "يستقلب في الكبد.",
+
+  elimination:
+    "عن طريق الكلى.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "مراقبة معدل النبض.",
+    "متابعة تحسن التنفس."
+  ],
+
+  clinicalPearls: [
+    "دواء إسعافي وليس علاجاً وقائياً.",
+    "إذا احتاجه الطفل كثيراً يجب مراجعة الطبيب."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Beta-blockers.",
+    "Diuretics.",
+    "Digoxin."
+  ],
+
+  notes:
+    "يفضل استخدام البخاخ مع Spacer للأطفال عند الإمكان.",
+
+  alerts: [
+    "راجع الطبيب إذا لم تتحسن أعراض الربو.",
+    "الإفراط في الاستخدام قد يدل على سوء السيطرة على الربو."
+  ] 
+},
+    ondansetron: {
+  id: "ondansetron",
+
+  name: "Ondansetron",
+
+  genericName: "Ondansetron",
+
+  brandNames: [
+    "Zofran",
+    "Emeset"
+  ],
+
+  category: "Antiemetic",
+
+  therapeuticClass: "5-HT3 Receptor Antagonist",
+
+  pharmacologicalClass: "Selective Serotonin Antagonist",
+
+  diseases: [
+    "vomiting"
+  ],
+
+  mgPerKg: 0.15,
+
+  frequency: "كل 8 ساعات عند الحاجة",
+
+  maxDose: 8,
+
+  minAge: 0.5,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "4 mg / 5 mL",
+      concentration: 4
+    }
+  ],
+
+  mechanism:
+    "يثبط مستقبلات السيروتونين 5-HT3 في الجهاز الهضمي ومركز القيء.",
+
+  indications:
+    "الغثيان والقيء.",
+
+  contraindications:
+    "فرط الحساسية للدواء.",
+
+  warnings:
+    "قد يسبب إطالة QT ويستخدم بحذر عند مرضى القلب.",
+
+  sideEffects:
+    "صداع، إمساك، دوخة.",
+
+  pregnancy:
+    "يستخدم عند الضرورة الطبية.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "0.15 mg/kg/dose كل 8 ساعات.",
+
+  onset:
+    "30 دقيقة",
+
+  duration:
+    "8-12 ساعة",
+
+  halfLife:
+    "3-6 ساعات",
+
+  proteinBinding:
+    "70-76%",
+
+  metabolism:
+    "يستقلب في الكبد.",
+
+  elimination:
+    "عن طريق البول.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "متابعة توقف القيء.",
+    "مراقبة اضطرابات نظم القلب."
+  ],
+
+  clinicalPearls: [
+    "فعال جداً في السيطرة على القيء.",
+    "يعطى قبل العلاج الكيمياوي أو عند القيء الشديد."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Apomorphine.",
+    "QT prolonging drugs."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "يستخدم بحذر عند مرضى القلب."
+  ]
 },
 
-{
-name:"5 mg Chewable",
-concentration:5
-}
+domperidone: {
+  id: "domperidone",
 
-],
+  name: "Domperidone",
 
-mechanism:
-"يثبط مستقبلات الليكوترينات (CysLT1) مما يقلل التهاب الشعب الهوائية ويمنع تضيقها ويخفف أعراض الحساسية.",
+  genericName: "Domperidone",
 
-indications:
-"السيطرة طويلة الأمد على الربو، التهاب الأنف التحسسي، الوقاية من التشنج القصبي الناتج عن المجهود.",
+  brandNames: [
+    "Motilium",
+    "Dompy"
+  ],
 
-contraindications:
-"الحساسية للمونتيلوكاست أو لأي من مكونات المستحضر.",
+  category: "Antiemetic",
 
-warnings:
-"ليس لعلاج نوبة الربو الحادة. يجب مراقبة أي تغيرات نفسية أو سلوكية أثناء العلاج.",
+  therapeuticClass: "Dopamine Antagonist",
 
-sideEffects:
-"صداع، اضطرابات النوم، كوابيس، ألم بطني، عطش، دوخة، ونادراً تغيرات سلوكية أو اكتئاب.",
+  pharmacologicalClass: "Peripheral D2 Receptor Blocker",
 
-pregnancy:
-"يمكن استخدامه أثناء الحمل عند الحاجة وتحت إشراف الطبيب.",
+  diseases: [
+    "vomiting"
+  ],
 
-lactation:
-"متوافق مع الرضاعة الطبيعية عند الحاجة.",
+  mgPerKg: 0.25,
 
-doseRange:
-"4 mg يومياً للأطفال 2–5 سنوات، و5 mg يومياً للأطفال 6–14 سنة.",
+  frequency: "كل 8 ساعات",
 
-onset:
-"خلال يوم واحد",
+  maxDose: 10,
 
-duration:
-"24 ساعة",
+  minAge: 1,
 
-halfLife:
-"2.7–5.5 ساعات",
+  maxAge: 18,
 
-proteinBinding:
-">99%",
+  strengths: [
+    {
+      name: "5 mg / 5 mL",
+      concentration: 5
+    }
+  ],
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4 و CYP2C9 و CYP2C8.",
+  mechanism:
+    "يثبط مستقبلات الدوبامين D2 ويزيد حركة المعدة ويقلل القيء.",
 
-elimination:
-"يطرح بشكل رئيسي مع الصفراء.",
+  indications:
+    "الغثيان، القيء، وتأخر إفراغ المعدة.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة والضوء.",
+  contraindications:
+    "نزيف أو انسداد الجهاز الهضمي، إطالة QT.",
 
-monitoring:[
+  warnings:
+    "قد يسبب اضطرابات نظم القلب.",
 
-"متابعة السيطرة على الربو.",
+  sideEffects:
+    "جفاف الفم، مغص، صداع.",
 
-"مراقبة أعراض الحساسية.",
+  pregnancy:
+    "يستخدم عند الضرورة الطبية.",
 
-"مراقبة أي تغيرات سلوكية أو نفسية."
+  lactation:
+    "قد يزيد إفراز الحليب.",
 
-],
+  doseRange:
+    "0.2-0.4 mg/kg/dose كل 8 ساعات.",
 
-clinicalPearls:[
+  onset:
+    "30-60 دقيقة",
 
-"يعطى مرة واحدة مساءً.",
+  duration:
+    "6-8 ساعات",
 
-"ليس بديلاً عن بخاخات الإسعاف (Salbutamol).",
+  halfLife:
+    "7 ساعات",
 
-"يفيد بشكل خاص عند وجود الربو مع حساسية الأنف.",
+  proteinBinding:
+    "91-93%",
 
-"يؤخذ بانتظام حتى مع اختفاء الأعراض."
+  metabolism:
+    "يستقلب في الكبد.",
 
-],
+  elimination:
+    "عن طريق البول والبراز.",
 
-blackBox:
-"لا توجد تحذيرات Black Box، لكن توجد تحذيرات مهمة بشأن التغيرات النفسية والسلوكية.",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-interactions:[
+  monitoring: [
+    "متابعة تحسن القيء.",
+    "مراقبة أعراض اضطراب نظم القلب."
+  ],
 
-"Phenobarbital يقلل تركيز Montelukast.",
+  clinicalPearls: [
+    "يفضل تناوله قبل الطعام.",
+    "لا يستخدم لفترات طويلة."
+  ],
 
-"Rifampicin يقلل فعاليته.",
+  blackBox:
+    "قد يزيد خطر اضطرابات نظم القلب عند الجرعات العالية أو مع الأدوية التي تطيل QT.",
 
-"Gemfibrozil قد يزيد تركيز Montelukast."
+  interactions: [
+    "Ketoconazole.",
+    "Erythromycin.",
+    "QT prolonging drugs."
+  ],
 
-],
+  notes:
+    "يعطى قبل الطعام بـ 15-30 دقيقة.",
 
-notes:
-"يفضل إعطاؤه مساءً لأنه يحقق أفضل سيطرة على أعراض الربو الليلية.",
-
-alerts:[
-
-"ليس لإيقاف نوبة الربو.",
-
-"راقب أي تغيرات سلوكية أو نفسية.",
-
-"يؤخذ مرة واحدة مساءً.",
-
-"لا توقف العلاج دون استشارة الطبيب."
-
-]
-
+  alerts: [
+    "لا يستخدم عند وجود إطالة QT.",
+    "لا تتجاوز الجرعة الموصى بها."
+  ]
 },
-    ondansetron:{
+    zinc_sulfate: {
+  id: "zinc_sulfate",
 
-id:"ondansetron",
+  name: "Zinc Sulfate",
 
-name:"Ondansetron",
+  genericName: "Zinc Sulfate",
 
-genericName:"Ondansetron",
+  brandNames: [
+    "Zinc Sulfate",
+    "Zinc Kid",
+    "Zinco"
+  ],
 
-brandNames:[
-"Zofran",
-"Emeset",
-"Ondem",
-"Vonau"
-],
+  category: "Supplement",
 
-category:"Antiemetic",
+  therapeuticClass: "Mineral Supplement",
 
-therapeuticClass:"Antiemetic",
+  pharmacologicalClass: "Zinc Salt",
 
-pharmacologicalClass:"5-HT3 Receptor Antagonist",
+  diseases: [
+    "diarrhea"
+  ],
 
-diseases:[
-"vomiting"
-],
+  mgPerKg: 0,
 
-mgPerKg:0.15,
+  frequency: "مرة يومياً",
 
-frequency:"كل 8 ساعات",
+  maxDose: 20,
 
-maxDose:8,
+  minAge: 0,
 
-minAge:0.5,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "10 mg / 5 mL",
+      concentration: 10
+    },
+    {
+      name: "20 mg Tablet",
+      concentration: 20
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يعوض نقص الزنك ويحسن وظيفة بطانة الأمعاء والمناعة، مما يقلل مدة وشدة الإسهال.",
 
-{
-name:"4 mg / 5 mL",
-concentration:4
-}
+  indications:
+    "الإسهال الحاد عند الأطفال.",
 
-],
+  contraindications:
+    "فرط الحساسية للزنك.",
 
-mechanism:
-"يثبط مستقبلات السيروتونين 5-HT3 في الجهاز الهضمي والجهاز العصبي المركزي مما يمنع الغثيان والتقيؤ.",
+  warnings:
+    "قد يسبب اضطراباً معدياً خفيفاً إذا أخذ على معدة فارغة.",
 
-indications:
-"الغثيان والتقيؤ الناتج عن التهاب المعدة والأمعاء، العلاج الكيمياوي، العلاج الإشعاعي، أو بعد العمليات الجراحية.",
+  sideEffects:
+    "غثيان، قيء، ألم معدي، طعم معدني.",
 
-contraindications:
-"الحساسية للأوندانسيترون أو لأي من مضادات مستقبلات 5-HT3، وإطالة QT الخلقية.",
+  pregnancy:
+    "آمن عند الجرعات الموصى بها.",
 
-warnings:
-"يستخدم بحذر عند المرضى المصابين بإطالة QT، اضطرابات نظم القلب، أو نقص البوتاسيوم والمغنيسيوم.",
+  lactation:
+    "آمن أثناء الرضاعة.",
 
-sideEffects:
-"صداع، إمساك، دوخة، تعب، إطالة QT، ونادراً اضطرابات نظم القلب.",
+  doseRange:
+    "أقل من 6 أشهر: 10 mg يومياً لمدة 10–14 يوماً. 6 أشهر فأكثر: 20 mg يومياً لمدة 10–14 يوماً.",
 
-pregnancy:
-"يستخدم فقط عند الحاجة وتحت إشراف الطبيب.",
+  onset:
+    "تدريجي",
 
-lactation:
-"يستخدم بحذر أثناء الرضاعة الطبيعية.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"0.15 mg/kg لكل جرعة كل 8 ساعات، وبحد أقصى 8 mg لكل جرعة.",
+  halfLife:
+    "غير محدد",
 
-onset:
-"30 دقيقة",
+  proteinBinding:
+    "مرتبط ببروتينات البلازما.",
 
-duration:
-"8–12 ساعة",
+  metabolism:
+    "لا يستقلب.",
 
-halfLife:
-"3–6 ساعات",
+  elimination:
+    "عن طريق البراز بشكل رئيسي.",
 
-proteinBinding:
-"≈70–75%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4 و CYP2D6 و CYP1A2.",
+  monitoring: [
+    "متابعة تحسن الإسهال.",
+    "التأكد من إكمال 10–14 يوماً."
+  ],
 
-elimination:
-"يطرح عن طريق البول والبراز.",
+  clinicalPearls: [
+    "يوصى به مع ORS في جميع حالات الإسهال الحاد عند الأطفال.",
+    "يقلل احتمال تكرار الإسهال خلال الأشهر التالية."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة والضوء.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [
+    "Iron.",
+    "Tetracyclines.",
+    "Quinolones."
+  ],
 
-"متابعة توقف القيء.",
+  notes:
+    "يفضل إعطاؤه بعد الطعام.",
 
-"مراقبة تخطيط القلب عند المرضى المعرضين لإطالة QT.",
-
-"تصحيح نقص البوتاسيوم أو المغنيسيوم قبل العلاج."
-
-],
-
-clinicalPearls:[
-
-"لا يغني عن معالجة سبب القيء.",
-
-"يعطى قبل العلاج الكيمياوي للوقاية من القيء.",
-
-"يمكن إعطاؤه مع الطعام أو بدونه.",
-
-"ينصح بإعطاء سوائل كافية لمنع الجفاف."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Apomorphine (مضاد استطباب).",
-
-"Amiodarone و Sotalol (يزيد خطر إطالة QT).",
-
-"SSRIs و SNRIs (قد يزيد خطر متلازمة السيروتونين)."
-
-],
-
-notes:
-"يستخدم لعلاج الغثيان والتقيؤ، وليس لعلاج سبب القيء نفسه.",
-
-alerts:[
-
-"قد يسبب إطالة QT.",
-
-"يراقب عند مرضى القلب واضطرابات النظم.",
-
-"يعوض السوائل عند وجود جفاف.",
-
-"لا تتجاوز الجرعة القصوى."
-
-]
-
+  alerts: [
+    "ليس بديلاً عن ORS.",
+    "أكمل العلاج لمدة 10–14 يوماً."
+  ]
 },
 
-fluconazole:{
+ors: {
+  id: "ors",
 
-id:"fluconazole",
+  name: "Oral Rehydration Solution",
 
-name:"Fluconazole",
+  genericName: "ORS",
 
-genericName:"Fluconazole",
+  brandNames: [
+    "WHO ORS",
+    "Pedialyte",
+    "Dioralyte"
+  ],
 
-brandNames:[
-"Diflucan",
-"Flucoral",
-"Fluzole",
-"Forcan"
-],
+  category: "Rehydration",
 
-category:"Antifungal",
+  therapeuticClass: "Oral Electrolyte Solution",
 
-therapeuticClass:"Antifungal",
+  pharmacologicalClass: "Glucose-Electrolyte Solution",
 
-pharmacologicalClass:"Triazole Antifungal",
+  diseases: [
+    "diarrhea",
+    "vomiting"
+  ],
 
-diseases:[
-"fungal"
-],
+  mgPerKg: 75,
 
-mgPerKg:6,
+  frequency: "حسب الحاجة",
 
-frequency:"مرة يومياً",
+  maxDose: 0,
 
-maxDose:400,
+  minAge: 0,
 
-minAge:0,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "WHO Formula",
+      concentration: 1
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يعوض السوائل والأملاح المفقودة ويعتمد على نقل الصوديوم والجلوكوز داخل الأمعاء.",
 
-{
-name:"50 mg / 5 mL",
-concentration:50
-}
+  indications:
+    "الجفاف الناتج عن الإسهال أو القيء.",
 
-],
+  contraindications:
+    "الجفاف الشديد الذي يتطلب سوائل وريدية أو انسداد الأمعاء.",
 
-mechanism:
-"يثبط تصنيع الإرغوستيرول في جدار الخلية الفطرية عن طريق تثبيط إنزيم 14α-demethylase مما يؤدي إلى موت الفطريات.",
+  warnings:
+    "يجب تحضيره بالماء النظيف فقط وعدم إضافة السكر.",
 
-indications:
-"داء المبيضات الفموي، داء المبيضات الجهازي، العدوى الفطرية الجلدية، التهاب السحايا بالمستخفيات.",
+  sideEffects:
+    "نادراً ما يسبب قيئاً إذا أعطي بسرعة.",
 
-contraindications:
-"الحساسية للفلوكونازول أو لمضادات الفطريات من مجموعة Azoles.",
+  pregnancy:
+    "آمن.",
 
-warnings:
-"يستخدم بحذر عند مرضى الكبد أو القصور الكلوي، وقد يسبب إطالة QT.",
+  lactation:
+    "آمن.",
 
-sideEffects:
-"غثيان، قيء، ألم بطني، ارتفاع إنزيمات الكبد، طفح جلدي، صداع.",
+  doseRange:
+    "75 mL/kg خلال أول 4 ساعات في الجفاف الخفيف إلى المتوسط، ثم يعوض الفاقد بعد كل براز أو قيء.",
 
-pregnancy:
-"تجنب الجرعات العالية أثناء الحمل إلا عند الضرورة القصوى.",
+  onset:
+    "فوري",
 
-lactation:
-"متوافق مع الرضاعة الطبيعية بجرعات العلاج المعتادة.",
+  duration:
+    "حسب الحاجة",
 
-doseRange:
-"3–12 mg/kg/day حسب نوع وشدة العدوى، وبحد أقصى 400 mg/day.",
+  halfLife:
+    "غير مطبق",
 
-onset:
-"1–2 ساعة",
+  proteinBinding:
+    "لا يوجد",
 
-duration:
-"24 ساعة",
+  metabolism:
+    "غير مطبق",
 
-halfLife:
-"≈30 ساعة",
+  elimination:
+    "غير مطبق",
 
-proteinBinding:
-"≈11%",
+  storage:
+    "بعد التحضير يحفظ في الثلاجة ويستخدم خلال 24 ساعة.",
 
-metabolism:
-"استقلاب كبدي محدود.",
+  monitoring: [
+    "علامات الجفاف.",
+    "كمية البول.",
+    "الوزن."
+  ],
 
-elimination:
-"يطرح بشكل رئيسي عن طريق الكلى.",
+  clinicalPearls: [
+    "العلاج الأول للإسهال عند الأطفال.",
+    "يستخدم مع الزنك للحصول على أفضل النتائج."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الرطوبة.",
+  blackBox:
+    "لا يوجد.",
 
-monitoring:[
+  interactions: [],
 
-"مراقبة وظائف الكبد.",
+  notes:
+    "يعطى بكميات صغيرة ومتكررة إذا كان الطفل يتقيأ.",
 
-"تعديل الجرعة في القصور الكلوي.",
-
-"متابعة تحسن العدوى."
-
-],
-
-clinicalPearls:[
-
-"يعطى مرة واحدة يومياً.",
-
-"يمتاز بنفاذ جيد إلى السائل الدماغي الشوكي.",
-
-"يمكن تناوله مع الطعام أو بدونه."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Warfarin (يزيد INR).",
-
-"Phenytoin (يزيد تركيزه).",
-
-"Cyclosporine.",
-
-"الأدوية التي تطيل QT."
-
-],
-
-notes:
-"يعالج معظم عدوى المبيضات عند الأطفال.",
-
-alerts:[
-
-"راقب وظائف الكبد.",
-
-"تجنب دمجه مع الأدوية التي تطيل QT.",
-
-"أكمل العلاج للنهاية."
-
-]
-
+  alerts: [
+    "إذا ظهرت علامات الجفاف الشديد يجب مراجعة المستشفى فوراً."
+  ]
 },
-    albendazole:{
+    zinc_sulfate: {
+  id: "zinc_sulfate",
 
-id:"albendazole",
+  name: "Zinc Sulfate",
 
-name:"Albendazole",
+  genericName: "Zinc Sulfate",
 
-genericName:"Albendazole",
+  brandNames: [
+    "Zinc Sulfate",
+    "Zinc Kid",
+    "Zinco"
+  ],
 
-brandNames:[
-"Zentel",
-"Albenza",
-"Eskazole",
-"Albend"
-],
+  category: "Supplement",
 
-category:"Antiparasitic",
+  therapeuticClass: "Mineral Supplement",
 
-therapeuticClass:"Anthelmintic",
+  pharmacologicalClass: "Zinc Salt",
 
-pharmacologicalClass:"Benzimidazole",
+  diseases: [
+    "diarrhea"
+  ],
 
-diseases:[
-"worms"
-],
+  mgPerKg: 0,
 
-mgPerKg:15,
+  frequency: "مرة يومياً",
 
-frequency:"جرعة واحدة",
+  maxDose: 20,
 
-maxDose:400,
+  minAge: 0,
 
-minAge:1,
+  maxAge: 18,
 
-maxAge:12,
+  strengths: [
+    {
+      name: "10 mg / 5 mL",
+      concentration: 10
+    },
+    {
+      name: "20 mg Tablet",
+      concentration: 20
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يعوض نقص الزنك ويحسن وظيفة بطانة الأمعاء والمناعة، مما يقلل مدة وشدة الإسهال.",
 
-{
-name:"200 mg / 5 mL",
-concentration:200
-}
+  indications:
+    "الإسهال الحاد عند الأطفال.",
 
-],
+  contraindications:
+    "فرط الحساسية للزنك.",
 
-mechanism:
-"يثبط امتصاص الغلوكوز داخل الديدان ويمنع تكوين الأنابيب الدقيقة مما يؤدي إلى موت الطفيليات.",
+  warnings:
+    "قد يسبب اضطراباً معدياً خفيفاً إذا أخذ على معدة فارغة.",
 
-indications:
-"الديدان الدبوسية، الإسكارس، الأنكلستوما، الدودة الشريطية، الجيارديا وبعض الطفيليات الأخرى.",
+  sideEffects:
+    "غثيان، قيء، ألم معدي، طعم معدني.",
 
-contraindications:
-"الحساسية للألبيندازول أو للبنزيميدازولات.",
+  pregnancy:
+    "آمن عند الجرعات الموصى بها.",
 
-warnings:
-"قد يحتاج تكرار الجرعة بعد أسبوعين في بعض أنواع الديدان. يستخدم بحذر عند مرضى الكبد.",
+  lactation:
+    "آمن أثناء الرضاعة.",
 
-sideEffects:
-"ألم بطني، غثيان، قيء، دوخة، صداع، ارتفاع إنزيمات الكبد عند العلاج الطويل.",
+  doseRange:
+    "أقل من 6 أشهر: 10 mg يومياً لمدة 10–14 يوماً. 6 أشهر فأكثر: 20 mg يومياً لمدة 10–14 يوماً.",
 
-pregnancy:
-"مضاد استطباب أثناء الحمل وخاصة الثلث الأول.",
+  onset:
+    "تدريجي",
 
-lactation:
-"يستخدم بحذر أثناء الرضاعة.",
+  duration:
+    "24 ساعة",
 
-doseRange:
-"15 mg/kg جرعة واحدة، وبحد أقصى 400 mg.",
+  halfLife:
+    "غير محدد",
 
-onset:
-"عدة ساعات",
+  proteinBinding:
+    "مرتبط ببروتينات البلازما.",
 
-duration:
-"يعتمد على نوع العدوى.",
+  metabolism:
+    "لا يستقلب.",
 
-halfLife:
-"8–12 ساعة (للمستقلب الفعال).",
+  elimination:
+    "عن طريق البراز بشكل رئيسي.",
 
-proteinBinding:
-"≈70%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب في الكبد إلى Albendazole Sulfoxide الفعال.",
+  monitoring: [
+    "متابعة تحسن الإسهال.",
+    "التأكد من إكمال 10–14 يوماً."
+  ],
 
-elimination:
-"يطرح عن طريق البول والصفراء.",
+  clinicalPearls: [
+    "يوصى به مع ORS في جميع حالات الإسهال الحاد عند الأطفال.",
+    "يقلل احتمال تكرار الإسهال خلال الأشهر التالية."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
-
-monitoring:[
-
-"مراقبة وظائف الكبد عند العلاج الطويل.",
-
-"متابعة اختفاء أعراض العدوى.",
-
-"إعادة الجرعة عند الحاجة."
-
-],
-
-clinicalPearls:[
-
-"يفضل إعطاؤه بعد وجبة دسمة لزيادة الامتصاص.",
-
-"قد تحتاج جميع أفراد الأسرة للعلاج في حالة الديدان الدبوسية.",
-
-"الاهتمام بالنظافة الشخصية لمنع إعادة العدوى."
-
-],
-
-blackBox:
-"لا توجد تحذيرات Black Box معتمدة.",
-
-interactions:[
-
-"Cimetidine يزيد تركيز الدواء.",
-
-"Dexamethasone يزيد تركيز المستقلب الفعال.",
-
-"Praziquantel قد يزيد مستواه."
-
-],
-
-notes:
-"يعد من أكثر أدوية الديدان استخداماً عند الأطفال.",
-
-alerts:[
-
-"قد تحتاج إعادة الجرعة بعد أسبوعين.",
-
-"يفضل إعطاؤه بعد الطعام.",
-
-"لا يستخدم أثناء الحمل.",
-
-"راقب وظائف الكبد عند العلاج الطويل."
-
-]
-
-},
-    vitaminD:{
-
-id:"vitaminD",
-
-name:"Vitamin D3",
-
-genericName:"Cholecalciferol",
-
-brandNames:[
-"Vigantol",
-"Ddrops",
-"Vit D3",
-"Devarol"
-],
-
-category:"Vitamins",
-
-therapeuticClass:"Vitamin",
-
-pharmacologicalClass:"Fat-Soluble Vitamin",
-
-diseases:[
-"vitamin"
-],
-
-mgPerKg:10,
-
-frequency:"مرة يومياً",
-
-maxDose:1000,
-
-minAge:0,
-
-maxAge:18,
-
-strengths:[
-
-{
-name:"400 IU / mL",
-concentration:400
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Iron.",
+    "Tetracyclines.",
+    "Quinolones."
+  ],
+
+  notes:
+    "يفضل إعطاؤه بعد الطعام.",
+
+  alerts: [
+    "ليس بديلاً عن ORS.",
+    "أكمل العلاج لمدة 10–14 يوماً."
+  ]
 },
 
-{
-name:"800 IU / mL",
-concentration:800
-}
+ors: {
+  id: "ors",
 
-],
+  name: "Oral Rehydration Solution",
 
-mechanism:
-"يزيد امتصاص الكالسيوم والفوسفور من الأمعاء ويحافظ على صحة العظام.",
+  genericName: "ORS",
 
-indications:
-"علاج والوقاية من نقص فيتامين D، الكساح، لين العظام.",
+  brandNames: [
+    "WHO ORS",
+    "Pedialyte",
+    "Dioralyte"
+  ],
 
-contraindications:
-"فرط كالسيوم الدم، فرط فيتامين D.",
+  category: "Rehydration",
 
-warnings:
-"تجنب تجاوز الجرعات الموصى بها، ومراقبة مستوى الكالسيوم عند العلاج الطويل.",
+  therapeuticClass: "Oral Electrolyte Solution",
 
-sideEffects:
-"نادراً: غثيان، إمساك، فرط كالسيوم الدم عند الجرعات العالية.",
+  pharmacologicalClass: "Glucose-Electrolyte Solution",
 
-pregnancy:
-"يعتبر آمناً عند الجرعات الموصى بها.",
+  diseases: [
+    "diarrhea",
+    "vomiting"
+  ],
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  mgPerKg: 75,
 
-doseRange:
-"400–1000 IU/day حسب العمر والحالة.",
+  frequency: "حسب الحاجة",
 
-onset:
-"عدة أيام",
+  maxDose: 0,
 
-duration:
-"طويلة",
+  minAge: 0,
 
-halfLife:
-"حوالي 15 يوم",
+  maxAge: 18,
 
-proteinBinding:
-"مرتبط ببروتين ناقل فيتامين D",
+  strengths: [
+    {
+      name: "WHO Formula",
+      concentration: 1
+    }
+  ],
 
-metabolism:
-"يستقلب في الكبد ثم الكلى.",
+  mechanism:
+    "يعوض السوائل والأملاح المفقودة ويعتمد على نقل الصوديوم والجلوكوز داخل الأمعاء.",
 
-elimination:
-"يطرح مع الصفراء.",
+  indications:
+    "الجفاف الناتج عن الإسهال أو القيء.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة بعيداً عن الضوء.",
+  contraindications:
+    "الجفاف الشديد الذي يتطلب سوائل وريدية أو انسداد الأمعاء.",
 
-monitoring:[
+  warnings:
+    "يجب تحضيره بالماء النظيف فقط وعدم إضافة السكر.",
 
-"Vitamin D Level",
+  sideEffects:
+    "نادراً ما يسبب قيئاً إذا أعطي بسرعة.",
 
-"Serum Calcium",
+  pregnancy:
+    "آمن.",
 
-"Serum Phosphate"
+  lactation:
+    "آمن.",
 
-],
+  doseRange:
+    "75 mL/kg خلال أول 4 ساعات في الجفاف الخفيف إلى المتوسط، ثم يعوض الفاقد بعد كل براز أو قيء.",
 
-clinicalPearls:[
+  onset:
+    "فوري",
 
-"يفضل تناوله مع الطعام.",
+  duration:
+    "حسب الحاجة",
 
-"يزداد امتصاصه مع الوجبات الدهنية.",
+  halfLife:
+    "غير مطبق",
 
-"الجرعات العالية تعطى فقط بإشراف الطبيب."
+  proteinBinding:
+    "لا يوجد",
 
-],
+  metabolism:
+    "غير مطبق",
 
-blackBox:
-"لا يوجد.",
+  elimination:
+    "غير مطبق",
 
-interactions:[
+  storage:
+    "بعد التحضير يحفظ في الثلاجة ويستخدم خلال 24 ساعة.",
 
-"Phenytoin",
+  monitoring: [
+    "علامات الجفاف.",
+    "كمية البول.",
+    "الوزن."
+  ],
 
-"Phenobarbital",
+  clinicalPearls: [
+    "العلاج الأول للإسهال عند الأطفال.",
+    "يستخدم مع الزنك للحصول على أفضل النتائج."
+  ],
 
-"Cholestyramine"
+  blackBox:
+    "لا يوجد.",
 
-],
+  interactions: [],
 
-notes:
-"لعلاج نقص فيتامين D.",
+  notes:
+    "يعطى بكميات صغيرة ومتكررة إذا كان الطفل يتقيأ.",
 
-alerts:[
+  alerts: [
+    "إذا ظهرت علامات الجفاف الشديد يجب مراجعة المستشفى فوراً."
+  ]
+}, 
+    albendazole: {
+  id: "albendazole",
 
-"يفضل مع الطعام.",
+  name: "Albendazole",
 
-"لا تتجاوز الجرعة."
+  genericName: "Albendazole",
 
-]
+  brandNames: [
+    "Zentel",
+    "Albenza"
+  ],
 
+  category: "Anthelmintic",
+
+  therapeuticClass: "Broad-spectrum Anthelmintic",
+
+  pharmacologicalClass: "Benzimidazole",
+
+  diseases: [
+    "worms"
+  ],
+
+  mgPerKg: 15,
+
+  frequency: "حسب نوع العدوى",
+
+  maxDose: 400,
+
+  minAge: 1,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "200 mg / 5 mL",
+      concentration: 200
+    },
+    {
+      name: "400 mg Tablet",
+      concentration: 400
+    }
+  ],
+
+  mechanism:
+    "يثبط تكوين الأنابيب الدقيقة داخل الديدان ويمنع امتصاص الجلوكوز مما يؤدي إلى موتها.",
+
+  indications:
+    "الديدان المعوية، الإسكارس، الدودة الدبوسية، الخطافية، الشريطية وبعض الطفيليات.",
+
+  contraindications:
+    "فرط الحساسية للألبيندازول أو مشتقات البنزيميدازول.",
+
+  warnings:
+    "يستخدم بحذر في أمراض الكبد وقد يحتاج إلى مراقبة وظائف الكبد عند العلاج الطويل.",
+
+  sideEffects:
+    "ألم بطني، غثيان، صداع، دوخة، ارتفاع إنزيمات الكبد.",
+
+  pregnancy:
+    "يمنع أثناء الحمل خاصة في الثلث الأول.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "400 mg جرعة واحدة لمعظم الديدان، أو 15 mg/kg/day لبعض الإصابات الخاصة بحد أقصى 400 mg.",
+
+  onset:
+    "عدة ساعات",
+
+  duration:
+    "حسب نوع العدوى",
+
+  halfLife:
+    "8-12 ساعات",
+
+  proteinBinding:
+    "70%",
+
+  metabolism:
+    "يستقلب في الكبد إلى Albendazole Sulfoxide.",
+
+  elimination:
+    "عن طريق البول والصفراء.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "وظائف الكبد عند العلاج الطويل.",
+    "متابعة زوال العدوى."
+  ],
+
+  clinicalPearls: [
+    "يفضل تناوله مع وجبة دهنية لزيادة الامتصاص.",
+    "قد تحتاج بعض الإصابات إلى إعادة الجرعة بعد أسبوعين."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Dexamethasone.",
+    "Cimetidine."
+  ],
+
+  notes:
+    "يرج جيداً قبل استخدام المعلق.",
+
+  alerts: [
+    "يمنع أثناء الحمل.",
+    "قد تحتاج الأسرة كلها للعلاج في الدودة الدبوسية."
+  ]
 },
-omeprazole:{
 
-id:"omeprazole",
+mebendazole: {
+  id: "mebendazole",
 
-name:"Omeprazole",
+  name: "Mebendazole",
 
-genericName:"Omeprazole",
+  genericName: "Mebendazole",
 
-brandNames:[
-"Prilosec",
-"Losec",
-"Omez",
-"Omep"
-],
+  brandNames: [
+    "Vermox"
+  ],
 
-category:"GIT",
+  category: "Anthelmintic",
 
-therapeuticClass:"Proton Pump Inhibitor",
+  therapeuticClass: "Broad-spectrum Anthelmintic",
 
-pharmacologicalClass:"PPI",
+  pharmacologicalClass: "Benzimidazole",
 
-diseases:[
-"gastritis"
-],
+  diseases: [
+    "worms"
+  ],
 
-mgPerKg:1,
+  mgPerKg: 0,
 
-frequency:"مرة يومياً",
+  frequency: "حسب نوع العدوى",
 
-maxDose:40,
+  maxDose: 500,
 
-minAge:1,
+  minAge: 2,
 
-maxAge:18,
+  maxAge: 18,
 
-strengths:[
+  strengths: [
+    {
+      name: "100 mg / 5 mL",
+      concentration: 100
+    },
+    {
+      name: "100 mg Tablet",
+      concentration: 100
+    }
+  ],
 
-{
-name:"10 mg",
-concentration:10
+  mechanism:
+    "يثبط تكوين الأنابيب الدقيقة ويمنع امتصاص الجلوكوز داخل الديدان.",
+
+  indications:
+    "الديدان الدبوسية، الإسكارس، الخطافية، السوطية.",
+
+  contraindications:
+    "فرط الحساسية للدواء.",
+
+  warnings:
+    "لا يستخدم للأطفال أقل من سنتين إلا بتوصية الطبيب.",
+
+  sideEffects:
+    "ألم بطني، إسهال، غثيان، طفح جلدي.",
+
+  pregnancy:
+    "يمنع أثناء الحمل خاصة في الثلث الأول.",
+
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
+
+  doseRange:
+    "100 mg جرعة واحدة أو مرتين يومياً حسب نوع العدوى.",
+
+  onset:
+    "عدة ساعات",
+
+  duration:
+    "حسب نوع العدوى",
+
+  halfLife:
+    "3-6 ساعات",
+
+  proteinBinding:
+    "90-95%",
+
+  metabolism:
+    "يستقلب في الكبد.",
+
+  elimination:
+    "عن طريق البراز بشكل رئيسي.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "تحسن الأعراض.",
+    "اختفاء العدوى."
+  ],
+
+  clinicalPearls: [
+    "قد يلزم تكرار الجرعة بعد أسبوعين في الدودة الدبوسية.",
+    "الاهتمام بالنظافة الشخصية يقلل إعادة العدوى."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Metronidazole.",
+    "Carbamazepine."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "يمنع أثناء الحمل.",
+    "عالج المخالطين عند الحاجة."
+  ]
+},
+    fluconazole: {
+  id: "fluconazole",
+
+  name: "Fluconazole",
+
+  genericName: "Fluconazole",
+
+  brandNames: [
+    "Diflucan",
+    "Flucoral"
+  ],
+
+  category: "Antifungal",
+
+  therapeuticClass: "Azole Antifungal",
+
+  pharmacologicalClass: "Triazole",
+
+  diseases: [
+    "fungal"
+  ],
+
+  mgPerKg: 6,
+
+  frequency: "مرة يومياً",
+
+  maxDose: 400,
+
+  minAge: 0,
+
+  maxAge: 18,
+
+  strengths: [
+    {
+      name: "50 mg / 5 mL",
+      concentration: 50
+    },
+    {
+      name: "150 mg Capsule",
+      concentration: 150
+    }
+  ],
+
+  mechanism:
+    "يثبط إنزيم 14-alpha-demethylase المسؤول عن تصنيع Ergosterol في غشاء الخلية الفطرية.",
+
+  indications:
+    "داء المبيضات الفموي، المبيضات المهبلية، وبعض الالتهابات الفطرية الجهازية.",
+
+  contraindications:
+    "فرط الحساسية للفلوكونازول أو مركبات الأزول.",
+
+  warnings:
+    "يستخدم بحذر عند مرضى الكبد وقد يسبب إطالة QT.",
+
+  sideEffects:
+    "غثيان، ألم بطني، إسهال، صداع، ارتفاع إنزيمات الكبد.",
+
+  pregnancy:
+    "يستخدم فقط عند الضرورة وتحت إشراف طبي.",
+
+  lactation:
+    "يفرز بكميات قليلة في الحليب ويستخدم حسب الحاجة.",
+
+  doseRange:
+    "6 mg/kg/day بعد جرعة تحميل في بعض الحالات حسب شدة العدوى.",
+
+  onset:
+    "عدة ساعات",
+
+  duration:
+    "24 ساعة",
+
+  halfLife:
+    "30 ساعة",
+
+  proteinBinding:
+    "11-12%",
+
+  metabolism:
+    "استقلاب كبدي محدود.",
+
+  elimination:
+    "عن طريق الكلى.",
+
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
+
+  monitoring: [
+    "وظائف الكبد عند الاستخدام الطويل.",
+    "متابعة تحسن العدوى."
+  ],
+
+  clinicalPearls: [
+    "يمتاز بتوافر حيوي فموي ممتاز.",
+    "يستخدم كثيراً لعلاج Candida."
+  ],
+
+  blackBox:
+    "لا يوجد.",
+
+  interactions: [
+    "Warfarin.",
+    "Phenytoin.",
+    "Sulfonylureas."
+  ],
+
+  notes:
+    "يمكن تناوله مع أو بدون الطعام.",
+
+  alerts: [
+    "راقب أعراض سمية الكبد.",
+    "لا يستخدم دون تشخيص فطري واضح."
+  ]
 },
 
-{
-name:"20 mg",
-concentration:20
-}
+nystatin: {
+  id: "nystatin",
 
-],
+  name: "Nystatin",
 
-mechanism:
-"يثبط مضخة البروتون H+/K+ ATPase في المعدة مما يقلل إفراز الحمض.",
+  genericName: "Nystatin",
 
-indications:
-"GERD، التهاب المعدة، قرحة المعدة، قرحة الاثني عشر.",
+  brandNames: [
+    "Mycostatin",
+    "Nystacort"
+  ],
 
-contraindications:
-"الحساسية للأوميبرازول.",
+  category: "Antifungal",
 
-warnings:
-"الاستخدام الطويل قد يسبب نقص المغنيسيوم وفيتامين B12.",
+  therapeuticClass: "Polyene Antifungal",
 
-sideEffects:
-"صداع، إسهال، ألم بطني، غثيان.",
+  pharmacologicalClass: "Polyene",
 
-pregnancy:
-"يعتبر آمناً نسبياً.",
+  diseases: [
+    "fungal"
+  ],
 
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
+  mgPerKg: 0,
 
-doseRange:
-"0.7–1.5 mg/kg/day حسب الحالة.",
+  frequency: "4 مرات يومياً",
 
-onset:
-"1 ساعة",
+  maxDose: 4000000,
 
-duration:
-"24 ساعة",
+  minAge: 0,
 
-halfLife:
-"1 ساعة",
+  maxAge: 18,
 
-proteinBinding:
-"≈95%",
+  strengths: [
+    {
+      name: "100000 units / mL",
+      concentration: 100000
+    }
+  ],
 
-metabolism:
-"يستقلب بواسطة CYP2C19 و CYP3A4.",
+  mechanism:
+    "يرتبط بـ Ergosterol في غشاء الخلية الفطرية مسبباً تسرب محتويات الخلية وموتها.",
 
-elimination:
-"عن طريق البول.",
+  indications:
+    "القلاع الفموي (Oral Thrush) وعدوى Candida الموضعية.",
 
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
+  contraindications:
+    "فرط الحساسية للنستاتين.",
 
-monitoring:[
+  warnings:
+    "لا يستخدم لعلاج العدوى الفطرية الجهازية.",
 
-"تحسن أعراض GERD",
+  sideEffects:
+    "تهيج الفم، غثيان، إسهال بسيط.",
 
-"Magnesium عند العلاج الطويل"
+  pregnancy:
+    "آمن غالباً عند الاستخدام الموضعي أو الفموي.",
 
-],
+  lactation:
+    "آمن غالباً أثناء الرضاعة.",
 
-clinicalPearls:[
+  doseRange:
+    "100000 وحدة فموية 4 مرات يومياً حسب العمر والحالة.",
 
-"يعطى قبل الطعام بـ30 دقيقة.",
+  onset:
+    "عدة أيام",
 
-"لا تكسر الكبسولة."
+  duration:
+    "6-8 ساعات",
 
-],
+  halfLife:
+    "غير محدد",
 
-blackBox:
-"لا يوجد.",
+  proteinBinding:
+    "لا يوجد امتصاص جهازي مهم",
 
-interactions:[
+  metabolism:
+    "لا يمتص بشكل كبير من الجهاز الهضمي.",
 
-"Clopidogrel",
+  elimination:
+    "يطرح مع البراز.",
 
-"Warfarin",
+  storage:
+    "يحفظ حسب تعليمات المستحضر.",
 
-"Phenytoin"
+  monitoring: [
+    "اختفاء بقع الفطريات.",
+    "تحسن الأعراض."
+  ],
 
-],
+  clinicalPearls: [
+    "يجب إبقاء المعلق في الفم لأطول فترة ممكنة.",
+    "فعال جداً ضد Candida."
+  ],
 
-notes:
-"يقلل حموضة المعدة.",
+  blackBox:
+    "لا يوجد.",
 
-alerts:[
+  interactions: [],
 
-"يعطى قبل الإفطار.",
+  notes:
+    "لا يفضل خلطه مباشرة مع الطعام.",
 
-"لا يسحق الكبسول."
-
-]
-
+  alerts: [
+    "أكمل مدة العلاج حتى اختفاء العدوى."
+  ]
 },
-    domperidone:{
+    hydrocortisone: {
+  id: "hydrocortisone",
 
-id:"domperidone",
+  name: "Hydrocortisone",
 
-name:"Domperidone",
+  genericName: "Hydrocortisone",
 
-genericName:"Domperidone",
+  brandNames: [
+    "Cortef",
+    "Solu-Cortef"
+  ],
 
-brandNames:[
-"Motilium",
-"Dompy",
-"Domstal",
-"Domperon"
-],
+  category: "Corticosteroid",
 
-category:"GIT",
+  therapeuticClass: "Glucocorticoid",
 
-therapeuticClass:"Antiemetic",
+  pharmacologicalClass: "Steroid Hormone",
 
-pharmacologicalClass:"Peripheral Dopamine D2 Antagonist",
+  diseases: [
+    "allergy",
+    "asthma"
+  ],
 
-diseases:[
-"vomiting"
-],
+  mgPerKg: 2,
 
-mgPerKg:0.25,
+  frequency: "حسب الحالة",
 
-frequency:"3 مرات يومياً",
+  maxDose: 100,
 
-maxDose:30,
+  minAge: 0,
 
-minAge:1,
+  maxAge: 18,
 
-maxAge:18,
+  strengths: [
+    {
+      name: "10 mg / 5 mL",
+      concentration: 10
+    }
+  ],
 
-strengths:[
+  mechanism:
+    "يرتبط بمستقبلات الجلوكوكورتيكويد ويقلل إنتاج المواد الالتهابية مثل البروستاغلاندينات والسيتوكينات.",
 
-{
-name:"5 mg / 5 mL",
-concentration:5
-}
+  indications:
+    "الحساسية الشديدة، الالتهابات، نوبات الربو، وبعض الحالات الجلدية.",
 
-],
+  contraindications:
+    "فرط الحساسية، العدوى الفطرية الجهازية غير المعالجة.",
 
-mechanism:
-"يثبط مستقبلات الدوبامين D2 خارج الجهاز العصبي المركزي مما يزيد حركة المعدة ويقلل الغثيان.",
+  warnings:
+    "الاستخدام الطويل قد يسبب تثبيط المناعة وتأثيرات جهازية.",
 
-indications:
-"الغثيان، التقيؤ، بطء إفراغ المعدة.",
+  sideEffects:
+    "زيادة الشهية، ارتفاع سكر الدم، احتباس السوائل، تغيرات المزاج.",
 
-contraindications:
-"إطالة QT، نزف أو انسداد الجهاز الهضمي، الحساسية للدواء.",
+  pregnancy:
+    "يستخدم عند الحاجة وتحت إشراف طبي.",
 
-warnings:
-"قد يسبب اضطرابات نظم القلب خاصة عند الجرعات العالية.",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-sideEffects:
-"جفاف الفم، صداع، مغص، إطالة QT، اضطراب نظم القلب.",
+  doseRange:
+    "1–2 mg/kg/day حسب الحالة وشدة الالتهاب.",
 
-pregnancy:
-"يستخدم فقط عند الضرورة.",
+  onset:
+    "1–2 ساعة",
 
-lactation:
-"يستخدم بحذر أثناء الرضاعة.",
+  duration:
+    "8–12 ساعة",
 
-doseRange:
-"0.25 mg/kg ثلاث مرات يومياً.",
+  halfLife:
+    "1.5–2 ساعة",
 
-onset:
-"30 دقيقة",
+  proteinBinding:
+    "90%",
 
-duration:
-"6–8 ساعات",
+  metabolism:
+    "يستقلب في الكبد.",
 
-halfLife:
-"7 ساعات",
+  elimination:
+    "عن طريق الكلى.",
 
-proteinBinding:
-"≈91%",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-metabolism:
-"يستقلب بواسطة CYP3A4.",
+  monitoring: [
+    "مراقبة سكر الدم عند الاستخدام الطويل.",
+    "متابعة علامات العدوى."
+  ],
 
-elimination:
-"عن طريق البول والبراز.",
+  clinicalPearls: [
+    "لا يوقف فجأة بعد الاستخدام الطويل.",
+    "يستخدم بأقل جرعة فعالة ولأقصر مدة."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
+  blackBox:
+    "الاستخدام الطويل قد يؤدي إلى تثبيط محور HPA.",
 
-monitoring:[
+  interactions: [
+    "NSAIDs.",
+    "Vaccines.",
+    "Rifampin."
+  ],
 
-"تحسن القيء",
+  notes:
+    "يفضل إعطاؤه مع الطعام لتقليل تهيج المعدة.",
 
-"ECG عند المرضى المعرضين لإطالة QT"
-
-],
-
-clinicalPearls:[
-
-"يفضل قبل الطعام بـ15–30 دقيقة.",
-
-"لا يستخدم لفترات طويلة دون مراجعة الطبيب."
-
-],
-
-blackBox:
-"زيادة خطر اضطرابات نظم القلب عند الجرعات العالية.",
-
-interactions:[
-
-"Ketoconazole",
-
-"Erythromycin",
-
-"Clarithromycin",
-
-"الأدوية التي تطيل QT"
-
-],
-
-notes:
-"مضاد للإقياء.",
-
-alerts:[
-
-"قبل الطعام.",
-
-"لا يستخدم لفترات طويلة.",
-
-"راقب اضطرابات نظم القلب."
-
-]
-
+  alerts: [
+    "لا يستخدم بدون سبب طبي واضح.",
+    "راقب علامات العدوى."
+  ]
 },
-loperamide:{
 
-id:"loperamide",
+dexamethasone: {
+  id: "dexamethasone",
 
-name:"Loperamide",
+  name: "Dexamethasone",
 
-genericName:"Loperamide",
+  genericName: "Dexamethasone",
 
-brandNames:[
-"Imodium",
-"Lopamid",
-"Diastop",
-"Lopedium"
-],
+  brandNames: [
+    "Decadron",
+    "Dexasone"
+  ],
 
-category:"GIT",
+  category: "Corticosteroid",
 
-therapeuticClass:"Antidiarrheal",
+  therapeuticClass: "Glucocorticoid",
 
-pharmacologicalClass:"Peripheral Opioid Receptor Agonist",
+  pharmacologicalClass: "Synthetic Steroid",
 
-diseases:[
-"diarrhea"
-],
+  diseases: [
+    "asthma",
+    "allergy"
+  ],
 
-mgPerKg:0.1,
+  mgPerKg: 0.6,
 
-frequency:"بعد كل إسهال",
+  frequency: "جرعة واحدة أو حسب الحالة",
 
-maxDose:8,
+  maxDose: 16,
 
-minAge:2,
+  minAge: 0,
 
-maxAge:18,
+  maxAge: 18,
 
-strengths:[
+  strengths: [
+    {
+      name: "0.5 mg / 5 mL",
+      concentration: 0.5
+    }
+  ],
 
-{
-name:"1 mg / 5 mL",
-concentration:1
-}
+  mechanism:
+    "يقلل الالتهاب عبر تثبيط تصنيع السيتوكينات والمواد الالتهابية.",
 
-],
+  indications:
+    "نوبات الربو، الحساسية الشديدة، الالتهابات الشديدة.",
 
-mechanism:
-"ينشط مستقبلات الأفيون μ في الأمعاء مما يقلل حركة الأمعاء ويزيد امتصاص الماء والشوارد.",
+  contraindications:
+    "فرط الحساسية، العدوى الفطرية الجهازية.",
 
-indications:
-"الإسهال الحاد غير الدموي والإسهال المزمن.",
+  warnings:
+    "قد يسبب زيادة سكر الدم وتثبيط المناعة.",
 
-contraindications:
-"الإسهال الدموي، الحمى الشديدة، التهاب القولون التقرحي الحاد، الأطفال أقل من سنتين.",
+  sideEffects:
+    "زيادة الشهية، أرق، تغيرات المزاج، ارتفاع ضغط الدم.",
 
-warnings:
-"لا يستخدم عند وجود حرارة مرتفعة أو دم في البراز.",
+  pregnancy:
+    "يستخدم عند الضرورة الطبية.",
 
-sideEffects:
-"إمساك، مغص بطني، غثيان، انتفاخ، نعاس (نادراً).",
+  lactation:
+    "يستخدم بحذر أثناء الرضاعة.",
 
-pregnancy:
-"يستخدم بحذر عند الحاجة.",
+  doseRange:
+    "0.15–0.6 mg/kg حسب الحالة.",
 
-lactation:
-"يستخدم بحذر أثناء الرضاعة.",
+  onset:
+    "1–2 ساعة",
 
-doseRange:
-"0.1 mg/kg بعد كل إسهال مع عدم تجاوز الجرعة اليومية القصوى.",
+  duration:
+    "36–72 ساعة",
 
-onset:
-"1 ساعة",
+  halfLife:
+    "36–54 ساعة",
 
-duration:
-"8–12 ساعة",
+  proteinBinding:
+    "77%",
 
-halfLife:
-"10–14 ساعة",
+  metabolism:
+    "يستقلب في الكبد بواسطة CYP3A4.",
 
-proteinBinding:
-"≈95%",
+  elimination:
+    "عن طريق الكلى.",
 
-metabolism:
-"يستقلب في الكبد بواسطة CYP3A4 و CYP2C8.",
+  storage:
+    "يحفظ بدرجة حرارة الغرفة.",
 
-elimination:
-"عن طريق البراز.",
+  monitoring: [
+    "مراقبة سكر الدم.",
+    "متابعة التحسن السريري."
+  ],
 
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
+  clinicalPearls: [
+    "يمتاز بمدة تأثير طويلة.",
+    "يستخدم كثيراً في نوبات الربو الحادة."
+  ],
 
-monitoring:[
+  blackBox:
+    "الاستخدام الطويل قد يسبب تأثيرات جهازية خطيرة.",
 
-"عدد مرات الإسهال.",
+  interactions: [
+    "NSAIDs.",
+    "Rifampin.",
+    "Antidiabetic drugs."
+  ],
 
-"علامات الجفاف."
+  notes:
+    "يفضل إعطاؤه صباحاً عند الاستخدام الطويل.",
 
-],
-
-clinicalPearls:[
-
-"يعالج العرض وليس السبب.",
-
-"الإماهة الفموية أهم من مضادات الإسهال.",
-
-"يوقف فور حدوث إمساك شديد."
-
-],
-
-blackBox:
-"لا يوجد.",
-
-interactions:[
-
-"Quinidine",
-
-"Ritonavir",
-
-"Ketoconazole"
-
-],
-
-notes:
-"مضاد للإسهال.",
-
-alerts:[
-
-"يمنع في الإسهال الدموي.",
-
-"لا يستخدم عند وجود حرارة شديدة.",
-
-"يستخدم لفترة قصيرة."
-
-]
-
+  alerts: [
+    "لا يستخدم لفترات طويلة بدون متابعة.",
+    "تجنب التوقف المفاجئ بعد العلاج المطول."
+  ]
 },
-amikacin:{
-
-id:"amikacin",
-
-name:"Amikacin",
-
-genericName:"Amikacin",
-
-brandNames:[
-"Amikin",
-"Amikacina",
-"Amikacin Hikma",
-"Amikozit"
-],
-
-category:"Antibiotics",
-
-therapeuticClass:"Aminoglycoside Antibiotic",
-
-pharmacologicalClass:"Aminoglycoside",
-
-diseases:[
-"sepsis"
-],
-
-mgPerKg:15,
-
-frequency:"مرة يومياً",
-
-maxDose:1500,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"100 mg / 2 mL",
-concentration:50
-}
-
-],
-
-mechanism:
-"يثبط تصنيع البروتين البكتيري بالارتباط مع الوحدة 30S من الريبوسوم مما يؤدي إلى قتل البكتيريا.",
-
-indications:
-"الإنتانات الشديدة، تجرثم الدم، الإنتان الوليدي، التهابات البول الشديدة، الالتهاب الرئوي الشديد.",
-
-contraindications:
-"الحساسية للأمينوغلايكوسيدات.",
-
-warnings:
-"قد يسبب سمية كلوية وسمعية خاصة عند العلاج الطويل.",
-
-sideEffects:
-"سمية كلوية، سمية سمعية، دوخة، حصار عصبي عضلي (نادراً).",
-
-pregnancy:
-"يستخدم فقط عند الضرورة.",
-
-lactation:
-"متوافق مع الرضاعة بحذر.",
-
-doseRange:
-"15 mg/kg/day جرعة واحدة يومياً أو حسب البروتوكول.",
-
-onset:
-"30 دقيقة",
-
-duration:
-"24 ساعة",
-
-halfLife:
-"2–3 ساعات",
-
-proteinBinding:
-"منخفض (<10%).",
-
-metabolism:
-"لا يستقلب.",
-
-elimination:
-"عن طريق الكلى.",
-
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
-
-monitoring:[
-
-"Serum Creatinine",
-
-"وظائف الكلى",
-
-"اختبار السمع",
-
-"Drug Levels عند الحاجة"
-
-],
-
-clinicalPearls:[
-
-"يعطى حقناً فقط.",
-
-"يشجع إعطاء جرعة واحدة يومياً.",
-
-"تعديل الجرعة ضروري عند القصور الكلوي."
-
-],
-
-blackBox:
-"يزيد خطر السمية الكلوية والسمعية.",
-
-interactions:[
-
-"Vancomycin",
-
-"Furosemide",
-
-"Cisplatin",
-
-"Amphotericin B"
-
-],
-
-notes:
-"مضاد حيوي أمينوغلايكوسايد واسع الطيف.",
-
-alerts:[
-
-"يراقب السمع ووظائف الكلى.",
-
-"يعطى حقناً فقط.",
-
-"يعدل في القصور الكلوي."
-
-]
-
-},
-ceftriaxone:{
-
-id:"ceftriaxone",
-
-name:"Ceftriaxone",
-
-genericName:"Ceftriaxone",
-
-brandNames:[
-"Rocephin",
-"Cefaxon",
-"Ceftriax",
-"Ceftria"
-],
-
-category:"Antibiotics",
-
-therapeuticClass:"Third Generation Cephalosporin",
-
-pharmacologicalClass:"Cephalosporin",
-
-diseases:[
-"pneumonia",
-"sepsis"
-],
-
-mgPerKg:50,
-
-frequency:"مرة يومياً",
-
-maxDose:2000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"1 g Vial",
-concentration:1000
-}
-
-],
-
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية مما يؤدي إلى قتل البكتيريا.",
-
-indications:
-"الالتهاب الرئوي، التهاب السحايا، الإنتان، التهاب البول، التهاب الأذن، التهاب العظام والمفاصل.",
-
-contraindications:
-"الحساسية للسيفالوسبورينات أو الحساسية الشديدة للبنسلين.",
-
-warnings:
-"لا يخلط مع المحاليل المحتوية على الكالسيوم عند حديثي الولادة.",
-
-sideEffects:
-"إسهال، طفح جلدي، ألم مكان الحقن، ارتفاع إنزيمات الكبد، حصوات مرارية كاذبة.",
-
-pregnancy:
-"يعتبر آمناً نسبياً.",
-
-lactation:
-"متوافق مع الرضاعة الطبيعية.",
-
-doseRange:
-"50–100 mg/kg/day حسب شدة العدوى، وبحد أقصى 2 g/day.",
-
-onset:
-"سريع",
-
-duration:
-"24 ساعة",
-
-halfLife:
-"6–9 ساعات",
-
-proteinBinding:
-"≈95%",
-
-metabolism:
-"استقلاب محدود.",
-
-elimination:
-"عن طريق الكلى والصفراء.",
-
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
-
-monitoring:[
-
-"تحسن العدوى",
-
-"CBC",
-
-"وظائف الكبد والكلى"
-
-],
-
-clinicalPearls:[
-
-"يعطى مرة واحدة يومياً في معظم الحالات.",
-
-"يمكن إعطاؤه IM أو IV.",
-
-"لا يخلط مع محاليل الكالسيوم للمواليد."
-
-],
-
-blackBox:
-"لا يوجد.",
-
-interactions:[
-
-"Calcium Solutions",
-
-"Warfarin"
-
-],
-
-notes:
-"سيفالوسبورين واسع الطيف.",
-
-alerts:[
-
-"لا يخلط مع محاليل الكالسيوم للمواليد.",
-
-"يعطى IM أو IV."
-
-]
-
-},
-vancomycin:{
-
-id:"vancomycin",
-
-name:"Vancomycin",
-
-genericName:"Vancomycin",
-
-brandNames:[
-"Vancocin",
-"Vancomycin Hikma",
-"Vanco",
-"Vanmix"
-],
-
-category:"Antibiotics",
-
-therapeuticClass:"Glycopeptide Antibiotic",
-
-pharmacologicalClass:"Glycopeptide",
-
-diseases:[
-"sepsis"
-],
-
-mgPerKg:15,
-
-frequency:"كل 6 ساعات",
-
-maxDose:2000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"500 mg Vial",
-concentration:500
-}
-
-],
-
-mechanism:
-"يثبط تصنيع جدار الخلية البكتيرية بالارتباط مع D-Ala-D-Ala.",
-
-indications:
-"MRSA، الإنتانات الشديدة، التهاب السحايا، التهاب العظام، التهاب الشغاف.",
-
-contraindications:
-"الحساسية للفانكومايسين.",
-
-warnings:
-"يعطى ببطء وريداً لتجنب Red Man Syndrome.",
-
-sideEffects:
-"سمية كلوية، سمية سمعية، Red Man Syndrome، طفح جلدي.",
-
-pregnancy:
-"يستخدم عند الضرورة.",
-
-lactation:
-"متوافق مع الرضاعة بحذر.",
-
-doseRange:
-"10–15 mg/kg كل 6 ساعات حسب البروتوكول.",
-
-onset:
-"فوري",
-
-duration:
-"6 ساعات",
-
-halfLife:
-"4–6 ساعات",
-
-proteinBinding:
-"≈50%",
-
-metabolism:
-"لا يستقلب.",
-
-elimination:
-"عن طريق الكلى.",
-
-storage:
-"يحفظ بدرجة حرارة الغرفة.",
-
-monitoring:[
-
-"Vancomycin Trough",
-
-"وظائف الكلى",
-
-"مستوى السمع"
-
-],
-
-clinicalPearls:[
-
-"يعطى بالتسريب الوريدي البطيء.",
-
-"يحتاج متابعة مستويات الدواء.",
-
-"لا يعطى IM."
-
-],
-
-blackBox:
-"زيادة خطر السمية الكلوية والسمعية.",
-
-interactions:[
-
-"Amikacin",
-
-"Furosemide",
-
-"Amphotericin B"
-
-],
-
-notes:
-"لعلاج الجراثيم المقاومة.",
-
-alerts:[
-
-"خطر Red Man Syndrome.",
-
-"يراقب مستوى الدواء.",
-
-"يعطى ببطء وريداً."
-
-]
-
-},
-    oralRehydration:{
-
-id:"oralRehydration",
-
-name:"ORS",
-
-genericName:"Oral Rehydration Solution",
-
-brandNames:[
-"WHO ORS",
-"Pedialyte",
-"Hydralyte",
-"Rehydralyte"
-],
-
-category:"Rehydration",
-
-therapeuticClass:"Oral Rehydration",
-
-pharmacologicalClass:"Electrolyte Solution",
-
-diseases:[
-"diarrhea"
-],
-
-mgPerKg:10,
-
-frequency:"بعد كل إسهال",
-
-maxDose:1000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"ORS Solution",
-concentration:1
-}
-
-],
-
-mechanism:
-"يعوض الماء والأملاح المفقودة ويعتمد على النقل المشترك للصوديوم والغلوكوز لتحسين امتصاص السوائل.",
-
-indications:
-"الإسهال، الجفاف الخفيف والمتوسط، القيء.",
-
-contraindications:
-"الصدمة، الجفاف الشديد الذي يحتاج سوائل وريدية، انسداد الأمعاء.",
-
-warnings:
-"يحضر حسب التعليمات ويستخدم خلال 24 ساعة من التحضير.",
-
-sideEffects:
-"نادراً انتفاخ أو قيء بسيط عند إعطائه بسرعة.",
-
-pregnancy:
-"آمن.",
-
-lactation:
-"آمن.",
-
-doseRange:
-"10 mL/kg بعد كل براز مائي.",
-
-onset:
-"فوري",
-
-duration:
-"حسب الحاجة",
-
-halfLife:
-"غير مطبق",
-
-proteinBinding:
-"غير مطبق",
-
-metabolism:
-"غير مطبق",
-
-elimination:
-"تعويض سوائل طبيعي.",
-
-storage:
-"بعد التحضير يحفظ في الثلاجة ويستخدم خلال 24 ساعة.",
-
-monitoring:[
-
-"علامات الجفاف",
-
-"كمية البول",
-
-"عدد مرات الإسهال"
-
-],
-
-clinicalPearls:[
-
-"أفضل علاج للجفاف الخفيف والمتوسط.",
-
-"يعطى بكميات صغيرة ومتكررة.",
-
-"يستمر الطفل بالرضاعة الطبيعية أثناء العلاج."
-
-],
-
-blackBox:
-"لا يوجد.",
-
-interactions:[],
-
-notes:
-"يعوض السوائل والأملاح.",
-
-alerts:[
-
-"أفضل علاج للجفاف.",
-
-"يعطى على جرعات صغيرة ومتكررة.",
-
-"يحضر حسب التعليمات فقط."
-
-]
-
-},
-adrenaline:{
-
-id:"adrenaline",
-
-name:"Adrenaline",
-
-genericName:"Epinephrine",
-
-brandNames:[
-"EpiPen",
-"Adrenalin",
-"Epinephrine Injection"
-],
-
-category:"Emergency",
-
-therapeuticClass:"Sympathomimetic",
-
-pharmacologicalClass:"Alpha & Beta Adrenergic Agonist",
-
-diseases:[
-"anaphylaxis"
-],
-
-mgPerKg:0.01,
-
-frequency:"حسب الحاجة",
-
-maxDose:0.5,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"1 mg/mL",
-concentration:1
-}
-
-],
-
-mechanism:
-"ينشط مستقبلات Alpha و Beta مما يؤدي إلى تضييق الأوعية وتوسيع القصبات وزيادة ضغط الدم.",
-
-indications:
-"الحساسية المفرطة (Anaphylaxis)، توقف القلب، تشنج القصبات الشديد.",
-
-contraindications:
-"لا يوجد مانع عند علاج الحساسية المفرطة.",
-
-warnings:
-"يعطى عضلياً في منتصف الفخذ الخارجي فوراً.",
-
-sideEffects:
-"تسرع القلب، رجفة، قلق، صداع، ارتفاع الضغط.",
-
-pregnancy:
-"يعطى عند الضرورة لإنقاذ الحياة.",
-
-lactation:
-"يستخدم عند الحاجة.",
-
-doseRange:
-"0.01 mg/kg IM وبحد أقصى 0.5 mg.",
-
-onset:"3-5 دقائق",
-
-duration:"10-20 دقيقة",
-
-halfLife:"2-3 دقائق",
-
-proteinBinding:"منخفض",
-
-metabolism:"MAO و COMT",
-
-elimination:"عن طريق البول",
-
-storage:"يحفظ بعيداً عن الضوء.",
-
-monitoring:[
-
-"ضغط الدم",
-
-"النبض",
-
-"التنفس"
-
-],
-
-clinicalPearls:[
-
-"هو العلاج الأول للحساسية المفرطة.",
-
-"لا تؤخر إعطاءه.",
-
-"يمكن تكراره بعد 5-15 دقيقة."
-
-],
-
-blackBox:"لا يوجد.",
-
-interactions:[
-
-"Beta-blockers",
-
-"MAO inhibitors",
-
-"Tricyclic antidepressants"
-
-],
-
-notes:"دواء منقذ للحياة.",
-
-alerts:[
-
-"لا تؤخر إعطاءه عند الشك بالحساسية المفرطة.",
-
-"يعطى عضلياً في الفخذ.",
-
-"يمكن تكرار الجرعة."
-
-]
-
-},
-    hydrocortisone:{
-
-id:"hydrocortisone",
-
-name:"Hydrocortisone",
-
-genericName:"Hydrocortisone",
-
-brandNames:[
-"Solu-Cortef",
-"Hydrocort"
-],
-
-category:"Steroids",
-
-therapeuticClass:"Corticosteroid",
-
-pharmacologicalClass:"Glucocorticoid",
-
-diseases:[
-"anaphylaxis"
-],
-
-mgPerKg:2,
-
-frequency:"حسب الطبيب",
-
-maxDose:100,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"100 mg Vial",
-concentration:100
-}
-
-],
-
-mechanism:
-"يثبط الالتهاب ويقلل الاستجابة المناعية.",
-
-indications:
-"الحساسية الشديدة، الصدمة التحسسية، أزمة الربو.",
-
-contraindications:
-"عدوى فطرية جهازية غير معالجة.",
-
-warnings:
-"ليس بديلاً عن الأدرينالين.",
-
-sideEffects:
-"ارتفاع السكر، ارتفاع الضغط، اضطراب المزاج.",
-
-pregnancy:"يستخدم عند الضرورة.",
-
-lactation:"متوافق مع الرضاعة.",
-
-doseRange:"2 mg/kg IV.",
-
-onset:"1 ساعة",
-
-duration:"8-12 ساعة",
-
-halfLife:"1.5 ساعة",
-
-proteinBinding:"≈90%",
-
-metabolism:"الكبد",
-
-elimination:"الكلى",
-
-storage:"يحفظ بدرجة حرارة الغرفة.",
-
-monitoring:[
-
-"ضغط الدم",
-
-"سكر الدم"
-
-],
-
-clinicalPearls:[
-
-"يعطى بعد الأدرينالين.",
-
-"يمنع ارتداد أعراض الحساسية."
-
-],
-
-blackBox:"لا يوجد.",
-
-interactions:[
-
-"NSAIDs",
-
-"Warfarin"
-
-],
-
-notes:"كورتيزون للطوارئ.",
-
-alerts:[
-
-"ليس بديلاً عن Adrenaline.",
-
-"يعطى بعد الأدرينالين."
-
-]
-
-},
-    insulin:{
-
-id:"insulin",
-
-name:"Regular Insulin",
-
-genericName:"Regular Human Insulin",
-
-brandNames:[
-"Actrapid",
-"Humulin R",
-"Novolin R"
-],
-
-category:"Endocrine",
-
-therapeuticClass:"Insulin",
-
-pharmacologicalClass:"Short Acting Insulin",
-
-diseases:[
-"diabetes"
-],
-
-mgPerKg:0.5,
-
-frequency:"حسب الطبيب",
-
-maxDose:100,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"100 IU/mL",
-concentration:100
-}
-
-],
-
-mechanism:
-"يزيد دخول الغلوكوز إلى الخلايا ويخفض مستوى السكر في الدم.",
-
-indications:
-"داء السكري، الحماض الكيتوني السكري.",
-
-contraindications:
-"هبوط السكر.",
-
-warnings:
-"يستخدم فقط تحت إشراف طبي.",
-
-sideEffects:
-"هبوط السكر، زيادة الوزن، نقص البوتاسيوم.",
-
-pregnancy:"آمن.",
-
-lactation:"آمن.",
-
-doseRange:"0.5-1 IU/kg/day حسب الحالة.",
-
-onset:"30 دقيقة",
-
-duration:"6-8 ساعات",
-
-halfLife:"عدة دقائق",
-
-proteinBinding:"منخفض",
-
-metabolism:"الكبد والكلى",
-
-elimination:"الكلى",
-
-storage:"يحفظ في الثلاجة.",
-
-monitoring:[
-
-"سكر الدم",
-
-"البوتاسيوم"
-
-],
-
-clinicalPearls:[
-
-"يحقن قبل الطعام بـ30 دقيقة.",
-
-"يجب توفر مصدر سكر دائماً."
-
-],
-
-blackBox:"لا يوجد.",
-
-interactions:[
-
-"Steroids",
-
-"Beta blockers"
-
-],
-
-notes:"لعلاج السكري.",
-
-alerts:[
-
-"راقب السكر باستمرار.",
-
-"قد يسبب هبوط السكر."
-
-]
-
-},
-    glucagon:{
-
-id:"glucagon",
-
-name:"Glucagon",
-
-genericName:"Glucagon",
-
-brandNames:[
-"GlucaGen",
-"Baqsimi"
-],
-
-category:"Emergency",
-
-therapeuticClass:"Hyperglycemic Agent",
-
-pharmacologicalClass:"Glucagon Hormone",
-
-diseases:[
-"hypoglycemia"
-],
-
-mgPerKg:0.03,
-
-frequency:"جرعة واحدة",
-
-maxDose:1,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-
-{
-name:"1 mg Injection",
-concentration:1
-}
-
-],
-
-mechanism:
-"يحرض الكبد على تحرير الغلوكوز المخزن ورفع مستوى السكر في الدم.",
-
-indications:
-"هبوط السكر الشديد مع فقدان الوعي.",
-
-contraindications:
-"ورم القواتم (Pheochromocytoma).",
-
-warnings:
-"يعطى للحالات الطارئة فقط.",
-
-sideEffects:
-"غثيان، قيء، صداع.",
-
-pregnancy:"آمن.",
-
-lactation:"آمن.",
-
-doseRange:"0.03 mg/kg وبحد أقصى 1 mg.",
-
-onset:"10 دقائق",
-
-duration:"30-90 دقيقة",
-
-halfLife:"10 دقائق",
-
-proteinBinding:"منخفض",
-
-metabolism:"الكبد والكلى",
-
-elimination:"الكلى",
-
-storage:"يحفظ في الثلاجة.",
-
-monitoring:[
-
-"سكر الدم",
-
-"استعادة الوعي"
-
-],
-
-clinicalPearls:[
-
-"بعد تحسن المريض يجب إعطاؤه كربوهيدرات فموية.",
-
-"لا يغني عن مراجعة المستشفى."
-
-],
-
-blackBox:"لا يوجد.",
-
-interactions:[
-
-"Warfarin",
-
-"Insulin"
-
-],
-
-notes:"يرفع مستوى السكر بسرعة.",
-
-alerts:[
-
-"يعطى عند فقدان الوعي بسبب انخفاض السكر.",
-
-"يجب مراجعة المستشفى بعد إعطائه."
-
-]
-
-};
-console.log(Object.keys(drugs).length);
+    };
