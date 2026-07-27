@@ -300,10 +300,10 @@ background-position:right 18px center;
 }
 
 /* ==========================================
-   Button
+   Calculate Button
 ==========================================*/
 
-button{
+#calculateBtn{
 
 width:100%;
 
@@ -329,7 +329,7 @@ transition:.25s;
 
 }
 
-button:hover{
+#calculateBtn:hover{
 
 background:#1D4ED8;
 
@@ -337,7 +337,7 @@ transform:translateY(-2px);
 
 }
 
-button:active{
+#calculateBtn:active{
 
 transform:scale(.98);
 
