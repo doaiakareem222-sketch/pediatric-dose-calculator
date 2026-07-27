@@ -30,25 +30,21 @@ const ageInput = document.getElementById("age");
 
 const weightInput = document.getElementById("weight");
 
-const calculateBtn = document.getElementById("calculate");
+const calculateBtn = document.getElementById("calculateBtn");
 
-const result = document.getElementById("result");
+const resultCard = document.getElementById("resultCard");
 
-const drugCard = document.getElementById("drugCard");
+const drugInfoCard = document.getElementById("drugInfoCard");
 
 const drugInfoContent = document.getElementById("drugInfoContent");
 
-const clinicalAlert = document.getElementById("clinicalAlert");
+const clinicalAlertCard = document.getElementById("clinicalAlertCard");
 
 const historyBox = document.getElementById("history");
 
 const calcCount = document.getElementById("calcCount");
 
 const lastDrug = document.getElementById("lastDrug");
-console.log("Button:", calculateBtn);
-
-console.log("Result:", resultCard);
-
 
 // ======================================================
 // Welcome Screen
