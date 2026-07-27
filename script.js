@@ -1,154 +1,310 @@
 "use strict";
 
 /* ==========================================
-   DoseCare AI
-   Pediatric Dose Calculator
-   Version 8.0
+   DoseCare AI v7
+   Main Script
+   Developed by Duaa Kareem
 ==========================================*/
-
-console.clear();
-console.log("DoseCare AI Started");
 
 /* ==========================================
    DOM Elements
 ==========================================*/
 
+// Welcome
+const welcomeScreen = document.getElementById("welcomeScreen");
+
+// Calculator
+const diseaseSelect = document.getElementById("disease");
+const diseaseGuide = document.getElementById("diseaseGuide");
+
+const searchInput = document.getElementById("searchDrug");
+
 const drugSelect = document.getElementById("drug");
-const weightInput = document.getElementById("weight");
+
+const strengthSelect = document.getElementById("strength");
+
 const ageInput = document.getElementById("age");
+
+const weightInput = document.getElementById("weight");
+
 const calculateBtn = document.getElementById("calculateBtn");
 
+// Result Card
 const resultCard = document.getElementById("resultCard");
 
-const drugNameResult = document.getElementById("drugName");
-const doseMgResult = document.getElementById("doseMg");
-const doseMlResult = document.getElementById("doseMl");
-const frequencyResult = document.getElementById("frequency");
-const noteResult = document.getElementById("note");
-const strengthSelect = document.getElementById("strength");
+const drugName = document.getElementById("drugName");
+
+const doseMg = document.getElementById("doseMg");
+
+const doseMl = document.getElementById("doseMl");
+
+const frequency = document.getElementById("frequency");
+
+const note = document.getElementById("note");
+
+// Drug Information
+const drugInfoCard = document.getElementById("drugInfoCard");
+
+const genericName = document.getElementById("genericName");
+
+const brandNames = document.getElementById("brandNames");
+
+const category = document.getElementById("category");
+
+const therapeuticClass = document.getElementById("therapeuticClass");
+
+const pharmacologicalClass = document.getElementById("pharmacologicalClass");
+
+const mechanism = document.getElementById("mechanism");
+
+const indications = document.getElementById("indications");
+
+const contraindications = document.getElementById("contraindications");
+
+const warnings = document.getElementById("warnings");
+
+const sideEffects = document.getElementById("sideEffects");
+
+const pregnancy = document.getElementById("pregnancy");
+
+const lactation = document.getElementById("lactation");
+
+const doseRange = document.getElementById("doseRange");
+
+const onset = document.getElementById("onset");
+
+const duration = document.getElementById("duration");
+
+const halfLife = document.getElementById("halfLife");
+
+const proteinBinding = document.getElementById("proteinBinding");
+
+const metabolism = document.getElementById("metabolism");
+
+const elimination = document.getElementById("elimination");
+
+const storage = document.getElementById("storage");
+
+const monitoring = document.getElementById("monitoring");
+
+const clinicalPearls = document.getElementById("clinicalPearls");
+
+const interactions = document.getElementById("interactions");
+
+const alerts = document.getElementById("alerts");
+
+const blackBox = document.getElementById("blackBox");
+
+// Clinical Alerts
+const clinicalAlertCard = document.getElementById("clinicalAlertCard");
+
+const clinicalAlertContent = document.getElementById("clinicalAlertContent");
+
+// History
+const historyContainer = document.getElementById("history");
+
+// Dashboard
+const calcCount = document.getElementById("calcCount");
+
+const lastDrug = document.getElementById("lastDrug");
 /* ==========================================
    Global Variables
 ==========================================*/
 
+let calculationHistory = [];
+
+let totalCalculations = 0;
+
 let selectedDrug = null;
-let selectedStrength = null;
+/* ==========================================
+   Application Start
+==========================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeApp();
+
+});
 /* ==========================================
    Initialize Application
 ==========================================*/
 
-document.addEventListener("DOMContentLoaded", initializeApp);
-
-function initializeApp() {
-
-    if (typeof drugs === "undefined") {
-
-        console.error("Drug database not loaded.");
-
-        alert("تعذر تحميل قاعدة بيانات الأدوية.");
-
-        return;
-
-    }
+function initializeApp(){
 
     loadDrugList();
 
-    registerEvents();
+    initializeWelcome();
 
-    console.log("Application Ready");
+    attachEvents();
 
 }
 /* ==========================================
-   Register Events
+   Event Listeners
 ==========================================*/
 
-function registerEvents() {
+function attachEvents(){
+
+    diseaseSelect.addEventListener("change", filterDrugsByDisease);
+
+    searchInput.addEventListener("input", searchDrugs);
+
+    drugSelect.addEventListener("change", onDrugChange);
 
     calculateBtn.addEventListener("click", calculateDose);
 
-    drugSelect.addEventListener("change", onDrugChanged);
-
 }
 /* ==========================================
-   Drug Selection Changed
+   Welcome Screen
 ==========================================*/
 
-function onDrugChanged(){
+function initializeWelcome(){
 
-    const drugId=drugSelect.value;
+    setTimeout(() => {
 
-    if(!drugId){
+        welcomeScreen.classList.add("hide");
 
-        selectedDrug=null;
-
-        strengthSelect.innerHTML="";
-
-        return;
-
-    }
-
-    selectedDrug=drugs[drugId];
-
-    loadStrengths(selectedDrug);
+    },2500);
 
 }
 /* ==========================================
    Load Drug List
 ==========================================*/
 
-function loadDrugList() {
+function loadDrugList(filteredDrugs = null){
 
-    // تنظيف القائمة
-    drugSelect.innerHTML = "";
+    drugSelect.innerHTML = '<option value="">Select Drug</option>';
 
-    // أول خيار
-    const defaultOption = document.createElement("option");
+    const list = filteredDrugs || Object.values(drugs);
 
-    defaultOption.value = "";
-    defaultOption.textContent = "-- اختر الدواء --";
-
-    drugSelect.appendChild(defaultOption);
-
-    // ترتيب الأدوية أبجدياً
-    const drugArray = Object.values(drugs).sort((a, b) =>
-        a.name.localeCompare(b.name)
-    );
-
-    drugArray.forEach(drug => {
+    list.forEach(drug=>{
 
         const option = document.createElement("option");
 
         option.value = drug.id;
 
-        option.textContent = `${drug.name}`;
+        option.textContent = drug.name;
 
         drugSelect.appendChild(option);
 
     });
 
-    console.log(`${drugArray.length} Drugs Loaded`);
-
 }
 /* ==========================================
-   Load Strengths
+   Search Drugs
 ==========================================*/
 
-function loadStrengths(drug){
+function searchDrugs(){
 
-    strengthSelect.innerHTML="";
+    const keyword = searchInput.value
+        .trim()
+        .toLowerCase();
 
-    if(!drug || !drug.strengths){
+    if(keyword===""){
+
+        loadDrugList();
 
         return;
 
     }
 
-    drug.strengths.forEach((strength,index)=>{
+    const filtered = Object.values(drugs).filter(drug=>{
 
-        const option=document.createElement("option");
+        const generic = drug.genericName.toLowerCase();
 
-        option.value=index;
+        const name = drug.name.toLowerCase();
 
-        option.textContent=strength.name;
+        const brands = drug.brandNames
+            .join(" ")
+            .toLowerCase();
+
+        return(
+
+            generic.includes(keyword) ||
+
+            name.includes(keyword) ||
+
+            brands.includes(keyword)
+
+        );
+
+    });
+
+    loadDrugList(filtered);
+
+}
+/* ==========================================
+   Filter Drugs By Disease
+==========================================*/
+
+function filterDrugsByDisease(){
+
+    const disease = diseaseSelect.value;
+
+    if(disease===""){
+
+        loadDrugList();
+
+        return;
+
+    }
+
+    const filtered = Object.values(drugs).filter(drug=>
+
+        drug.diseases.includes(disease)
+
+    );
+
+    loadDrugList(filtered);
+
+} 
+/* ==========================================
+   Drug Selection
+==========================================*/
+
+function onDrugChange(){
+
+    const drugId = drugSelect.value;
+
+    if(!drugId){
+
+        selectedDrug = null;
+
+        strengthSelect.innerHTML =
+        '<option value="">Select Strength</option>';
+
+        resultCard.style.display = "none";
+        drugInfoCard.style.display = "none";
+        clinicalAlertCard.style.display = "none";
+
+        return;
+
+    }
+
+    selectedDrug = drugs[drugId];
+
+    loadStrengths();
+
+    displayDrugInformation();
+
+    displayClinicalAlerts();
+
+}
+/* ==========================================
+   Load Drug Strengths
+==========================================*/
+
+function loadStrengths(){
+
+    strengthSelect.innerHTML =
+    '<option value="">Select Strength</option>';
+
+    selectedDrug.strengths.forEach((strength,index)=>{
+
+        const option = document.createElement("option");
+
+        option.value = index;
+
+        option.textContent = strength.name;
 
         strengthSelect.appendChild(option);
 
@@ -156,250 +312,334 @@ function loadStrengths(drug){
 
 }
 /* ==========================================
-   Validate Inputs
+   Display Drug Information
 ==========================================*/
 
-function validateInputs() {
+function displayDrugInformation(){
 
-    const weight = parseFloat(weightInput.value);
+    drugInfoCard.style.display = "block";
 
-    const age = parseFloat(ageInput.value);
+    genericName.textContent =
+    selectedDrug.genericName || "-";
 
-    if (!selectedDrug) {
+    brandNames.textContent =
+    selectedDrug.brandNames.join(", ") || "-";
 
-        alert("يرجى اختيار الدواء.");
+    category.textContent =
+    selectedDrug.category || "-";
 
-        return false;
+    therapeuticClass.textContent =
+    selectedDrug.therapeuticClass || "-";
 
-    }
+    pharmacologicalClass.textContent =
+    selectedDrug.pharmacologicalClass || "-";
 
-    if (isNaN(weight) || weight <= 0) {
+    mechanism.textContent =
+    selectedDrug.mechanism || "-";
 
-        alert("يرجى إدخال وزن صحيح.");
+    indications.textContent =
+    selectedDrug.indications || "-";
 
-        weightInput.focus();
+    contraindications.textContent =
+    selectedDrug.contraindications || "-";
 
-        return false;
+    warnings.textContent =
+    selectedDrug.warnings || "-";
 
-    }
+    sideEffects.textContent =
+    selectedDrug.sideEffects || "-";
 
-    if (isNaN(age) || age < 0) {
+    pregnancy.textContent =
+    selectedDrug.pregnancy || "-";
 
-        alert("يرجى إدخال عمر صحيح.");
+    lactation.textContent =
+    selectedDrug.lactation || "-";
 
-        ageInput.focus();
+    doseRange.textContent =
+    selectedDrug.doseRange || "-";
 
-        return false;
+    onset.textContent =
+    selectedDrug.onset || "-";
 
-    }
+    duration.textContent =
+    selectedDrug.duration || "-";
 
-    // العمر المسموح للدواء
-    if (age < selectedDrug.minAge || age > selectedDrug.maxAge) {
+    halfLife.textContent =
+    selectedDrug.halfLife || "-";
 
-        alert(
-            `هذا الدواء مخصص للأعمار بين ${selectedDrug.minAge} و ${selectedDrug.maxAge} سنة.`
-        );
+    proteinBinding.textContent =
+    selectedDrug.proteinBinding || "-";
 
-        return false;
+    metabolism.textContent =
+    selectedDrug.metabolism || "-";
 
-    }
+    elimination.textContent =
+    selectedDrug.elimination || "-";
 
-    return true;
+    storage.textContent =
+    selectedDrug.storage || "-";
+
+    monitoring.textContent =
+    Array.isArray(selectedDrug.monitoring)
+    ? selectedDrug.monitoring.join("\n")
+    : "-";
+
+    clinicalPearls.textContent =
+    Array.isArray(selectedDrug.clinicalPearls)
+    ? selectedDrug.clinicalPearls.join("\n")
+    : "-";
+
+    interactions.textContent =
+    Array.isArray(selectedDrug.interactions)
+    ? selectedDrug.interactions.join("\n")
+    : "-";
+
+    alerts.textContent =
+    Array.isArray(selectedDrug.alerts)
+    ? selectedDrug.alerts.join("\n")
+    : "-";
+
+    blackBox.textContent =
+    selectedDrug.blackBox || "-";
 
 }
 /* ==========================================
-   Get Preferred Strength
+   Clinical Alerts
 ==========================================*/
 
-function getSelectedStrength() {
+function displayClinicalAlerts(){
 
-    if (!selectedDrug.strengths ||
-        selectedDrug.strengths.length === 0) {
+    if(
 
-        return null;
+        !selectedDrug.alerts ||
+
+        selectedDrug.alerts.length===0
+
+    ){
+
+        clinicalAlertCard.style.display="none";
+
+        return;
 
     }
 
-    // حالياً أول تركيز
-    return selectedDrug.strengths[0];
+    clinicalAlertCard.style.display="block";
+
+    clinicalAlertContent.innerHTML="";
+
+    selectedDrug.alerts.forEach(alert=>{
+
+        const p=document.createElement("p");
+
+        p.textContent="⚠ " + alert;
+
+        clinicalAlertContent.appendChild(p);
+
+    });
 
 }
 /* ==========================================
    Calculate Dose
 ==========================================*/
 
-function calculateDose() {
+function calculateDose(){
 
-    if (!validateInputs()) return;
+    if(!selectedDrug){
 
-    const drug = getSelectedDrug();
+        alert("Please select a drug.");
 
-    const strength = getSelectedStrength();
-
-    const weight = parseFloat(weightInput.value);
-
-    let doseMg = drug.mgPerKg * weight;
-
-    // الحد الأقصى للجرعة
-    if (drug.maxDose && doseMg > drug.maxDose) {
-
-        doseMg = drug.maxDose;
+        return;
 
     }
 
-    let doseMl = 0;
+    if(strengthSelect.value===""){
 
-    if (strength) {
+        alert("Please select a strength.");
 
-        doseMl = (doseMg / strength.concentration) * 5;
+        return;
 
     }
 
-    showResult({
+    const age = Number(ageInput.value);
 
-        drug,
-        strength,
-        doseMg,
-        doseMl
+    const weight = Number(weightInput.value);
 
-    });
+    if(!weight || weight<=0){
+
+        alert("Please enter a valid weight.");
+
+        return;
+
+    }
+
+    if(age < selectedDrug.minAge || age > selectedDrug.maxAge){
+
+        alert(
+
+            `This medicine is recommended for ages ${selectedDrug.minAge} - ${selectedDrug.maxAge} years.`
+
+        );
+
+        return;
+
+    }
+
+    const selectedStrength =
+
+        selectedDrug.strengths[Number(strengthSelect.value)];
+
+    let dose = weight * selectedDrug.mgPerKg;
+
+    let noteText = "";
+
+    if(selectedDrug.maxDose && dose > selectedDrug.maxDose){
+
+        dose = selectedDrug.maxDose;
+
+        noteText = "Maximum dose reached.";
+
+    }
+
+    const doseML =
+
+        (dose / selectedStrength.concentration) * 5;
+
+    displayResult(
+
+        dose,
+
+        doseML,
+
+        noteText
+
+    );
+
+    updateDashboard();
+
+    saveHistory(
+
+        dose,
+
+        doseML
+
+    );
 
 }
 /* ==========================================
-   Show Result
+   Display Result
 ==========================================*/
 
-function showResult(result) {
+function displayResult(
 
-    const {
+    dose,
 
-        drug,
-        strength,
-        doseMg,
-        doseMl
+    doseML,
 
-    } = result;
+    noteText
+
+){
 
     resultCard.style.display = "block";
 
-    drugNameResult.textContent = drug.name;
+    drugName.textContent = selectedDrug.name;
 
-    doseMgResult.textContent =
-        doseMg.toFixed(1) + " mg";
+    doseMg.textContent =
 
-    doseMlResult.textContent =
-        doseMl.toFixed(1) + " mL";
+        dose.toFixed(1) + " mg";
 
-    frequencyResult.textContent =
-        drug.frequency;
+    doseMl.textContent =
 
-    noteResult.textContent =
-        drug.notes || "";
+        doseML.toFixed(2) + " mL";
 
-    console.log(result);
+    frequency.textContent =
 
-}
-/* ==========================================
-   Reset Result
-==========================================*/
+        selectedDrug.frequency;
 
-function resetResult() {
+    note.textContent =
 
-    resultCard.style.display = "none";
+        noteText || selectedDrug.notes || "-";
 
 }
 /* ==========================================
-   Format Number
+   Dashboard
 ==========================================*/
 
-function formatNumber(value, digits = 1) {
+function updateDashboard(){
 
-    if (isNaN(value)) return "-";
+    totalCalculations++;
 
-    return Number(value).toFixed(digits);
+    calcCount.textContent = totalCalculations;
+
+    lastDrug.textContent = selectedDrug.name;
 
 }
 /* ==========================================
-   Calculate Volume
+   History
 ==========================================*/
 
-function calculateVolume(doseMg, strength) {
+function saveHistory(
 
-    if (!strength) return 0;
+    dose,
 
-    return (doseMg / strength.concentration) * 5;
+    doseML
+
+){
+
+    calculationHistory.unshift({
+
+        drug:selectedDrug.name,
+
+        dose,
+
+        doseML
+
+    });
+
+    if(calculationHistory.length>10){
+
+        calculationHistory.pop();
+
+    }
+
+    renderHistory();
 
 }
 /* ==========================================
-   Apply Maximum Dose
+   Render History
 ==========================================*/
 
-function applyMaximumDose(doseMg, drug) {
+function renderHistory(){
 
-    if (!drug.maxDose) return doseMg;
+    if(calculationHistory.length===0){
 
-    return Math.min(doseMg, drug.maxDose);
+        historyContainer.textContent =
 
-}
-/* ==========================================
-   Get Daily Maximum
-==========================================*/
+        "No calculations yet.";
 
-function getDailyMaximum(drug, weight) {
+        return;
 
-    if (!drug.doseRange) return null;
+    }
 
-    // سيتم تطويرها لاحقاً حسب كل دواء
-    return null;
+    historyContainer.innerHTML = "";
 
-}
-function calculateDose() {
+    calculationHistory.forEach(item=>{
 
-    if (!validateInputs()) return;
+        const div = document.createElement("div");
 
-    const drug = getSelectedDrug();
+        div.className = "history-item";
 
-    const strength = getSelectedStrength();
+        div.innerHTML = `
 
-    const weight = parseFloat(weightInput.value);
+        <strong>${item.drug}</strong><br>
 
-    let doseMg = drug.mgPerKg * weight;
+        ${item.dose.toFixed(1)} mg
 
-    doseMg = applyMaximumDose(doseMg, drug);
+        (${item.doseML.toFixed(2)} mL)
 
-    const doseMl = calculateVolume(doseMg, strength);
+        `;
 
-    const result = {
+        historyContainer.appendChild(div);
 
-        drug,
-
-        strength,
-
-        weight,
-
-        age: parseFloat(ageInput.value),
-
-        doseMg,
-
-        doseMl
-
-    };
-
-    showResult(result);
-
-
-
-}
-/* ==========================================
-   Selected Strength
-==========================================*/
-
-function getSelectedStrength(){
-
-    if(!selectedDrug) return null;
-
-    const index=parseInt(strengthSelect.value);
-
-    return selectedDrug.strengths[index];
+    });
 
 }
