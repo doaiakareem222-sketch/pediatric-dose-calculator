@@ -5,16 +5,19 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>DoseCare</title>
+<title>DoseCare AI</title>
 
-<meta name="theme-color" content="#0B0F19">
+<meta
+name="theme-color"
+content="#0B0F19">
 
 <meta
 name="description"
-content="DoseCare Pediatric Dose Calculator">
+content="Professional Pediatric Dose Calculator">
 
 <link rel="manifest" href="manifest.json">
 
@@ -26,330 +29,563 @@ content="DoseCare Pediatric Dose Calculator">
 
 <body>
 
-<!-- ========================= -->
-<!-- Welcome Screen -->
-<!-- ========================= -->
-
-<div id="welcomeScreen">
-
-    <div class="stars">
-
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-
-    </div>
-
-    <div class="welcome-content">
-
-        <h2 class="welcome-title">
-            Welcome
-        </h2>
-
-        <h1 class="app-title">
-            DoseCare
-        </h1>
-
-        <p class="app-subtitle">
-            Professional Pediatric<br>
-            Dose Calculator
-        </p>
-
-        <p class="developer">
-
-            Developed by
-
-            <span>Duaa Kareem</span>
-
-        </p>
-
-    </div>
-
-</div>
-<!-- ========================= -->
-<!-- Main App -->
-<!-- ========================= -->
-
-<div id="mainApp" class="container">
-<header class="header">
-
-<h1>
-
-DoseCare
-
-</h1>
-
-<p>
-
-Pediatric Dose Calculator
-
-</p>
-
-</header>
-<!-- ========================= -->
+<!-- ===================================== -->
 <!-- Calculator Card -->
-<!-- ========================= -->
+<!-- ===================================== -->
 
 <section class="card">
 
-<label>Disease</label>
+    <h2 class="section-title">
 
-<select id="disease">
+        Patient Information
 
-<option value="">Select Disease</option>
+    </h2>
 
-<option value="fever">Fever</option>
+    <!-- Disease -->
 
-<option value="pain">Pain</option>
+    <label for="disease">
 
-<option value="otitis">Otitis Media</option>
+        Disease
 
-<option value="pharyngitis">Pharyngitis</option>
+    </label>
 
-<option value="sinusitis">Sinusitis</option>
+    <select id="disease">
 
-<option value="pneumonia">Pneumonia</option>
+        <option value="">Select Disease</option>
 
-<option value="uti">Urinary Tract Infection</option>
+        <option value="fever">Fever</option>
 
-<option value="diarrhea">Diarrhea</option>
+        <option value="pain">Pain</option>
 
-<option value="vomiting">Vomiting</option>
+        <option value="otitis">Otitis Media</option>
 
-<option value="asthma">Asthma</option>
+        <option value="pharyngitis">Pharyngitis</option>
 
-<option value="allergy">Allergy</option>
+        <option value="sinusitis">Sinusitis</option>
 
-<option value="fungal">Fungal Infection</option>
+        <option value="pneumonia">Pneumonia</option>
 
-<option value="worms">Worm Infestation</option>
+        <option value="uti">Urinary Tract Infection</option>
 
-</select>
+        <option value="diarrhea">Diarrhea</option>
 
-<div id="diseaseGuide"></div>
+        <option value="vomiting">Vomiting</option>
 
-<label>Search Drug</label>
+        <option value="asthma">Asthma</option>
 
-<input
-type="text"
-id="searchDrug"
-placeholder="Search...">
+        <option value="allergy">Allergy</option>
 
-<label>Drug</label>
+        <option value="fungal">Fungal Infection</option>
 
-<select id="drug">
+        <option value="worms">Worm Infestation</option>
 
-<option value="">Select Drug</option>
+    </select>
 
-</select>
+    <div id="diseaseGuide"></div>
 
-<label>Strength</label>
+    <!-- Search Drug -->
 
-<select id="strength">
+    <label for="searchDrug">
 
-<option value="">Select Strength</option>
+        Search Drug
 
-</select>
+    </label>
 
-<label>Age (Years)</label>
+    <input
+        type="text"
+        id="searchDrug"
+        placeholder="Search by Generic or Brand Name">
 
-<input
-type="number"
-id="age"
-placeholder="Enter Age">
+    <!-- Drug -->
 
-<label>Weight (Kg)</label>
+    <label for="drug">
 
-<input
-type="number"
-id="weight"
-placeholder="Enter Weight">
+        Drug
 
-<button id="calculate">
+    </label>
 
-Calculate Dose
+    <select id="drug">
 
-</button>
+        <option value="">
+
+            Select Drug
+
+        </option>
+
+    </select>
+
+    <!-- Strength -->
+
+    <label for="strength">
+
+        Strength
+
+    </label>
+
+    <select id="strength">
+
+        <option value="">
+
+            Select Strength
+
+        </option>
+
+    </select>
+
+    <!-- Age -->
+
+    <label for="age">
+
+        Age (Years)
+
+    </label>
+
+    <input
+        type="number"
+        id="age"
+        min="0"
+        max="18"
+        placeholder="Enter Age">
+
+    <!-- Weight -->
+
+    <label for="weight">
+
+        Weight (kg)
+
+    </label>
+
+    <input
+        type="number"
+        id="weight"
+        step="0.1"
+        min="0"
+        placeholder="Enter Weight">
+
+    <!-- Button -->
+
+    <button id="calculateBtn">
+
+        Calculate Dose
+
+    </button>
 
 </section>
+<!-- ===================================== -->
+<!-- Dose Result -->
+<!-- ===================================== -->
 
-<!-- ========================= -->
-<!-- Result -->
-<!-- ========================= -->
+<section
+id="resultCard"
+class="card"
+style="display:none;">
 
-<section id="result"></section>
-    <!-- ========================= -->
+    <h2 class="section-title">
+
+        Dose Result
+
+    </h2>
+
+    <div class="result-grid">
+
+        <!-- Drug -->
+
+        <div class="result-item">
+
+            <span class="result-label">
+
+                Drug
+
+            </span>
+
+            <span
+            id="drugName"
+            class="result-value">
+
+                -
+
+            </span>
+
+        </div>
+
+        <!-- Dose mg -->
+
+        <div class="result-item">
+
+            <span class="result-label">
+
+                Dose (mg)
+
+            </span>
+
+            <span
+            id="doseMg"
+            class="result-value">
+
+                -
+
+            </span>
+
+        </div>
+
+        <!-- Dose mL -->
+
+        <div class="result-item">
+
+            <span class="result-label">
+
+                Dose (mL)
+
+            </span>
+
+            <span
+            id="doseMl"
+            class="result-value">
+
+                -
+
+            </span>
+
+        </div>
+
+        <!-- Frequency -->
+
+        <div class="result-item">
+
+            <span class="result-label">
+
+                Frequency
+
+            </span>
+
+            <span
+            id="frequency"
+            class="result-value">
+
+                -
+
+            </span>
+
+        </div>
+
+        <!-- Notes -->
+
+        <div class="result-item full-width">
+
+            <span class="result-label">
+
+                Notes
+
+            </span>
+
+            <span
+            id="note"
+            class="result-value">
+
+                -
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===================================== -->
 <!-- Drug Information -->
-<!-- ========================= -->
+<!-- ===================================== -->
 
 <section
-id="drugCard"
+id="drugInfoCard"
 class="card"
 style="display:none;">
 
-<h2>📖 Drug Information</h2>
+    <h2 class="section-title">
 
-<div id="drugInfoContent">
+        Drug Information
 
-<p style="text-align:center;color:#888;">
+    </h2>
 
-Select a medicine to view its information.
+    <div class="info-grid">
 
-</p>
+        <div class="info-item">
+            <span class="info-label">Generic Name</span>
+            <span id="genericName" class="info-value">-</span>
+        </div>
 
-</div>
+        <div class="info-item">
+            <span class="info-label">Brand Names</span>
+            <span id="brandNames" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Category</span>
+            <span id="category" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Therapeutic Class</span>
+            <span id="therapeuticClass" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Pharmacological Class</span>
+            <span id="pharmacologicalClass" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Mechanism of Action</span>
+            <span id="mechanism" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Indications</span>
+            <span id="indications" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Contraindications</span>
+            <span id="contraindications" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Warnings</span>
+            <span id="warnings" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Side Effects</span>
+            <span id="sideEffects" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Pregnancy</span>
+            <span id="pregnancy" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Lactation</span>
+            <span id="lactation" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Dose Range</span>
+            <span id="doseRange" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Onset</span>
+            <span id="onset" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Duration</span>
+            <span id="duration" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Half-Life</span>
+            <span id="halfLife" class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Protein Binding</span>
+            <span id="proteinBinding" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Metabolism</span>
+            <span id="metabolism" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Elimination</span>
+            <span id="elimination" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Storage</span>
+            <span id="storage" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Monitoring</span>
+            <span id="monitoring" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Clinical Pearls</span>
+            <span id="clinicalPearls" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Drug Interactions</span>
+            <span id="interactions" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width">
+            <span class="info-label">Clinical Alerts</span>
+            <span id="alerts" class="info-value">-</span>
+        </div>
+
+        <div class="info-item full-width black-box">
+
+            <span class="info-label">
+
+                ⚠ Black Box Warning
+
+            </span>
+
+            <span id="blackBox" class="info-value">
+
+                -
+
+            </span>
+
+        </div>
+
+    </div>
 
 </section>
-
-<!-- ========================= -->
+<!-- ===================================== -->
 <!-- Clinical Alerts -->
-<!-- ========================= -->
+<!-- ===================================== -->
 
 <section
-id="clinicalAlert"
+id="clinicalAlertCard"
 class="card"
 style="display:none;">
 
+    <h2 class="section-title">
+
+        Clinical Alerts
+
+    </h2>
+
+    <div id="clinicalAlertContent">
+
+        No Alerts
+
+    </div>
+
 </section>
 
-<!-- ========================= -->
-<!-- History -->
-<!-- ========================= -->
+<!-- ===================================== -->
+<!-- Recent Calculations -->
+<!-- ===================================== -->
 
 <section class="card">
 
-<h2>
+    <h2 class="section-title">
 
-Recent Calculations
+        Recent Calculations
 
-</h2>
+    </h2>
 
-<div id="history">
+    <div id="history">
 
-No calculations yet.
+        No calculations yet.
 
-</div>
+    </div>
 
 </section>
 
-<!-- ========================= -->
+<!-- ===================================== -->
 <!-- Dashboard -->
-<!-- ========================= -->
+<!-- ===================================== -->
 
 <section class="card">
 
-<h2>
+    <h2 class="section-title">
 
-Dashboard
+        Dashboard
 
-</h2>
+    </h2>
 
-<div class="dashboard-grid">
+    <div class="dashboard-grid">
 
-<div class="dashboard-box">
+        <div class="dashboard-box">
 
-<h3 id="calcCount">
+            <h3 id="calcCount">
 
-0
+                0
 
-</h3>
+            </h3>
 
-<p>
+            <p>
 
-Calculations
+                Calculations
 
-</p>
+            </p>
 
-</div>
+        </div>
 
-<div class="dashboard-box">
+        <div class="dashboard-box">
 
-<h3 id="lastDrug">
+            <h3 id="lastDrug">
 
--
+                -
 
-</h3>
+            </h3>
 
-<p>
+            <p>
 
-Last Drug
+                Last Drug
 
-</p>
+            </p>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
-<!-- ========================= -->
+<!-- ===================================== -->
 <!-- About -->
-<!-- ========================= -->
+<!-- ===================================== -->
 
 <section class="card about">
 
-<h2>
+    <h2 class="section-title">
 
-About DoseCare
+        About DoseCare AI
 
-</h2>
+    </h2>
 
-<p>
+    <p>
 
-DoseCare helps healthcare professionals calculate pediatric medication doses quickly using weight-based calculations.
+        DoseCare AI is a professional pediatric dose calculator
+        designed to assist healthcare professionals with accurate
+        weight-based dosing calculations.
 
-</p>
+    </p>
 
-<p>
+    <p>
 
-Always verify all doses using trusted clinical references before prescribing.
+        Always verify calculated doses using trusted clinical
+        references before prescribing or administering medication.
 
-</p>
+    </p>
 
 </section>
 
 </div>
 
-<!-- ========================= -->
-<!-- Drug Information Modal -->
-<!-- ========================= -->
-
-<div
-id="drugInfoModal"
-class="modal">
-
-<div class="modal-content">
-
-<span
-id="closeModal"
-class="close">
-
-&times;
-
-</span>
-
-<div id="modalBody">
-
-</div>
-
-</div>
-
-</div>
-
+<!-- ===================================== -->
 <!-- Libraries -->
+<!-- ===================================== -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-<!-- Database -->
+<!-- ===================================== -->
+<!-- Drug Database -->
+<!-- ===================================== -->
 
 <script src="drugs.js"></script>
 
+<!-- ===================================== -->
 <!-- Main Script -->
+<!-- ===================================== -->
 
 <script src="script.js"></script>
 
