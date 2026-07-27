@@ -688,3 +688,176 @@ style="display:none;">
 </body>
 
 </html>
+/* ==========================================
+   Side Menu
+========================================== */
+
+.menu-btn{
+
+position:fixed;
+
+top:20px;
+
+left:20px;
+
+width:50px;
+
+height:50px;
+
+border:none;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+-webkit-backdrop-filter:blur(20px);
+
+color:#FFFFFF;
+
+font-size:28px;
+
+cursor:pointer;
+
+z-index:3000;
+
+transition:.25s;
+
+}
+
+.menu-btn:hover{
+
+background:#2563EB;
+
+transform:scale(1.05);
+
+}
+
+.menu-btn:active{
+
+transform:scale(.96);
+
+}
+
+
+/* ==========================================
+   Side Menu
+========================================== */
+
+.side-menu{
+
+position:fixed;
+
+top:0;
+
+left:-320px;
+
+width:300px;
+
+height:100%;
+
+background:#111827;
+
+border-right:1px solid rgba(255,255,255,.08);
+
+box-shadow:0 0 40px rgba(0,0,0,.45);
+
+transition:.35s ease;
+
+z-index:4000;
+
+overflow-y:auto;
+
+}
+
+.side-menu.open{
+
+left:0;
+
+}
+
+.menu-header{
+
+padding:35px 25px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.menu-header h2{
+
+font-size:28px;
+
+color:#3B82F6;
+
+}
+
+.side-menu ul{
+
+list-style:none;
+
+padding:15px 0;
+
+}
+
+.side-menu li{
+
+padding:18px 25px;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.25s;
+
+color:#FFFFFF;
+
+}
+
+.side-menu li:hover{
+
+background:rgba(59,130,246,.12);
+
+padding-left:32px;
+
+}
+
+
+/* ==========================================
+   Overlay
+========================================== */
+
+.menu-overlay{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(3px);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.3s;
+
+z-index:3500;
+
+}
+
+.menu-overlay.show{
+
+opacity:1;
+
+visibility:visible;
+
+}
