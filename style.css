@@ -1346,3 +1346,30 @@ opacity:1;
 visibility:visible;
 
 }
+.sub-menu{
+
+display:none;
+
+padding:10px 18px;
+
+}
+
+.sub-menu.show{
+
+display:block;
+
+}
+
+.sub-menu button{
+
+width:100%;
+
+margin:8px 0;
+
+height:42px;
+
+border-radius:12px;
+
+font-size:15px;
+
+}
