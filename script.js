@@ -157,3 +157,51 @@ searchDrug.addEventListener("input",()=>{
 
 
 });
+// ======================================================
+// Load Drug Strengths
+// ======================================================
+
+
+drugSelect.addEventListener("change",()=>{
+
+
+    const selectedId = drugSelect.value;
+
+
+    strengthSelect.innerHTML = `
+
+    <option value="">
+    Select Strength
+    </option>
+
+    `;
+
+
+    if(!selectedId) return;
+
+
+    const selectedDrug = drugs[selectedId];
+
+
+    if(!selectedDrug) return;
+
+
+    selectedDrug.strengths.forEach(strength=>{
+
+
+        const option = document.createElement("option");
+
+
+        option.value = strength.concentration;
+
+
+        option.textContent = strength.name;
+
+
+        strengthSelect.appendChild(option);
+
+
+    });
+
+
+});
