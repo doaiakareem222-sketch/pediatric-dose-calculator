@@ -305,5 +305,11 @@ diseaseSelect.addEventListener("change",()=>{
 
     `;
 
+strengthSelect.innerHTML = `
 
+<option value="">
+Select Strength
+</option>
+
+`;
 });
