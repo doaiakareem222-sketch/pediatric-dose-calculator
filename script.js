@@ -3,7 +3,7 @@
 /* ==========================================
    DoseCare AI
    Pediatric Dose Calculator
-   Version 7.0
+   Version 8.0
 ==========================================*/
 
 console.clear();
@@ -16,7 +16,6 @@ console.log("DoseCare AI Started");
 const drugSelect = document.getElementById("drug");
 const weightInput = document.getElementById("weight");
 const ageInput = document.getElementById("age");
-
 const calculateBtn = document.getElementById("calculateBtn");
 
 const resultCard = document.getElementById("resultCard");
@@ -26,63 +25,147 @@ const doseMgResult = document.getElementById("doseMg");
 const doseMlResult = document.getElementById("doseMl");
 const frequencyResult = document.getElementById("frequency");
 const noteResult = document.getElementById("note");
+const strengthSelect = document.getElementById("strength");
 /* ==========================================
-   Load Drugs
+   Global Variables
 ==========================================*/
 
-function loadDrugs() {
+let selectedDrug = null;
+let selectedStrength = null;
+/* ==========================================
+   Initialize Application
+==========================================*/
+
+document.addEventListener("DOMContentLoaded", initializeApp);
+
+function initializeApp() {
 
     if (typeof drugs === "undefined") {
 
-        console.error("Drug database not found.");
+        console.error("Drug database not loaded.");
+
+        alert("تعذر تحميل قاعدة بيانات الأدوية.");
 
         return;
 
     }
 
-    drugSelect.innerHTML =
-        '<option value="">اختر الدواء</option>';
+    loadDrugList();
 
-    Object.keys(drugs).forEach(key => {
+    registerEvents();
+
+    console.log("Application Ready");
+
+}
+/* ==========================================
+   Register Events
+==========================================*/
+
+function registerEvents() {
+
+    calculateBtn.addEventListener("click", calculateDose);
+
+    drugSelect.addEventListener("change", onDrugChanged);
+
+}
+/* ==========================================
+   Drug Selection Changed
+==========================================*/
+
+function onDrugChanged(){
+
+    const drugId=drugSelect.value;
+
+    if(!drugId){
+
+        selectedDrug=null;
+
+        strengthSelect.innerHTML="";
+
+        return;
+
+    }
+
+    selectedDrug=drugs[drugId];
+
+    loadStrengths(selectedDrug);
+
+}
+/* ==========================================
+   Load Drug List
+==========================================*/
+
+function loadDrugList() {
+
+    // تنظيف القائمة
+    drugSelect.innerHTML = "";
+
+    // أول خيار
+    const defaultOption = document.createElement("option");
+
+    defaultOption.value = "";
+    defaultOption.textContent = "-- اختر الدواء --";
+
+    drugSelect.appendChild(defaultOption);
+
+    // ترتيب الأدوية أبجدياً
+    const drugArray = Object.values(drugs).sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
+
+    drugArray.forEach(drug => {
 
         const option = document.createElement("option");
 
-        option.value = key;
+        option.value = drug.id;
 
-        option.textContent =
-            drugs[key].arabic + " (" + drugs[key].name + ")";
+        option.textContent = `${drug.name}`;
 
         drugSelect.appendChild(option);
 
     });
 
+    console.log(`${drugArray.length} Drugs Loaded`);
+
 }
 /* ==========================================
-   Selected Drug
+   Load Strengths
 ==========================================*/
 
-function getDrug() {
+function loadStrengths(drug){
 
-    const id = drugSelect.value;
+    strengthSelect.innerHTML="";
 
-    if (!id) return null;
+    if(!drug || !drug.strengths){
 
-    return drugs[id];
+        return;
+
+    }
+
+    drug.strengths.forEach((strength,index)=>{
+
+        const option=document.createElement("option");
+
+        option.value=index;
+
+        option.textContent=strength.name;
+
+        strengthSelect.appendChild(option);
+
+    });
 
 }
 /* ==========================================
-   Validation
+   Validate Inputs
 ==========================================*/
 
 function validateInputs() {
-
-    const drug = getDrug();
 
     const weight = parseFloat(weightInput.value);
 
     const age = parseFloat(ageInput.value);
 
-    if (!drug) {
+    if (!selectedDrug) {
 
         alert("يرجى اختيار الدواء.");
 
@@ -94,6 +177,8 @@ function validateInputs() {
 
         alert("يرجى إدخال وزن صحيح.");
 
+        weightInput.focus();
+
         return false;
 
     }
@@ -101,6 +186,19 @@ function validateInputs() {
     if (isNaN(age) || age < 0) {
 
         alert("يرجى إدخال عمر صحيح.");
+
+        ageInput.focus();
+
+        return false;
+
+    }
+
+    // العمر المسموح للدواء
+    if (age < selectedDrug.minAge || age > selectedDrug.maxAge) {
+
+        alert(
+            `هذا الدواء مخصص للأعمار بين ${selectedDrug.minAge} و ${selectedDrug.maxAge} سنة.`
+        );
 
         return false;
 
@@ -110,85 +208,198 @@ function validateInputs() {
 
 }
 /* ==========================================
-   App Start
+   Get Preferred Strength
 ==========================================*/
 
-document.addEventListener("DOMContentLoaded", () => {
+function getSelectedStrength() {
 
-    loadDrugs();
+    if (!selectedDrug.strengths ||
+        selectedDrug.strengths.length === 0) {
 
-    console.log("Application Ready");
+        return null;
 
-});
+    }
+
+    // حالياً أول تركيز
+    return selectedDrug.strengths[0];
+
+}
 /* ==========================================
-   Dose Calculation Engine
+   Calculate Dose
 ==========================================*/
 
 function calculateDose() {
 
     if (!validateInputs()) return;
 
-    const drug = getDrug();
+    const drug = getSelectedDrug();
+
+    const strength = getSelectedStrength();
 
     const weight = parseFloat(weightInput.value);
 
-    // حساب الجرعة بالمليغرام
     let doseMg = drug.mgPerKg * weight;
 
-    // تطبيق الحد الأقصى للجرعة إذا وجد
+    // الحد الأقصى للجرعة
     if (drug.maxDose && doseMg > drug.maxDose) {
+
         doseMg = drug.maxDose;
-    }
-
-    // إرسال النتيجة للعرض
-    showResult(drug, doseMg);
-
-}
-/* ==========================================
-   Convert mg → mL
-==========================================*/
-
-function calculateVolume(doseMg, drug) {
-
-    if (!drug.strengths || drug.strengths.length === 0) {
-
-        return 0;
 
     }
 
-    const concentration = drug.strengths[0].concentration;
+    let doseMl = 0;
 
-    return ((doseMg / concentration) * 5);
+    if (strength) {
+
+        doseMl = (doseMg / strength.concentration) * 5;
+
+    }
+
+    showResult({
+
+        drug,
+        strength,
+        doseMg,
+        doseMl
+
+    });
 
 }
 /* ==========================================
    Show Result
 ==========================================*/
 
-function showResult(drug, doseMg) {
+function showResult(result) {
 
-    const volume = calculateVolume(doseMg, drug);
+    const {
 
-    drugNameResult.textContent =
-        drug.arabic + " (" + drug.name + ")";
+        drug,
+        strength,
+        doseMg,
+        doseMl
+
+    } = result;
+
+    resultCard.style.display = "block";
+
+    drugNameResult.textContent = drug.name;
 
     doseMgResult.textContent =
         doseMg.toFixed(1) + " mg";
 
     doseMlResult.textContent =
-        volume.toFixed(1) + " mL";
+        doseMl.toFixed(1) + " mL";
 
     frequencyResult.textContent =
         drug.frequency;
 
     noteResult.textContent =
-        drug.note || "-";
+        drug.notes || "";
 
-    resultCard.style.display = "block";
+    console.log(result);
 
 }
 /* ==========================================
-   Events
+   Reset Result
 ==========================================*/
 
-calculateBtn.addEventListener("click", calculateDose);
+function resetResult() {
+
+    resultCard.style.display = "none";
+
+}
+/* ==========================================
+   Format Number
+==========================================*/
+
+function formatNumber(value, digits = 1) {
+
+    if (isNaN(value)) return "-";
+
+    return Number(value).toFixed(digits);
+
+}
+/* ==========================================
+   Calculate Volume
+==========================================*/
+
+function calculateVolume(doseMg, strength) {
+
+    if (!strength) return 0;
+
+    return (doseMg / strength.concentration) * 5;
+
+}
+/* ==========================================
+   Apply Maximum Dose
+==========================================*/
+
+function applyMaximumDose(doseMg, drug) {
+
+    if (!drug.maxDose) return doseMg;
+
+    return Math.min(doseMg, drug.maxDose);
+
+}
+/* ==========================================
+   Get Daily Maximum
+==========================================*/
+
+function getDailyMaximum(drug, weight) {
+
+    if (!drug.doseRange) return null;
+
+    // سيتم تطويرها لاحقاً حسب كل دواء
+    return null;
+
+}
+function calculateDose() {
+
+    if (!validateInputs()) return;
+
+    const drug = getSelectedDrug();
+
+    const strength = getSelectedStrength();
+
+    const weight = parseFloat(weightInput.value);
+
+    let doseMg = drug.mgPerKg * weight;
+
+    doseMg = applyMaximumDose(doseMg, drug);
+
+    const doseMl = calculateVolume(doseMg, strength);
+
+    const result = {
+
+        drug,
+
+        strength,
+
+        weight,
+
+        age: parseFloat(ageInput.value),
+
+        doseMg,
+
+        doseMl
+
+    };
+
+    showResult(result);
+
+
+
+}
+/* ==========================================
+   Selected Strength
+==========================================*/
+
+function getSelectedStrength(){
+
+    if(!selectedDrug) return null;
+
+    const index=parseInt(strengthSelect.value);
+
+    return selectedDrug.strengths[index];
+
+}
