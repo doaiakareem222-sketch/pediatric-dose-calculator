@@ -313,3 +313,135 @@ Select Strength
 
 `;
 });
+// ======================================================
+// Dose Calculation
+// ======================================================
+
+
+const resultCard = document.getElementById("resultCard");
+
+const drugNameResult = document.getElementById("drugName");
+
+const doseMgResult = document.getElementById("doseMg");
+
+const doseMlResult = document.getElementById("doseMl");
+
+const frequencyResult = document.getElementById("frequency");
+
+const noteResult = document.getElementById("note");
+
+
+
+calculateBtn.addEventListener("click",()=>{
+
+
+    const selectedDrugId = drugSelect.value;
+
+    const weight = Number(weightInput.value);
+
+    const age = Number(ageInput.value);
+
+    const selectedStrength = Number(strengthSelect.value);
+
+
+
+    if(!selectedDrugId){
+
+        alert("Please select a drug");
+
+        return;
+
+    }
+
+
+    if(!weight || weight <= 0){
+
+        alert("Please enter valid weight");
+
+        return;
+
+    }
+
+
+
+    const drug = drugs[selectedDrugId];
+
+
+
+    if(!drug){
+
+        return;
+
+    }
+
+
+
+    // Calculate mg dose
+
+    let doseMg = weight * drug.mgPerKg;
+
+
+
+    // Maximum dose protection
+
+    if(drug.maxDose && doseMg > drug.maxDose){
+
+        doseMg = drug.maxDose;
+
+    }
+
+
+
+    let doseMl = "-";
+
+
+
+    // Convert mg to ml
+
+    if(selectedStrength){
+
+
+        doseMl =
+
+        ((doseMg / selectedStrength) * 5)
+
+        .toFixed(2);
+
+
+    }
+
+
+
+    // Display Result
+
+
+    drugNameResult.textContent =
+    drug.name;
+
+
+    doseMgResult.textContent =
+    `${doseMg.toFixed(2)} mg`;
+
+
+    doseMlResult.textContent =
+    doseMl === "-"
+    ? "-"
+    : `${doseMl} mL`;
+
+
+
+    frequencyResult.textContent =
+    drug.frequency;
+
+
+
+    noteResult.textContent =
+    drug.notes || "Follow clinical guidelines";
+
+
+
+    resultCard.style.display="block";
+
+
+
+});
