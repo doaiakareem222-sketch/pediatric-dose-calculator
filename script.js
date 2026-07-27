@@ -116,7 +116,7 @@ loadDrugs();
 
 
 // ======================================================
-// Search Drug
+// Drug Search
 // ======================================================
 
 
@@ -124,33 +124,55 @@ searchDrug.addEventListener("input",()=>{
 
 
     const keyword =
-    searchDrug.value.toLowerCase();
+    searchDrug.value.trim().toLowerCase();
 
 
-    const filtered =
-    allDrugs.filter(drug=>{
+
+    if(keyword === ""){
 
 
-        return (
+        loadDrugs();
 
-        drug.name.toLowerCase().includes(keyword)
 
-        ||
+        return;
 
-        drug.genericName.toLowerCase().includes(keyword)
+    }
 
-        ||
 
+
+    const filtered = allDrugs.filter(drug=>{
+
+
+        const nameMatch =
+        drug.name.toLowerCase().includes(keyword);
+
+
+
+        const genericMatch =
+        drug.genericName
+        .toLowerCase()
+        .includes(keyword);
+
+
+
+        const brandMatch =
         drug.brandNames.some(brand=>
 
             brand.toLowerCase().includes(keyword)
 
-        )
+        );
 
+
+
+        return (
+            nameMatch ||
+            genericMatch ||
+            brandMatch
         );
 
 
     });
+
 
 
     loadDrugs(filtered);
