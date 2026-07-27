@@ -73,11 +73,14 @@ window.addEventListener("load", () => {
 
 function loadDrugs(list = allDrugs){
 
-    drugSelect.innerHTML = `
-        <option value="">Select Drug</option>
-    `;
+    drugSelect.innerHTML = "";
 
-    list.forEach(drug=>{
+    const firstOption = document.createElement("option");
+    firstOption.value = "";
+    firstOption.textContent = "Select Drug";
+    drugSelect.appendChild(firstOption);
+
+    list.forEach(drug => {
 
         const option = document.createElement("option");
 
@@ -90,8 +93,6 @@ function loadDrugs(list = allDrugs){
     });
 
 }
-
-loadDrugs();
 
 
 // ======================================================
