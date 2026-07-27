@@ -164,4 +164,90 @@ diseaseSelect.addEventListener("change",()=>{
     `;
 
 });
+// ======================================================
+// Load Drug Strengths
+// ======================================================
 
+drugSelect.addEventListener("change", () => {
+
+    strengthSelect.innerHTML = `
+        <option value="">Select Strength</option>
+    `;
+
+    const selectedDrug = drugs[drugSelect.value];
+
+    if (!selectedDrug) return;
+
+    selectedDrug.strengths.forEach(strength => {
+
+        const option = document.createElement("option");
+
+        option.value = strength.concentration;
+
+        option.textContent = strength.name;
+
+        strengthSelect.appendChild(option);
+
+    });
+
+});
+
+
+// ======================================================
+// Dose Calculation
+// ======================================================
+
+calculateBtn.addEventListener("click", () => {
+
+    const drug = drugs[drugSelect.value];
+
+    const weight = parseFloat(weightInput.value);
+
+    const concentration = parseFloat(strengthSelect.value);
+
+    if (!drug) {
+
+        alert("Please select a drug.");
+
+        return;
+
+    }
+
+    if (!weight || weight <= 0) {
+
+        alert("Please enter patient's weight.");
+
+        return;
+
+    }
+
+    let dose = weight * drug.mgPerKg;
+
+    if (drug.maxDose && dose > drug.maxDose) {
+
+        dose = drug.maxDose;
+
+    }
+
+    let doseMl = "-";
+
+    if (concentration) {
+
+        doseMl = ((dose / concentration) * 5).toFixed(2);
+
+    }
+
+    resultCard.style.display = "block";
+
+    drugName.textContent = drug.name;
+
+    doseMg.textContent = dose.toFixed(2) + " mg";
+
+    doseMl.textContent =
+        concentration ? doseMl + " mL" : "-";
+
+    frequency.textContent = drug.frequency;
+
+    note.textContent = drug.notes || "-";
+
+});
