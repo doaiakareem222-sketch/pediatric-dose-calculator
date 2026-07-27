@@ -1,5 +1,4 @@
-
-// ======================================================
+ // ======================================================
 // DoseCare AI v7
 // Main Script
 // ======================================================
@@ -68,3 +67,101 @@ window.addEventListener("load", () => {
     }, 2500);
 
 });
+// ======================================================
+// Load Drugs
+// ======================================================
+
+function loadDrugs(list = allDrugs){
+
+    drugSelect.innerHTML = `
+        <option value="">Select Drug</option>
+    `;
+
+    list.forEach(drug=>{
+
+        const option = document.createElement("option");
+
+        option.value = drug.id;
+
+        option.textContent = drug.name;
+
+        drugSelect.appendChild(option);
+
+    });
+
+}
+
+loadDrugs();
+
+
+// ======================================================
+// Search Drugs
+// ======================================================
+
+searchDrug.addEventListener("input",()=>{
+
+    const keyword = searchDrug.value.trim().toLowerCase();
+
+    const filtered = allDrugs.filter(drug=>{
+
+        return (
+
+            drug.name.toLowerCase().includes(keyword)
+
+            ||
+
+            drug.genericName.toLowerCase().includes(keyword)
+
+            ||
+
+            drug.brandNames.some(brand=>
+
+                brand.toLowerCase().includes(keyword)
+
+            )
+
+        );
+
+    });
+
+    loadDrugs(keyword ? filtered : allDrugs);
+
+});
+
+
+// ======================================================
+// Filter By Disease
+// ======================================================
+
+diseaseSelect.addEventListener("change",()=>{
+
+    const disease = diseaseSelect.value;
+
+    strengthSelect.innerHTML =
+    `<option value="">Select Strength</option>`;
+
+    if(!disease){
+
+        diseaseGuide.innerHTML = "";
+
+        loadDrugs();
+
+        return;
+
+    }
+
+    const filtered = allDrugs.filter(drug=>
+
+        drug.diseases.includes(disease)
+
+    );
+
+    loadDrugs(filtered);
+
+    diseaseGuide.innerHTML = `
+        <strong>${filtered.length}</strong>
+        medication(s) available for this condition.
+    `;
+
+});
+
