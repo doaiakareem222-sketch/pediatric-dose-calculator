@@ -178,7 +178,9 @@ drugSelect.addEventListener("change", () => {
     const selectedDrug = drugs[drugSelect.value];
 
     if (!selectedDrug) return;
-
+if (selectedDrug) {
+    showDrugInfo(selectedDrug);
+}
     selectedDrug.strengths.forEach(strength => {
 
         const option = document.createElement("option");
