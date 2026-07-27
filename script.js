@@ -205,3 +205,105 @@ drugSelect.addEventListener("change",()=>{
 
 
 });
+// ======================================================
+// Filter Drugs By Disease
+// ======================================================
+
+
+diseaseSelect.addEventListener("change",()=>{
+
+
+    const selectedDisease = diseaseSelect.value;
+
+
+    if(!selectedDisease){
+
+
+        loadDrugs();
+
+
+        diseaseGuide.innerHTML = "";
+
+
+        return;
+
+    }
+
+
+
+    const filteredDrugs = allDrugs.filter(drug=>{
+
+
+        return drug.diseases.includes(selectedDisease);
+
+
+    });
+
+
+
+    loadDrugs(filteredDrugs);
+
+
+
+    // Disease Guide
+
+
+    const diseaseNames = {
+
+
+        fever:"Fever Management",
+
+        pain:"Pain Management",
+
+        otitis:"Otitis Media",
+
+        pharyngitis:"Pharyngitis",
+
+        sinusitis:"Sinusitis",
+
+        pneumonia:"Pneumonia",
+
+        uti:"Urinary Tract Infection",
+
+        diarrhea:"Diarrhea",
+
+        vomiting:"Vomiting",
+
+        asthma:"Asthma",
+
+        allergy:"Allergy",
+
+        fungal:"Fungal Infection",
+
+        worms:"Worm Infestation"
+
+    };
+
+
+
+    diseaseGuide.innerHTML = `
+
+    <div class="disease-guide">
+
+        Selected:
+        <strong>
+
+        ${diseaseNames[selectedDisease]}
+
+        </strong>
+
+        <br>
+
+        Available medications:
+        <strong>
+
+        ${filteredDrugs.length}
+
+        </strong>
+
+    </div>
+
+    `;
+
+
+});
