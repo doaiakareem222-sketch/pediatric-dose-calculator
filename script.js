@@ -45,6 +45,9 @@ const historyBox = document.getElementById("history");
 const calcCount = document.getElementById("calcCount");
 
 const lastDrug = document.getElementById("lastDrug");
+console.log("Button:", calculateBtn);
+
+console.log("Result:", resultCard);
 
 
 // ======================================================
