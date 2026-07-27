@@ -1,6 +1,12 @@
-/* =======================================
-   DoseCare v6
-======================================= */
+/* ==========================================
+   DoseCare AI v7
+   Professional Medical UI
+   Developed by Duaa Kareem
+==========================================*/
+
+/* ==========================================
+   Reset
+==========================================*/
 
 *{
 
@@ -10,16 +16,27 @@ padding:0;
 
 box-sizing:border-box;
 
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"SF Pro Display",
-Segoe UI,
-sans-serif;
+}
+
+html{
+
+scroll-behavior:smooth;
 
 }
 
 body{
+
+font-family:
+
+-apple-system,
+
+BlinkMacSystemFont,
+
+"SF Pro Display",
+
+"Segoe UI",
+
+sans-serif;
 
 background:#090B12;
 
@@ -27,205 +44,109 @@ color:#FFFFFF;
 
 overflow-x:hidden;
 
+position:relative;
+
+min-height:100vh;
+
 }
 
+/* ==========================================
+   Background Glow
+==========================================*/
 
-/* =========================================
-   Welcome Screen
-========================================= */
+body::before{
 
-#welcomeScreen{
+content:"";
 
 position:fixed;
 
-top:0;
+top:-250px;
 
-left:0;
+left:-250px;
 
-width:100%;
+width:520px;
 
-height:100%;
+height:520px;
 
-background:linear-gradient(
-180deg,
-#050816 0%,
-#0B1023 100%
-);
+background:#2563EB;
 
-display:flex;
+opacity:.16;
 
-justify-content:center;
+filter:blur(180px);
 
-align-items:center;
+border-radius:50%;
 
-z-index:9999;
+z-index:-2;
 
-transition:1s ease;
+animation:moveGlow1 18s ease-in-out infinite alternate;
 
 }
 
-#welcomeScreen.hide{
+body::after{
 
-opacity:0;
+content:"";
 
-visibility:hidden;
+position:fixed;
 
-transform:scale(1.08);
+bottom:-250px;
 
-backdrop-filter:blur(12px);
+right:-250px;
 
-}
+width:540px;
 
+height:540px;
 
-/* =========================================
-   Welcome Content
-========================================= */
+background:#60A5FA;
 
-.welcome-content{
+opacity:.12;
 
-text-align:center;
+filter:blur(180px);
 
-animation:fadeIn 1.2s ease;
+border-radius:50%;
 
-}
+z-index:-2;
 
-
-/* Welcome */
-
-.welcome-title{
-
-font-size:52px;
-
-font-weight:300;
-
-letter-spacing:3px;
-
-color:white;
-
-margin-bottom:10px;
-
-opacity:0;
-
-animation:fadeUp .8s forwards;
+animation:moveGlow2 22s ease-in-out infinite alternate;
 
 }
 
-
-/* DoseCare */
-
-.app-title{
-
-font-size:72px;
-
-font-weight:700;
-
-color:#3B82F6;
-
-letter-spacing:2px;
-
-margin:0;
-
-text-shadow:
-
-0 0 10px rgba(59,130,246,.5),
-
-0 0 30px rgba(59,130,246,.3);
-
-opacity:0;
-
-animation:fadeUp 1s .4s forwards;
-
-}
-
-
-/* Subtitle */
-
-.app-subtitle{
-
-margin-top:20px;
-
-font-size:24px;
-
-line-height:1.7;
-
-color:#B8C5FF;
-
-opacity:0;
-
-animation:fadeUp 1s .8s forwards;
-
-}
-
-
-/* Developer */
-
-.developer{
-
-margin-top:45px;
-
-font-size:18px;
-
-color:#BFC7D5;
-
-opacity:0;
-
-animation:fadeUp 1s 1.2s forwards;
-
-}
-
-.developer span{
-
-display:block;
-
-margin-top:8px;
-
-font-size:28px;
-
-font-weight:700;
-
-letter-spacing:2px;
-
-background:linear-gradient(
-180deg,
-#FFFFFF 0%,
-#E5E7EB 35%,
-#C0C7D1 65%,
-#8F99A8 100%
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 8px rgba(255,255,255,.18);
-
-}
-
-
-/* ===============================
-   Main App
-=============================== */
+/* ==========================================
+   Main Container
+==========================================*/
 
 .container{
 
-max-width:700px;
+max-width:760px;
 
 margin:auto;
 
-padding:30px 20px;
+padding:28px 18px 60px;
 
 }
 
-
-/* ===============================
+/* ==========================================
    Header
-=============================== */
+==========================================*/
 
 .header{
 
 text-align:center;
 
-margin-bottom:30px;
+margin-bottom:28px;
+
+animation:fadeUp .8s ease;
+
+}
+
+.logo{
+
+width:92px;
+
+height:92px;
+
+object-fit:contain;
+
+margin-bottom:16px;
 
 }
 
@@ -235,7 +156,9 @@ font-size:42px;
 
 font-weight:700;
 
-color:white;
+letter-spacing:.5px;
+
+color:#FFFFFF;
 
 }
 
@@ -243,18 +166,19 @@ color:white;
 
 margin-top:8px;
 
-font-size:18px;
+font-size:17px;
 
 color:#94A3B8;
 
 }
-/* ===============================
+
+/* ==========================================
    Glass Card
-=============================== */
+==========================================*/
 
 .card{
 
-background:rgba(255,255,255,.04);
+background:rgba(255,255,255,.05);
 
 border:1px solid rgba(255,255,255,.08);
 
@@ -270,32 +194,35 @@ margin-bottom:22px;
 
 box-shadow:
 
-0 10px 30px rgba(0,0,0,.35);
+0 10px 35px rgba(0,0,0,.35);
+
+animation:fadeUp .45s ease;
 
 }
 
-.card h2{
+.section-title{
 
-font-size:24px;
+font-size:25px;
 
-margin-bottom:18px;
+font-weight:700;
 
-color:white;
+margin-bottom:20px;
+
+color:#FFFFFF;
 
 }
 
-
-/* ===============================
-   Labels
-=============================== */
+/* ==========================================
+   Form Controls
+==========================================*/
 
 label{
 
 display:block;
 
-margin-bottom:8px;
-
 margin-top:18px;
+
+margin-bottom:8px;
 
 font-size:15px;
 
@@ -305,59 +232,76 @@ color:#CBD5E1;
 
 }
 
-
-/* ===============================
-   Inputs
-=============================== */
-
 input,
-
 select{
 
 width:100%;
 
-height:55px;
-
-border:none;
-
-outline:none;
-
-border-radius:16px;
+height:58px;
 
 padding:0 18px;
 
-background:#141925;
+border-radius:18px;
 
-color:white;
+border:1px solid rgba(255,255,255,.06);
+
+background:#131926;
+
+color:#FFFFFF;
 
 font-size:16px;
 
 transition:.25s;
 
+outline:none;
+
+appearance:none;
+
+-webkit-appearance:none;
+
 }
 
 input::placeholder{
 
-color:#64748B;
+color:#7C8596;
+
+}
+
+input:hover,
+select:hover{
+
+border-color:rgba(59,130,246,.28);
 
 }
 
 input:focus,
-
 select:focus{
 
-border:1px solid #2563EB;
+border-color:#3B82F6;
+
+background:#181F2E;
 
 box-shadow:
 
-0 0 0 4px rgba(37,99,235,.18);
+0 0 0 5px rgba(59,130,246,.15);
 
 }
 
+select{
 
-/* ===============================
+padding-right:48px;
+
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white'%3E%3Cpath d='M4 7l5 5 5-5'/%3E%3C/svg%3E");
+
+background-repeat:no-repeat;
+
+background-position:right 18px center;
+
+}
+
+/* ==========================================
    Button
-=============================== */
+==========================================*/
 
 button{
 
@@ -373,7 +317,7 @@ border-radius:18px;
 
 background:#2563EB;
 
-color:white;
+color:#FFFFFF;
 
 font-size:18px;
 
@@ -398,96 +342,425 @@ button:active{
 transform:scale(.98);
 
 }
-/* ===============================
-   Premium Background
-=============================== */
+/* ==========================================
+   Welcome Screen
+==========================================*/
 
-body::before{
-
-content:"";
+#welcomeScreen{
 
 position:fixed;
 
-top:-250px;
+inset:0;
 
-left:-250px;
+display:flex;
 
-width:500px;
+justify-content:center;
 
-height:500px;
+align-items:center;
 
-background:#2563EB;
+background:linear-gradient(
+180deg,
+#050816 0%,
+#0B1023 100%
+);
 
-opacity:.18;
+z-index:9999;
 
-filter:blur(170px);
+overflow:hidden;
 
-border-radius:50%;
+transition:
 
-z-index:-2;
+opacity .8s ease,
 
-}
+visibility .8s ease,
 
-body::after{
-
-content:"";
-
-position:fixed;
-
-bottom:-280px;
-
-right:-250px;
-
-width:520px;
-
-height:520px;
-
-background:#60A5FA;
-
-opacity:.12;
-
-filter:blur(180px);
-
-border-radius:50%;
-
-z-index:-2;
+transform .8s ease;
 
 }
 
+#welcomeScreen.hide{
 
-/* ===============================
-   Result Card
-=============================== */
+opacity:0;
 
-.result-card{
+visibility:hidden;
+
+pointer-events:none;
+
+transform:scale(1.05);
+
+}
+
+.welcome-content{
+
+position:relative;
+
+z-index:2;
+
+text-align:center;
+
+animation:zoomIn 1s ease;
+
+}
+
+/* ==========================================
+   Welcome Text
+==========================================*/
+
+.welcome-title{
+
+font-size:56px;
+
+font-weight:300;
+
+letter-spacing:4px;
+
+color:#FFFFFF;
+
+opacity:0;
+
+animation:welcomeTitle .9s ease forwards;
+
+}
+
+.app-title{
+
+margin-top:12px;
+
+font-size:72px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:#3B82F6;
+
+text-shadow:
+
+0 0 12px rgba(59,130,246,.55),
+
+0 0 35px rgba(59,130,246,.25);
+
+opacity:0;
+
+animation:welcomeApp .9s .45s forwards;
+
+}
+
+.app-subtitle{
+
+margin-top:22px;
+
+font-size:24px;
+
+line-height:1.7;
+
+color:#B8C5FF;
+
+opacity:0;
+
+animation:welcomeSubtitle .9s .8s forwards;
+
+}
+
+.developer{
+
+margin-top:42px;
+
+font-size:18px;
+
+color:#CBD5E1;
+
+opacity:0;
+
+animation:welcomeDeveloper .9s 1.15s forwards;
+
+}
+
+.developer span{
+
+display:block;
+
+margin-top:10px;
+
+font-size:28px;
+
+font-weight:700;
+
+letter-spacing:2px;
 
 background:linear-gradient(
 
-135deg,
+180deg,
 
-rgba(37,99,235,.22),
+#FFFFFF 0%,
 
-rgba(255,255,255,.04)
+#E5E7EB 35%,
+
+#C5CDD8 70%,
+
+#97A1AF 100%
 
 );
 
-border:1px solid rgba(255,255,255,.10);
+-webkit-background-clip:text;
 
-border-radius:24px;
+-webkit-text-fill-color:transparent;
 
-padding:22px;
+}
 
-margin-top:22px;
+/* ==========================================
+   Floating Stars
+==========================================*/
+
+.stars{
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.star{
+
+position:absolute;
+
+width:2px;
+
+height:2px;
+
+background:#FFFFFF;
+
+border-radius:50%;
+
+opacity:.35;
+
+animation:twinkle 4s ease-in-out infinite;
+
+}
+
+.star:nth-child(1){top:10%;left:15%;animation-delay:0s;}
+.star:nth-child(2){top:20%;left:70%;animation-delay:1s;}
+.star:nth-child(3){top:35%;left:40%;animation-delay:2s;}
+.star:nth-child(4){top:55%;left:85%;animation-delay:3s;}
+.star:nth-child(5){top:70%;left:20%;animation-delay:1.5s;}
+.star:nth-child(6){top:82%;left:60%;animation-delay:2.5s;}
+.star:nth-child(7){top:14%;left:88%;animation-delay:.5s;}
+.star:nth-child(8){top:62%;left:8%;animation-delay:3.5s;}
+
+/* ==========================================
+   Animations
+==========================================*/
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(24px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes zoomIn{
+
+0%{
+
+opacity:0;
+
+transform:scale(.88);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes welcomeTitle{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+filter:blur(8px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+filter:blur(0);
+
+}
+
+}
+
+@keyframes welcomeApp{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes welcomeSubtitle{
+
+from{
+
+opacity:0;
+
+transform:translateY(18px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes welcomeDeveloper{
+
+from{
+
+opacity:0;
+
+transform:translateY(18px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:scale(1);
+
+}
+
+50%{
+
+opacity:.85;
+
+transform:scale(1.8);
+
+}
+
+}
+
+@keyframes moveGlow1{
+
+0%{
+
+transform:translate(0,0) scale(1);
+
+}
+
+50%{
+
+transform:translate(70px,35px) scale(1.12);
+
+}
+
+100%{
+
+transform:translate(-40px,75px) scale(.95);
+
+}
+
+}
+
+@keyframes moveGlow2{
+
+0%{
+
+transform:translate(0,0) scale(1);
+
+}
+
+50%{
+
+transform:translate(-60px,-40px) scale(1.12);
+
+}
+
+100%{
+
+transform:translate(45px,-75px) scale(.92);
+
+}
+
+}
+/* ==========================================
+   Dose Result Card
+==========================================*/
+
+#resultCard{
+
+display:none;
 
 animation:fadeUp .45s ease;
 
 }
 
-.result-card h2{
+.result-grid{
 
-font-size:26px;
+display:flex;
 
-margin-bottom:20px;
+flex-direction:column;
+
+gap:14px;
 
 }
 
@@ -497,38 +770,195 @@ display:flex;
 
 justify-content:space-between;
 
-align-items:center;
+align-items:flex-start;
 
 padding:14px 0;
 
-border-bottom:1px solid rgba(255,255,255,.06);
+border-bottom:1px solid rgba(255,255,255,.08);
 
 }
 
 .result-item:last-child{
 
-border:none;
+border-bottom:none;
 
 }
 
-.result-item span{
+.result-label{
+
+font-size:15px;
+
+font-weight:600;
 
 color:#94A3B8;
 
 }
 
-.result-item strong{
+.result-value{
 
-font-size:18px;
+font-size:17px;
 
-color:white;
+font-weight:700;
+
+color:#FFFFFF;
+
+text-align:right;
+
+word-break:break-word;
+
+}
+
+.full-width{
+
+display:block;
+
+}
+
+.full-width .result-label{
+
+display:block;
+
+margin-bottom:8px;
+
+}
+
+.full-width .result-value{
+
+display:block;
+
+line-height:1.8;
 
 }
 
 
-/* ===============================
+/* ==========================================
+   Drug Information Card
+==========================================*/
+
+#drugInfoCard{
+
+display:none;
+
+animation:fadeUp .45s ease;
+
+}
+
+.info-grid{
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+}
+
+.info-item{
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.info-item:last-child{
+
+border-bottom:none;
+
+}
+
+.info-label{
+
+display:block;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#60A5FA;
+
+margin-bottom:8px;
+
+}
+
+.info-value{
+
+display:block;
+
+font-size:15px;
+
+line-height:1.8;
+
+color:#E2E8F0;
+
+word-break:break-word;
+
+}
+
+
+/* ==========================================
+   Black Box Warning
+==========================================*/
+
+.black-box{
+
+background:rgba(239,68,68,.12);
+
+border:1px solid rgba(239,68,68,.35);
+
+border-radius:18px;
+
+padding:18px;
+
+margin-top:10px;
+
+}
+
+.black-box .info-label{
+
+color:#F87171;
+
+font-size:16px;
+
+}
+
+.black-box .info-value{
+
+color:#FDECEC;
+
+font-weight:600;
+
+}
+
+
+/* ==========================================
+   Clinical Alert Card
+==========================================*/
+
+#clinicalAlertCard{
+
+display:none;
+
+animation:fadeUp .45s ease;
+
+border-left:5px solid #2563EB;
+
+background:rgba(37,99,235,.08);
+
+}
+
+#clinicalAlertContent{
+
+line-height:1.8;
+
+color:#FFFFFF;
+
+}
+
+
+/* ==========================================
    Dashboard
-=============================== */
+==========================================*/
 
 .dashboard-grid{
 
@@ -554,6 +984,8 @@ text-align:center;
 
 transition:.25s;
 
+border:1px solid rgba(255,255,255,.05);
+
 }
 
 .dashboard-box:hover{
@@ -576,171 +1008,16 @@ margin-bottom:8px;
 
 .dashboard-box p{
 
+font-size:15px;
+
 color:#94A3B8;
 
 }
 
 
-/* ===============================
-   Animation
-=============================== */
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(20px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-/* ===============================
-   Apple Welcome Animation
-=============================== */
-
-#welcomeScreen{
-
-transition:opacity .8s ease,
-visibility .8s ease;
-
-}
-
-#welcomeScreen.hide{
-
-opacity:0;
-
-visibility:hidden;
-
-}
-
-.welcome-title{
-
-opacity:0;
-
-animation:titleFade .9s ease forwards;
-
-}
-
-.app-title{
-
-opacity:0;
-
-animation:titleFade .9s ease .45s forwards;
-
-}
-
-.developer-name{
-
-opacity:0;
-
-animation:titleFade .9s ease .9s forwards;
-
-}
-
-@keyframes titleFade{
-
-from{
-
-opacity:0;
-
-transform:translateY(18px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-/* ===============================
-   Drug Card
-=============================== */
-
-#drugCard{
-
-display:none;
-
-animation:fadeUp .45s ease;
-
-}
-
-#drugCard h3{
-
-font-size:28px;
-
-margin-bottom:16px;
-
-color:#60A5FA;
-
-}
-
-#drugCard p{
-
-margin:12px 0;
-
-line-height:1.8;
-
-color:#E2E8F0;
-
-}
-
-
-/* ===============================
-   Clinical Alert
-=============================== */
-
-#clinicalAlert{
-
-display:none;
-
-border-left:5px solid #2563EB;
-
-background:rgba(37,99,235,.08);
-
-animation:fadeUp .4s ease;
-
-}
-
-#clinicalAlert h3{
-
-margin-bottom:12px;
-
-color:#60A5FA;
-
-}
-
-#clinicalAlert ul{
-
-padding-left:20px;
-
-}
-
-#clinicalAlert li{
-
-margin:10px 0;
-
-color:white;
-
-}
-
-
-/* ===============================
+/* ==========================================
    History
-=============================== */
+==========================================*/
 
 #history{
 
@@ -758,9 +1035,11 @@ margin-top:18px;
 
 background:#141925;
 
-padding:18px;
+border:1px solid rgba(255,255,255,.05);
 
 border-radius:18px;
+
+padding:18px;
 
 transition:.25s;
 
@@ -775,9 +1054,9 @@ transform:translateY(-2px);
 }
 
 
-/* ===============================
+/* ==========================================
    About
-=============================== */
+==========================================*/
 
 .about p{
 
@@ -790,520 +1069,62 @@ color:#CBD5E1;
 }
 
 
-/* ===============================
-   Scrollbar
-=============================== */
+/* ==========================================
+   Responsive
+==========================================*/
 
-::-webkit-scrollbar{
+@media (max-width:768px){
 
-width:8px;
+.container{
 
-}
-
-::-webkit-scrollbar-track{
-
-background:#090B12;
+padding:20px 15px 50px;
 
 }
 
-::-webkit-scrollbar-thumb{
+.header h1{
 
-background:#2563EB;
-
-border-radius:50px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-background:#3B82F6;
-
-}
-/* ===============================
-   iPhone Style Inputs
-=============================== */
-
-input,
-select{
-
-appearance:none;
-
--webkit-appearance:none;
-
--moz-appearance:none;
-
-background:#131926;
-
-border:1px solid rgba(255,255,255,.05);
-
-border-radius:18px;
-
-padding:0 18px;
-
-height:58px;
-
-font-size:17px;
-
-font-weight:500;
-
-color:#FFFFFF;
-
-transition:.25s;
-
-}
-
-/* Arrow */
-
-select{
-
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white'%3E%3Cpath d='M4 7l5 5 5-5'/%3E%3C/svg%3E");
-
-background-repeat:no-repeat;
-
-background-position:right 18px center;
-
-padding-right:48px;
-
-}
-
-/* Focus */
-
-input:focus,
-select:focus{
-
-outline:none;
-
-border:1px solid #3B82F6;
-
-box-shadow:
-
-0 0 0 5px rgba(59,130,246,.15);
-
-background:#181F2E;
-
-}
-
-/* Placeholder */
-
-input::placeholder{
-
-color:#7C8596;
-
-}
-
-/* Disabled */
-
-input:disabled,
-select:disabled{
-
-opacity:.5;
-
-cursor:not-allowed;
-
-}
-
-/* Hover */
-
-input:hover,
-select:hover{
-
-border-color:rgba(59,130,246,.25);
-
-}
-/* =======================================
-   Apple Intro Animation
-======================================= */
-
-.welcome-content{
-
-animation:zoomIn 1s ease;
-
-}
-
-.welcome-title{
-
-font-size:68px;
-
-font-weight:800;
-
-letter-spacing:8px;
+font-size:34px;
 
 }
 
 .app-title{
 
-font-size:38px;
-
-font-weight:700;
-
-margin-top:12px;
+font-size:56px;
 
 }
-
-.developer-name{
-
-font-size:18px;
-
-margin-top:16px;
-
-letter-spacing:3px;
-
-opacity:.8;
-
-}
-
-@keyframes zoomIn{
-
-0%{
-
-opacity:0;
-
-transform:scale(.82);
-
-}
-
-60%{
-
-opacity:1;
-
-transform:scale(1.05);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes fadeScreen{
-
-from{
-
-opacity:1;
-
-}
-
-to{
-
-opacity:0;
-
-visibility:hidden;
-
-}
-
-
-}
-/* =======================================
-   Luxury Welcome Animation
-======================================= */
 
 .welcome-title{
 
-opacity:0;
-
-animation:welcomeTitle .9s ease forwards;
+font-size:44px;
 
 }
 
-.app-title{
+.app-subtitle{
 
-opacity:0;
-
-animation:welcomeApp .9s ease .45s forwards;
+font-size:20px;
 
 }
 
-.developer-name{
+.dashboard-grid{
 
-opacity:0;
-
-animation:welcomeName .9s ease .9s forwards;
+grid-template-columns:1fr;
 
 }
 
-@keyframes welcomeTitle{
+.result-item{
 
-0%{
+flex-direction:column;
 
-opacity:0;
+align-items:flex-start;
 
-transform:translateY(35px) scale(.9);
-
-filter:blur(8px);
+gap:6px;
 
 }
 
-100%{
+.result-value{
 
-opacity:1;
-
-transform:translateY(0) scale(1);
-
-filter:blur(0);
+text-align:left;
 
 }
-
-}
-
-@keyframes welcomeApp{
-
-0%{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes welcomeName{
-
-0%{
-
-opacity:0;
-
-transform:translateY(20px);
-
-}
-
-100%{
-
-opacity:.8;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-/* شاشة الترحيب تختفي */
-
-#welcomeScreen.hide{
-
-opacity:0;
-
-visibility:hidden;
-
-pointer-events:none;
-
-transition:
-
-opacity .8s ease,
-
-visibility .8s ease;
-
-}
-/* =======================================
-   Floating Blue Lights
-======================================= */
-
-body::before{
-
-animation:moveGlow1 18s ease-in-out infinite alternate;
-
-}
-
-body::after{
-
-animation:moveGlow2 22s ease-in-out infinite alternate;
-
-}
-
-@keyframes moveGlow1{
-
-0%{
-
-transform:translate(0,0) scale(1);
-
-}
-
-50%{
-
-transform:translate(80px,40px) scale(1.15);
-
-}
-
-100%{
-
-transform:translate(-40px,80px) scale(.95);
-
-}
-
-}
-
-@keyframes moveGlow2{
-
-0%{
-
-transform:translate(0,0) scale(1);
-
-}
-
-50%{
-
-transform:translate(-70px,-50px) scale(1.12);
-
-}
-
-100%{
-
-transform:translate(50px,-80px) scale(.92);
-
-}
-
-}
-/* =========================================
-   Animations
-========================================= */
-
-@keyframes fadeUp{
-
-0%{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-/* =========================================
-   Floating Stars
-========================================= */
-
-.stars{
-
-position:absolute;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-overflow:hidden;
-
-pointer-events:none;
-
-}
-
-.star{
-
-position:absolute;
-
-width:2px;
-
-height:2px;
-
-background:white;
-
-border-radius:50%;
-
-opacity:.45;
-
-animation:twinkle 4s infinite ease-in-out;
-
-}
-
-.star:nth-child(1){top:10%;left:15%;animation-delay:0s;}
-.star:nth-child(2){top:20%;left:70%;animation-delay:1s;}
-.star:nth-child(3){top:35%;left:40%;animation-delay:2s;}
-.star:nth-child(4){top:55%;left:85%;animation-delay:3s;}
-.star:nth-child(5){top:70%;left:20%;animation-delay:1.5s;}
-.star:nth-child(6){top:80%;left:60%;animation-delay:2.8s;}
-.star:nth-child(7){top:15%;left:90%;animation-delay:0.5s;}
-.star:nth-child(8){top:60%;left:10%;animation-delay:3.5s;}
-
-@keyframes twinkle{
-
-0%,100%{
-
-opacity:.2;
-
-transform:scale(1);
-
-}
-
-50%{
-
-opacity:.8;
-
-transform:scale(1.8);
-
-}
-
-}
-#drugCard h2{
-
-text-align:center;
-
-margin-bottom:18px;
-
-color:#1f4e79;
-
-}
-
-.info-item{
-
-margin-bottom:15px;
-
-}
-
-.info-title{
-
-font-weight:bold;
-
-color:#1f4e79;
-
-margin-bottom:4px;
-
-}
-
-.info-text{
-
-line-height:1.7;
-
-color:#444;
 
 }
