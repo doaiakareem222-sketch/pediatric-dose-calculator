@@ -1,737 +1,194 @@
 "use strict";
 
-/* =========================================
-   DoseCare v6
-========================================= */
+/* ==========================================
+   DoseCare AI
+   Pediatric Dose Calculator
+   Version 7.0
+==========================================*/
 
-console.log("DoseCare Started");
+console.clear();
+console.log("DoseCare AI Started");
 
-/* =========================================
+/* ==========================================
    DOM Elements
-========================================= */
-
-const welcomeScreen = document.getElementById("welcomeScreen");
-
-const diseaseSelect = document.getElementById("disease");
-
-const searchInput = document.getElementById("searchDrug");
+==========================================*/
 
 const drugSelect = document.getElementById("drug");
-
-const drug2Select = document.getElementById("drug2");
-
-const strengthSelect = document.getElementById("strength");
-
+const weightInput = document.getElementById("weight");
 const ageInput = document.getElementById("age");
 
-const weightInput = document.getElementById("weight");
+const calculateBtn = document.getElementById("calculateBtn");
 
-const calculateBtn = document.getElementById("calculate");
+const resultCard = document.getElementById("resultCard");
 
-const result = document.getElementById("result");
-
-const drugCard = document.getElementById("drugCard");
-
-const clinicalAlert = document.getElementById("clinicalAlert");
-
-const historyBox = document.getElementById("history");
-
-const calcCount = document.getElementById("calcCount");
-
-const lastDrug = document.getElementById("lastDrug");
-
-/* =========================================
-   Welcome Screen
-========================================= */
-
-window.addEventListener("load", () => {
-
-setTimeout(() => {
-
-welcomeScreen.classList.add("hide");
-
-}, 1800);
-
-});
-/* =========================================
+const drugNameResult = document.getElementById("drugName");
+const doseMgResult = document.getElementById("doseMg");
+const doseMlResult = document.getElementById("doseMl");
+const frequencyResult = document.getElementById("frequency");
+const noteResult = document.getElementById("note");
+/* ==========================================
    Load Drugs
-========================================= */
+==========================================*/
 
 function loadDrugs() {
 
     if (typeof drugs === "undefined") {
 
-        console.error("drugs.js not loaded");
+        console.error("Drug database not found.");
 
         return;
 
     }
 
     drugSelect.innerHTML =
-        '<option value="">Select Drug</option>';
+        '<option value="">اختر الدواء</option>';
 
-    if (drug2Select) {
+    Object.keys(drugs).forEach(key => {
 
-        drug2Select.innerHTML =
-            '<option value="">None</option>';
-
-    }
-
-    Object.keys(drugs).forEach((id) => {
-
-        const drug = drugs[id];
-
-        // Drug List
         const option = document.createElement("option");
-        option.value = id;
-        option.textContent = drug.name;
+
+        option.value = key;
+
+        option.textContent =
+            drugs[key].arabic + " (" + drugs[key].name + ")";
+
         drugSelect.appendChild(option);
-
-        // Second Drug List
-        if (drug2Select) {
-
-            const option2 = document.createElement("option");
-            option2.value = id;
-            option2.textContent = drug.name;
-            drug2Select.appendChild(option2);
-
-        }
 
     });
 
 }
+/* ==========================================
+   Selected Drug
+==========================================*/
 
-loadDrugs();
-/* =========================================
-   Drug Selection
-========================================= */
+function getDrug() {
 
-drugSelect.addEventListener("change", () => {
+    const id = drugSelect.value;
 
-    strengthSelect.innerHTML =
-        '<option value="">Select Strength</option>';
+    if (!id) return null;
 
-    const drug = drugs[drugSelect.value];
+    return drugs[id];
+
+}
+/* ==========================================
+   Validation
+==========================================*/
+
+function validateInputs() {
+
+    const drug = getDrug();
+
+    const weight = parseFloat(weightInput.value);
+
+    const age = parseFloat(ageInput.value);
 
     if (!drug) {
 
-        drugCard.style.display = "none";
+        alert("يرجى اختيار الدواء.");
 
-        return;
+        return false;
 
     }
 
-    drug.strengths.forEach((strength, index) => {
+    if (isNaN(weight) || weight <= 0) {
 
-        const option = document.createElement("option");
+        alert("يرجى إدخال وزن صحيح.");
 
-        option.value = index;
+        return false;
 
-        option.textContent = strength.name;
+    }
 
-        strengthSelect.appendChild(option);
+    if (isNaN(age) || age < 0) {
 
-    });
+        alert("يرجى إدخال عمر صحيح.");
 
-    drugCard.style.display = "block";
+        return false;
 
-    drugCard.innerHTML = `
+    }
 
-        <h3>${drug.name}</h3>
-
-        <p><b>Category:</b> ${drug.category}</p>
-
-        <p><b>Dose:</b> ${drug.mgPerKg} mg/kg</p>
-
-        <p><b>Frequency:</b> ${drug.frequency}</p>
-
-        <p><b>Maximum:</b> ${drug.maxDose} mg</p>
-
-        <p><b>Age:</b> ${drug.minAge} - ${drug.maxAge} years</p>
-
-        <p>${drug.notes}</p>
-
-    `;
-
-});
-/* =========================================
-   Disease Filter
-========================================= */
-
-if (diseaseSelect) {
-
-    diseaseSelect.addEventListener("change", () => {
-
-        const disease = diseaseSelect.value;
-
-        drugSelect.innerHTML =
-            '<option value="">Select Drug</option>';
-
-        Object.keys(drugs).forEach(id => {
-
-            const drug = drugs[id];
-
-            if (
-
-                disease === "" ||
-
-                (
-                    drug.diseases &&
-                    drug.diseases.includes(disease)
-                )
-
-            ) {
-
-                const option = document.createElement("option");
-
-                option.value = id;
-
-                option.textContent = drug.name;
-
-                drugSelect.appendChild(option);
-
-            }
-
-        });
-
-        strengthSelect.innerHTML =
-            '<option value="">Select Strength</option>';
-
-        drugCard.style.display = "none";
-
-    });
+    return true;
 
 }
-
-
-/* =========================================
-   Strength Loader
-========================================= */
-
-function loadStrengths(drugId){
-
-    strengthSelect.innerHTML =
-        '<option value="">Select Strength</option>';
-
-    const drug = drugs[drugId];
-
-    if(!drug) return;
-
-    drug.strengths.forEach((strength,index)=>{
-
-        const option = document.createElement("option");
-
-        option.value = index;
-
-        option.textContent = strength.name;
-
-        strengthSelect.appendChild(option);
-
-    });
-
-}
-/* =========================================
-   Dose Calculator
-========================================= */
-
-calculateBtn.addEventListener("click", () => {
-
-    const age = Number(ageInput.value);
-
-    const weight = Number(weightInput.value);
-
-    const drugId = drugSelect.value;
-
-    const strengthIndex = strengthSelect.value;
-
-    if (!age) {
-
-        alert("Enter Age");
-
-        return;
-
-    }
-
-    if (!weight) {
-
-        alert("Enter Weight");
-
-        return;
-
-    }
-
-    if (!drugId) {
-
-        alert("Select Drug");
-
-        return;
-
-    }
-
-    if (strengthIndex === "") {
-
-        alert("Select Strength");
-
-        return;
-
-    }
-
-    const drug = drugs[drugId];
-
-    if (
-
-        age < drug.minAge ||
-
-        age > drug.maxAge
-
-    ) {
-
-        result.innerHTML = `
-
-<div class="warning-box">
-
-This drug is not suitable for this age.
-
-</div>
-
-`;
-
-        return;
-
-    }
-
-    const concentration =
-
-    drug.strengths[strengthIndex].concentration;
-
-    let doseMg =
-
-    weight * drug.mgPerKg;
-
-    let warning = "";
-
-    if (doseMg > drug.maxDose) {
-
-        doseMg = drug.maxDose;
-
-        warning = `
-
-<div class="warning-box">
-
-Maximum dose reached.
-
-</div>
-
-`;
-
-    }
-
-    const doseMl =
-
-    (doseMg / concentration) * 5;
-
-    result.innerHTML = `
-
-<div class="result-card">
-
-<h2>${drug.name}</h2>
-
-<div class="result-item">
-
-<span>Age</span>
-
-<strong>${age} Years</strong>
-
-</div>
-
-<div class="result-item">
-
-<span>Weight</span>
-
-<strong>${weight} Kg</strong>
-
-</div>
-
-<div class="result-item">
-
-<span>Dose</span>
-
-<strong>${doseMg.toFixed(1)} mg</strong>
-
-</div>
-
-<div class="result-item">
-
-<span>Volume</span>
-
-<strong>${doseMl.toFixed(1)} mL</strong>
-
-</div>
-
-<div class="result-item">
-
-<span>Frequency</span>
-
-<strong>${drug.frequency}</strong>
-
-</div>
-
-${warning}
-
-</div>
-
-`;
-
-});
-/* =========================================
-   Save History
-========================================= */
-
-function saveHistory(drugName, weight, doseMg, doseMl){
-
-    let history = JSON.parse(localStorage.getItem("history")) || [];
-
-    history.unshift({
-
-        drug: drugName,
-
-        weight: weight,
-
-        dose: doseMg.toFixed(1),
-
-        volume: doseMl.toFixed(1),
-
-        date: new Date().toLocaleDateString()
-
-    });
-
-    history = history.slice(0,5);
-
-    localStorage.setItem("history",JSON.stringify(history));
-
-}
-
-
-/* =========================================
-   Load History
-========================================= */
-
-function loadHistory(){
-
-    if(!historyBox) return;
-
-    const history = JSON.parse(localStorage.getItem("history")) || [];
-
-    historyBox.innerHTML="<h2>Recent Calculations</h2>";
-
-    if(history.length===0){
-
-        historyBox.innerHTML += "<p>No calculations yet.</p>";
-
-        return;
-
-    }
-
-    history.forEach(item=>{
-
-        historyBox.innerHTML += `
-
-<div class="history-item">
-
-<b>${item.drug}</b><br>
-
-Weight : ${item.weight} Kg<br>
-
-Dose : ${item.dose} mg<br>
-
-Volume : ${item.volume} mL<br>
-
-${item.date}
-
-</div>
-
-`;
-
-    });
-
-}
-
-
-/* =========================================
-   Dashboard
-========================================= */
-
-function updateDashboard(){
-
-    const history = JSON.parse(localStorage.getItem("history")) || [];
-
-    if(dashboard.calcCount){
-
-        dashboard.calcCount.textContent = history.length;
-
-    }
-
-    if(dashboard.lastDrug){
-
-        dashboard.lastDrug.textContent =
-
-        history.length ?
-
-        history[0].drug :
-
-        "-";
-
-    }
-
-}
-
-
-loadHistory();
-
-updateDashboard();
-/* =========================================
-   Drug Interaction Checker
-========================================= */
-
-function checkInteraction() {
-
-    if (!drug2Select) return "";
-
-    const firstDrug = drugSelect.value;
-
-    const secondDrug = drug2Select.value;
-
-    if (!firstDrug || !secondDrug) return "";
-
-    if (firstDrug === secondDrug) {
-
-        return `
-
-<div class="warning-box">
-
-Cannot compare the same drug.
-
-</div>
-
-`;
-
-    }
-
-    const drugA = drugs[firstDrug];
-
-    const drugB = drugs[secondDrug];
-
-    if (
-
-        drugA.category === drugB.category
-
-    ) {
-
-        return `
-
-<div class="clinical-alert">
-
-<h3>Drug Interaction</h3>
-
-<p>
-
-These drugs belong to the same therapeutic category.
-
-Use together only if clinically indicated.
-
-</p>
-
-</div>
-
-`;
-
-    }
-
-    return `
-
-<div class="success-box">
-
-No major interaction found.
-
-</div>
-
-`;
-
-}
-/* =========================================
-   Drug Information Modal
-========================================= */
-
-function showDrugInfo(){
-
-    const drugId = drugSelect.value;
-
-    if(!drugId){
-
-        alert("Select Drug First");
-
-        return;
-
-    }
-
-    const drug = drugs[drugId];
-
-    modal.style.display="flex";
-
-    modalContent.innerHTML=`
-
-<h2>${drug.name}</h2>
-
-<p><b>Category</b><br>${drug.category}</p>
-
-<p><b>Mechanism</b><br>${drug.mechanism}</p>
-
-<p><b>Indications</b><br>${drug.indications}</p>
-
-<p><b>Contraindications</b><br>${drug.contraindications}</p>
-
-<p><b>Side Effects</b><br>${drug.sideEffects}</p>
-
-<p><b>Pregnancy</b><br>${drug.pregnancy}</p>
-
-<p><b>Storage</b><br>${drug.storage}</p>
-
-<p><b>Notes</b><br>${drug.notes}</p>
-
-`;
-
-}
-/* =========================================
-   Close Modal
-========================================= */
-
-const closeModal=document.getElementById("closeModal");
-
-if(closeModal){
-
-closeModal.addEventListener("click",()=>{
-
-modal.style.display="none";
-
-});
-
-}
-
-window.addEventListener("click",(e)=>{
-
-if(e.target===modal){
-
-modal.style.display="none";
-
-}
-
-});
-/* =========================================
-   Drug Information
-========================================= */
-
-function showDrugInfo() {
-
-    const drugId = drugSelect.value;
-
-    if (!drugId) return;
-
-    const drug = drugs[drugId];
-
-    modal.style.display = "block";
-
-    modalContent.innerHTML = `
-
-<h2>${drug.name}</h2>
-
-<p><b>Category:</b> ${drug.category}</p>
-
-<hr>
-
-<p><b>Mechanism</b></p>
-
-<p>${drug.mechanism}</p>
-
-<hr>
-
-<p><b>Indications</b></p>
-
-<p>${drug.indications}</p>
-
-<hr>
-
-<p><b>Contraindications</b></p>
-
-<p>${drug.contraindications}</p>
-
-<hr>
-
-<p><b>Side Effects</b></p>
-
-<p>${drug.sideEffects}</p>
-
-<hr>
-
-<p><b>Pregnancy</b></p>
-
-<p>${drug.pregnancy}</p>
-
-<hr>
-
-<p><b>Storage</b></p>
-
-<p>${drug.storage}</p>
-
-<hr>
-
-<p><b>Clinical Notes</b></p>
-
-<p>${drug.notes}</p>
-
-`;
-
-}
-
-
-/* =========================================
-   Close Modal
-========================================= */
-
-const closeModal = document.getElementById("closeModal");
-
-if (closeModal) {
-
-    closeModal.onclick = () => {
-
-        modal.style.display = "none";
-
-    };
-
-}
-
-window.onclick = (e) => {
-
-    if (e.target === modal) {
-
-        modal.style.display = "none";
-
-    }
-
-};
-/* =========================================
-   App Initialization
-========================================= */
-
-window.addEventListener("DOMContentLoaded", () => {
-
-    console.log("DoseCare Ready ✅");
-
-    // Reload data
+/* ==========================================
+   App Start
+==========================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
 
     loadDrugs();
 
-    loadHistory();
-
-    updateDashboard();
+    console.log("Application Ready");
 
 });
+/* ==========================================
+   Dose Calculation Engine
+==========================================*/
+
+function calculateDose() {
+
+    if (!validateInputs()) return;
+
+    const drug = getDrug();
+
+    const weight = parseFloat(weightInput.value);
+
+    // حساب الجرعة بالمليغرام
+    let doseMg = drug.mgPerKg * weight;
+
+    // تطبيق الحد الأقصى للجرعة إذا وجد
+    if (drug.maxDose && doseMg > drug.maxDose) {
+        doseMg = drug.maxDose;
+    }
+
+    // إرسال النتيجة للعرض
+    showResult(drug, doseMg);
+
+}
+/* ==========================================
+   Convert mg → mL
+==========================================*/
+
+function calculateVolume(doseMg, drug) {
+
+    if (!drug.strengths || drug.strengths.length === 0) {
+
+        return 0;
+
+    }
+
+    const concentration = drug.strengths[0].concentration;
+
+    return ((doseMg / concentration) * 5);
+
+}
+/* ==========================================
+   Show Result
+==========================================*/
+
+function showResult(drug, doseMg) {
+
+    const volume = calculateVolume(doseMg, drug);
+
+    drugNameResult.textContent =
+        drug.arabic + " (" + drug.name + ")";
+
+    doseMgResult.textContent =
+        doseMg.toFixed(1) + " mg";
+
+    doseMlResult.textContent =
+        volume.toFixed(1) + " mL";
+
+    frequencyResult.textContent =
+        drug.frequency;
+
+    noteResult.textContent =
+        drug.note || "-";
+
+    resultCard.style.display = "block";
+
+}
+/* ==========================================
+   Events
+==========================================*/
+
+calculateBtn.addEventListener("click", calculateDose);
