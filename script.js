@@ -397,20 +397,40 @@ themeBtn.addEventListener("click", () => {
 
 });
 // ======================================================
+// Side Menu
+// ======================================================
+
+const languageBtn = document.getElementById("languageBtn");
+const languageMenu = document.getElementById("languageMenu");
+
+const themeBtn = document.getElementById("themeBtn");
+const themeMenu = document.getElementById("themeMenu");
+
+languageBtn.addEventListener("click", () => {
+
+    languageMenu.classList.toggle("show");
+
+});
+
+themeBtn.addEventListener("click", () => {
+
+    themeMenu.classList.toggle("show");
+
+});
+
+// ======================================================
 // Theme
 // ======================================================
 
 const darkBtn = document.getElementById("darkBtn");
 const lightBtn = document.getElementById("lightBtn");
 
-// تحميل آخر وضع محفوظ
 if(localStorage.getItem("theme") === "light"){
 
     document.body.classList.add("light");
 
 }
 
-// الوضع الداكن
 darkBtn.addEventListener("click",()=>{
 
     document.body.classList.remove("light");
@@ -419,7 +439,6 @@ darkBtn.addEventListener("click",()=>{
 
 });
 
-// الوضع الفاتح
 lightBtn.addEventListener("click",()=>{
 
     document.body.classList.add("light");
