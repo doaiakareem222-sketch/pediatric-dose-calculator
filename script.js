@@ -406,6 +406,7 @@ const darkBtn = document.getElementById("darkBtn");
 const lightBtn = document.getElementById("lightBtn");
 console.log(darkBtn);
 console.log(lightBtn);
+if(darkBtn){
 
 darkBtn.addEventListener("click",()=>{
 
@@ -415,6 +416,11 @@ darkBtn.addEventListener("click",()=>{
 
 });
 
+}
+
+
+if(lightBtn){
+
 lightBtn.addEventListener("click",()=>{
 
     document.body.classList.add("light");
@@ -422,3 +428,5 @@ lightBtn.addEventListener("click",()=>{
     localStorage.setItem("theme","light");
 
 });
+
+}
