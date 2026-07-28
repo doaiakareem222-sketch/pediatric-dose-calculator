@@ -422,3 +422,34 @@ localStorage.setItem("theme","light");
 
 });
 }
+// ======================================================
+// About
+// ======================================================
+
+const aboutBtn = document.getElementById("aboutBtn");
+
+const aboutModal = document.getElementById("aboutModal");
+
+const closeAbout = document.getElementById("closeAbout");
+
+aboutBtn.addEventListener("click", () => {
+
+    aboutModal.style.display = "flex";
+
+});
+
+closeAbout.addEventListener("click", () => {
+
+    aboutModal.style.display = "none";
+
+});
+
+aboutModal.addEventListener("click", (e) => {
+
+    if(e.target === aboutModal){
+
+        aboutModal.style.display = "none";
+
+    }
+
+});
