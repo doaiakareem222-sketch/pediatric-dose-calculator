@@ -1379,11 +1379,18 @@ font-size:15px;
 
 body.light{
 
-background:linear-gradient(135deg,#EEF5FF,#F8FBFF,#EAF3FF);
+background:linear-gradient(
+135deg,
+#EEF2F7,
+#E5E7EB,
+#DCE2EA
+);
 
 color:#111827;
 
-transition:.35s;
+overflow-x:hidden;
+
+position:relative;
 
 }
 body.light .card{
@@ -1453,7 +1460,19 @@ color:#111827;
 border:1px solid #D1D5DB;
 
 }
+body.light .card{
 
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(25px);
+
+-webkit-backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.6);
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
 body.light .header h1,
 body.light .section-title{
 
@@ -1597,6 +1616,78 @@ to{
 transform:scale(1);
 
 opacity:1;
+
+}
+
+}
+/* ==========================================
+   Glass Bubbles
+==========================================*/
+
+body.light::before,
+body.light::after{
+
+content:"";
+
+position:fixed;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.35);
+
+backdrop-filter:blur(30px);
+
+-webkit-backdrop-filter:blur(30px);
+
+z-index:-1;
+
+animation:floatBubble 18s ease-in-out infinite;
+
+}
+
+body.light::before{
+
+width:420px;
+
+height:420px;
+
+top:-120px;
+
+left:-80px;
+
+}
+
+body.light::after{
+
+width:320px;
+
+height:320px;
+
+bottom:-100px;
+
+right:-60px;
+
+animation-delay:8s;
+
+}
+
+@keyframes floatBubble{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(45px);
+
+}
+
+100%{
+
+transform:translateY(0px);
 
 }
 
