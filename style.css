@@ -2073,3 +2073,25 @@ transform:translateY(0) scale(1);
 }
 
 }
+.about-warning{
+
+padding:16px;
+
+border-radius:16px;
+
+background:rgba(239,68,68,.08);
+
+border:1px solid rgba(239,68,68,.18);
+
+margin-top:15px;
+
+line-height:1.7;
+
+}
+<div class="about-warning">
+
+<p>
+DoseCare AI is a clinical support tool...
+</p>
+
+</div>
