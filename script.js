@@ -396,3 +396,34 @@ themeBtn.addEventListener("click", () => {
     themeMenu.classList.toggle("show");
 
 });
+// ======================================================
+// Theme
+// ======================================================
+
+const darkBtn = document.getElementById("darkBtn");
+const lightBtn = document.getElementById("lightBtn");
+
+// تحميل آخر وضع محفوظ
+if(localStorage.getItem("theme") === "light"){
+
+    document.body.classList.add("light");
+
+}
+
+// الوضع الداكن
+darkBtn.addEventListener("click",()=>{
+
+    document.body.classList.remove("light");
+
+    localStorage.setItem("theme","dark");
+
+});
+
+// الوضع الفاتح
+lightBtn.addEventListener("click",()=>{
+
+    document.body.classList.add("light");
+
+    localStorage.setItem("theme","light");
+
+});
