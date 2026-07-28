@@ -404,29 +404,21 @@ themeBtn.addEventListener("click", () => {
 
 const darkBtn = document.getElementById("darkBtn");
 const lightBtn = document.getElementById("lightBtn");
-console.log(darkBtn);
-console.log(lightBtn);
-if(darkBtn){
 
+if(darkBtn){
 darkBtn.addEventListener("click",()=>{
 
-    document.body.classList.remove("light");
-
-    localStorage.setItem("theme","dark");
+document.body.classList.remove("light");
+localStorage.setItem("theme","dark");
 
 });
-
 }
 
-
 if(lightBtn){
-
 lightBtn.addEventListener("click",()=>{
 
-    document.body.classList.add("light");
-
-    localStorage.setItem("theme","light");
+document.body.classList.add("light");
+localStorage.setItem("theme","light");
 
 });
-
 }
