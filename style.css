@@ -1127,8 +1127,7 @@ text-align:left;
 
 }
 
-}
-/* ==========================================
+}/* ==========================================
    Side Menu
 ========================================== */
 
@@ -1137,108 +1136,16 @@ text-align:left;
 position:fixed;
 
 top:20px;
-
-left:20px;
-
-width:50px;
-
-height:50px;
-
-border:none;
-
-border-radius:16px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(20px);
-
--webkit-backdrop-filter:blur(20px);
-
-color:#FFFFFF;
-
-font-size:28px;
-
-cursor:pointer;
-
-z-index:3000;
-
-transition:.25s;
-
-}
-
-.menu-btn:hover{
-
-background:#2563EB;
-
-transform:scale(1.05);
-
-}
-
-.menu-btn:active{
-
-transform:scale(.96);
-
-}
-
-
-/* ==========================================
-   Side Menu
-========================================== */
-
-.side-menu{
-
-position:fixed;
-
-top:0;
-
-left:-100%;
-
-width:280px;
-
-max-width:80%;
-
-height:100vh;
-
-background:#111827;
-
-padding-top:90px;
-
-transition:0.35s ease;
-
-z-index:5000;
-
-overflow-y:auto;
-
-box-shadow:8px 0 30px rgba(0,0,0,.45);
-
-}
-
-.side-menu.open{
-
-left:0;
-
-}
-.menu-btn{
-
-position:fixed;
-
-top:20px;
-
 left:20px;
 
 width:52px;
-
 height:52px;
 
-padding:0;
-
-margin:0;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
+
+padding:0;
 
 background:#1F2937;
 
@@ -1254,21 +1161,78 @@ cursor:pointer;
 
 z-index:6000;
 
-box-shadow:0 8px 20px rgba(0,0,0,.35);
+box-shadow:
+0 8px 20px rgba(0,0,0,.35);
 
 transition:.25s;
 
 }
 
 
-.menu-header{
+.menu-btn:hover{
 
+background:#2563EB;
+
+transform:scale(1.05);
+
+}
+
+
+.menu-btn:active{
+
+transform:scale(.96);
+
+}
+
+
+/* ==========================================
+   Side Menu Panel
+========================================== */
+
+.side-menu{
+
+position:fixed;
+
+top:0;
+left:-100%;
+
+width:280px;
+max-width:80%;
+
+height:100vh;
+
+background:#111827;
+
+padding-top:90px;
+
+transition:.35s ease;
+
+z-index:5000;
+
+overflow-y:auto;
+
+box-shadow:
+8px 0 30px rgba(0,0,0,.45);
+
+}
+
+
+.side-menu.open{
+
+left:0;
+
+}
+
+
+.menu-header{
 
 padding:35px 25px;
 
-border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:
+1px solid rgba(255,255,255,.08);
 
 }
+
 
 .menu-header h2{
 
@@ -1278,6 +1242,7 @@ color:#3B82F6;
 
 }
 
+
 .side-menu ul{
 
 list-style:none;
@@ -1285,6 +1250,7 @@ list-style:none;
 padding:15px 0;
 
 }
+
 
 .side-menu li{
 
@@ -1294,15 +1260,17 @@ font-size:17px;
 
 cursor:pointer;
 
-transition:.25s;
+color:#fff;
 
-color:#FFFFFF;
+transition:.25s;
 
 }
 
+
 .side-menu li:hover{
 
-background:rgba(59,130,246,.12);
+background:
+rgba(59,130,246,.12);
 
 padding-left:32px;
 
@@ -1318,14 +1286,13 @@ padding-left:32px;
 position:fixed;
 
 top:0;
-
 left:0;
 
 width:100%;
-
 height:100%;
 
-background:rgba(0,0,0,.45);
+background:
+rgba(0,0,0,.45);
 
 backdrop-filter:blur(3px);
 
@@ -1339,6 +1306,7 @@ z-index:3500;
 
 }
 
+
 .menu-overlay.show{
 
 opacity:1;
@@ -1346,6 +1314,12 @@ opacity:1;
 visibility:visible;
 
 }
+
+
+/* ==========================================
+   Sub Menu
+========================================== */
+
 .sub-menu{
 
 display:none;
@@ -1354,36 +1328,40 @@ padding:10px 18px;
 
 }
 
+
 .sub-menu.show{
 
 display:block;
 
 }
 
+
 .sub-menu button{
 
 width:100%;
 
-margin:8px 0;
-
 height:42px;
+
+margin:8px 0;
 
 border-radius:12px;
 
 font-size:15px;
 
 }
+
+
 /* ==========================================
-   Light Mode
-==========================================*/
+   Premium Light Mode
+========================================== */
 
 body.light{
 
-background:linear-gradient(
+background:
+linear-gradient(
 135deg,
 #EEF2F7,
-#E5E7EB,
-#DCE2EA
+#DCE5F0
 );
 
 color:#111827;
@@ -1393,57 +1371,107 @@ overflow-x:hidden;
 position:relative;
 
 }
+
+
+/* ==========================================
+   Glass Cards
+========================================== */
+
 body.light .card{
 
-background:rgba(255,255,255,.88);
+background:
+rgba(255,255,255,.55);
 
-backdrop-filter:blur(12px);
+backdrop-filter:
+blur(25px);
 
-border:1px solid rgba(37,99,235,.15);
+-webkit-backdrop-filter:
+blur(25px);
 
-border-radius:24px;
+border:
 
-box-shadow:0 12px 35px rgba(37,99,235,.08);
+1px solid rgba(255,255,255,.7);
+
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.08);
 
 color:#111827;
 
 }
+
+
+/* ==========================================
+   Inputs
+========================================== */
+
 body.light input,
 body.light select{
 
-background:#FFFFFF;
+background:#fff;
 
-border:1px solid #C7D7FE;
+border:
+
+1px solid #C7D7FE;
 
 color:#111827;
 
-box-shadow:0 4px 12px rgba(37,99,235,.05);
+box-shadow:
+
+0 4px 12px rgba(37,99,235,.05);
 
 }
+
+
+/* ==========================================
+   Buttons
+========================================== */
+
 body.light button{
 
-background:linear-gradient(135deg,#2563EB,#3B82F6);
+background:
+linear-gradient(
+135deg,
+#2563EB,
+#3B82F6
+);
 
 color:white;
 
-box-shadow:0 10px 20px rgba(37,99,235,.25);
+box-shadow:
+
+0 10px 20px rgba(37,99,235,.25);
+
+transition:.3s;
 
 }
+
 
 body.light button:hover{
 
-transform:translateY(-2px);
+transform:
+translateY(-2px);
 
 }
+
+
+/* ==========================================
+   Light Side Menu
+========================================== */
+
 body.light .side-menu{
 
-background:rgba(255,255,255,.96);
+background:
 
-backdrop-filter:blur(16px);
+rgba(255,255,255,.95);
 
-border-right:1px solid rgba(37,99,235,.15);
+backdrop-filter:
+
+blur(20px);
 
 }
+
 
 body.light .side-menu li{
 
@@ -1451,37 +1479,23 @@ color:#111827;
 
 }
 
+
 body.light .menu-btn{
 
-background:#FFFFFF;
+background:#fff;
 
 color:#111827;
 
-border:1px solid #D1D5DB;
+border:
+
+1px solid #D1D5DB;
 
 }
-body.light .card{
 
-background:rgba(255,255,255,.55);
 
-backdrop-filter:blur(25px);
-
--webkit-backdrop-filter:blur(25px);
-
-border:1px solid rgba(255,255,255,.6);
-
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-
-}
-body.light .header h1,
-body.light .section-title{
-
-color:#111827;
-
-}
 /* ==========================================
    About Modal
-==========================================*/
+========================================== */
 
 .about-modal{
 
@@ -1490,16 +1504,18 @@ display:none;
 position:fixed;
 
 top:0;
-
 left:0;
 
 width:100%;
-
 height:100%;
 
-background:rgba(0,0,0,.55);
+background:
 
-backdrop-filter:blur(6px);
+rgba(0,0,0,.55);
+
+backdrop-filter:
+
+blur(6px);
 
 justify-content:center;
 
@@ -1509,6 +1525,7 @@ z-index:9999;
 
 }
 
+
 .about-box{
 
 width:90%;
@@ -1517,89 +1534,31 @@ max-width:500px;
 
 background:#111827;
 
-color:#FFFFFF;
+color:white;
 
 padding:28px;
 
 border-radius:22px;
 
-box-shadow:0 20px 50px rgba(0,0,0,.45);
+box-shadow:
 
-max-height:85vh;
-
-overflow-y:auto;
-
-animation:popup .25s ease;
+0 20px 50px rgba(0,0,0,.45);
 
 }
 
+
 body.light .about-box{
 
-background:#FFFFFF;
+background:white;
 
 color:#111827;
 
 }
 
-.about-box h2{
 
-margin-bottom:10px;
-
-text-align:center;
-
-}
-
-.about-box h3{
-
-margin-top:18px;
-
-margin-bottom:8px;
-
-color:#3B82F6;
-
-}
-
-.about-box ul{
-
-padding-left:20px;
-
-}
-
-.about-box li{
-
-margin-bottom:6px;
-
-}
-
-.about-box hr{
-
-margin:18px 0;
-
-border:none;
-
-height:1px;
-
-background:#2D3748;
-
-}
-
-body.light .about-box hr{
-
-background:#E5E7EB;
-
-}
-
-#closeAbout{
-
-float:right;
-
-font-size:28px;
-
-cursor:pointer;
-
-font-weight:bold;
-
-}
+/* ==========================================
+   Popup Animation
+========================================== */
 
 @keyframes popup{
 
@@ -1620,9 +1579,11 @@ opacity:1;
 }
 
 }
+
+
 /* ==========================================
-   Glass Bubbles
-==========================================*/
+   Glass Floating Bubbles
+========================================== */
 
 body.light::before,
 body.light::after{
@@ -1633,62 +1594,103 @@ position:fixed;
 
 border-radius:50%;
 
-background:rgba(255,255,255,.35);
+pointer-events:none;
 
-backdrop-filter:blur(30px);
+z-index:0;
 
--webkit-backdrop-filter:blur(30px);
+background:
 
-z-index:-1;
+rgba(255,255,255,.35);
 
-animation:floatBubble 18s ease-in-out infinite;
+backdrop-filter:
+
+blur(30px);
+
+-webkit-backdrop-filter:
+
+blur(30px);
 
 }
+
+
+/* Bubble 1 */
 
 body.light::before{
 
-width:420px;
+width:350px;
 
-height:420px;
+height:350px;
 
-top:-120px;
+top:-100px;
 
 left:-80px;
 
+animation:
+
+floatBubble 14s infinite alternate;
+
 }
+
+
+/* Bubble 2 */
 
 body.light::after{
 
-width:320px;
+width:260px;
 
-height:320px;
+height:260px;
 
-bottom:-100px;
+right:-70px;
 
-right:-60px;
+bottom:80px;
 
-animation-delay:8s;
+animation:
+
+floatBubble 18s infinite alternate-reverse;
 
 }
+
+
+/* Keep App Above Bubbles */
+
+.container{
+
+position:relative;
+
+z-index:1;
+
+}
+
+
+/* Bubble Animation */
 
 @keyframes floatBubble{
 
-0%{
+from{
 
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(45px);
+transform:
+translate(0,0);
 
 }
 
-100%{
+to{
 
-transform:translateY(0px);
+transform:
+translate(40px,-50px);
 
 }
+
+}
+
+
+/* ==========================================
+   Calculate Button
+========================================== */
+
+body.light #calculateBtn{
+
+background:#2563EB;
+
+color:white;
 
 }
