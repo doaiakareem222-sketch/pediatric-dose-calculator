@@ -429,12 +429,16 @@ console.log(lightBtn);
 
 darkBtn.addEventListener("click",()=>{
 
-    alert("Dark Button Works");
+    document.body.classList.remove("light");
+
+    localStorage.setItem("theme","dark");
 
 });
 
 lightBtn.addEventListener("click",()=>{
 
-    alert("Light Button Works");
+    document.body.classList.add("light");
+
+    localStorage.setItem("theme","light");
 
 });
