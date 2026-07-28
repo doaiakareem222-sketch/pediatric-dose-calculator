@@ -1127,7 +1127,8 @@ text-align:left;
 
 }
 
-}/* ==========================================
+}
+/* ==========================================
    Side Menu
 ========================================== */
 
@@ -1353,26 +1354,47 @@ font-size:15px;
 
 /* ==========================================
    Premium Light Mode
-========================================== */
+==========================================*/
 
 body.light{
 
-background:
-linear-gradient(
+background:linear-gradient(
 135deg,
-#EEF2F7,
-#DCE5F0
+#EEF2F6 0%,
+#E7EBF0 50%,
+#DDE3EA 100%
 );
 
-color:#111827;
-
-overflow-x:hidden;
+color:#4B5563;
 
 position:relative;
 
+overflow-x:hidden;
+
 }
+/* ==========================================
+   Light Titles
+==========================================*/
 
+body.light h1,
+body.light h2,
+body.light h3,
+body.light .section-title{
 
+color:#2563EB;
+
+}
+/* ==========================================
+   Light Text
+==========================================*/
+
+body.light p,
+body.light span,
+body.light label{
+
+color:#6B7280;
+
+}
 /* ==========================================
    Glass Cards
 ========================================== */
@@ -1422,8 +1444,28 @@ box-shadow:
 0 4px 12px rgba(37,99,235,.05);
 
 }
+body.light input::placeholder{
 
+color:#9CA3AF;
 
+}
+body.light option{
+
+background:#FFFFFF;
+
+color:#374151;
+
+}
+body.light input:focus,
+body.light select:focus{
+
+outline:none;
+
+border-color:#3B82F6;
+
+box-shadow:0 0 0 4px rgba(59,130,246,.15);
+
+}
 /* ==========================================
    Buttons
 ========================================== */
@@ -1482,13 +1524,15 @@ color:#111827;
 
 body.light .menu-btn{
 
-background:#fff;
+background:rgba(255,255,255,.45);
 
-color:#111827;
+backdrop-filter:blur(20px);
 
-border:
+-webkit-backdrop-filter:blur(20px);
 
-1px solid #D1D5DB;
+color:#2563EB;
+
+border:1px solid rgba(255,255,255,.8);
 
 }
 
