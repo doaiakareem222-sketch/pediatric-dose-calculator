@@ -427,12 +427,6 @@ const lightBtn = document.getElementById("lightBtn");
 console.log(darkBtn);
 console.log(lightBtn);
 
-if(localStorage.getItem("theme") === "light"){
-
-    document.body.classList.add("light");
-
-}
-
 darkBtn.addEventListener("click",()=>{
 
     document.body.classList.remove("light");
