@@ -1373,3 +1373,66 @@ border-radius:12px;
 font-size:15px;
 
 }
+/* ==========================================
+   Light Mode
+==========================================*/
+
+body.light{
+
+background:#F4F7FB;
+
+color:#111827;
+
+}
+
+body.light .card{
+
+background:#FFFFFF;
+
+color:#111827;
+
+border:1px solid #E5E7EB;
+
+}
+
+body.light input,
+body.light select{
+
+background:#F9FAFB;
+
+color:#111827;
+
+border:1px solid #D1D5DB;
+
+}
+
+body.light .side-menu{
+
+background:#FFFFFF;
+
+color:#111827;
+
+}
+
+body.light .side-menu li{
+
+color:#111827;
+
+}
+
+body.light .menu-btn{
+
+background:#FFFFFF;
+
+color:#111827;
+
+border:1px solid #D1D5DB;
+
+}
+
+body.light .header h1,
+body.light .section-title{
+
+color:#111827;
+
+}
