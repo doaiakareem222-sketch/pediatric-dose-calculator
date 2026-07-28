@@ -424,6 +424,8 @@ themeBtn.addEventListener("click", () => {
 
 const darkBtn = document.getElementById("darkBtn");
 const lightBtn = document.getElementById("lightBtn");
+console.log(darkBtn);
+console.log(lightBtn);
 
 if(localStorage.getItem("theme") === "light"){
 
