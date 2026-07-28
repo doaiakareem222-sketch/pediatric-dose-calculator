@@ -1948,3 +1948,128 @@ position:relative;
 z-index:2;
 
 }
+/* ==========================================
+   About Modal Premium
+========================================== */
+
+.about-logo{
+
+width:80px;
+
+height:80px;
+
+margin:0 auto 18px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:42px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#2563EB,#60A5FA);
+
+box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+}
+
+.about-box{
+
+text-align:center;
+
+animation:aboutFade .35s ease;
+
+}
+
+.about-box hr{
+
+border:none;
+
+height:1px;
+
+background:rgba(255,255,255,.08);
+
+margin:20px 0;
+
+}
+
+body.light .about-box hr{
+
+background:#E5E7EB;
+
+}
+
+.about-subtitle{
+
+color:#9CA3AF;
+
+margin-top:8px;
+
+margin-bottom:15px;
+
+line-height:1.6;
+
+}
+
+body.light .about-subtitle{
+
+color:#6B7280;
+
+}
+
+.about-list{
+
+list-style:none;
+
+padding:0;
+
+margin:15px 0;
+
+}
+
+.about-list li{
+
+padding:8px 0;
+
+font-size:15px;
+
+}
+
+.version{
+
+margin-top:20px;
+
+font-size:14px;
+
+opacity:.8;
+
+}
+
+#closeAbout{
+
+margin-top:22px;
+
+}
+
+@keyframes aboutFade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px) scale(.96);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
