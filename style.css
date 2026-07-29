@@ -1204,7 +1204,7 @@ height:100vh;
 
 background:#111827;
 
-padding-top:90px;
+padding-top:25px;
 
 transition:.35s ease;
 
@@ -1943,5 +1943,16 @@ scale(.95);
 position:relative;
 
 z-index:2;
+
+} 
+.side-menu{
+
+z-index:5000;
+
+}
+
+.menu-overlay{
+
+z-index:4500;
 
 }
