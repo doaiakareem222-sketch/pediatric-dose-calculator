@@ -197,18 +197,22 @@ if(arabicBtn){
 
     arabicBtn.addEventListener("click",()=>{
 
-        alert("تم الضغط على العربية");
 
         currentLanguage="ar";
 
-        localStorage.setItem("language","ar");
+
+        localStorage.setItem(
+            "language",
+            "ar"
+        );
+
 
         updateLanguage();
+
 
     });
 
 }
-
 // ======================================================
 // Initialize Language
 // ======================================================
