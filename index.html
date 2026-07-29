@@ -101,14 +101,40 @@ English
 
 </div>
 
-        <li id="aboutBtn">
-            ℹ️ About
-        </li>
-<div id="aboutModal" class="about-modal">
+<div id="sideMenu" class="side-menu">
+
+    <div class="menu-header">
+        <h2>DoseCare AI</h2>
+    </div>
+
+    <ul>
+
+        <li id="languageBtn">🌐 Language</li>
+
+        <div id="languageMenu" class="sub-menu">
+            ...
+        </div>
+
+        <li id="themeBtn">🌙 Appearance</li>
+
+        <div id="themeMenu" class="sub-menu">
+            ...
+        </div>
+
+        <li id="aboutBtn">ℹ️ About</li>
+
+        <li id="contactBtn">📩 Contact & Support</li>
+
+    </ul>
+
+</div>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+        <div id="aboutModal" class="about-modal">
 
     <div class="about-box">
 
-        <span id="closeAbout">&times;</span>
+        <span id="closeAboutIcon">&times;</span>
 
         <h2>DoseCare AI</h2>
 
@@ -149,32 +175,23 @@ English
         <h3>Disclaimer</h3>
 
         <p>
-
             DoseCare AI is intended as a clinical decision-support tool.
             Always verify doses using official clinical references.
-
         </p>
 
         <hr>
 
         <small>
-
             Version 1.0
-
         </small>
+
+        <button id="closeAbout">
+            Close
+        </button>
 
     </div>
 
 </div>
-        <li id="contactBtn">
-            📩 Contact & Support
-        </li>
-
-    </ul>
-
-</div>
-
-<div id="menuOverlay" class="menu-overlay"></div>
 <!-- ===================================== -->
 <!-- Welcome Screen -->
 <!-- ===================================== -->
