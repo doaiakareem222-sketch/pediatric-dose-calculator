@@ -1938,10 +1938,7 @@ scale(.95);
 
 /* Keep Content Above */
 
-.container,
-.menu-btn,
-.side-menu,
-.menu-overlay{
+.container{
 
 position:relative;
 
