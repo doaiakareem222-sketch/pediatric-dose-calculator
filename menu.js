@@ -113,10 +113,12 @@ arabicBtn.addEventListener("click",()=>{
     localStorage.setItem("language","ar");
 
     updateLanguage();
+    
+    });
 
-    // ===============================
+ // ===============================
 // Load Saved Language
-// ===============================
+//  ===============================
 
 const savedLanguage = localStorage.getItem("language");
 
