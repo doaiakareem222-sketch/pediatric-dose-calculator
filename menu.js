@@ -5,6 +5,7 @@
 
 console.log("Menu Loaded");
 
+
 // ======================================================
 // Menu Elements
 // ======================================================
@@ -15,118 +16,294 @@ const sideMenu = document.getElementById("sideMenu");
 
 const menuOverlay = document.getElementById("menuOverlay");
 
+
 // ======================================================
 // Open Menu
 // ======================================================
 
-menuBtn.addEventListener("click", () => {
+if(menuBtn && sideMenu && menuOverlay){
 
-    sideMenu.classList.add("open");
+    menuBtn.addEventListener("click",()=>{
 
-    menuOverlay.style.display = "block";
+        sideMenu.classList.add("open");
 
-});
+        menuOverlay.classList.add("show");
+
+    });
+
+
+    // ======================================================
+    // Close Menu
+    // ======================================================
+
+    menuOverlay.addEventListener("click",()=>{
+
+        sideMenu.classList.remove("open");
+
+        menuOverlay.classList.remove("show");
+
+    });
+
+}
+
+
 
 // ======================================================
-// Close Menu
+// Language System
 // ======================================================
 
-menuOverlay.addEventListener("click", () => {
+let currentLanguage = 
+localStorage.getItem("language") || "en";
 
-    sideMenu.classList.remove("open");
 
-    menuOverlay.style.display = "none";
 
-});
-// ===============================
-// Language
-// ===============================
-
-let currentLanguage = "en";
 const language = {
 
-    en: {
+    en:{
 
-        language: "🌐 Language",
+        language:"🌐 Language",
 
-        appearance: "🌙 Appearance",
+        appearance:"🌙 Appearance",
 
-        about: "ℹ️ About",
+        about:"ℹ️ About",
 
-        contact: "📩 Contact & Support"
+        contact:"📩 Contact & Support"
 
     },
 
-    ar: {
 
-        language: "🌐 اللغة",
+    ar:{
 
-        appearance: "🌙 المظهر",
+        language:"🌐 اللغة",
 
-        about: "ℹ️ حول التطبيق",
+        appearance:"🌙 المظهر",
 
-        contact: "📩 التواصل والدعم"
+        about:"ℹ️ حول التطبيق",
+
+        contact:"📩 التواصل والدعم"
 
     }
 
 };
-// ===============================
-// Update Language
-// ===============================
 
-function updateLanguage(){
-alert(currentLanguage);
-    document.getElementById("languageBtn").innerHTML =
-    language[currentLanguage].language;
 
-    document.getElementById("themeBtn").innerHTML =
-    language[currentLanguage].appearance;
 
-    document.getElementById("aboutBtn").innerHTML =
-    language[currentLanguage].about;
+// ======================================================
+// Language Elements
+// ======================================================
 
-    document.getElementById("contactBtn").innerHTML =
-    language[currentLanguage].contact;
+const languageBtn = document.getElementById("languageBtn");
 
-}
-// ===============================
-// Language Buttons
-// ===============================
+const languageMenu = document.getElementById("languageMenu");
 
 const englishBtn = document.getElementById("englishBtn");
+
 const arabicBtn = document.getElementById("arabicBtn");
 
-englishBtn.addEventListener("click",()=>{
 
-    currentLanguage = "en";
 
-    localStorage.setItem("language","en");
+// ======================================================
+// Open Language Menu
+// ======================================================
 
-    updateLanguage();
+if(languageBtn && languageMenu){
 
-});
+    languageBtn.addEventListener("click",()=>{
 
-arabicBtn.addEventListener("click",()=>{
+        languageMenu.classList.toggle("show");
 
-    currentLanguage = "ar";
-
-    localStorage.setItem("language","ar");
-
-    updateLanguage();
-    
     });
-
- // ===============================
-// Load Saved Language
-//  ===============================
-
-const savedLanguage = localStorage.getItem("language");
-
-if(savedLanguage){
-
-    currentLanguage = savedLanguage;
 
 }
 
+
+
+// ======================================================
+// Update Menu Language
+// ======================================================
+
+function updateLanguage(){
+
+
+    const lang = language[currentLanguage];
+
+
+    const langBtn = document.getElementById("languageBtn");
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    const aboutBtn = document.getElementById("aboutBtn");
+
+    const contactBtn = document.getElementById("contactBtn");
+
+
+
+    if(langBtn)
+
+        langBtn.innerHTML = lang.language;
+
+
+    if(themeBtn)
+
+        themeBtn.innerHTML = lang.appearance;
+
+
+    if(aboutBtn)
+
+        aboutBtn.innerHTML = lang.about;
+
+
+    if(contactBtn)
+
+        contactBtn.innerHTML = lang.contact;
+
+
+}
+
+
+
+// ======================================================
+// Change To English
+// ======================================================
+
+if(englishBtn){
+
+    englishBtn.addEventListener("click",()=>{
+
+
+        currentLanguage="en";
+
+
+        localStorage.setItem(
+            "language",
+            "en"
+        );
+
+
+        updateLanguage();
+
+
+    });
+
+}
+
+
+
+// ======================================================
+// Change To Arabic
+// ======================================================
+
+if(arabicBtn){
+
+    arabicBtn.addEventListener("click",()=>{
+
+
+        currentLanguage="ar";
+
+
+        localStorage.setItem(
+            "language",
+            "ar"
+        );
+
+
+        updateLanguage();
+
+
+    });
+
+}
+
+
+
+// ======================================================
+// Initialize Language
+// ======================================================
+
 updateLanguage();
-});
+
+
+
+// ======================================================
+// Theme Menu
+// ======================================================
+
+const themeBtn = document.getElementById("themeBtn");
+
+const themeMenu = document.getElementById("themeMenu");
+
+
+if(themeBtn && themeMenu){
+
+    themeBtn.addEventListener("click",()=>{
+
+        themeMenu.classList.toggle("show");
+
+    });
+
+}
+
+
+
+// ======================================================
+// Theme Switch
+// ======================================================
+
+const darkBtn = document.getElementById("darkBtn");
+
+const lightBtn = document.getElementById("lightBtn");
+
+
+
+if(darkBtn){
+
+    darkBtn.addEventListener("click",()=>{
+
+
+        document.body.classList.remove("light");
+
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+
+    });
+
+}
+
+
+
+if(lightBtn){
+
+    lightBtn.addEventListener("click",()=>{
+
+
+        document.body.classList.add("light");
+
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+
+    });
+
+}
+
+
+
+// ======================================================
+// Load Saved Theme
+// ======================================================
+
+const savedTheme = localStorage.getItem("theme");
+
+
+if(savedTheme === "light"){
+
+    document.body.classList.add("light");
+
+}
