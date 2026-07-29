@@ -75,7 +75,7 @@ const language = {
 // ===============================
 
 function updateLanguage(){
-
+alert(currentLanguage);
     document.getElementById("languageBtn").innerHTML =
     language[currentLanguage].language;
 
