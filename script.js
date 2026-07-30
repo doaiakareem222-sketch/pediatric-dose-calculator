@@ -453,9 +453,3 @@ aboutModal.addEventListener("click", (e) => {
     }
 
 });
-.menu-btn{
-
-z-index:6000;
-
-}
-
