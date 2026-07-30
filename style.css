@@ -1959,3 +1959,68 @@ z-index:5000;
 z-index:4500;
 
 }
+/* ==========================================
+   Contact Buttons
+========================================== */
+
+#telegramBtn{
+
+background:#229ED9;
+
+}
+
+#bugBtn{
+
+background:#EF4444;
+
+}
+
+#featureBtn{
+
+background:#10B981;
+
+}
+
+#rateBtn{
+
+background:#F59E0B;
+
+}
+
+#telegramBtn,
+#bugBtn,
+#featureBtn,
+#rateBtn{
+
+width:100%;
+
+margin:10px 0;
+
+height:48px;
+
+border:none;
+
+border-radius:14px;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#fff;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+#telegramBtn:hover,
+#bugBtn:hover,
+#featureBtn:hover,
+#rateBtn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(0,0,0,.25);
+
+}
