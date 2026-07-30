@@ -145,3 +145,132 @@ if (aboutModal) {
     });
 
 }
+// ======================================================
+// Contact & Support
+// ======================================================
+
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+
+const closeContact = document.getElementById("closeContact");
+
+const telegramBtn = document.getElementById("telegramBtn");
+const bugBtn = document.getElementById("bugBtn");
+const featureBtn = document.getElementById("featureBtn");
+const rateBtn = document.getElementById("rateBtn");
+
+if(contactBtn){
+
+    contactBtn.addEventListener("click",()=>{
+
+        contactModal.style.display="flex";
+
+    });
+
+}
+
+if(closeContact){
+
+    closeContact.addEventListener("click",()=>{
+
+        contactModal.style.display="none";
+
+    });
+
+}
+
+if(contactModal){
+
+    contactModal.addEventListener("click",(e)=>{
+
+        if(e.target===contactModal){
+
+            contactModal.style.display="none";
+
+        }
+
+    });
+
+}
+
+// Telegram
+
+if(telegramBtn){
+
+    telegramBtn.addEventListener("click",()=>{
+
+        window.open(
+        "https://t.me/ph1_dk",
+        "_blank"
+        );
+
+    });
+
+}
+
+// Report Bug
+
+if(bugBtn){
+
+    bugBtn.addEventListener("click",()=>{
+
+        const text =
+`🐞 Bug Report
+
+Device:
+
+Problem:
+
+Steps to reproduce:
+
+Screenshot:
+`;
+
+        window.open(
+`https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
+"_blank"
+);
+
+    });
+
+}
+
+// Feature Request
+
+if(featureBtn){
+
+    featureBtn.addEventListener("click",()=>{
+
+        const text =
+`💡 Feature Request
+
+I would like DoseCare AI to include:
+
+`;
+
+        window.open(
+`https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
+"_blank"
+);
+
+    });
+
+}
+
+// Rate DoseCare
+
+if(rateBtn){
+
+    rateBtn.addEventListener("click",()=>{
+
+        alert(
+`⭐⭐⭐⭐⭐
+
+Thank you for using DoseCare AI ❤️
+
+Your support motivates us to keep improving the application.`
+        );
+
+    });
+
+}
