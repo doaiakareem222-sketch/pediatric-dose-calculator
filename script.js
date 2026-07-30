@@ -49,7 +49,7 @@ const lastDrug = document.getElementById("lastDrug");
 // ======================================================
 
 let allDrugs = Object.values(drugs);
-
+let currentDrugList = allDrugs;
 let calculationHistory = [];
 
 let calculations = 0;
@@ -104,68 +104,63 @@ function loadDrugs(list = allDrugs){
 // Search Drugs
 // ======================================================
 
-searchDrug.addEventListener("input",()=>{
+searchDrug.addEventListener("input", () => {
 
     const keyword = searchDrug.value.trim().toLowerCase();
 
-    const filtered = allDrugs.filter(drug=>{
+    const filtered = currentDrugList.filter(drug => {
 
         return (
 
-            drug.name.toLowerCase().includes(keyword)
+            drug.name.toLowerCase().includes(keyword) ||
 
-            ||
+            drug.genericName.toLowerCase().includes(keyword) ||
 
-            drug.genericName.toLowerCase().includes(keyword)
-
-            ||
-
-            drug.brandNames.some(brand=>
-
+            drug.brandNames.some(brand =>
                 brand.toLowerCase().includes(keyword)
-
             )
 
         );
 
     });
 
-    loadDrugs(keyword ? filtered : allDrugs);
+    loadDrugs(keyword ? filtered : currentDrugList);
 
 });
-
 
 // ======================================================
 // Filter By Disease
 // ======================================================
 
-diseaseSelect.addEventListener("change",()=>{
+diseaseSelect.addEventListener("change", () => {
 
     const disease = diseaseSelect.value;
 
     strengthSelect.innerHTML =
     `<option value="">Select Strength</option>`;
 
-    if(!disease){
+    searchDrug.value = "";
+
+    if (!disease) {
+
+        currentDrugList = allDrugs;
+
+        loadDrugs(currentDrugList);
 
         diseaseGuide.innerHTML = "";
-
-        loadDrugs();
 
         return;
 
     }
 
-    const filtered = allDrugs.filter(drug=>
-
+    currentDrugList = allDrugs.filter(drug =>
         drug.diseases.includes(disease)
-
     );
 
-    loadDrugs(filtered);
+    loadDrugs(currentDrugList);
 
     diseaseGuide.innerHTML = `
-        <strong>${filtered.length}</strong>
+        <strong>${currentDrugList.length}</strong>
         medication(s) available for this condition.
     `;
 
@@ -355,3 +350,4 @@ function showDrugInfo(drug){
         drug.blackBox || "-";
 
 }
+loadDrugs();
