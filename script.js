@@ -67,11 +67,7 @@ window.addEventListener("load", () => {
     }, 2500);
 
 });
-// ======================================================
-// Initialize App
-// ======================================================
 
-loadDrugs();
 // ======================================================
 // Load Drugs
 // ======================================================
@@ -177,10 +173,9 @@ drugSelect.addEventListener("change", () => {
 
     const selectedDrug = drugs[drugSelect.value];
 
-    if (!selectedDrug) return;
-if (selectedDrug) {
-    showDrugInfo(selectedDrug);
-}
+   if (!selectedDrug) return;
+
+showDrugInfo(selectedDrug);
     selectedDrug.strengths.forEach(strength => {
 
         const option = document.createElement("option");
