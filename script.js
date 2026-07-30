@@ -68,6 +68,11 @@ window.addEventListener("load", () => {
 
 });
 // ======================================================
+// Initialize App
+// ======================================================
+
+loadDrugs();
+// ======================================================
 // Load Drugs
 // ======================================================
 
@@ -350,106 +355,3 @@ function showDrugInfo(drug){
         drug.blackBox || "-";
 
 }
-// ======================================================
-// Side Menu
-// ======================================================
-
-const menuBtn = document.getElementById("menuBtn");
-
-const sideMenu = document.getElementById("sideMenu");
-
-const menuOverlay = document.getElementById("menuOverlay");
-
-menuBtn.addEventListener("click", () => {
-
-    sideMenu.classList.add("open");
-
-    menuOverlay.classList.add("show");
-
-});
-
-menuOverlay.addEventListener("click", () => {
-
-    sideMenu.classList.remove("open");
-
-    menuOverlay.classList.remove("show");
-
-}); 
-
-// ======================================================
-// Side Menu
-// ======================================================
-
-const languageBtn = document.getElementById("languageBtn");
-const languageMenu = document.getElementById("languageMenu");
-
-const themeBtn = document.getElementById("themeBtn");
-const themeMenu = document.getElementById("themeMenu");
-
-languageBtn.addEventListener("click", () => {
-
-    languageMenu.classList.toggle("show");
-
-});
-
-themeBtn.addEventListener("click", () => {
-
-    themeMenu.classList.toggle("show");
-
-});
-
-// ======================================================
-// Theme
-// ======================================================
-
-const darkBtn = document.getElementById("darkBtn");
-const lightBtn = document.getElementById("lightBtn");
-
-if(darkBtn){
-darkBtn.addEventListener("click",()=>{
-
-document.body.classList.remove("light");
-localStorage.setItem("theme","dark");
-
-});
-}
-
-if(lightBtn){
-lightBtn.addEventListener("click",()=>{
-
-document.body.classList.add("light");
-localStorage.setItem("theme","light");
-
-});
-}
-// ======================================================
-// About
-// ======================================================
-
-const aboutBtn = document.getElementById("aboutBtn");
-
-const aboutModal = document.getElementById("aboutModal");
-
-const closeAbout = document.getElementById("closeAbout");
-
-aboutBtn.addEventListener("click", () => {
-
-    aboutModal.style.display = "flex";
-
-});
-
-closeAbout.addEventListener("click", () => {
-
-    aboutModal.style.display = "none";
-
-});
-
-aboutModal.addEventListener("click", (e) => {
-
-    if(e.target === aboutModal){
-
-        aboutModal.style.display = "none";
-
-    }
-
-});
