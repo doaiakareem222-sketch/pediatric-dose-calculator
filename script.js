@@ -200,7 +200,24 @@ calculateBtn.addEventListener("click", () => {
     const drug = drugs[drugSelect.value];
 
     const weight = parseFloat(weightInput.value);
+const age = parseFloat(ageInput.value);
 
+// Age Validation
+if (!age || age < 0) {
+
+    alert("Please enter a valid age.");
+
+    return;
+
+}
+
+if (age > 12) {
+
+    alert("DoseCare AI is intended for pediatric patients (0–12 years) only.");
+
+    return;
+
+}
     const concentration = parseFloat(strengthSelect.value);
 
     if (!drug) {
@@ -218,7 +235,13 @@ calculateBtn.addEventListener("click", () => {
         return;
 
     }
+if (weight > 100) {
 
+    alert("Weight is outside the pediatric range.");
+
+    return;
+
+}
     let dose = weight * drug.mgPerKg;
 
     if (drug.maxDose && dose > drug.maxDose) {
