@@ -1943,7 +1943,10 @@ scale(.95);
 position:relative;
 
 z-index:2;
+}
+   .menu-btn{
 
+z-index:6000;
 } 
 .side-menu{
 
