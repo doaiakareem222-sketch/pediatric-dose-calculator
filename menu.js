@@ -10,54 +10,41 @@ console.log("Menu Loaded");
 // ======================================================
 
 const menuBtn = document.getElementById("menuBtn");
-
 const sideMenu = document.getElementById("sideMenu");
-
 const menuOverlay = document.getElementById("menuOverlay");
-
 
 // ======================================================
 // Open Menu
 // ======================================================
 
-if(menuBtn && sideMenu && menuOverlay){
+if (menuBtn && sideMenu && menuOverlay) {
 
-    menuBtn.addEventListener("click",()=>{
+    menuBtn.addEventListener("click", () => {
 
         sideMenu.classList.add("open");
-
         menuOverlay.classList.add("show");
 
     });
 
-
-    // ======================================================
-    // Close Menu
-    // ======================================================
-
-    menuOverlay.addEventListener("click",()=>{
+    menuOverlay.addEventListener("click", () => {
 
         sideMenu.classList.remove("open");
-
         menuOverlay.classList.remove("show");
 
     });
 
 }
 
-
 // ======================================================
 // Theme Menu
 // ======================================================
 
 const themeBtn = document.getElementById("themeBtn");
-
 const themeMenu = document.getElementById("themeMenu");
 
+if (themeBtn && themeMenu) {
 
-if(themeBtn && themeMenu){
-
-    themeBtn.addEventListener("click",()=>{
+    themeBtn.addEventListener("click", () => {
 
         themeMenu.classList.toggle("show");
 
@@ -65,57 +52,34 @@ if(themeBtn && themeMenu){
 
 }
 
-
-
 // ======================================================
 // Theme Switch
 // ======================================================
 
 const darkBtn = document.getElementById("darkBtn");
-
 const lightBtn = document.getElementById("lightBtn");
 
+if (darkBtn) {
 
-
-if(darkBtn){
-
-    darkBtn.addEventListener("click",()=>{
-
+    darkBtn.addEventListener("click", () => {
 
         document.body.classList.remove("light");
-
-
-        localStorage.setItem(
-            "theme",
-            "dark"
-        );
-
+        localStorage.setItem("theme", "dark");
 
     });
 
 }
 
+if (lightBtn) {
 
-
-if(lightBtn){
-
-    lightBtn.addEventListener("click",()=>{
-
+    lightBtn.addEventListener("click", () => {
 
         document.body.classList.add("light");
-
-
-        localStorage.setItem(
-            "theme",
-            "light"
-        );
-
+        localStorage.setItem("theme", "light");
 
     });
 
 }
-
-
 
 // ======================================================
 // Load Saved Theme
@@ -123,9 +87,61 @@ if(lightBtn){
 
 const savedTheme = localStorage.getItem("theme");
 
-
-if(savedTheme === "light"){
+if (savedTheme === "light") {
 
     document.body.classList.add("light");
+
+}
+
+// ======================================================
+// About Modal
+// ======================================================
+
+const aboutBtn = document.getElementById("aboutBtn");
+const aboutModal = document.getElementById("aboutModal");
+const closeAbout = document.getElementById("closeAbout");
+const closeAboutIcon = document.getElementById("closeAboutIcon");
+
+if (aboutBtn && aboutModal) {
+
+    aboutBtn.addEventListener("click", () => {
+
+        aboutModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeAbout) {
+
+    closeAbout.addEventListener("click", () => {
+
+        aboutModal.style.display = "none";
+
+    });
+
+}
+
+if (closeAboutIcon) {
+
+    closeAboutIcon.addEventListener("click", () => {
+
+        aboutModal.style.display = "none";
+
+    });
+
+}
+
+if (aboutModal) {
+
+    aboutModal.addEventListener("click", (e) => {
+
+        if (e.target === aboutModal) {
+
+            aboutModal.style.display = "none";
+
+        }
+
+    });
 
 }
