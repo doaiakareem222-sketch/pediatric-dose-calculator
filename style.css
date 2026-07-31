@@ -2116,3 +2116,22 @@ background:none;
 padding-left:25px;
 
 }
+/* ==========================================
+   Calculator Buttons
+========================================== */
+
+.about-box button{
+
+width:100%;
+
+margin-top:12px;
+
+padding:14px;
+
+font-size:16px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+}
