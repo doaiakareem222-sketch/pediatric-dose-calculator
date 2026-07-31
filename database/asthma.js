@@ -278,3 +278,277 @@ alerts:[
 blackBox:""
 
 },
+fluticasone:{
+
+id:"fluticasone",
+
+name:"Fluticasone",
+
+genericName:"Fluticasone Propionate",
+
+brandNames:[
+"Flixotide",
+"Flovent"
+],
+
+category:"Corticosteroid",
+
+therapeuticClass:"Inhaled Corticosteroid",
+
+pharmacologicalClass:"Glucocorticoid",
+
+diseases:[
+"asthma"
+],
+
+mgPerKg:0,
+
+frequency:"Twice Daily",
+
+maxDose:500,
+
+minAge:4,
+
+maxAge:12,
+
+strengths:[
+{
+name:"50 mcg Inhaler",
+concentration:50
+},
+{
+name:"125 mcg Inhaler",
+concentration:125
+}
+],
+
+mechanism:"Reduces airway inflammation.",
+
+indications:"Long-term asthma control.",
+
+contraindications:"Acute asthma attack.",
+
+warnings:"Rinse mouth after inhalation.",
+
+sideEffects:"Oral candidiasis, hoarseness.",
+
+pregnancy:"C",
+
+lactation:"Compatible",
+
+doseRange:"50–125 mcg twice daily",
+
+onset:"Several hours",
+
+duration:"12 hours",
+
+halfLife:"7 hours",
+
+proteinBinding:"91%",
+
+metabolism:"Hepatic",
+
+elimination:"Fecal",
+
+storage:"Room temperature",
+
+monitoring:[
+"Asthma symptom control"
+],
+
+clinicalPearls:[
+"Controller medication, not a rescue inhaler."
+],
+
+interactions:[
+"Ritonavir"
+],
+
+alerts:[
+"Use daily even if symptoms improve."
+],
+
+blackBox:""
+
+},
+beclomethasone:{
+
+id:"beclomethasone",
+
+name:"Beclomethasone",
+
+genericName:"Beclomethasone Dipropionate",
+
+brandNames:[
+"Qvar"
+],
+
+category:"Corticosteroid",
+
+therapeuticClass:"Inhaled Corticosteroid",
+
+pharmacologicalClass:"Glucocorticoid",
+
+diseases:[
+"asthma"
+],
+
+mgPerKg:0,
+
+frequency:"Twice Daily",
+
+maxDose:400,
+
+minAge:5,
+
+maxAge:12,
+
+strengths:[
+{
+name:"50 mcg Inhaler",
+concentration:50
+},
+{
+name:"100 mcg Inhaler",
+concentration:100
+}
+],
+
+mechanism:"Suppresses airway inflammation.",
+
+indications:"Maintenance treatment of asthma.",
+
+contraindications:"Status asthmaticus.",
+
+warnings:"Rinse mouth after use.",
+
+sideEffects:"Hoarseness, oral candidiasis.",
+
+pregnancy:"C",
+
+lactation:"Compatible",
+
+doseRange:"50–100 mcg twice daily",
+
+onset:"Several hours",
+
+duration:"12 hours",
+
+halfLife:"2.8 hours",
+
+proteinBinding:"87%",
+
+metabolism:"Hepatic",
+
+elimination:"Renal/Fecal",
+
+storage:"Below 30°C",
+
+monitoring:[
+"Asthma control"
+],
+
+clinicalPearls:[
+"Use regularly for best effect."
+],
+
+interactions:[
+"Strong CYP3A4 inhibitors"
+],
+
+alerts:[
+"Do not stop suddenly."
+],
+
+blackBox:""
+
+},
+aminophylline:{
+
+id:"aminophylline",
+
+name:"Aminophylline",
+
+genericName:"Aminophylline",
+
+brandNames:[
+"Aminophylline"
+],
+
+category:"Bronchodilator",
+
+therapeuticClass:"Methylxanthine",
+
+pharmacologicalClass:"Phosphodiesterase Inhibitor",
+
+diseases:[
+"asthma"
+],
+
+mgPerKg:5,
+
+frequency:"Every 6 hours",
+
+maxDose:900,
+
+minAge:0,
+
+maxAge:12,
+
+strengths:[
+{
+name:"25 mg/mL Injection",
+concentration:25
+}
+],
+
+mechanism:"Relaxes bronchial smooth muscle by increasing cAMP.",
+
+indications:"Severe asthma not responding to first-line therapy.",
+
+contraindications:"Hypersensitivity to xanthines.",
+
+warnings:"Narrow therapeutic index.",
+
+sideEffects:"Nausea, vomiting, tachycardia, seizures.",
+
+pregnancy:"C",
+
+lactation:"Compatible",
+
+doseRange:"5 mg/kg loading dose",
+
+onset:"Immediate",
+
+duration:"6 hours",
+
+halfLife:"4–8 hours",
+
+proteinBinding:"40%",
+
+metabolism:"Hepatic",
+
+elimination:"Renal",
+
+storage:"Room temperature",
+
+monitoring:[
+"Serum theophylline level"
+],
+
+clinicalPearls:[
+"Used only in selected severe cases."
+],
+
+interactions:[
+"Erythromycin",
+"Ciprofloxacin"
+],
+
+alerts:[
+"Monitor serum levels carefully."
+],
+
+blackBox:""
+
+},
