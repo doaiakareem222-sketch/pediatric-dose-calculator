@@ -274,3 +274,11 @@ Your support motivates us to keep improving the application.`
     });
 
 }
+const drugCounter=document.getElementById("drugCounter");
+
+if(drugCounter){
+
+drugCounter.innerHTML=
+`${Object.keys(drugs).length} Drugs Available`;
+
+}
