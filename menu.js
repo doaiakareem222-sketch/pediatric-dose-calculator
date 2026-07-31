@@ -282,3 +282,50 @@ drugCounter.innerHTML=
 `${Object.keys(drugs).length} Drugs Available`;
 
 }
+
+// ======================================================
+// Drug Calculators
+// ======================================================
+
+const calculatorBtn =
+document.getElementById("calculatorBtn");
+
+const calculatorModal =
+document.getElementById("calculatorModal");
+
+const closeCalculator =
+document.getElementById("closeCalculator");
+
+if(calculatorBtn){
+
+calculatorBtn.addEventListener("click",()=>{
+
+calculatorModal.style.display="flex";
+
+});
+
+}
+
+if(closeCalculator){
+
+closeCalculator.addEventListener("click",()=>{
+
+calculatorModal.style.display="none";
+
+});
+
+}
+
+if(calculatorModal){
+
+calculatorModal.addEventListener("click",(e)=>{
+
+if(e.target===calculatorModal){
+
+calculatorModal.style.display="none";
+
+}
+
+});
+
+}
