@@ -329,3 +329,45 @@ calculatorModal.style.display="none";
 });
 
 }
+// ======================================================
+// Open mg ⇄ mL Calculator
+// ======================================================
+
+const mgMlBtn = document.getElementById("mgMlBtn");
+const mgMlModal = document.getElementById("mgMlModal");
+const closeMgMl = document.getElementById("closeMgMl");
+
+if (mgMlBtn) {
+
+    mgMlBtn.addEventListener("click", () => {
+
+        calculatorModal.style.display = "none";
+        mgMlModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeMgMl) {
+
+    closeMgMl.addEventListener("click", () => {
+
+        mgMlModal.style.display = "none";
+
+    });
+
+}
+
+if (mgMlModal) {
+
+    mgMlModal.addEventListener("click", (e) => {
+
+        if (e.target === mgMlModal) {
+
+            mgMlModal.style.display = "none";
+
+        }
+
+    });
+
+}
