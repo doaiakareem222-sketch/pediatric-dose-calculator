@@ -371,3 +371,40 @@ if (mgMlModal) {
     });
 
 }
+// ======================================================
+// mg ⇄ mL Calculation
+// ======================================================
+
+const calcMg = document.getElementById("calcMg");
+const calcConc = document.getElementById("calcConc");
+const calculateMl = document.getElementById("calculateMl");
+const calcResult = document.getElementById("calcResult");
+
+if (calculateMl) {
+
+    calculateMl.addEventListener("click", () => {
+
+        const mg = parseFloat(calcMg.value);
+        const conc = parseFloat(calcConc.value);
+
+        if (isNaN(mg) || isNaN(conc) || mg <= 0 || conc <= 0) {
+
+            calcResult.innerHTML = "⚠️ Please enter valid values";
+
+            return;
+
+        }
+
+        const ml = ((mg / conc) * 5).toFixed(2);
+
+        calcResult.innerHTML = `
+        💉 Required Volume
+
+        <br><br>
+
+        <strong>${ml} mL</strong>
+        `;
+
+    });
+
+}
