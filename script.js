@@ -273,8 +273,26 @@ if (weight > 100) {
 
     note.textContent = drug.notes || "-";
 
-showDrugInfo(drug);
+ if (ageUnit.value === "months") {
 
+    if (Number(ageInput.value) < 0.08) {
+
+        patientAge.textContent = "👶 Neonate (0–28 Days)";
+
+    } else {
+
+        patientAge.textContent =
+            `👶 ${Math.round(Number(ageInput.value) * 12)} Month(s)`;
+
+    }
+
+} else {
+
+    patientAge.textContent =
+        `🧒 ${ageInput.value} Year(s)`;
+
+}
+showDrugInfo(drug);
 });
 // ======================================================
 // Drug Information Card
@@ -374,15 +392,15 @@ loadDrugs();
 
 function loadAgeOptions() {
 
-    age.innerHTML = "";
+    ageInput.innerHTML = "";
 
     if (ageUnit.value === "months") {
 
-        age.innerHTML += `<option value="02">👶 Neonate (0–28 Days)</option>`;
+        ageInput.innerHTML += `<option value="0.02">👶 Neonate (0–28 Days)</option>`;
 
         for (let i = 1; i <= 11; i++) {
 
-            age.innerHTML += `
+            ageInput.innerHTML += `
                 <option value="${i / 12}">
                     👶 ${i} Month${i > 1 ? "s" : ""}
                 </option>
@@ -392,11 +410,11 @@ function loadAgeOptions() {
 
     } else {
 
-        age.innerHTML += `<option value="1">🧒 1 Year</option>`;
+        ageInput.innerHTML += `<option value="1">🧒 1 Year</option>`;
 
         for (let i = 2; i <= 18; i++) {
 
-            age.innerHTML += `
+            ageInput.innerHTML += `
                 <option value="${i}">
                     🧒 ${i} Years
                 </option>
