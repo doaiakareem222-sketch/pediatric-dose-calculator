@@ -20,6 +20,7 @@ const drugSelect = document.getElementById("drug");
 const strengthSelect = document.getElementById("strength");
 
 const ageInput = document.getElementById("age");
+const ageUnit = document.getElementById("ageUnit");
 const weightInput = document.getElementById("weight");
 
 const calculateBtn = document.getElementById("calculateBtn");
@@ -369,3 +370,39 @@ function showDrugInfo(drug){
 
 }
 loadDrugs();
+
+function loadAgeOptions() {
+
+    age.innerHTML = "";
+
+    if (ageUnit.value === "months") {
+
+        for (let i = 1; i <= 23; i++) {
+
+            age.innerHTML += `
+                <option value="${i / 12}">
+                    ${i} Month${i > 1 ? "s" : ""}
+                </option>
+            `;
+
+        }
+
+    } else {
+
+        for (let i = 2; i <= 18; i++) {
+
+            age.innerHTML += `
+                <option value="${i}">
+                    ${i} Year${i > 1 ? "s" : ""}
+                </option>
+            `;
+
+        }
+
+    }
+
+}
+
+loadAgeOptions();
+
+ageUnit.addEventListener("change", loadAgeOptions);
