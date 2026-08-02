@@ -30,6 +30,7 @@ const calculateBtn = document.getElementById("calculateBtn");
 const resultCard = document.getElementById("resultCard");
 
 const drugName = document.getElementById("drugName");
+const patientAge = document.getElementById("patientAge");
 const doseMg = document.getElementById("doseMg");
 const doseMl = document.getElementById("doseMl");
 const frequency = document.getElementById("frequency");
