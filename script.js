@@ -377,11 +377,13 @@ function loadAgeOptions() {
 
     if (ageUnit.value === "months") {
 
-        for (let i = 1; i <= 23; i++) {
+        age.innerHTML += `<option value="0">👶 Neonate (0–28 Days)</option>`;
+
+        for (let i = 1; i <= 11; i++) {
 
             age.innerHTML += `
                 <option value="${i / 12}">
-                    ${i} Month${i > 1 ? "s" : ""}
+                    👶 ${i} Month${i > 1 ? "s" : ""}
                 </option>
             `;
 
@@ -389,11 +391,13 @@ function loadAgeOptions() {
 
     } else {
 
+        age.innerHTML += `<option value="1">🧒 1 Year</option>`;
+
         for (let i = 2; i <= 18; i++) {
 
             age.innerHTML += `
                 <option value="${i}">
-                    ${i} Year${i > 1 ? "s" : ""}
+                    🧒 ${i} Years
                 </option>
             `;
 
@@ -402,7 +406,3 @@ function loadAgeOptions() {
     }
 
 }
-
-loadAgeOptions();
-
-ageUnit.addEventListener("change", loadAgeOptions);
