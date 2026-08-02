@@ -377,7 +377,7 @@ function loadAgeOptions() {
 
     if (ageUnit.value === "months") {
 
-        age.innerHTML += `<option value="0">👶 Neonate (0–28 Days)</option>`;
+        age.innerHTML += `<option value="02">👶 Neonate (0–28 Days)</option>`;
 
         for (let i = 1; i <= 11; i++) {
 
@@ -406,3 +406,7 @@ function loadAgeOptions() {
     }
 
 }
+ageUnit.addEventListener("change", loadAgeOptions);
+
+ageUnit.value = "months";
+loadAgeOptions();
