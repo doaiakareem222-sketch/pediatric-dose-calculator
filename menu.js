@@ -329,6 +329,52 @@ calculatorModal.style.display="none";
 });
 
 }
+// ======================================
+// Emergency Guide
+// ======================================
+
+const emergencyBtn =
+document.getElementById("emergencyBtn");
+
+const emergencyModal =
+document.getElementById("emergencyModal");
+
+const closeEmergency =
+document.getElementById("closeEmergency");
+
+if (emergencyBtn) {
+
+    emergencyBtn.addEventListener("click", () => {
+
+        emergencyModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeEmergency) {
+
+    closeEmergency.addEventListener("click", () => {
+
+        emergencyModal.style.display = "none";
+
+    });
+
+}
+
+if (emergencyModal) {
+
+    emergencyModal.addEventListener("click", (e) => {
+
+        if (e.target === emergencyModal) {
+
+            emergencyModal.style.display = "none";
+
+        }
+
+    });
+
+}
 // ======================================================
 // Open mg ⇄ mL Calculator
 // ======================================================
