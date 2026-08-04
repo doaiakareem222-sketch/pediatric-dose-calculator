@@ -408,3 +408,73 @@ if (calculateMl) {
     });
 
 }
+// ======================================
+// Open mg/kg Calculator
+// ======================================
+
+const mgKgBtn = document.getElementById("mgKgBtn");
+const mgKgModal = document.getElementById("mgKgModal");
+const closeMgKg = document.getElementById("closeMgKg");
+
+if (mgKgBtn) {
+
+    mgKgBtn.addEventListener("click", () => {
+
+        calculatorModal.style.display = "none";
+        mgKgModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeMgKg) {
+
+    closeMgKg.addEventListener("click", () => {
+
+        mgKgModal.style.display = "none";
+
+    });
+
+}
+
+if (mgKgModal) {
+
+    mgKgModal.addEventListener("click", (e) => {
+
+        if (e.target === mgKgModal) {
+
+            mgKgModal.style.display = "none";
+
+        }
+
+    });
+
+}
+// ======================================
+// mg/kg Calculator
+// ======================================
+
+document.getElementById("calculateMgKg").addEventListener("click", () => {
+
+    const weight = parseFloat(
+        document.getElementById("kgWeight").value
+    );
+
+    const mgPerKg = parseFloat(
+        document.getElementById("mgPerKg").value
+    );
+
+    if (!weight || !mgPerKg) {
+
+        alert("Please enter Weight and mg/kg");
+
+        return;
+
+    }
+
+    const totalDose = weight * mgPerKg;
+
+    document.getElementById("mgKgResult").textContent =
+        totalDose.toFixed(2) + " mg";
+
+});
