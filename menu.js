@@ -606,3 +606,47 @@ if (ivModal) {
     });
 
 }
+// ======================================
+// IV Fluid Calculator
+// Holliday–Segar (4-2-1 Rule)
+// ======================================
+
+document.getElementById("calculateIV").addEventListener("click", () => {
+
+    const weight = parseFloat(
+        document.getElementById("ivWeight").value
+    );
+
+    if (!weight || weight <= 0) {
+
+        alert("Please enter a valid weight.");
+
+        return;
+
+    }
+
+    let rate = 0;
+
+    if (weight <= 10) {
+
+        rate = weight * 4;
+
+    } else if (weight <= 20) {
+
+        rate = 40 + ((weight - 10) * 2);
+
+    } else {
+
+        rate = 60 + ((weight - 20) * 1);
+
+    }
+
+    const daily = rate * 24;
+
+    document.getElementById("ivResult").innerHTML = `
+        ${rate.toFixed(1)} mL/hr
+        <br><br>
+        ${daily.toFixed(0)} mL/day
+    `;
+
+});
