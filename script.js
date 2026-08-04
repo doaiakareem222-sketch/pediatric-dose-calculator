@@ -429,3 +429,32 @@ ageUnit.addEventListener("change", loadAgeOptions);
 
 ageUnit.value = "months";
 loadAgeOptions();
+// ======================================================
+// Emergency Drugs → Drug Information
+// ======================================================
+
+document.addEventListener("click", (e) => {
+
+    if (!e.target.classList.contains("emDrug")) return;
+
+    const drug = drugs[e.target.dataset.drug];
+
+    if (!drug) {
+
+        alert("Drug not found.");
+
+        return;
+
+    }
+
+    showDrugInfo(drug);
+
+    drugInfoCard.style.display = "block";
+
+    drugInfoCard.scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+});
