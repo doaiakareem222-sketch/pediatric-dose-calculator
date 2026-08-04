@@ -471,6 +471,102 @@ if(asthmaModal){
     });
 
 }
+// ======================================
+// Hypoglycemia
+// ======================================
+
+const hypoglycemiaBtn =
+document.getElementById("hypoglycemiaBtn");
+
+const hypoglycemiaModal =
+document.getElementById("hypoglycemiaModal");
+
+const closeHypoglycemia =
+document.getElementById("closeHypoglycemia");
+
+if(hypoglycemiaBtn){
+
+    hypoglycemiaBtn.addEventListener("click",()=>{
+
+        emergencyModal.style.display="none";
+
+        hypoglycemiaModal.style.display="flex";
+
+    });
+
+}
+
+if(closeHypoglycemia){
+
+    closeHypoglycemia.addEventListener("click",()=>{
+
+        hypoglycemiaModal.style.display="none";
+
+    });
+
+}
+
+if(hypoglycemiaModal){
+
+    hypoglycemiaModal.addEventListener("click",(e)=>{
+
+        if(e.target===hypoglycemiaModal){
+
+            hypoglycemiaModal.style.display="none";
+
+        }
+
+    });
+
+}
+// ======================================
+// Febrile Seizure
+// ======================================
+
+const febrileBtn =
+document.getElementById("febrileBtn");
+
+const febrileModal =
+document.getElementById("febrileModal");
+
+const closeFebrile =
+document.getElementById("closeFebrile");
+
+if(febrileBtn){
+
+    febrileBtn.addEventListener("click",()=>{
+
+        emergencyModal.style.display="none";
+
+        febrileModal.style.display="flex";
+
+    });
+
+}
+
+if(closeFebrile){
+
+    closeFebrile.addEventListener("click",()=>{
+
+        febrileModal.style.display="none";
+
+    });
+
+}
+
+if(febrileModal){
+
+    febrileModal.addEventListener("click",(e)=>{
+
+        if(e.target===febrileModal){
+
+            febrileModal.style.display="none";
+
+        }
+
+    });
+
+}
 // ======================================================
 // Open mg ⇄ mL Calculator
 // ======================================================
