@@ -376,6 +376,50 @@ if (emergencyModal) {
 
 }
 // ======================================
+// Emergency Details
+// ======================================
+
+document.querySelectorAll(".emergency-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const id = card.dataset.id;
+
+        const emergency = emergencyDB[id];
+
+        if (!emergency) return;
+
+        document.getElementById("emergencyTitle").textContent =
+            emergency.title;
+
+        document.getElementById("emergencySymptoms").innerHTML =
+            emergency.symptoms.map(x => "• " + x).join("<br>");
+
+        document.getElementById("emergencyTreatment").innerHTML =
+            emergency.treatment.map(x => "• " + x).join("<br>");
+
+        document.getElementById("emergencyDose").innerHTML =
+            emergency.drugs.map(x => "• " + x).join("<br>");
+
+        document.getElementById("emergencyWarning").textContent =
+            emergency.warning;
+
+        document.getElementById("emergencyDetails").style.display = "flex";
+
+    });
+
+});
+// ======================================
+// Close Emergency Details
+// ======================================
+
+document.getElementById("closeEmergencyDetails")
+.addEventListener("click", () => {
+
+    document.getElementById("emergencyDetails").style.display = "none";
+
+});
+// ======================================
 // Anaphylaxis Guide
 // ======================================
 
@@ -561,6 +605,54 @@ if(febrileModal){
         if(e.target===febrileModal){
 
             febrileModal.style.display="none";
+
+        }
+
+    });
+
+}
+// ======================================
+// Dehydration
+// ======================================
+
+const dehydrationBtn =
+document.getElementById("dehydrationBtn");
+
+const dehydrationModal =
+document.getElementById("dehydrationModal");
+
+const closeDehydration =
+document.getElementById("closeDehydration");
+
+if(dehydrationBtn){
+
+    dehydrationBtn.addEventListener("click",()=>{
+
+        emergencyModal.style.display="none";
+
+        dehydrationModal.style.display="flex";
+
+    });
+
+}
+
+if(closeDehydration){
+
+    closeDehydration.addEventListener("click",()=>{
+
+        dehydrationModal.style.display="none";
+
+    });
+
+}
+
+if(dehydrationModal){
+
+    dehydrationModal.addEventListener("click",(e)=>{
+
+        if(e.target===dehydrationModal){
+
+            dehydrationModal.style.display="none";
 
         }
 
