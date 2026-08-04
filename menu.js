@@ -423,6 +423,54 @@ if(anaphylaxisModal){
     });
 
 }
+// ======================================
+// Status Asthmaticus
+// ======================================
+
+const asthmaBtn =
+document.getElementById("asthmaBtn");
+
+const asthmaModal =
+document.getElementById("asthmaModal");
+
+const closeAsthma =
+document.getElementById("closeAsthma");
+
+if(asthmaBtn){
+
+    asthmaBtn.addEventListener("click",()=>{
+
+        emergencyModal.style.display="none";
+
+        asthmaModal.style.display="flex";
+
+    });
+
+}
+
+if(closeAsthma){
+
+    closeAsthma.addEventListener("click",()=>{
+
+        asthmaModal.style.display="none";
+
+    });
+
+}
+
+if(asthmaModal){
+
+    asthmaModal.addEventListener("click",(e)=>{
+
+        if(e.target===asthmaModal){
+
+            asthmaModal.style.display="none";
+
+        }
+
+    });
+
+}
 // ======================================================
 // Open mg ⇄ mL Calculator
 // ======================================================
