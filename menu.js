@@ -564,3 +564,45 @@ document.getElementById("calculateDoseWeight").addEventListener("click", () => {
         totalDose.toFixed(2) + " mg";
 
 });
+// ======================================
+// Open IV Calculator
+// ======================================
+
+const ivBtn = document.getElementById("ivBtn");
+const ivModal = document.getElementById("ivModal");
+const closeIV = document.getElementById("closeIV");
+
+if (ivBtn) {
+
+    ivBtn.addEventListener("click", () => {
+
+        calculatorModal.style.display = "none";
+        ivModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeIV) {
+
+    closeIV.addEventListener("click", () => {
+
+        ivModal.style.display = "none";
+
+    });
+
+}
+
+if (ivModal) {
+
+    ivModal.addEventListener("click", (e) => {
+
+        if (e.target === ivModal) {
+
+            ivModal.style.display = "none";
+
+        }
+
+    });
+
+}
