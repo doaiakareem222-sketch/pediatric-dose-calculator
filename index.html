@@ -363,79 +363,49 @@
     </div>
 
 </div>
-    <!-- ===================================== -->
+ <!-- ===================================== -->
 <!-- Anaphylaxis Guide -->
 <!-- ===================================== -->
 
 <div id="anaphylaxisModal" class="about-modal">
 
-    <div class="about-box">
+<div class="about-box">
 
-        <h2>🫀 Anaphylaxis</h2>
+<h2>🫀 Anaphylaxis</h2>
 
-        <hr>
+<hr>
 
-        <h3>🚑 First Line Treatment</h3>
+<h3>🚑 First Line Treatment</h3>
 
-        <p>
+<button class="emDrug" data-drug="epinephrine">
+💊 Adrenaline (Epinephrine)
+</button>
 
-        IM Adrenaline (Epinephrine)
+<hr>
 
-        </p>
+<h3>Supportive Care</h3>
 
-        <h3>Dose</h3>
+<ul class="about-list">
 
-        <p>
+<li>100% Oxygen</li>
 
-        0.01 mg/kg IM
+<li>IV Access</li>
 
-        </p>
+<li>Normal Saline 20 mL/kg</li>
 
-        <p>
+<li>Continuous ECG & BP Monitoring</li>
 
-        Max Dose:
-        <br>
-        Children: 0.3 mg
-        <br>
-        Adolescents: 0.5 mg
+</ul>
 
-        </p>
+<hr>
 
-        <hr>
+<button id="closeAnaphylaxis">
 
-        <h3>Repeat</h3>
+✖ Close
 
-        <p>
+</button>
 
-        Every 5–15 minutes if required.
-
-        </p>
-
-        <hr>
-
-        <h3>Supportive Care</h3>
-
-        <ul class="about-list">
-
-            <li>100% Oxygen</li>
-
-            <li>IV Access</li>
-
-            <li>Normal Saline 20 mL/kg</li>
-
-            <li>Continuous Monitoring</li>
-
-        </ul>
-
-        <hr>
-
-        <button id="closeAnaphylaxis">
-
-            ✖ Close
-
-        </button>
-
-    </div>
+</div>
 
 </div>
     <!-- ===================================== -->
@@ -518,243 +488,153 @@
     </div>
 
 </div>
-    <!-- ===================================== -->
+  <!-- ===================================== -->
 <!-- Hypoglycemia -->
 <!-- ===================================== -->
 
 <div id="hypoglycemiaModal" class="about-modal">
 
-    <div class="about-box">
+<div class="about-box">
 
-        <h2>🩸 Hypoglycemia</h2>
+<h2>🩸 Hypoglycemia</h2>
 
-        <hr>
+<hr>
 
-        <h3>Definition</h3>
+<h3>Emergency Drugs</h3>
 
-        <p>
+<button class="emDrug" data-drug="dextrose10">
+💊 Dextrose 10%
 
-            Blood Glucose &lt; 60 mg/dL
+</button>
 
-        </p>
+<button class="emDrug" data-drug="glucagon">
+💊 Glucagon
 
-        <hr>
+</button>
 
-        <h3>Conscious Patient</h3>
+<hr>
 
-        <ul class="about-list">
+<h3>Conscious Patient</h3>
 
-            <li>Oral Glucose</li>
-            <li>Juice</li>
-            <li>Sweet Drink</li>
+<ul class="about-list">
 
-        </ul>
+<li>Give Oral Glucose</li>
 
-        <hr>
+<li>Juice or Sweet Drink</li>
 
-        <h3>Unconscious Patient</h3>
+</ul>
 
-        <p>
+<hr>
 
-            Dextrose 10%
+<button id="closeHypoglycemia">
 
-            <br>
+✖ Close
 
-            5 mL/kg IV
-
-        </p>
-
-        <hr>
-
-        <h3>If IV unavailable</h3>
-
-        <p>
-
-            Glucagon
-
-            <br>
-
-            0.5 mg (&lt;25 kg)
-
-            <br>
-
-            1 mg (≥25 kg)
-
-        </p>
-
-        <hr>
-
-        <h3>Monitoring</h3>
-
-        <ul class="about-list">
-
-            <li>Recheck glucose after 15 minutes</li>
-            <li>Repeat treatment if needed</li>
-
-        </ul>
-
-        <br>
-
-        <button id="closeHypoglycemia">
-
-            ✖ Close
-
-        </button>
-
-    </div>
+</button>
 
 </div>
-    <!-- ===================================== -->
+
+</div>
+<!-- ===================================== -->
 <!-- Febrile Seizure -->
 <!-- ===================================== -->
 
 <div id="febrileModal" class="about-modal">
 
-    <div class="about-box">
+<div class="about-box">
 
-        <h2>🔥 Febrile Seizure</h2>
+<h2>🔥 Febrile Seizure</h2>
 
-        <hr>
+<hr>
 
-        <h3>Immediate Management</h3>
+<h3>Emergency Drugs</h3>
 
-        <ul class="about-list">
+<button class="emDrug" data-drug="diazepam">
+💊 Diazepam
 
-            <li>Place child in recovery position</li>
-            <li>Protect airway</li>
-            <li>Do NOT restrain</li>
-            <li>Do NOT place anything in the mouth</li>
+</button>
 
-        </ul>
+<button class="emDrug" data-drug="midazolam">
+💊 Midazolam
 
-        <hr>
+</button>
 
-        <h3>If seizure lasts >5 min</h3>
+<hr>
 
-        <p>
+<h3>General Management</h3>
 
-            Diazepam IV
+<ul class="about-list">
 
-            <br>
+<li>Recovery Position</li>
 
-            0.2–0.3 mg/kg
+<li>Protect Airway</li>
 
-        </p>
+<li>Check Blood Glucose</li>
 
-        <p>
+<li>Treat Fever</li>
 
-            OR
+</ul>
 
-        </p>
+<hr>
 
-        <p>
+<button id="closeFebrile">
 
-            Midazolam Buccal / IN
+✖ Close
 
-            <br>
-
-            0.2 mg/kg
-
-        </p>
-
-        <hr>
-
-        <h3>After Seizure</h3>
-
-        <ul class="about-list">
-
-            <li>Check Blood Glucose</li>
-            <li>Control Fever</li>
-            <li>Observe Child</li>
-
-        </ul>
-
-        <br>
-
-        <button id="closeFebrile">
-
-            ✖ Close
-
-        </button>
-
-    </div>
+</button>
 
 </div>
-    <!-- ===================================== -->
+
+</div>
+<!-- ===================================== -->
 <!-- Dehydration -->
 <!-- ===================================== -->
 
 <div id="dehydrationModal" class="about-modal">
 
-    <div class="about-box">
+<div class="about-box">
 
-        <h2>💧 Dehydration</h2>
+<h2>💧 Dehydration</h2>
 
-        <hr>
+<hr>
 
-        <h3>Mild–Moderate</h3>
+<h3>Emergency Fluids</h3>
 
-        <ul class="about-list">
+<button class="emDrug" data-drug="ors">
+💊 Oral Rehydration Solution (ORS)
 
-            <li>Oral Rehydration Solution (ORS)</li>
-            <li>50–100 mL/kg over 4 hours</li>
+</button>
 
-        </ul>
+<button class="emDrug" data-drug="normalSaline">
+💊 Normal Saline
 
-        <hr>
+</button>
 
-        <h3>Severe Dehydration</h3>
+<hr>
 
-        <p>
+<h3>Monitoring</h3>
 
-            Normal Saline
+<ul class="about-list">
 
-            <br>
+<li>Urine Output</li>
 
-            20 mL/kg IV Bolus
+<li>Blood Pressure</li>
 
-        </p>
+<li>Heart Rate</li>
 
-        <p>
+<li>Electrolytes</li>
 
-            Repeat if needed
+</ul>
 
-        </p>
+<hr>
 
-        <hr>
+<button id="closeDehydration">
 
-        <h3>Maintenance Fluids</h3>
+✖ Close
 
-        <p>
+</button>
 
-            Calculate daily maintenance using the
-
-            Holliday–Segar Method.
-
-        </p>
-
-        <hr>
-
-        <h3>Monitoring</h3>
-
-        <ul class="about-list">
-
-            <li>Urine Output</li>
-            <li>Heart Rate</li>
-            <li>Blood Pressure</li>
-            <li>Electrolytes</li>
-
-        </ul>
-
-        <br>
-
-        <button id="closeDehydration">
-
-            ✖ Close
-
-        </button>
-
-    </div>
+</div>
 
 </div>
 <!-- ===================================== -->
