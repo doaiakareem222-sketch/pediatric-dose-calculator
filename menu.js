@@ -375,6 +375,54 @@ if (emergencyModal) {
     });
 
 }
+// ======================================
+// Anaphylaxis Guide
+// ======================================
+
+const anaphylaxisBtn =
+document.getElementById("anaphylaxisBtn");
+
+const anaphylaxisModal =
+document.getElementById("anaphylaxisModal");
+
+const closeAnaphylaxis =
+document.getElementById("closeAnaphylaxis");
+
+if(anaphylaxisBtn){
+
+    anaphylaxisBtn.addEventListener("click",()=>{
+
+        emergencyModal.style.display="none";
+
+        anaphylaxisModal.style.display="flex";
+
+    });
+
+}
+
+if(closeAnaphylaxis){
+
+    closeAnaphylaxis.addEventListener("click",()=>{
+
+        anaphylaxisModal.style.display="none";
+
+    });
+
+}
+
+if(anaphylaxisModal){
+
+    anaphylaxisModal.addEventListener("click",(e)=>{
+
+        if(e.target===anaphylaxisModal){
+
+            anaphylaxisModal.style.display="none";
+
+        }
+
+    });
+
+}
 // ======================================================
 // Open mg ⇄ mL Calculator
 // ======================================================
