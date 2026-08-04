@@ -478,3 +478,89 @@ document.getElementById("calculateMgKg").addEventListener("click", () => {
         totalDose.toFixed(2) + " mg";
 
 });
+// ======================================
+// Open Dose by Weight Calculator
+// ======================================
+
+const doseWeightBtn =
+document.getElementById("doseWeightBtn");
+
+const doseWeightModal =
+document.getElementById("doseWeightModal");
+
+const closeDoseWeight =
+document.getElementById("closeDoseWeight");
+
+if (doseWeightBtn) {
+
+    doseWeightBtn.addEventListener("click", () => {
+
+        calculatorModal.style.display = "none";
+
+        doseWeightModal.style.display = "flex";
+
+    });
+
+}
+
+if (closeDoseWeight) {
+
+    closeDoseWeight.addEventListener("click", () => {
+
+        doseWeightModal.style.display = "none";
+
+    });
+
+}
+
+if (doseWeightModal) {
+
+    doseWeightModal.addEventListener("click", (e) => {
+
+        if (e.target === doseWeightModal) {
+
+            doseWeightModal.style.display = "none";
+
+        }
+
+    });
+
+}
+// ======================================
+// Dose by Weight Calculator
+// ======================================
+
+document.getElementById("calculateDoseWeight").addEventListener("click", () => {
+
+    const weight = parseFloat(
+        document.getElementById("doseWeightKg").value
+    );
+
+    const dosePerKg = parseFloat(
+        document.getElementById("dosePerKg").value
+    );
+
+    const maxDose = parseFloat(
+        document.getElementById("maxDose").value
+    );
+
+    if (!weight || !dosePerKg) {
+
+        alert("Please enter Weight and Dose.");
+
+        return;
+
+    }
+
+    let totalDose = weight * dosePerKg;
+
+    if (!isNaN(maxDose) && totalDose > maxDose) {
+
+        totalDose = maxDose;
+
+    }
+
+    document.getElementById("doseWeightResult").textContent =
+        totalDose.toFixed(2) + " mg";
+
+});
