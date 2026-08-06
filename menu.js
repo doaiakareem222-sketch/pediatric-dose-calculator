@@ -9,7 +9,7 @@ console.log("Menu Loaded");
 // Menu Elements
 // ======================================================
 
-
+const menuBtn = document.getElementById("menuBtn");
 const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 
@@ -22,7 +22,6 @@ if (menuBtn && sideMenu && menuOverlay) {
     menuBtn.addEventListener("click", () => {
 
         sideMenu.classList.add("open");
-        
         menuOverlay.classList.add("show");
 
     });
@@ -146,6 +145,7 @@ if (aboutModal) {
     });
 
 }
+
 // ======================================================
 // Contact & Support
 // ======================================================
@@ -160,33 +160,33 @@ const bugBtn = document.getElementById("bugBtn");
 const featureBtn = document.getElementById("featureBtn");
 const rateBtn = document.getElementById("rateBtn");
 
-if(contactBtn){
+if (contactBtn) {
 
-    contactBtn.addEventListener("click",()=>{
+    contactBtn.addEventListener("click", () => {
 
-        contactModal.style.display="flex";
-
-    });
-
-}
-
-if(closeContact){
-
-    closeContact.addEventListener("click",()=>{
-
-        contactModal.style.display="none";
+        contactModal.style.display = "flex";
 
     });
 
 }
 
-if(contactModal){
+if (closeContact) {
 
-    contactModal.addEventListener("click",(e)=>{
+    closeContact.addEventListener("click", () => {
 
-        if(e.target===contactModal){
+        contactModal.style.display = "none";
 
-            contactModal.style.display="none";
+    });
+
+}
+
+if (contactModal) {
+
+    contactModal.addEventListener("click", (e) => {
+
+        if (e.target === contactModal) {
+
+            contactModal.style.display = "none";
 
         }
 
@@ -194,29 +194,21 @@ if(contactModal){
 
 }
 
-// Telegram
+if (telegramBtn) {
 
-if(telegramBtn){
+    telegramBtn.addEventListener("click", () => {
 
-    telegramBtn.addEventListener("click",()=>{
-
-        window.open(
-        "https://t.me/ph1_dk",
-        "_blank"
-        );
+        window.open("https://t.me/ph1_dk", "_blank");
 
     });
 
 }
 
-// Report Bug
+if (bugBtn) {
 
-if(bugBtn){
+    bugBtn.addEventListener("click", () => {
 
-    bugBtn.addEventListener("click",()=>{
-
-        const text =
-`🐞 Bug Report
+        const text = `🐞 Bug Report
 
 Device:
 
@@ -228,59 +220,53 @@ Screenshot:
 `;
 
         window.open(
-`https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
-"_blank"
-);
+            `https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
+            "_blank"
+        );
 
     });
 
 }
 
-// Feature Request
+if (featureBtn) {
 
-if(featureBtn){
+    featureBtn.addEventListener("click", () => {
 
-    featureBtn.addEventListener("click",()=>{
-
-        const text =
-`💡 Feature Request
+        const text = `💡 Feature Request
 
 I would like DoseCare AI to include:
 
 `;
 
         window.open(
-`https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
-"_blank"
-);
-
-    });
-
-}
-
-// Rate DoseCare
-
-if(rateBtn){
-
-    rateBtn.addEventListener("click",()=>{
-
-        alert(
-`⭐⭐⭐⭐⭐
-
-Thank you for using DoseCare AI ❤️
-
-Your support motivates us to keep improving the application.`
+            `https://t.me/ph1_dk?text=${encodeURIComponent(text)}`,
+            "_blank"
         );
 
     });
 
 }
-const drugCounter=document.getElementById("drugCounter");
 
-if(drugCounter){
+if (rateBtn) {
 
-drugCounter.innerHTML=
-`${Object.keys(drugs).length} Drugs Available`;
+    rateBtn.addEventListener("click", () => {
+
+        alert(`⭐⭐⭐⭐⭐
+
+Thank you for using DoseCare AI ❤️
+
+Your support motivates us to keep improving the application.`);
+
+    });
+
+}
+
+const drugCounter = document.getElementById("drugCounter");
+
+if (drugCounter) {
+
+    drugCounter.innerHTML =
+        `${Object.keys(drugs).length} Drugs Available`;
 
 }
 
@@ -288,49 +274,43 @@ drugCounter.innerHTML=
 // Drug Calculators
 // ======================================================
 
-const calculatorBtn =
-document.getElementById("calculatorBtn");
+const calculatorBtn = document.getElementById("calculatorBtn");
+const calculatorModal = document.getElementById("calculatorModal");
+const closeCalculator = document.getElementById("closeCalculator");
 
-const calculatorModal =
-document.getElementById("calculatorModal");
+if (calculatorBtn) {
 
-const closeCalculator =
-document.getElementById("closeCalculator");
+    calculatorBtn.addEventListener("click", () => {
 
-if(calculatorBtn){
+        calculatorModal.style.display = "flex";
 
-calculatorBtn.addEventListener("click",()=>{
-
-calculatorModal.style.display="flex";
-
-});
+    });
 
 }
 
-if(closeCalculator){
+if (closeCalculator) {
 
-closeCalculator.addEventListener("click",()=>{
+    closeCalculator.addEventListener("click", () => {
 
-calculatorModal.style.display="none";
+        calculatorModal.style.display = "none";
 
-});
-
-}
-
-if(calculatorModal){
-
-calculatorModal.addEventListener("click",(e)=>{
-
-if(e.target===calculatorModal){
-
-calculatorModal.style.display="none";
+    });
 
 }
 
-});
+if (calculatorModal) {
+
+    calculatorModal.addEventListener("click", (e) => {
+
+        if (e.target === calculatorModal) {
+
+            calculatorModal.style.display = "none";
+
+        }
+
+    });
 
 }
-
 // ======================================================
 // Open mg ⇄ mL Calculator
 // ======================================================
@@ -373,6 +353,7 @@ if (mgMlModal) {
     });
 
 }
+
 // ======================================================
 // mg ⇄ mL Calculation
 // ======================================================
@@ -392,7 +373,6 @@ if (calculateMl) {
         if (isNaN(mg) || isNaN(conc) || mg <= 0 || conc <= 0) {
 
             calcResult.innerHTML = "⚠️ Please enter valid values";
-
             return;
 
         }
@@ -410,9 +390,10 @@ if (calculateMl) {
     });
 
 }
-// ======================================
+
+// ======================================================
 // Open mg/kg Calculator
-// ======================================
+// ======================================================
 
 const mgKgBtn = document.getElementById("mgKgBtn");
 const mgKgModal = document.getElementById("mgKgModal");
@@ -452,53 +433,49 @@ if (mgKgModal) {
     });
 
 }
-// ======================================
+
+// ======================================================
 // mg/kg Calculator
-// ======================================
+// ======================================================
 
-document.getElementById("calculateMgKg").addEventListener("click", () => {
+const calculateMgKg = document.getElementById("calculateMgKg");
 
-    const weight = parseFloat(
-        document.getElementById("kgWeight").value
-    );
+if (calculateMgKg) {
 
-    const mgPerKg = parseFloat(
-        document.getElementById("mgPerKg").value
-    );
+    calculateMgKg.addEventListener("click", () => {
 
-    if (!weight || !mgPerKg) {
+        const weight = parseFloat(document.getElementById("kgWeight").value);
+        const mgPerKg = parseFloat(document.getElementById("mgPerKg").value);
 
-        alert("Please enter Weight and mg/kg");
+        if (!weight || !mgPerKg) {
 
-        return;
+            alert("Please enter Weight and mg/kg");
+            return;
 
-    }
+        }
 
-    const totalDose = weight * mgPerKg;
+        const totalDose = weight * mgPerKg;
 
-    document.getElementById("mgKgResult").textContent =
-        totalDose.toFixed(2) + " mg";
+        document.getElementById("mgKgResult").textContent =
+            totalDose.toFixed(2) + " mg";
 
-});
-// ======================================
+    });
+
+}
+
+// ======================================================
 // Open Dose by Weight Calculator
-// ======================================
+// ======================================================
 
-const doseWeightBtn =
-document.getElementById("doseWeightBtn");
-
-const doseWeightModal =
-document.getElementById("doseWeightModal");
-
-const closeDoseWeight =
-document.getElementById("closeDoseWeight");
+const doseWeightBtn = document.getElementById("doseWeightBtn");
+const doseWeightModal = document.getElementById("doseWeightModal");
+const closeDoseWeight = document.getElementById("closeDoseWeight");
 
 if (doseWeightBtn) {
 
     doseWeightBtn.addEventListener("click", () => {
 
         calculatorModal.style.display = "none";
-
         doseWeightModal.style.display = "flex";
 
     });
@@ -528,127 +505,40 @@ if (doseWeightModal) {
     });
 
 }
-// ======================================
+
+// ======================================================
 // Dose by Weight Calculator
-// ======================================
+// ======================================================
 
-document.getElementById("calculateDoseWeight").addEventListener("click", () => {
+const calculateDoseWeight =
+document.getElementById("calculateDoseWeight");
 
-    const weight = parseFloat(
-        document.getElementById("doseWeightKg").value
-    );
+if (calculateDoseWeight) {
 
-    const dosePerKg = parseFloat(
-        document.getElementById("dosePerKg").value
-    );
+    calculateDoseWeight.addEventListener("click", () => {
 
-    const maxDose = parseFloat(
-        document.getElementById("maxDose").value
-    );
+        const weight = parseFloat(document.getElementById("doseWeightKg").value);
+        const dosePerKg = parseFloat(document.getElementById("dosePerKg").value);
+        const maxDose = parseFloat(document.getElementById("maxDose").value);
 
-    if (!weight || !dosePerKg) {
+        if (!weight || !dosePerKg) {
 
-        alert("Please enter Weight and Dose.");
-
-        return;
-
-    }
-
-    let totalDose = weight * dosePerKg;
-
-    if (!isNaN(maxDose) && totalDose > maxDose) {
-
-        totalDose = maxDose;
-
-    }
-
-    document.getElementById("doseWeightResult").textContent =
-        totalDose.toFixed(2) + " mg";
-
-});
-// ======================================
-// Open IV Calculator
-// ======================================
-
-const ivBtn = document.getElementById("ivBtn");
-const ivModal = document.getElementById("ivModal");
-const closeIV = document.getElementById("closeIV");
-
-if (ivBtn) {
-
-    ivBtn.addEventListener("click", () => {
-
-        calculatorModal.style.display = "none";
-        ivModal.style.display = "flex";
-
-    });
-
-}
-
-if (closeIV) {
-
-    closeIV.addEventListener("click", () => {
-
-        ivModal.style.display = "none";
-
-    });
-
-}
-
-if (ivModal) {
-
-    ivModal.addEventListener("click", (e) => {
-
-        if (e.target === ivModal) {
-
-            ivModal.style.display = "none";
+            alert("Please enter Weight and Dose.");
+            return;
 
         }
 
+        let totalDose = weight * dosePerKg;
+
+        if (!isNaN(maxDose) && totalDose > maxDose) {
+
+            totalDose = maxDose;
+
+        }
+
+        document.getElementById("doseWeightResult").textContent =
+            totalDose.toFixed(2) + " mg";
+
     });
 
 }
-// ======================================
-// IV Fluid Calculator
-// Holliday–Segar (4-2-1 Rule)
-// ======================================
-
-document.getElementById("calculateIV").addEventListener("click", () => {
-
-    const weight = parseFloat(
-        document.getElementById("ivWeight").value
-    );
-
-    if (!weight || weight <= 0) {
-
-        alert("Please enter a valid weight.");
-
-        return;
-
-    }
-
-    let rate = 0;
-
-    if (weight <= 10) {
-
-        rate = weight * 4;
-
-    } else if (weight <= 20) {
-
-        rate = 40 + ((weight - 10) * 2);
-
-    } else {
-
-        rate = 60 + ((weight - 20) * 1);
-
-    }
-
-    const daily = rate * 24;
-
-    document.getElementById("ivResult").innerHTML = `
-        ${rate.toFixed(1)} mL/hr
-        <br><br>
-        ${daily.toFixed(0)} mL/day
-    `;
-
-});
