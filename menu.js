@@ -8,7 +8,7 @@ console.log("Menu Loaded");
 // ======================================================
 // Menu Elements
 // ======================================================
-alert("وصلت إلى جزء الحاسبات");
+
 const menuBtn = document.getElementById("menuBtn");
 const sideMenu = document.getElementById("sideMenu");
 const menuOverlay = document.getElementById("menuOverlay");
