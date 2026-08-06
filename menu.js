@@ -22,6 +22,7 @@ if (menuBtn && sideMenu && menuOverlay) {
     menuBtn.addEventListener("click", () => {
 
         sideMenu.classList.add("open");
+        
         menuOverlay.classList.add("show");
 
     });
