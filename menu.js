@@ -568,8 +568,7 @@ if(hypoglycemiaModal){
 // ======================================
 
 const febrileBtn =
-document.getElementById("febrileBtn");
-
+document.getElementById("seizureBtn");
 const febrileModal =
 document.getElementById("febrileModal");
 
