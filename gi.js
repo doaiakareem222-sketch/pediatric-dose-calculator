@@ -1,3 +1,5 @@
+Object.assign(drugs, {
+  
 ondansetron:{
 
 id:"ondansetron",
@@ -766,3 +768,4 @@ references:[
 ]
 
 },
+});
