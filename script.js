@@ -51,6 +51,7 @@ const lastDrug = document.getElementById("lastDrug");
 // ======================================================
 
 let allDrugs = Object.values(drugs);
+alert(Object.keys(drugs).join("\n"));
 let currentDrugList = allDrugs;
 let calculationHistory = [];
 
