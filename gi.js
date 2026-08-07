@@ -768,4 +768,155 @@ references:[
 ]
 
 },
+  simethicone:{
+
+id:"simethicone",
+
+name:"Simethicone",
+
+genericName:"Simethicone",
+
+brandNames:["Mylicon","Infacol"],
+
+category:"Gastrointestinal",
+
+therapeuticClass:"Antiflatulent",
+
+pharmacologicalClass:"Silicone Polymer",
+
+diseases:["abdominalPain","flatulence"],
+
+mgPerKg:0,
+
+frequency:"After meals and at bedtime",
+
+maxDose:160,
+
+minAge:0,
+
+maxAge:12,
+
+strengths:[
+{name:"40 mg/mL Drops", concentration:40}
+],
+
+mechanism:"Reduces surface tension of gas bubbles allowing easier elimination.",
+
+indications:"Infant colic and gas-related abdominal discomfort.",
+
+contraindications:"Hypersensitivity.",
+
+warnings:"Symptomatic treatment only.",
+
+sideEffects:"Rare.",
+
+pregnancy:"Safe",
+
+lactation:"Safe",
+
+doseRange:"20–40 mg after feeds",
+
+onset:"Within minutes",
+
+duration:"Variable",
+
+halfLife:"Not absorbed",
+
+proteinBinding:"0%",
+
+metabolism:"None",
+
+elimination:"Fecal unchanged",
+
+storage:"Room temperature",
+
+monitoring:["Reduction of bloating and gas"],
+
+clinicalPearls:["Not systemically absorbed and very safe in infants."],
+
+interactions:[],
+
+alerts:["Does not treat the underlying cause of abdominal pain."],
+
+blackBox:"",
+
+references:["BNFc 2025"]
+
+},
+  hyoscine:{
+
+id:"hyoscine",
+
+name:"Hyoscine Butylbromide",
+
+genericName:"Hyoscine Butylbromide",
+
+brandNames:["Buscopan"],
+
+category:"Gastrointestinal",
+
+therapeuticClass:"Antispasmodic",
+
+pharmacologicalClass:"Anticholinergic",
+
+diseases:["abdominalPain","colic"],
+
+mgPerKg:0.3,
+
+frequency:"Every 8 hours",
+
+maxDose:20,
+
+minAge:6,
+
+maxAge:12,
+
+strengths:[
+{name:"5 mg/5 mL Syrup", concentration:5},
+{name:"10 mg Tablet", concentration:10}
+],
+
+mechanism:"Relaxes smooth muscles of the gastrointestinal tract.",
+
+indications:"Abdominal colic and intestinal spasm.",
+
+contraindications:"Myasthenia gravis, glaucoma, GI obstruction.",
+
+warnings:"May cause dry mouth and blurred vision.",
+
+sideEffects:"Dry mouth, tachycardia, blurred vision.",
+
+pregnancy:"B",
+
+lactation:"Compatible",
+
+doseRange:"0.3 mg/kg/dose",
+
+onset:"30 minutes",
+
+duration:"6–8 hours",
+
+halfLife:"5 hours",
+
+proteinBinding:"Low",
+
+metabolism:"Minimal",
+
+elimination:"Renal/Fecal",
+
+storage:"Room temperature",
+
+monitoring:["Relief of abdominal spasm"],
+
+clinicalPearls:["Useful for intestinal and biliary colic."],
+
+interactions:["Other anticholinergics"],
+
+alerts:["Avoid in suspected bowel obstruction."],
+
+blackBox:"",
+
+references:["BNFc 2025"]
+
+},
 });
