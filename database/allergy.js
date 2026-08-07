@@ -1,3 +1,5 @@
+Object.assign(drugs, {
+  
 cetirizine:{
 
 id:"cetirizine",
@@ -585,3 +587,4 @@ references:[
 ]
 
 },
+});
