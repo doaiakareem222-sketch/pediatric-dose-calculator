@@ -194,7 +194,7 @@ showDrugInfo(selectedDrug);
 });
 
 
-// ======================================================
+// // ======================================================
 // Dose Calculation
 // ======================================================
 
@@ -203,25 +203,33 @@ calculateBtn.addEventListener("click", () => {
     const drug = drugs[drugSelect.value];
 
     const weight = parseFloat(weightInput.value);
-const age = parseFloat(ageInput.value);
+    const age = parseFloat(ageInput.value);
 
-// Age Validation
-if (!age || age < 0) {
+    // ==================================================
+    // Age Validation
+    // ==================================================
 
-    alert("Please enter a valid age.");
+    if (isNaN(age) || age < 0) {
 
-    return;
+        alert("Please enter a valid age.");
 
-}
+        return;
 
-if (age > 12) {
+    }
 
-    alert("DoseCare AI is intended for pediatric patients (0–12 years) only.");
+    if (age > 12) {
 
-    return;
+        alert(
+            "DoseCare AI is intended for pediatric patients (0–12 years) only."
+        );
 
-}
-    const concentration = parseFloat(strengthSelect.value);
+        return;
+
+    }
+
+    // ==================================================
+    // Drug Validation
+    // ==================================================
 
     if (!drug) {
 
@@ -231,21 +239,33 @@ if (age > 12) {
 
     }
 
-    if (!weight || weight <= 0) {
+    // ==================================================
+    // Weight Validation
+    // ==================================================
+
+    if (isNaN(weight) || weight <= 0) {
 
         alert("Please enter patient's weight.");
 
         return;
 
     }
-if (weight > 100) {
 
-    alert("Weight is outside the pediatric range.");
+    if (weight > 100) {
 
-    return;
+        alert("Weight is outside the pediatric range.");
 
-}
+        return;
+
+    }
+
+    // ==================================================
+    // Calculate Dose in mg
+    // ==================================================
+
     let dose = weight * drug.mgPerKg;
+
+    // Maximum dose
 
     if (drug.maxDose && dose > drug.maxDose) {
 
@@ -253,47 +273,130 @@ if (weight > 100) {
 
     }
 
-    let doseMl = "-";
+    // ==================================================
+    // Calculate Liquid Volume
+    // ==================================================
 
-    if (concentration) {
+    let doseMl = null;
 
-        doseMl = ((dose / concentration) * 5).toFixed(2);
+    const selectedStrength =
+        drug.strengths?.find(
+            strength =>
+                String(strength.concentration) ===
+                String(strengthSelect.value)
+        );
+
+    if (selectedStrength) {
+
+        const concentration =
+            parseFloat(selectedStrength.concentration);
+
+        if (
+            !isNaN(concentration) &&
+            concentration > 0
+        ) {
+
+            // ------------------------------------------
+            // If concentration is mg/mL
+            // ------------------------------------------
+
+            if (selectedStrength.unit === "mg/mL") {
+
+                doseMl =
+                    dose / concentration;
+
+            }
+
+            // ------------------------------------------
+            // If concentration is mg/5mL
+            // ------------------------------------------
+
+            else {
+
+                doseMl =
+                    (dose / concentration) * 5;
+
+            }
+
+        }
 
     }
 
+    // ==================================================
+    // Show Result
+    // ==================================================
+
     resultCard.style.display = "block";
 
-    drugName.textContent = drug.name;
+    drugName.textContent =
+        drug.name;
 
-    doseMg.textContent = dose.toFixed(2) + " mg";
+    doseMg.textContent =
+        dose.toFixed(2) + " mg";
 
-    doseMl.textContent =
-        concentration ? doseMl + " mL" : "-";
+    // ==================================================
+    // mL / cc Result
+    // ==================================================
 
-    frequency.textContent = drug.frequency;
+    if (doseMl !== null) {
 
-    note.textContent = drug.notes || "-";
+        doseMl.textContent =
+            doseMl.toFixed(2) + " mL (" +
+            doseMl.toFixed(2) + " cc)";
 
- if (ageUnit.value === "months") {
+    } else {
 
-    if (Number(ageInput.value) < 0.08) {
+        doseMl.textContent = "-";
 
-        patientAge.textContent = "👶 Neonate (0–28 Days)";
+    }
+
+    // ==================================================
+    // Frequency
+    // ==================================================
+
+    frequency.textContent =
+        drug.frequency || "-";
+
+    // ==================================================
+    // Notes
+    // ==================================================
+
+    note.textContent =
+        drug.notes || "-";
+
+    // ==================================================
+    // Patient Age Display
+    // ==================================================
+
+    if (ageUnit.value === "months") {
+
+        if (Number(ageInput.value) < 0.08) {
+
+            patientAge.textContent =
+                "👶 Neonate (0–28 Days)";
+
+        } else {
+
+            patientAge.textContent =
+                `👶 ${Math.round(
+                    Number(ageInput.value) * 12
+                )} Month(s)`;
+
+        }
 
     } else {
 
         patientAge.textContent =
-            `👶 ${Math.round(Number(ageInput.value) * 12)} Month(s)`;
+            `🧒 ${ageInput.value} Year(s)`;
 
     }
 
-} else {
+    // ==================================================
+    // Drug Information
+    // ==================================================
 
-    patientAge.textContent =
-        `🧒 ${ageInput.value} Year(s)`;
+    showDrugInfo(drug);
 
-}
-showDrugInfo(drug);
 });
 // ======================================================
 // Drug Information Card
