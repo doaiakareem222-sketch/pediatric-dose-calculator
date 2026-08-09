@@ -1,954 +1,456 @@
-cefpodoxime:{
+// ======================================================
+// DoseCare AI v7
+// Antibiotics Database
+// Pediatric Oral Liquids
+// ======================================================
 
-id:"cefpodoxime",
+const antibioticDrugs = {
 
-name:"Cefpodoxime",
+    // ==================================================
+    // AMOXICILLIN
+    // ==================================================
 
-genericName:"Cefpodoxime Proxetil",
+    amoxicillin: {
 
-brandNames:[
-"Orelox",
-"Vantin"
-],
+        id: "amoxicillin",
 
-category:"Antibiotic",
+        name: "Amoxicillin",
 
-therapeuticClass:"3rd Generation Cephalosporin",
+        genericName: "Amoxicillin",
 
-pharmacologicalClass:"Cephalosporin Antibiotic",
+        brandNames: [
+            "Amoxil",
+            "Mox",
+            "Ospamox",
+            "Hiconcil"
+        ],
 
-diseases:[
-"otitis",
-"pharyngitis",
-"sinusitis",
-"pneumonia",
-"uti"
-],
+        category: "Antibiotic",
 
-mgPerKg:5,
+        therapeuticClass: "Penicillin Antibiotic",
 
-frequency:"Every 12 hours",
+        pharmacologicalClass: "Aminopenicillin",
 
-maxDose:200,
+        diseases: [
+            "otitis",
+            "pharyngitis",
+            "sinusitis",
+            "pneumonia"
+        ],
 
-minAge:0.5,
+        dosageForm: "Oral Suspension",
 
-maxAge:12,
+        strengths: [
+            {
+                name: "125 mg / 5 mL",
+                concentration: 125,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "250 mg / 5 mL",
+                concentration: 250,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "400 mg / 5 mL",
+                concentration: 400,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+        ],
 
-strengths:[
-{
-name:"50 mg/5 mL",
-concentration:50
-},
-{
-name:"100 mg/5 mL",
-concentration:100
+        dose: {
+            mgPerKg: 25,
+            frequency: "Every 8–12 hours",
+            maxDoseMg: 4000
+        },
+
+        age: {
+            minAge: 0,
+            maxAge: 18
+        },
+
+        mechanism:
+            "يثبط تصنيع جدار الخلية البكتيرية من خلال الارتباط ببروتينات ارتباط البنسلين (PBPs)، مما يمنع تكوين الروابط المتصالبة في الببتيدوغليكان ويؤدي إلى تحلل الخلية البكتيرية.",
+
+        indications:
+            "التهاب الأذن الوسطى، التهاب البلعوم واللوزتين، التهاب الجيوب الأنفية، ذات الرئة وبعض الالتهابات البكتيرية الأخرى الحساسة للأموكسيسيلين.",
+
+        contraindications:
+            "فرط الحساسية المعروف للأموكسيسيلين أو البنسلينات أو وجود تفاعل تحسسي شديد سابق مع مضادات البيتا-لاكتام.",
+
+        warnings:
+            "يستخدم بحذر عند وجود قصور كلوي أو تاريخ من الحساسية تجاه البنسلينات. يجب استخدامه فقط عند الاشتباه أو إثبات وجود عدوى بكتيرية.",
+
+        sideEffects:
+            "إسهال، غثيان، قيء، ألم بطني، طفح جلدي وتفاعلات تحسسية.",
+
+        pregnancy:
+            "يعد من المضادات الحيوية التي يمكن استخدامها أثناء الحمل عند وجود حاجة طبية.",
+
+        lactation:
+            "يمكن استخدامه أثناء الرضاعة عند الحاجة الطبية.",
+
+        doseRange:
+            "عادةً 20–45 mg/kg/day مقسمة على جرعتين أو ثلاث حسب نوع وشدة العدوى. بعض العدوى مثل التهاب الأذن الوسطى قد تحتاج جرعات أعلى حسب الإرشادات.",
+
+        onset:
+            "1–2 ساعة",
+
+        duration:
+            "حسب نوع العدوى",
+
+        halfLife:
+            "حوالي 1 ساعة",
+
+        proteinBinding:
+            "حوالي 17–20%",
+
+        metabolism:
+            "استقلاب محدود.",
+
+        elimination:
+            "يطرح بشكل رئيسي عن طريق الكلى.",
+
+        storage:
+            "يحفظ المعلق بعد التحضير حسب تعليمات الشركة المصنعة. يجب الرج جيداً قبل كل جرعة.",
+
+        monitoring: [
+            "متابعة الاستجابة للعلاج.",
+            "مراقبة ظهور الحساسية.",
+            "مراقبة وظائف الكلى عند وجود قصور كلوي."
+        ],
+
+        clinicalPearls: [
+            "رج العبوة جيداً قبل كل جرعة.",
+            "إكمال مدة العلاج الموصوفة حتى لو تحسنت الأعراض.",
+            "لا يستخدم لعلاج العدوى الفيروسية."
+        ],
+
+        blackBox:
+            "لا يوجد Black Box Warning خاص بالأموكسيسيلين.",
+
+        interactions: [
+            "Warfarin: قد يحدث تغير في INR.",
+            "Allopurinol: قد يزيد احتمال ظهور الطفح الجلدي."
+        ],
+
+        notes:
+            "يمكن إعطاؤه مع أو بدون الطعام. استخدم أداة قياس دقيقة للمعلق.",
+
+        alerts: [
+            "أوقف الدواء واطلب المساعدة الطبية عند حدوث تفاعل تحسسي شديد.",
+            "لا تستخدم المضاد الحيوي للعدوى الفيروسية.",
+            "أكمل الكورس حسب وصف الطبيب."
+        ]
+    },
+
+
+    // ==================================================
+    // CO-AMOXICLAV
+    // ==================================================
+
+    co_amoxiclav: {
+
+        id: "co_amoxiclav",
+
+        name: "Co-amoxiclav",
+
+        genericName: "Amoxicillin + Clavulanic Acid",
+
+        brandNames: [
+            "Augmentin",
+            "Curam",
+            "Amoclan"
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+            "Penicillin + Beta-lactamase Inhibitor",
+
+        pharmacologicalClass:
+            "Aminopenicillin Combination",
+
+        diseases: [
+            "otitis",
+            "sinusitis",
+            "pneumonia",
+            "uti",
+            "skin"
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        strengths: [
+            {
+                name: "228.5 mg / 5 mL",
+                concentration: 200,
+                volume: 5,
+                unit: "mg/5mL",
+                activeIngredient:
+                    "Amoxicillin 200 mg + Clavulanic Acid 28.5 mg"
+            },
+            {
+                name: "457 mg / 5 mL",
+                concentration: 400,
+                volume: 5,
+                unit: "mg/5mL",
+                activeIngredient:
+                    "Amoxicillin 400 mg + Clavulanic Acid 57 mg"
+            }
+        ],
+
+        dose: {
+            mgPerKg: 22.5,
+            frequency: "Every 12 hours",
+            maxDoseMg: 875
+        },
+
+        age: {
+            minAge: 0,
+            maxAge: 18
+        },
+
+        mechanism:
+            "الأموكسيسيلين يثبط تصنيع جدار الخلية البكتيرية، بينما يقوم Clavulanic Acid بتثبيط إنزيمات Beta-lactamase التي تنتجها بعض البكتيريا، مما يحمي الأموكسيسيلين من التحلل ويزيد فعاليته ضد البكتيريا المقاومة له وحده.",
+
+        indications:
+            "التهاب الأذن الوسطى، التهاب الجيوب الأنفية، بعض التهابات الجهاز التنفسي، التهابات المسالك البولية وبعض التهابات الجلد والأنسجة الرخوة.",
+
+        contraindications:
+            "فرط الحساسية للبنسلينات أو مكونات المستحضر، أو وجود تاريخ من اليرقان أو القصور الكبدي المرتبط سابقاً باستخدام Amoxicillin/Clavulanate.",
+
+        warnings:
+            "يستخدم بحذر عند مرضى الكبد أو الكلى. يجب اختيار الجرعة اعتماداً على محتوى Amoxicillin وليس مجموع مكونات المستحضر.",
+
+        sideEffects:
+            "إسهال، غثيان، قيء، ألم بطني، طفح جلدي، وداء المبيضات. قد تحدث اضطرابات كبدية نادراً.",
+
+        pregnancy:
+            "يمكن استخدامه عند وجود حاجة طبية وتحت إشراف الطبيب.",
+
+        lactation:
+            "يمكن استخدامه أثناء الرضاعة عند الحاجة الطبية.",
+
+        doseRange:
+            "تعتمد الجرعة على كمية Amoxicillin. غالباً 25–45 mg/kg/day مقسمة كل 12 ساعة حسب نوع وشدة العدوى.",
+
+        onset:
+            "1–2 ساعة",
+
+        duration:
+            "حوالي 12 ساعة",
+
+        halfLife:
+            "حوالي 1 ساعة للأموكسيسيلين",
+
+        proteinBinding:
+            "حوالي 18–25% للأموكسيسيلين",
+
+        metabolism:
+            "استقلاب جزئي.",
+
+        elimination:
+            "يطرح بشكل رئيسي عن طريق الكلى.",
+
+        storage:
+            "يحفظ المعلق المحضر حسب تعليمات الشركة المصنعة، ويرج جيداً قبل كل استخدام.",
+
+        monitoring: [
+            "متابعة الاستجابة للعلاج.",
+            "مراقبة الحساسية.",
+            "مراقبة وظائف الكبد عند الاستخدام المطول.",
+            "مراقبة وظائف الكلى عند وجود قصور كلوي."
+        ],
+
+        clinicalPearls: [
+            "يفضل إعطاؤه مع بداية الطعام لتقليل اضطرابات المعدة وتحسين تحمل الدواء.",
+            "رج العبوة جيداً قبل كل جرعة.",
+            "اختيار التركيز المناسب مهم لتقليل كمية Clavulanate غير الضرورية."
+        ],
+
+        blackBox:
+            "لا يوجد Black Box Warning خاص بالمستحضر.",
+
+        interactions: [
+            "Warfarin: قد يحدث تغير في INR.",
+            "Methotrexate: قد يزيد خطر السمية.",
+            "Allopurinol: قد يزيد احتمال الطفح."
+        ],
+
+        notes:
+            "يجب حساب الجرعة اعتماداً على مكون Amoxicillin. استخدم أداة قياس دقيقة.",
+
+        alerts: [
+            "لا تستخدمه للعدوى الفيروسية.",
+            "أوقفه عند حدوث حساسية شديدة.",
+            "يجب اختيار التركيز والجرعة حسب نوع العدوى وعمر ووزن الطفل."
+        ]
+    },
+
+
+    // ==================================================
+    // CEFALEXIN
+    // ==================================================
+
+    cephalexin: {
+
+        id: "cephalexin",
+
+        name: "Cephalexin",
+
+        genericName: "Cephalexin",
+
+        brandNames: [
+            "Keflex",
+            "Ceporex",
+            "Sporidex"
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass: "Cephalosporin Antibiotic",
+
+        pharmacologicalClass:
+            "First Generation Cephalosporin",
+
+        diseases: [
+            "pharyngitis",
+            "skin",
+            "uti"
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        strengths: [
+            {
+                name: "125 mg / 5 mL",
+                concentration: 125,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "250 mg / 5 mL",
+                concentration: 250,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+        ],
+
+        dose: {
+            mgPerKg: 25,
+            frequency: "Every 6–12 hours",
+            maxDoseMg: 4000
+        },
+
+        age: {
+            minAge: 0,
+            maxAge: 18
+        },
+
+        mechanism:
+            "يثبط تصنيع جدار الخلية البكتيرية من خلال الارتباط ببروتينات ارتباط البنسلين ومنع تكوين الببتيدوغليكان، مما يؤدي إلى موت الخلية البكتيرية.",
+
+        indications:
+            "التهابات الجلد والأنسجة الرخوة، التهاب البلعوم واللوزتين، والتهابات المسالك البولية وبعض الالتهابات التنفسية.",
+
+        contraindications:
+            "فرط الحساسية للسيفالوسبورينات. يستخدم بحذر عند وجود تاريخ من الحساسية الشديدة للبنسلين.",
+
+        warnings:
+            "يستخدم بحذر عند مرضى القصور الكلوي، وقد يحتاج إلى تعديل الجرعة.",
+
+        sideEffects:
+            "إسهال، غثيان، قيء، ألم بطني وطفح جلدي.",
+
+        pregnancy:
+            "يمكن استخدامه عند الحاجة الطبية.",
+
+        lactation:
+            "يمكن استخدامه أثناء الرضاعة عند الحاجة.",
+
+        doseRange:
+            "عادةً 25–50 mg/kg/day مقسمة على عدة جرعات حسب نوع العدوى وشدتها.",
+
+        onset:
+            "حوالي 1 ساعة",
+
+        duration:
+            "6–12 ساعة",
+
+        halfLife:
+            "حوالي 1 ساعة",
+
+        proteinBinding:
+            "حوالي 15%",
+
+        metabolism:
+            "لا يستقلب بشكل ملحوظ.",
+
+        elimination:
+            "يطرح بشكل رئيسي عن طريق الكلى.",
+
+        storage:
+            "يحفظ المعلق حسب تعليمات الشركة المصنعة ويرج جيداً قبل الاستخدام.",
+
+        monitoring: [
+            "متابعة الاستجابة للعلاج.",
+            "مراقبة ظهور الحساسية.",
+            "مراقبة وظائف الكلى عند وجود قصور كلوي."
+        ],
+
+        clinicalPearls: [
+            "رج العبوة جيداً قبل كل جرعة.",
+            "إكمال الكورس العلاجي حسب الوصفة.",
+            "يمكن إعطاؤه مع الطعام إذا سبب اضطراباً بالمعدة."
+        ],
+
+        blackBox:
+            "لا يوجد Black Box Warning خاص بالسيفالكسين.",
+
+        interactions: [
+            "Warfarin: قد يحدث تغير في INR.",
+            "Metformin: قد يرتفع تركيز Metformin في بعض الحالات."
+        ],
+
+        notes:
+            "يمكن إعطاؤه مع أو بدون الطعام.",
+
+        alerts: [
+            "أوقف الدواء عند حدوث تفاعل تحسسي شديد.",
+            "لا تستخدمه للعدوى الفيروسية.",
+            "يجب تعديل الجرعة عند وجود قصور كلوي."
+        ]
+    }
+
+};
+
+
+// ======================================================
+// Register Antibiotics
+// ======================================================
+
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(antibioticDrugs);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
 }
-],
 
-mechanism:"Inhibits bacterial cell wall synthesis.",
 
-indications:"Respiratory tract infections, otitis media, sinusitis, urinary tract infections.",
+// ======================================================
+// Debug
+// ======================================================
 
-contraindications:"Cephalosporin hypersensitivity.",
-
-warnings:"Adjust dose in renal impairment.",
-
-sideEffects:"Diarrhea, nausea, rash.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"5 mg/kg/dose",
-
-onset:"1-2 hours",
-
-duration:"12 hours",
-
-halfLife:"2.5 hours",
-
-proteinBinding:"40%",
-
-metabolism:"Minimal",
-
-elimination:"Renal",
-
-storage:"Store below 25°C",
-
-monitoring:[
-"Renal function"
-],
-
-clinicalPearls:[
-"Give with food for better absorption."
-],
-
-interactions:[
-"Warfarin",
-"Probenecid"
-],
-
-alerts:[
-"Complete full antibiotic course."
-],
-
-blackBox:""
-
-},
-
-ceftriaxone:{
-
-id:"ceftriaxone",
-
-name:"Ceftriaxone",
-
-genericName:"Ceftriaxone",
-
-brandNames:[
-"Rocephin"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"3rd Generation Cephalosporin",
-
-pharmacologicalClass:"Cephalosporin Antibiotic",
-
-diseases:[
-"pneumonia",
-"otitis",
-"uti"
-],
-
-mgPerKg:50,
-
-frequency:"Once daily",
-
-maxDose:2000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"500 mg Injection",
-concentration:500
-},
-{
-name:"1 g Injection",
-concentration:1000
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis.",
-
-indications:"Severe bacterial infections.",
-
-contraindications:"Hyperbilirubinemic neonates.",
-
-warnings:"Avoid calcium-containing IV solutions in neonates.",
-
-sideEffects:"Pain at injection site, diarrhea.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"50-75 mg/kg/day",
-
-onset:"Immediate",
-
-duration:"24 hours",
-
-halfLife:"8 hours",
-
-proteinBinding:"95%",
-
-metabolism:"None",
-
-elimination:"Renal/Biliary",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function",
-"Liver function"
-],
-
-clinicalPearls:[
-"Once daily dosing."
-],
-
-interactions:[
-"Calcium solutions"
-],
-
-alerts:[
-"Do not mix with calcium in neonates."
-],
-
-blackBox:""
-
-},
-cefotaxime:{
-
-id:"cefotaxime",
-
-name:"Cefotaxime",
-
-genericName:"Cefotaxime",
-
-brandNames:[
-"Claforan"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"3rd Generation Cephalosporin",
-
-pharmacologicalClass:"Cephalosporin Antibiotic",
-
-diseases:[
-"pneumonia",
-"meningitis",
-"uti"
-],
-
-mgPerKg:50,
-
-frequency:"Every 6-8 hours",
-
-maxDose:12000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"500 mg Injection",
-concentration:500
-},
-{
-name:"1 g Injection",
-concentration:1000
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis.",
-
-indications:"Serious bacterial infections.",
-
-contraindications:"Cephalosporin allergy.",
-
-warnings:"Adjust dose in renal impairment.",
-
-sideEffects:"Diarrhea, rash, neutropenia.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"50 mg/kg/dose",
-
-onset:"Immediate",
-
-duration:"6-8 hours",
-
-halfLife:"1 hour",
-
-proteinBinding:"35%",
-
-metabolism:"Partial hepatic",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"CBC",
-"Renal function"
-],
-
-clinicalPearls:[
-"Preferred in neonatal sepsis."
-],
-
-interactions:[
-"Aminoglycosides"
-],
-
-alerts:[
-"Complete treatment course."
-],
-
-blackBox:""
-
-},
-ceftazidime:{
-
-id:"ceftazidime",
-
-name:"Ceftazidime",
-
-genericName:"Ceftazidime",
-
-brandNames:[
-"Fortum"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"3rd Generation Cephalosporin",
-
-pharmacologicalClass:"Cephalosporin Antibiotic",
-
-diseases:[
-"pneumonia",
-"uti",
-"meningitis"
-],
-
-mgPerKg:50,
-
-frequency:"Every 8 hours",
-
-maxDose:6000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"500 mg Injection",
-concentration:500
-},
-{
-name:"1 g Injection",
-concentration:1000
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis.",
-
-indications:"Serious Gram-negative bacterial infections.",
-
-contraindications:"Cephalosporin allergy.",
-
-warnings:"Adjust dose in renal impairment.",
-
-sideEffects:"Diarrhea, rash, injection site pain.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"50 mg/kg/dose",
-
-onset:"Immediate",
-
-duration:"8 hours",
-
-halfLife:"2 hours",
-
-proteinBinding:"10%",
-
-metabolism:"None",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function"
-],
-
-clinicalPearls:[
-"Excellent activity against Pseudomonas."
-],
-
-interactions:[
-"Aminoglycosides"
-],
-
-alerts:[
-"Complete antibiotic course."
-],
-
-blackBox:""
-
-},
-clindamycin:{
-
-id:"clindamycin",
-
-name:"Clindamycin",
-
-genericName:"Clindamycin",
-
-brandNames:[
-"Dalacin C"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Lincosamide",
-
-pharmacologicalClass:"Protein Synthesis Inhibitor",
-
-diseases:[
-"skin",
-"pneumonia",
-"dental"
-],
-
-mgPerKg:10,
-
-frequency:"Every 8 hours",
-
-maxDose:1800,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"75 mg/5 mL",
-concentration:75
-},
-{
-name:"150 mg Capsule",
-concentration:150
-}
-],
-
-mechanism:"Inhibits bacterial protein synthesis.",
-
-indications:"Skin, bone, dental and anaerobic infections.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"Risk of C. difficile diarrhea.",
-
-sideEffects:"Diarrhea, abdominal pain, rash.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"10 mg/kg/dose",
-
-onset:"1 hour",
-
-duration:"8 hours",
-
-halfLife:"2.5 hours",
-
-proteinBinding:"90%",
-
-metabolism:"Hepatic",
-
-elimination:"Biliary/Renal",
-
-storage:"Below 25°C",
-
-monitoring:[
-"Liver function"
-],
-
-clinicalPearls:[
-"Good anaerobic coverage."
-],
-
-interactions:[
-"Erythromycin"
-],
-
-alerts:[
-"Monitor severe diarrhea."
-],
-
-blackBox:"Risk of Clostridioides difficile-associated diarrhea."
-
-},
-vancomycin:{
-
-id:"vancomycin",
-
-name:"Vancomycin",
-
-genericName:"Vancomycin",
-
-brandNames:[
-"Vancocin"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Glycopeptide",
-
-pharmacologicalClass:"Cell Wall Inhibitor",
-
-diseases:[
-"meningitis",
-"pneumonia",
-"sepsis"
-],
-
-mgPerKg:15,
-
-frequency:"Every 6 hours",
-
-maxDose:2000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"500 mg Injection",
-concentration:500
-},
-{
-name:"1 g Injection",
-concentration:1000
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis.",
-
-indications:"Serious Gram-positive infections including MRSA.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"Infuse slowly to avoid Red Man Syndrome.",
-
-sideEffects:"Nephrotoxicity, ototoxicity.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"15 mg/kg/dose",
-
-onset:"Immediate",
-
-duration:"6-12 hours",
-
-halfLife:"6 hours",
-
-proteinBinding:"50%",
-
-metabolism:"None",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Vancomycin trough",
-"Renal function"
-],
-
-clinicalPearls:[
-"Requires therapeutic drug monitoring."
-],
-
-interactions:[
-"Aminoglycosides"
-],
-
-alerts:[
-"Monitor kidney function closely."
-],
-
-blackBox:"Rapid infusion may cause Red Man Syndrome."
-
-},
-gentamicin:{
-
-id:"gentamicin",
-
-name:"Gentamicin",
-
-genericName:"Gentamicin",
-
-brandNames:[
-"Garamycin"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Aminoglycoside",
-
-pharmacologicalClass:"Protein Synthesis Inhibitor",
-
-diseases:[
-"sepsis",
-"uti",
-"meningitis"
-],
-
-mgPerKg:2.5,
-
-frequency:"Every 8 hours",
-
-maxDose:240,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"40 mg/mL Injection",
-concentration:40
-}
-],
-
-mechanism:"Inhibits bacterial protein synthesis by binding to the 30S ribosomal subunit.",
-
-indications:"Serious Gram-negative bacterial infections.",
-
-contraindications:"Hypersensitivity to aminoglycosides.",
-
-warnings:"Risk of nephrotoxicity and ototoxicity.",
-
-sideEffects:"Kidney injury, hearing loss, dizziness.",
-
-pregnancy:"D",
-
-lactation:"Use with caution",
-
-doseRange:"2.5 mg/kg/dose",
-
-onset:"Immediate",
-
-duration:"8 hours",
-
-halfLife:"2 hours",
-
-proteinBinding:"10%",
-
-metabolism:"None",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function",
-"Serum drug levels"
-],
-
-clinicalPearls:[
-"Therapeutic drug monitoring is recommended."
-],
-
-interactions:[
-"Vancomycin",
-"Loop diuretics"
-],
-
-alerts:[
-"Monitor hearing and kidney function."
-],
-
-blackBox:"Risk of nephrotoxicity and ototoxicity."
-
-},
-amikacin:{
-
-id:"amikacin",
-
-name:"Amikacin",
-
-genericName:"Amikacin",
-
-brandNames:[
-"Amikin"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Aminoglycoside",
-
-pharmacologicalClass:"Protein Synthesis Inhibitor",
-
-diseases:[
-"sepsis",
-"uti",
-"pneumonia"
-],
-
-mgPerKg:15,
-
-frequency:"Once daily",
-
-maxDose:1500,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"100 mg/2 mL Injection",
-concentration:100
-},
-{
-name:"500 mg/2 mL Injection",
-concentration:500
-}
-],
-
-mechanism:"Inhibits bacterial protein synthesis by binding to the 30S ribosomal subunit.",
-
-indications:"Serious infections caused by resistant Gram-negative bacteria.",
-
-contraindications:"Hypersensitivity to aminoglycosides.",
-
-warnings:"Risk of nephrotoxicity and ototoxicity.",
-
-sideEffects:"Kidney injury, hearing loss, vertigo.",
-
-pregnancy:"D",
-
-lactation:"Use with caution",
-
-doseRange:"15 mg/kg/day",
-
-onset:"Immediate",
-
-duration:"24 hours",
-
-halfLife:"2 hours",
-
-proteinBinding:"11%",
-
-metabolism:"None",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function",
-"Serum drug levels"
-],
-
-clinicalPearls:[
-"Preferred for resistant Gram-negative organisms."
-],
-
-interactions:[
-"Vancomycin",
-"Furosemide"
-],
-
-alerts:[
-"Monitor renal function closely."
-],
-
-blackBox:"Risk of nephrotoxicity, ototoxicity and neuromuscular blockade."
-
-},
-piperacillinTazobactam:{
-
-id:"piperacillinTazobactam",
-
-name:"Piperacillin / Tazobactam",
-
-genericName:"Piperacillin + Tazobactam",
-
-brandNames:[
-"Tazocin",
-"Zosyn"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Extended-spectrum Penicillin",
-
-pharmacologicalClass:"Beta-lactam + Beta-lactamase Inhibitor",
-
-diseases:[
-"sepsis",
-"pneumonia",
-"uti",
-"intraAbdominal"
-],
-
-mgPerKg:100,
-
-frequency:"Every 8 hours",
-
-maxDose:18000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"2.25 g Injection",
-concentration:2250
-},
-{
-name:"4.5 g Injection",
-concentration:4500
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis while tazobactam inhibits beta-lactamases.",
-
-indications:"Severe hospital-acquired and polymicrobial infections.",
-
-contraindications:"Penicillin hypersensitivity.",
-
-warnings:"Adjust dose in renal impairment.",
-
-sideEffects:"Diarrhea, rash, elevated liver enzymes.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"80–100 mg/kg/dose (Piperacillin component)",
-
-onset:"Immediate",
-
-duration:"8 hours",
-
-halfLife:"1 hour",
-
-proteinBinding:"30%",
-
-metabolism:"Minimal",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function",
-"Electrolytes"
-],
-
-clinicalPearls:[
-"Excellent Pseudomonas coverage."
-],
-
-interactions:[
-"Warfarin",
-"Methotrexate"
-],
-
-alerts:[
-"Monitor renal function during prolonged therapy."
-],
-
-blackBox:""
-
-},
-meropenem:{
-
-id:"meropenem",
-
-name:"Meropenem",
-
-genericName:"Meropenem",
-
-brandNames:[
-"Meronem"
-],
-
-category:"Antibiotic",
-
-therapeuticClass:"Carbapenem",
-
-pharmacologicalClass:"Beta-lactam Antibiotic",
-
-diseases:[
-"meningitis",
-"sepsis",
-"pneumonia",
-"intraAbdominal"
-],
-
-mgPerKg:20,
-
-frequency:"Every 8 hours",
-
-maxDose:2000,
-
-minAge:0,
-
-maxAge:12,
-
-strengths:[
-{
-name:"500 mg Injection",
-concentration:500
-},
-{
-name:"1 g Injection",
-concentration:1000
-}
-],
-
-mechanism:"Inhibits bacterial cell wall synthesis.",
-
-indications:"Severe multidrug-resistant bacterial infections.",
-
-contraindications:"Carbapenem hypersensitivity.",
-
-warnings:"Use cautiously in patients with seizure disorders.",
-
-sideEffects:"Headache, diarrhea, rash, thrombocytopenia.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"20–40 mg/kg/dose",
-
-onset:"Immediate",
-
-duration:"8 hours",
-
-halfLife:"1 hour",
-
-proteinBinding:"2%",
-
-metabolism:"Minimal",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Renal function",
-"CBC"
-],
-
-clinicalPearls:[
-"Broad-spectrum antibiotic reserved for severe infections."
-],
-
-interactions:[
-"Valproic acid"
-],
-
-alerts:[
-"Avoid unnecessary use to reduce resistance."
-],
-
-blackBox:""
-
-},
+console.log(
+    "Antibiotics Database Loaded:",
+    Object.keys(antibioticDrugs)
+);
