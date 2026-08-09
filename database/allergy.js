@@ -1,590 +1,368 @@
-Object.assign(drugs, {
-  
-cetirizine:{
+// ======================================================
+// DoseCare AI v7
+// Allergy Drugs Database
+// ======================================================
 
-id:"cetirizine",
+const allergyDrugs = {
 
-name:"Cetirizine",
+  // ====================================================
+  // Cetirizine
+  // ====================================================
 
-genericName:"Cetirizine",
+  cetirizine: {
+    id: "cetirizine",
 
-brandNames:[
-"Zyrtec"
-],
+    name: "Cetirizine",
 
-category:"Antihistamine",
+    genericName: "Cetirizine",
 
-therapeuticClass:"Second Generation H1 Antihistamine",
+    brandNames: [
+      "Zyrtec",
+      "Cetzine",
+      "Cetirin"
+    ],
 
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
+    category: "Allergy",
 
-diseases:[
-"allergy",
-"urticaria"
-],
+    therapeuticClass: "Second Generation H1 Antihistamine",
 
-mgPerKg:0.25,
+    pharmacologicalClass: "Piperazine Derivative",
 
-frequency:"Once Daily",
+    diseases: [
+      "allergy"
+    ],
 
-maxDose:10,
+    mgPerKg: 0.25,
 
-minAge:2,
+    frequency: "مرة يومياً",
 
-maxAge:12,
+    maxDose: 10,
 
-strengths:[
-{
-name:"1 mg/mL Syrup",
-concentration:1
-},
-{
-name:"5 mg Tablet",
-concentration:5
+    minAge: 0.5,
+
+    maxAge: 18,
+
+    strengths: [
+      {
+        name: "5 mg / 5 mL Syrup",
+        concentration: 5,
+        unit: "mg/5mL"
+      }
+    ],
+
+    indications:
+      "التهاب الأنف التحسسي، العطاس، سيلان الأنف، الحكة، والشرى.",
+
+    contraindications:
+      "فرط الحساسية للسيتريزين أو الهيدروكسيزين.",
+
+    warnings:
+      "قد يسبب النعاس عند بعض الأطفال، ويستخدم بحذر في القصور الكلوي.",
+
+    sideEffects:
+      "نعاس، صداع، جفاف الفم، تعب.",
+
+    pregnancy:
+      "يستخدم عند الحاجة وتحت إشراف طبي.",
+
+    lactation:
+      "يستخدم بحذر أثناء الرضاعة.",
+
+    doseRange:
+      "يعتمد على العمر والحالة، مع عدم تجاوز الجرعة القصوى الموصى بها.",
+
+    onset:
+      "30–60 دقيقة",
+
+    duration:
+      "24 ساعة",
+
+    halfLife:
+      "حوالي 8 ساعات",
+
+    proteinBinding:
+      "حوالي 93%",
+
+    metabolism:
+      "استقلاب محدود.",
+
+    elimination:
+      "عن طريق الكلى بشكل رئيسي.",
+
+    storage:
+      "يحفظ بدرجة حرارة الغرفة بعيداً عن الحرارة والرطوبة.",
+
+    monitoring: [
+      "متابعة تحسن أعراض الحساسية.",
+      "مراقبة النعاس.",
+      "تعديل الجرعة عند وجود قصور كلوي."
+    ],
+
+    clinicalPearls: [
+      "يعطى عادة مرة واحدة يومياً.",
+      "قد يسبب نعاساً عند بعض الأطفال.",
+      "يستخدم لعلاج أعراض الحساسية وليس لعلاج العدوى."
+    ],
+
+    blackBox:
+      "لا يوجد.",
+
+    interactions: [
+      "Alcohol.",
+      "CNS depressants."
+    ],
+
+    notes:
+      "رج الزجاجة جيداً قبل الاستخدام واستعمل أداة قياس دقيقة.",
+
+    alerts: [
+      "لا تتجاوز الجرعة اليومية.",
+      "راقب النعاس.",
+      "استشر الطبيب عند وجود مرض كلوي."
+    ]
+  },
+
+
+  // ====================================================
+  // Loratadine
+  // ====================================================
+
+  loratadine: {
+    id: "loratadine",
+
+    name: "Loratadine",
+
+    genericName: "Loratadine",
+
+    brandNames: [
+      "Claritin",
+      "Lorano",
+      "Lorat"
+    ],
+
+    category: "Allergy",
+
+    therapeuticClass: "Second Generation H1 Antihistamine",
+
+    pharmacologicalClass: "Piperidine Derivative",
+
+    diseases: [
+      "allergy"
+    ],
+
+    mgPerKg: 0.2,
+
+    frequency: "مرة يومياً",
+
+    maxDose: 10,
+
+    minAge: 2,
+
+    maxAge: 18,
+
+    strengths: [
+      {
+        name: "5 mg / 5 mL Syrup",
+        concentration: 5,
+        unit: "mg/5mL"
+      }
+    ],
+
+    indications:
+      "التهاب الأنف التحسسي، العطاس، سيلان الأنف، الحكة، والشرى.",
+
+    contraindications:
+      "فرط الحساسية للوراتادين.",
+
+    warnings:
+      "يستخدم بحذر عند الأطفال المصابين بأمراض الكبد.",
+
+    sideEffects:
+      "صداع، جفاف الفم، تعب، ونعاس خفيف عند بعض المرضى.",
+
+    pregnancy:
+      "يستخدم عند الحاجة الطبية.",
+
+    lactation:
+      "يستخدم بحذر أثناء الرضاعة.",
+
+    doseRange:
+      "حسب العمر، مع عدم تجاوز 10 mg يومياً.",
+
+    onset:
+      "1–3 ساعات",
+
+    duration:
+      "24 ساعة",
+
+    halfLife:
+      "حوالي 8 ساعات",
+
+    proteinBinding:
+      "حوالي 97%",
+
+    metabolism:
+      "يستقلب في الكبد بواسطة CYP3A4 و CYP2D6.",
+
+    elimination:
+      "عن طريق البول والبراز.",
+
+    storage:
+      "يحفظ بدرجة حرارة الغرفة.",
+
+    monitoring: [
+      "متابعة تحسن أعراض الحساسية.",
+      "مراقبة النعاس عند حدوثه.",
+      "الحذر عند وجود مرض كبدي."
+    ],
+
+    clinicalPearls: [
+      "عادة لا يسبب النعاس بشكل واضح.",
+      "يعطى مرة واحدة يومياً.",
+      "فعال في التهاب الأنف التحسسي والشرى."
+    ],
+
+    blackBox:
+      "لا يوجد.",
+
+    interactions: [
+      "Ketoconazole.",
+      "Erythromycin."
+    ],
+
+    notes:
+      "رج الزجاجة جيداً قبل الاستخدام واستعمل أداة قياس دقيقة.",
+
+    alerts: [
+      "لا تتجاوز الجرعة اليومية.",
+      "استشر الطبيب عند وجود مرض كبدي."
+    ]
+  },
+
+
+  // ====================================================
+  // Chlorpheniramine
+  // ====================================================
+
+  chlorpheniramine: {
+    id: "chlorpheniramine",
+
+    name: "Chlorpheniramine",
+
+    genericName: "Chlorpheniramine Maleate",
+
+    brandNames: [
+      "Piriton",
+      "Chlor-Trimeton"
+    ],
+
+    category: "Allergy",
+
+    therapeuticClass: "First Generation H1 Antihistamine",
+
+    pharmacologicalClass: "Alkylamine Derivative",
+
+    diseases: [
+      "allergy"
+    ],
+
+    mgPerKg: 0.1,
+
+    frequency: "كل 6–8 ساعات",
+
+    maxDose: 4,
+
+    minAge: 2,
+
+    maxAge: 18,
+
+    strengths: [
+      {
+        name: "2 mg / 5 mL Syrup",
+        concentration: 2,
+        unit: "mg/5mL"
+      }
+    ],
+
+    indications:
+      "الحساسية، التهاب الأنف التحسسي، العطاس، سيلان الأنف، الحكة والشرى.",
+
+    contraindications:
+      "فرط الحساسية، حديثو الولادة، والزرق مغلق الزاوية.",
+
+    warnings:
+      "قد يسبب النعاس بشكل واضح ويستخدم بحذر مع الأدوية المثبطة للجهاز العصبي المركزي.",
+
+    sideEffects:
+      "نعاس، دوخة، جفاف الفم، تشوش الرؤية.",
+
+    pregnancy:
+      "يستخدم عند الضرورة الطبية.",
+
+    lactation:
+      "يفضل تجنبه أثناء الرضاعة إلا بتوجيه طبي.",
+
+    doseRange:
+      "حسب العمر والحالة، مع عدم تجاوز الجرعة القصوى.",
+
+    onset:
+      "30 دقيقة",
+
+    duration:
+      "4–6 ساعات",
+
+    halfLife:
+      "حوالي 20 ساعة",
+
+    proteinBinding:
+      "حوالي 72%",
+
+    metabolism:
+      "يستقلب في الكبد.",
+
+    elimination:
+      "عن طريق الكلى.",
+
+    storage:
+      "يحفظ بدرجة حرارة الغرفة.",
+
+    monitoring: [
+      "مراقبة النعاس.",
+      "متابعة تحسن أعراض الحساسية."
+    ],
+
+    clinicalPearls: [
+      "من مضادات الهيستامين من الجيل الأول.",
+      "قد يسبب نعاساً واضحاً.",
+      "يفضل الحذر عند إعطائه مع المهدئات."
+    ],
+
+    blackBox:
+      "لا يوجد.",
+
+    interactions: [
+      "Alcohol.",
+      "Sedatives.",
+      "MAO inhibitors."
+    ],
+
+    notes:
+      "رج الزجاجة جيداً قبل الاستخدام.",
+
+    alerts: [
+      "قد يسبب النعاس.",
+      "تجنب القيادة أو تشغيل الآلات.",
+      "لا تتجاوز الجرعة الموصى بها."
+    ]
+  }
+
+};
+
+
+// ======================================================
+// Export
+// ======================================================
+
+if (typeof module !== "undefined") {
+  module.exports = allergyDrugs;
 }
-],
-
-mechanism:"Selective H1 receptor blocker reducing allergic symptoms.",
-
-indications:"Allergic rhinitis, urticaria.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"Dose adjustment in renal impairment.",
-
-sideEffects:"Mild drowsiness, dry mouth.",
-
-pregnancy:"B",
-
-lactation:"Use with caution",
-
-doseRange:"0.25 mg/kg/day",
-
-onset:"1 hour",
-
-duration:"24 hours",
-
-halfLife:"8 hours",
-
-proteinBinding:"93%",
-
-metabolism:"Minimal hepatic",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Clinical improvement"
-],
-
-clinicalPearls:[
-"Less sedating than first-generation antihistamines."
-],
-
-interactions:[
-"Alcohol"
-],
-
-alerts:[
-"May cause mild drowsiness."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Lexicomp Pediatric"
-]
-
-},
-loratadine:{
-
-id:"loratadine",
-
-name:"Loratadine",
-
-genericName:"Loratadine",
-
-brandNames:[
-"Claritin"
-],
-
-category:"Antihistamine",
-
-therapeuticClass:"Second Generation H1 Antihistamine",
-
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
-
-diseases:[
-"allergy",
-"urticaria"
-],
-
-mgPerKg:0.2,
-
-frequency:"Once Daily",
-
-maxDose:10,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-{
-name:"1 mg/mL Syrup",
-concentration:1
-},
-{
-name:"10 mg Tablet",
-concentration:10
-}
-],
-
-mechanism:"Blocks peripheral H1 receptors.",
-
-indications:"Seasonal allergies, urticaria.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"Use cautiously in liver disease.",
-
-sideEffects:"Headache, dry mouth.",
-
-pregnancy:"B",
-
-lactation:"Compatible",
-
-doseRange:"5–10 mg/day",
-
-onset:"1–3 hours",
-
-duration:"24 hours",
-
-halfLife:"8 hours",
-
-proteinBinding:"97%",
-
-metabolism:"Hepatic",
-
-elimination:"Renal/Fecal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Symptom relief"
-],
-
-clinicalPearls:[
-"Minimal sedation."
-],
-
-interactions:[
-"Ketoconazole"
-],
-
-alerts:[
-"Usually taken once daily."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Nelson Pediatrics"
-]
-
-}, 
-chlorpheniramine:{
-
-id:"chlorpheniramine",
-
-name:"Chlorpheniramine",
-
-genericName:"Chlorpheniramine Maleate",
-
-brandNames:[
-"Piriton"
-],
-
-category:"Antihistamine",
-
-therapeuticClass:"First Generation H1 Antihistamine",
-
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
-
-diseases:[
-"allergy",
-"urticaria"
-],
-
-mgPerKg:0.1,
-
-frequency:"Every 6 hours",
-
-maxDose:12,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-{
-name:"2 mg/5 mL Syrup",
-concentration:2
-},
-{
-name:"4 mg Tablet",
-concentration:4
-}
-],
-
-mechanism:"Blocks H1 receptors with sedative properties.",
-
-indications:"Allergic reactions, itching.",
-
-contraindications:"Newborns, hypersensitivity.",
-
-warnings:"May cause marked drowsiness.",
-
-sideEffects:"Sedation, dry mouth, dizziness.",
-
-pregnancy:"B",
-
-lactation:"Avoid if possible",
-
-doseRange:"0.1 mg/kg every 6 hours",
-
-onset:"30 minutes",
-
-duration:"4–6 hours",
-
-halfLife:"20 hours",
-
-proteinBinding:"72%",
-
-metabolism:"Hepatic",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Drowsiness"
-],
-
-clinicalPearls:[
-"Avoid combining with other sedatives."
-],
-
-interactions:[
-"Alcohol",
-"CNS depressants"
-],
-
-alerts:[
-"May impair alertness."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Lexicomp Pediatric"
-]
-
-},
-diphenhydramine:{
-
-id:"diphenhydramine",
-
-name:"Diphenhydramine",
-
-genericName:"Diphenhydramine",
-
-brandNames:[
-"Benadryl"
-],
-
-category:"Antihistamine",
-
-therapeuticClass:"First Generation H1 Antihistamine",
-
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
-
-diseases:[
-"allergy",
-"urticaria",
-"anaphylaxis"
-],
-
-mgPerKg:1,
-
-frequency:"Every 6 hours",
-
-maxDose:50,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-{
-name:"12.5 mg/5 mL Syrup",
-concentration:12.5
-},
-{
-name:"25 mg Capsule",
-concentration:25
-}
-],
-
-mechanism:"Blocks H1 receptors producing antiallergic and sedative effects.",
-
-indications:"Allergic reactions, urticaria, itching.",
-
-contraindications:"Neonates, hypersensitivity.",
-
-warnings:"Causes significant drowsiness.",
-
-sideEffects:"Sedation, dry mouth, dizziness.",
-
-pregnancy:"B",
-
-lactation:"Avoid if possible",
-
-doseRange:"1 mg/kg/dose",
-
-onset:"30 minutes",
-
-duration:"6 hours",
-
-halfLife:"8 hours",
-
-proteinBinding:"78%",
-
-metabolism:"Hepatic",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Sedation"
-],
-
-clinicalPearls:[
-"Useful in acute allergic reactions."
-],
-
-interactions:[
-"Alcohol",
-"Sedatives"
-],
-
-alerts:[
-"May impair alertness."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Lexicomp Pediatric"
-]
-
-},
-hydroxyzine:{
-
-id:"hydroxyzine",
-
-name:"Hydroxyzine",
-
-genericName:"Hydroxyzine",
-
-brandNames:[
-"Atarax"
-],
-
-category:"Antihistamine",
-
-therapeuticClass:"First Generation H1 Antihistamine",
-
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
-
-diseases:[
-"allergy",
-"urticaria"
-],
-
-mgPerKg:0.6,
-
-frequency:"Every 8 hours",
-
-maxDose:100,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-{
-name:"10 mg/5 mL Syrup",
-concentration:10
-}
-],
-
-mechanism:"Blocks H1 receptors with sedative properties.",
-
-indications:"Pruritus and allergic disorders.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"May prolong QT interval.",
-
-sideEffects:"Drowsiness, dry mouth.",
-
-pregnancy:"C",
-
-lactation:"Avoid",
-
-doseRange:"0.5–1 mg/kg/dose",
-
-onset:"30 minutes",
-
-duration:"6 hours",
-
-halfLife:"20 hours",
-
-proteinBinding:"80%",
-
-metabolism:"Hepatic",
-
-elimination:"Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Sedation"
-],
-
-clinicalPearls:[
-"Useful for severe itching."
-],
-
-interactions:[
-"CNS depressants"
-],
-
-alerts:[
-"Monitor excessive sedation."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Nelson Pediatrics"
-]
-
-},
-fexofenadine:{
-
-id:"fexofenadine",
-
-name:"Fexofenadine",
-
-genericName:"Fexofenadine",
-
-brandNames:[
-"Allegra"
-],
-
-category:"Antihistamine",
-
-therapeuticClass:"Second Generation H1 Antihistamine",
-
-pharmacologicalClass:"Histamine H1 Receptor Antagonist",
-
-diseases:[
-"allergy",
-"urticaria"
-],
-
-mgPerKg:0,
-
-frequency:"Twice Daily",
-
-maxDose:180,
-
-minAge:2,
-
-maxAge:12,
-
-strengths:[
-{
-name:"30 mg/5 mL Suspension",
-concentration:30
-},
-{
-name:"30 mg Tablet",
-concentration:30
-}
-],
-
-mechanism:"Selective peripheral H1 receptor antagonist.",
-
-indications:"Seasonal allergic rhinitis and urticaria.",
-
-contraindications:"Hypersensitivity.",
-
-warnings:"Avoid taking with fruit juices.",
-
-sideEffects:"Headache, nausea.",
-
-pregnancy:"C",
-
-lactation:"Use with caution",
-
-doseRange:"30 mg twice daily",
-
-onset:"1 hour",
-
-duration:"12 hours",
-
-halfLife:"14 hours",
-
-proteinBinding:"65%",
-
-metabolism:"Minimal",
-
-elimination:"Fecal/Renal",
-
-storage:"Room temperature",
-
-monitoring:[
-"Symptom improvement"
-],
-
-clinicalPearls:[
-"Practically non-sedating."
-],
-
-interactions:[
-"Aluminum antacids"
-],
-
-alerts:[
-"Do not take with orange, apple, or grapefruit juice."
-],
-
-blackBox:"",
-
-references:[
-"BNFc 2025",
-"Lexicomp Pediatric"
-]
-
-},
-});
