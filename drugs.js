@@ -11,11 +11,39 @@ const drugs = {};
 
 function registerDrugs(drugList) {
 
-    if (!drugList || typeof drugList !== "object") {
+    if (!drugList) {
         return;
     }
 
-    Object.assign(drugs, drugList);
+    // ================================================
+    // If drugList is an Array
+    // ================================================
+
+    if (Array.isArray(drugList)) {
+
+        drugList.forEach(drug => {
+
+            if (drug && drug.id) {
+
+                drugs[drug.id] = drug;
+
+            }
+
+        });
+
+        return;
+    }
+
+    // ================================================
+    // If drugList is an Object
+    // ================================================
+
+    if (typeof drugList === "object") {
+
+        Object.assign(drugs, drugList);
+
+    }
+
 }
 
 // ======================================================
@@ -25,4 +53,11 @@ function registerDrugs(drugList) {
 window.drugs = drugs;
 window.registerDrugs = registerDrugs;
 
-console.log("DoseCare Drugs Registry Loaded");
+// ======================================================
+// Debug
+// ======================================================
+
+console.log(
+    "DoseCare Drugs Registry Loaded:",
+    drugs
+);
