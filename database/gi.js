@@ -47,7 +47,6 @@ const GI_DRUGS = [
     notes: "ORS is the preferred first-line treatment for mild to moderate dehydration due to diarrhea."
   },
 
-
   // ====================================================
   // 2. ZINC
   // ====================================================
@@ -210,7 +209,6 @@ const GI_DRUGS = [
 
     notes: "Polyethylene glycol is commonly used as an osmotic laxative in children."
   },
-
 
   // ====================================================
   // 6. SIMETHICONE
