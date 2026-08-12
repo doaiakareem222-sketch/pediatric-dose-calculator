@@ -3565,3 +3565,442 @@ function hideResult() {
 // ======================================================
 // END OF PART 5
 // ======================================================
+// ======================================================
+// DoseCare AI v8
+// History & Calculation Statistics
+// Part 6
+// ======================================================
+
+
+// ======================================================
+// HISTORY / STATISTICS ELEMENTS
+// ======================================================
+
+const calcCount =
+    document.getElementById("calcCount");
+
+const lastDrug =
+    document.getElementById("lastDrug");
+
+const historyList =
+    document.getElementById("historyList");
+
+const clearHistoryBtn =
+    document.getElementById("clearHistoryBtn");
+
+
+// ======================================================
+// UPDATE HISTORY UI
+// ======================================================
+
+function updateHistoryUI() {
+
+    if (!historyList) {
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Clear current history
+    // --------------------------------------------------
+
+    historyList.innerHTML = "";
+
+
+    // --------------------------------------------------
+    // No history
+    // --------------------------------------------------
+
+    if (
+        calculationHistory.length === 0
+    ) {
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        empty.className =
+            "history-empty";
+
+        empty.textContent =
+            "No calculations yet.";
+
+        historyList.appendChild(
+            empty
+        );
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Display newest calculation first
+    // --------------------------------------------------
+
+    const reversedHistory =
+        [
+            ...calculationHistory
+        ].reverse();
+
+
+    reversedHistory.forEach(
+        (
+            item,
+            index
+        ) => {
+
+            const historyItem =
+                document.createElement(
+                    "div"
+                );
+
+            historyItem.className =
+                "history-item";
+
+
+            // ------------------------------------------
+            // Drug
+            // ------------------------------------------
+
+            const drugElement =
+                document.createElement(
+                    "div"
+                );
+
+            drugElement.className =
+                "history-drug";
+
+            drugElement.textContent =
+                item.drug || "-";
+
+
+            // ------------------------------------------
+            // Patient information
+            // ------------------------------------------
+
+            const patientElement =
+                document.createElement(
+                    "div"
+                );
+
+            patientElement.className =
+                "history-patient";
+
+
+            const ageText =
+                item.ageUnit ===
+                "months"
+
+                    ? `${item.age} month(s)`
+
+                    : `${item.age} year(s)`;
+
+
+            patientElement.textContent =
+                `Age: ${ageText} • Weight: ${item.weight} kg`;
+
+
+            // ------------------------------------------
+            // Disease
+            // ------------------------------------------
+
+            const diseaseElement =
+                document.createElement(
+                    "div"
+                );
+
+            diseaseElement.className =
+                "history-disease";
+
+            diseaseElement.textContent =
+                item.disease
+                    ? `Condition: ${item.disease}`
+                    : "Condition: -";
+
+
+            // ------------------------------------------
+            // Dose
+            // ------------------------------------------
+
+            const doseElement =
+                document.createElement(
+                    "div"
+                );
+
+            doseElement.className =
+                "history-dose";
+
+
+            let doseText =
+                "Dose: -";
+
+
+            if (
+                Number.isFinite(
+                    item.doseMg
+                )
+            ) {
+
+                doseText =
+                    `Dose: ${formatDose(
+                        item.doseMg
+                    )} mg`;
+
+            }
+
+
+            if (
+                Number.isFinite(
+                    item.doseMl
+                )
+            ) {
+
+                doseText +=
+                    ` • ${formatVolume(
+                        item.doseMl
+                    )} mL`;
+
+            }
+
+
+            doseElement.textContent =
+                doseText;
+
+
+            // ------------------------------------------
+            // Frequency
+            // ------------------------------------------
+
+            const frequencyElement =
+                document.createElement(
+                    "div"
+                );
+
+            frequencyElement.className =
+                "history-frequency";
+
+            frequencyElement.textContent =
+                `Frequency: ${
+                    item.frequency || "-"
+                }`;
+
+
+            // ------------------------------------------
+            // Duration
+            // ------------------------------------------
+
+            const durationElement =
+                document.createElement(
+                    "div"
+                );
+
+            durationElement.className =
+                "history-duration";
+
+            durationElement.textContent =
+                `Duration: ${
+                    item.duration || "-"
+                }`;
+
+
+            // ------------------------------------------
+            // Timestamp
+            // ------------------------------------------
+
+            const timeElement =
+                document.createElement(
+                    "div"
+                );
+
+            timeElement.className =
+                "history-time";
+
+
+            timeElement.textContent =
+                formatHistoryTime(
+                    item.timestamp
+                );
+
+
+            // ------------------------------------------
+            // Append
+            // ------------------------------------------
+
+            historyItem.appendChild(
+                drugElement
+            );
+
+            historyItem.appendChild(
+                patientElement
+            );
+
+            historyItem.appendChild(
+                diseaseElement
+            );
+
+            historyItem.appendChild(
+                doseElement
+            );
+
+            historyItem.appendChild(
+                frequencyElement
+            );
+
+            historyItem.appendChild(
+                durationElement
+            );
+
+            historyItem.appendChild(
+                timeElement
+            );
+
+
+            historyList.appendChild(
+                historyItem
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// FORMAT HISTORY TIME
+// ======================================================
+
+function formatHistoryTime(
+    timestamp
+) {
+
+    if (!timestamp) {
+
+        return "-";
+
+    }
+
+
+    const date =
+        new Date(
+            timestamp
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "-";
+
+    }
+
+
+    return date.toLocaleString();
+
+}
+
+
+// ======================================================
+// CLEAR HISTORY
+// ======================================================
+
+function clearCalculationHistory() {
+
+    calculationHistory =
+        [];
+
+
+    // ----------------------------------------------
+    // Reset counter
+    // ----------------------------------------------
+
+    calculations =
+        0;
+
+
+    if (calcCount) {
+
+        calcCount.textContent =
+            "0";
+
+    }
+
+
+    // ----------------------------------------------
+    // Reset last drug
+    // ----------------------------------------------
+
+    if (lastDrug) {
+
+        lastDrug.textContent =
+            "-";
+
+    }
+
+
+    // ----------------------------------------------
+    // Refresh history
+    // ----------------------------------------------
+
+    updateHistoryUI();
+
+}
+
+
+// ======================================================
+// CLEAR HISTORY BUTTON
+// ======================================================
+
+if (clearHistoryBtn) {
+
+    clearHistoryBtn.addEventListener(
+        "click",
+        () => {
+
+            if (
+                calculationHistory.length ===
+                0
+            ) {
+
+                return;
+
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Clear all calculation history?"
+                );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            clearCalculationHistory();
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// INITIAL HISTORY UI
+// ======================================================
+
+updateHistoryUI();
+
+
+// ======================================================
+// END OF PART 6
+// ======================================================
