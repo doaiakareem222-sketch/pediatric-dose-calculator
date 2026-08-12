@@ -850,9 +850,22 @@ const emergencyDrugs = {
 
 
 // ======================================================
-// EXPORT
+// Register Emergency Drugs
 // ======================================================
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = emergencyDrugs;
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(emergencyDrugs);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
 }
+
+console.log(
+    "Emergency Database Loaded:",
+    Object.keys(emergencyDrugs)
+);
