@@ -3,7 +3,7 @@
 // Asthma Drugs Database
 // ======================================================
 
-const systemDrugs = [
+const asthmaDrugs = [
 
   {
     id: "salbutamol",
@@ -160,5 +160,5 @@ const systemDrugs = [
 // ======================================================
 
 if (typeof registerDrugs === "function") {
-  registerDrugs(systemDrugs);
+  registerDrugs(asthmaDrugs);
 }
