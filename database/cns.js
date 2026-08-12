@@ -5,27 +5,7 @@
 
 const cnsDrugs = [
 
-  {
-    id: "diazepam",
-    name: "Diazepam",
-    genericName: "Diazepam",
-    brandNames: ["Valium"],
-    category: "CNS",
-    therapeuticClass: "Benzodiazepine",
-    diseases: ["seizure", "status-epilepticus"],
-    dosageForm: "Oral Solution",
-    strengths: ["1 mg / 1 mL", "2 mg / 5 mL"],
-    frequency: "حسب الحالة الطبية",
-    minAge: 0,
-    maxAge: 18,
-    indications: ["Seizures", "Status epilepticus"],
-    contraindications: ["Severe respiratory depression"],
-    warnings: [
-      "قد يسبب النعاس وتثبيط التنفس",
-      "يُستخدم للأطفال تحت إشراف طبي"
-    ],
-    notes: "دواء إسعافي مهم للتشنجات، والجرعة تعتمد على العمر والوزن وطريق الإعطاء."
-  },
+  
 
   {
     id: "levetiracetam",
