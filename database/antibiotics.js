@@ -1,160 +1,270 @@
 // ======================================================
-// DoseCare AI v7
-// Additional Antibiotics Database
-// Pediatric Oral Liquids
+// DoseCare AI
+// ANTIBIOTICS DATABASE — Pediatric Oral Liquids
+// Clean standardized version
+// ======================================================
+// IMPORTANT:
+// - All entries are oral liquid formulations only.
+// - Dose calculations are based on the active component
+//   specified in each drug's dose object.
+// - mL conversion must use the selected strength.
+// - Verify the final regimen against the current local
+//   guideline / official product label before clinical use.
 // ======================================================
 
-const additionalAntibioticDrugs = {
+const antibioticsDatabase = {
 
     // ==================================================
-    // 1. AZITHROMYCIN
+    // 1. AMOXICILLIN
     // ==================================================
-
-    azithromycin: {
-
-        id: "azithromycin",
-
-        name: "Azithromycin",
-
-        genericName: "Azithromycin",
-
-        brandNames: [
-            "Zithromax",
-            "Azithro"
-        ],
-
+    amoxicillin: {
+        id: "amoxicillin",
+        name: "Amoxicillin",
+        genericName: "Amoxicillin",
+        brandNames: ["Amoxil", "Moxatag"],
         category: "Antibiotic",
-
-        therapeuticClass: "Macrolide Antibiotic",
-
-        pharmacologicalClass: "Azalide Macrolide",
-
+        therapeuticClass: "Penicillin Antibiotic",
+        pharmacologicalClass: "Aminopenicillin",
         diseases: [
             "otitis",
             "sinusitis",
             "pneumonia",
-            "pharyngitis"
+            "pharyngitis",
+            "uti"
         ],
 
         dosageForm: "Oral Suspension",
-
         route: "Oral",
 
         strengths: [
             {
-                name: "100 mg / 5 mL",
-                concentration: 100,
+                name: "125 mg / 5 mL",
+                concentration: 125,
                 volume: 5,
                 unit: "mg/5mL"
             },
             {
-                name: "200 mg / 5 mL",
-                concentration: 200,
+                name: "250 mg / 5 mL",
+                concentration: 250,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "400 mg / 5 mL",
+                concentration: 400,
                 volume: 5,
                 unit: "mg/5mL"
             }
         ],
 
         dose: {
-
             type: "disease_based",
 
-            otitis: {
-                regimens: [
-                    "30 mg/kg as a single dose",
-                    "10 mg/kg once daily for 3 days",
-                    "10 mg/kg on Day 1 followed by 5 mg/kg/day on Days 2–5"
-                ]
+            standard: {
+                mildModerateMgPerKgPerDay: 25,
+                severeMgPerKgPerDay: 45,
+                frequency: "Every 12 hours",
+                alternativeFrequency: "Every 8 hours",
+                maxWeightForPediatricRegimenKg: 40
             },
 
-            sinusitis: {
-                mgPerKg: 10,
-                frequency: "Once daily",
-                duration: "3 days"
-            },
-
-            pneumonia: {
-                day1MgPerKg: 10,
-                days2to5MgPerKg: 5,
-                frequency: "Once daily",
-                duration: "5 days"
-            },
-
-            pharyngitis: {
-                mgPerKg: 12,
-                frequency: "Once daily",
-                duration: "5 days"
+            neonates: {
+                maxMgPerKgPerDay: 30,
+                frequency: "Every 12 hours",
+                age: "≤12 weeks"
             }
         },
 
         age: {
-            minAge: 0.5,
+            minAge: 0,
             maxAge: 18
         },
 
         indications:
-            "بعض الالتهابات البكتيرية المحددة مثل التهاب الأذن الوسطى، التهاب الجيوب الأنفية وبعض حالات pneumonia وpharyngitis حسب التشخيص.",
+            "Susceptible bacterial infections including selected respiratory, ENT, skin and urinary infections.",
 
         contraindications:
-            "فرط الحساسية للـ macrolides أو وجود تاريخ من cholestatic jaundice/hepatic dysfunction associated with previous azithromycin use.",
+            "Serious hypersensitivity to amoxicillin, penicillins or relevant beta-lactams.",
 
         warnings:
-            "قد يسبب إطالة QT واضطرابات نظم القلب، ويستخدم بحذر عند وجود عوامل خطورة قلبية أو أدوية أخرى تطيل QT.",
+            "Use cautiously in severe beta-lactam allergy history and renal impairment. Antibiotics should be used only when bacterial infection is suspected or confirmed.",
 
         sideEffects:
-            "إسهال، غثيان، ألم بطني، قيء، صداع، وقد تحدث اضطرابات كبدية أو اضطرابات نظم نادراً.",
+            "Diarrhea, nausea, vomiting, abdominal discomfort, rash and hypersensitivity reactions.",
 
         notes:
-            "يمكن إعطاؤه مع أو بدون الطعام. لا يستخدم لمجرد وجود أعراض تنفسية دون تشخيص عدوى بكتيرية مناسبة.",
+            "Shake suspension well before use. Dose is expressed as amoxicillin component.",
 
         monitoring: [
-            "متابعة الاستجابة للعلاج.",
-            "مراقبة الأعراض الهضمية.",
-            "مراقبة عوامل خطورة QT عند وجودها."
+            "Clinical response",
+            "Allergic reactions",
+            "Renal function when clinically indicated"
         ],
 
         alerts: [
-            "لا تستخدمه للعدوى الفيروسية.",
-            "انتبه للتداخلات التي قد تطيل QT.",
-            "اختيار الجرعة يعتمد على نوع العدوى."
+            "Do not use for viral infections.",
+            "Check concentration before converting mg to mL.",
+            "Streptococcal pharyngitis generally requires an adequate treatment duration."
         ],
 
         source:
-            "FDA/DailyMed Azithromycin Oral Suspension; WHO childhood infection guidance."
+            "DailyMed/FDA: Amoxicillin for Oral Suspension."
     },
 
 
     // ==================================================
-    // 2. CLARITHROMYCIN
+    // 2. AMOXICILLIN + CLAVULANATE
     // ==================================================
+    amoxicillin_clavulanate: {
 
-    clarithromycin: {
+        id: "amoxicillin_clavulanate",
 
-        id: "clarithromycin",
+        name: "Amoxicillin + Clavulanate",
 
-        name: "Clarithromycin",
-
-        genericName: "Clarithromycin",
+        genericName:
+            "Amoxicillin + Clavulanate Potassium",
 
         brandNames: [
-            "Klacid",
-            "Biaxin"
+            "Augmentin",
+            "Augmentin ES-600"
         ],
 
         category: "Antibiotic",
 
-        therapeuticClass: "Macrolide Antibiotic",
+        therapeuticClass:
+            "Penicillin + Beta-lactamase Inhibitor",
 
-        pharmacologicalClass: "Macrolide",
+        pharmacologicalClass:
+            "Aminopenicillin + Beta-lactamase Inhibitor",
 
         diseases: [
-            "respiratory_infection",
-            "pharyngitis",
-            "pneumonia"
+            "otitis",
+            "sinusitis",
+            "pneumonia",
+            "skin",
+            "uti"
         ],
 
         dosageForm: "Oral Suspension",
+        route: "Oral",
 
+        strengths: [
+
+            {
+                name: "200 mg / 28.5 mg per 5 mL",
+                concentration: 200,
+                clavulanate: 28.5,
+                volume: 5,
+                unit: "mg/5mL",
+                doseComponent: "amoxicillin"
+            },
+
+            {
+                name: "400 mg / 57 mg per 5 mL",
+                concentration: 400,
+                clavulanate: 57,
+                volume: 5,
+                unit: "mg/5mL",
+                doseComponent: "amoxicillin"
+            },
+
+            {
+                name: "600 mg / 42.9 mg per 5 mL",
+                concentration: 600,
+                clavulanate: 42.9,
+                volume: 5,
+                unit: "mg/5mL",
+                doseComponent: "amoxicillin"
+            }
+        ],
+
+        dose: {
+
+            type: "component_based",
+
+            component: "amoxicillin",
+
+            standard: {
+                minMgPerKgPerDay: 25,
+                maxMgPerKgPerDay: 45,
+                frequency: "Every 12 hours"
+            },
+
+            highDose: {
+                mgPerKgPerDay: 90,
+                frequency: "Every 12 hours",
+                formulation: "600 mg/42.9 mg per 5 mL",
+                age: "3 months to 12 years",
+                maxWeightKg: 40
+            }
+        },
+
+        age: {
+            minAge: 0.25,
+            maxAge: 18
+        },
+
+        indications:
+            "Selected bacterial infections including acute otitis media, bacterial sinusitis, lower respiratory, skin/soft tissue and urinary infections.",
+
+        contraindications:
+            "Serious beta-lactam hypersensitivity or previous cholestatic jaundice/hepatic dysfunction associated with this drug.",
+
+        warnings:
+            "Different suspension strengths are not automatically interchangeable because the clavulanate amount differs. Dose is based on the amoxicillin component.",
+
+        sideEffects:
+            "Diarrhea, nausea, vomiting, abdominal discomfort, rash and hypersensitivity reactions.",
+
+        notes:
+            "Give at the start of a meal to improve clavulanate absorption and reduce GI intolerance. Shake well.",
+
+        monitoring: [
+            "Clinical response",
+            "Allergy",
+            "Liver function when indicated",
+            "Renal function when indicated"
+        ],
+
+        alerts: [
+            "Always identify the exact amoxicillin/clavulanate strength.",
+            "Do not substitute formulations milligram-for-milligram.",
+            "Convert mg to mL using the amoxicillin concentration."
+        ],
+
+        source:
+            "DailyMed/FDA: Amoxicillin and Clavulanate Potassium for Oral Suspension."
+    },
+
+
+    // ==================================================
+    // 3. PENICILLIN V
+    // ==================================================
+    penicillin_v: {
+
+        id: "penicillin_v",
+
+        name: "Penicillin V",
+
+        genericName: "Penicillin V Potassium",
+
+        brandNames: [
+            "Pen-Vee K"
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+            "Penicillin Antibiotic",
+
+        pharmacologicalClass:
+            "Natural Penicillin",
+
+        diseases: [
+            "pharyngitis"
+        ],
+
+        dosageForm: "Oral Solution",
         route: "Oral",
 
         strengths: [
@@ -176,13 +286,11 @@ const additionalAntibioticDrugs = {
 
             type: "standard_pediatric",
 
-            mgPerKgPerDay: 15,
-
-            frequency: "Every 12 hours",
-
-            duration: "10 days",
-
-            maxDoseMgPerDose: 500
+            pharyngitis: {
+                mgPerKgPerDay: 25,
+                frequency: "Divided doses",
+                duration: "10 days"
+            }
         },
 
         age: {
@@ -191,42 +299,248 @@ const additionalAntibioticDrugs = {
         },
 
         indications:
-            "بعض الالتهابات البكتيرية التنفسية وغيرها من الاستطبابات المحددة حسب التشخيص والبروتوكول.",
+            "Selected susceptible streptococcal and other penicillin-sensitive infections, especially streptococcal pharyngitis.",
 
         contraindications:
-            "فرط الحساسية للـ macrolides، وبعض التداخلات الدوائية الخطيرة، وبعض اضطرابات QT.",
+            "Known serious hypersensitivity to penicillin.",
 
         warnings:
-            "Clarithromycin يملك تداخلات دوائية مهمة لأنه يؤثر في CYP3A4، وقد يسبب QT prolongation.",
+            "Dose depends on organism, infection severity and clinical response.",
 
         sideEffects:
-            "غثيان، قيء، إسهال، ألم بطني، تغير أو طعم مر في الفم، صداع، واضطرابات كبدية أو قلبية نادرة.",
+            "Nausea, diarrhea, abdominal discomfort, rash and hypersensitivity reactions.",
 
         notes:
-            "يمكن إعطاؤه مع أو بدون الطعام حسب المستحضر. يجب مراجعة التداخلات الدوائية قبل الاستخدام.",
+            "Oral solution must be shaken well. Reconstituted solution requires storage according to the product label.",
 
         monitoring: [
-            "الاستجابة للعلاج.",
-            "وظائف الكبد عند وجود عوامل خطورة.",
-            "التداخلات الدوائية.",
-            "QT risk عند وجود عوامل خطورة."
+            "Clinical response",
+            "Allergic reactions"
         ],
 
         alerts: [
-            "انتبه للتداخلات الدوائية.",
-            "لا تستخدمه للعدوى الفيروسية.",
-            "الجرعة تختلف في بعض الاستطبابات الخاصة مثل MAC."
+            "Do not use for viral sore throat.",
+            "Streptococcal pharyngitis requires an adequate treatment duration."
         ],
 
         source:
-            "FDA/DailyMed Clarithromycin for Oral Suspension."
+            "DailyMed/FDA: Penicillin V Potassium for Oral Solution."
     },
 
 
     // ==================================================
-    // 3. CEFUROXIME
+    // 4. CEPHALEXIN
     // ==================================================
+    cephalexin: {
 
+        id: "cephalexin",
+
+        name: "Cephalexin",
+
+        genericName: "Cephalexin",
+
+        brandNames: [
+            "Keflex"
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+            "Cephalosporin Antibiotic",
+
+        pharmacologicalClass:
+            "First Generation Cephalosporin",
+
+        diseases: [
+            "otitis",
+            "pharyngitis",
+            "skin",
+            "uti"
+        ],
+
+        dosageForm: "Oral Suspension",
+        route: "Oral",
+
+        strengths: [
+            {
+                name: "125 mg / 5 mL",
+                concentration: 125,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "250 mg / 5 mL",
+                concentration: 250,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+        ],
+
+        dose: {
+
+            type: "disease_based",
+
+            standard: {
+                minMgPerKgPerDay: 25,
+                maxMgPerKgPerDay: 50,
+                frequency: "Divided doses",
+                duration: "7–14 days"
+            },
+
+            otitis: {
+                minMgPerKgPerDay: 75,
+                maxMgPerKgPerDay: 100,
+                frequency: "Divided doses every 6 hours"
+            },
+
+            severe: {
+                minMgPerKgPerDay: 50,
+                maxMgPerKgPerDay: 100,
+                frequency: "Divided doses"
+            }
+        },
+
+        age: {
+            minAge: 1,
+            maxAge: 18
+        },
+
+        indications:
+            "Susceptible skin/soft-tissue infections, streptococcal pharyngitis, selected urinary infections and other susceptible bacterial infections.",
+
+        contraindications:
+            "Known hypersensitivity to cephalexin or cephalosporins.",
+
+        warnings:
+            "Use caution with significant beta-lactam allergy and renal impairment.",
+
+        sideEffects:
+            "Diarrhea, nausea, vomiting, abdominal pain, rash and hypersensitivity.",
+
+        notes:
+            "Shake suspension well before each dose.",
+
+        monitoring: [
+            "Clinical response",
+            "Allergy",
+            "Renal function when indicated"
+        ],
+
+        alerts: [
+            "Check concentration before mL conversion.",
+            "Do not use for viral infections.",
+            "Dose may require adjustment in renal impairment."
+        ],
+
+        source:
+            "DailyMed/FDA: Cephalexin for Oral Suspension."
+    },
+
+
+    // ==================================================
+    // 5. CEFACLOR
+    // ==================================================
+    cefaclor: {
+
+        id: "cefaclor",
+
+        name: "Cefaclor",
+
+        genericName: "Cefaclor",
+
+        brandNames: [
+            "Ceclor"
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+            "Cephalosporin Antibiotic",
+
+        pharmacologicalClass:
+            "Second Generation Cephalosporin",
+
+        diseases: [
+            "otitis",
+            "pharyngitis",
+            "skin",
+            "uti"
+        ],
+
+        dosageForm: "Oral Suspension",
+        route: "Oral",
+
+        strengths: [
+            {
+                name: "125 mg / 5 mL",
+                concentration: 125,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "250 mg / 5 mL",
+                concentration: 250,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+            {
+                name: "375 mg / 5 mL",
+                concentration: 375,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+        ],
+
+        dose: {
+
+            type: "standard_pediatric",
+
+            mgPerKgPerDay: 20,
+
+            frequency: "Every 8 hours",
+
+            maxDoseMgPerDay: 1000
+        },
+
+        age: {
+            minAge: 1,
+            maxAge: 18
+        },
+
+        indications:
+            "Selected susceptible respiratory, otitis media, skin/soft tissue and urinary bacterial infections.",
+
+        contraindications:
+            "Known hypersensitivity to cefaclor or cephalosporins.",
+
+        warnings:
+            "Use cautiously in patients with beta-lactam allergy or renal impairment.",
+
+        sideEffects:
+            "Diarrhea, nausea, vomiting, abdominal discomfort and rash.",
+
+        notes:
+            "Shake suspension well before administration.",
+
+        monitoring: [
+            "Clinical response",
+            "Allergic reactions",
+            "Renal function when indicated"
+        ],
+
+        alerts: [
+            "Check the selected strength before converting mg to mL.",
+            "Do not use for viral infections."
+        ],
+
+        source:
+            "DailyMed/FDA: Cefaclor Oral Suspension."
+    },
+
+
+    // ==================================================
+    // 6. CEFUROXIME
+    // ==================================================
     cefuroxime: {
 
         id: "cefuroxime",
@@ -242,9 +556,11 @@ const additionalAntibioticDrugs = {
 
         category: "Antibiotic",
 
-        therapeuticClass: "Cephalosporin Antibiotic",
+        therapeuticClass:
+            "Cephalosporin Antibiotic",
 
-        pharmacologicalClass: "Second Generation Cephalosporin",
+        pharmacologicalClass:
+            "Second Generation Cephalosporin",
 
         diseases: [
             "otitis",
@@ -254,7 +570,6 @@ const additionalAntibioticDrugs = {
         ],
 
         dosageForm: "Oral Suspension",
-
         route: "Oral",
 
         strengths: [
@@ -311,39 +626,45 @@ const additionalAntibioticDrugs = {
         },
 
         indications:
-            "التهاب الأذن الوسطى، التهاب البلعوم واللوزتين، التهاب الجيوب الأنفية البكتيري وبعض التهابات الجلد المحددة.",
+            "Otitis media, pharyngitis/tonsillitis, bacterial sinusitis and selected skin/soft-tissue infections.",
 
         contraindications:
-            "فرط الحساسية للسيفالوسبورينات أو تفاعل تحسسي شديد سابق مع beta-lactam antibiotics.",
+            "Serious hypersensitivity to cefuroxime, cephalosporins or relevant beta-lactams.",
 
         warnings:
-            "يجب الحذر عند وجود تاريخ من الحساسية للبنسلينات أو قصور كلوي. المعلق الفموي ليس بالضرورة مكافئاً للأقراص milligram-for-milligram.",
+            "Use caution in severe penicillin allergy and renal impairment. Oral suspension and tablets are not necessarily interchangeable milligram-for-milligram.",
 
         sideEffects:
-            "إسهال، غثيان، قيء، ألم بطني، طفح جلدي وتفاعلات تحسسية.",
+            "Diarrhea, nausea, vomiting, abdominal pain, rash and hypersensitivity.",
 
         notes:
-            "يعطى مع الطعام لتحسين الامتصاص حسب النشرة الرسمية، ويرج جيداً قبل الاستخدام.",
+            "Shake well before use. Administer with food according to the product labeling.",
 
         monitoring: [
-            "الاستجابة للعلاج.",
-            "علامات الحساسية.",
-            "وظائف الكلى عند وجود قصور."
+            "Clinical response",
+            "Allergic reactions",
+            "Renal function when indicated"
         ],
 
         alerts: [
-            "رج العبوة جيداً.",
-            "يعطى مع الطعام.",
-            "لا تستخدمه للعدوى الفيروسية."
+            "Shake the suspension well.",
+            "Give with food.",
+            "Check the exact formulation before calculating mL."
         ],
 
         source:
-            "FDA/DailyMed Cefuroxime Axetil Oral Suspension."
-    },
+            "DailyMed/FDA: Cefuroxime Axetil Oral Suspension."
+    }
+ // ======================================================
+// DoseCare AI v7
+// Additional Antibiotics Database - Part 3
+// Pediatric Oral Liquids
+// ======================================================
 
+const additionalAntibioticDrugsPart3 = {
 
     // ==================================================
-    // 4. CEFIXIME
+    // 7. CEFIXIME
     // ==================================================
 
     cefixime: {
@@ -361,9 +682,11 @@ const additionalAntibioticDrugs = {
 
         category: "Antibiotic",
 
-        therapeuticClass: "Cephalosporin Antibiotic",
+        therapeuticClass:
+            "Cephalosporin Antibiotic",
 
-        pharmacologicalClass: "Third Generation Cephalosporin",
+        pharmacologicalClass:
+            "Third Generation Cephalosporin",
 
         diseases: [
             "otitis",
@@ -376,215 +699,154 @@ const additionalAntibioticDrugs = {
         route: "Oral",
 
         strengths: [
+
             {
                 name: "100 mg / 5 mL",
                 concentration: 100,
                 volume: 5,
                 unit: "mg/5mL"
             },
+
             {
                 name: "200 mg / 5 mL",
                 concentration: 200,
                 volume: 5,
                 unit: "mg/5mL"
             }
+
         ],
 
         dose: {
 
-            type: "standard_pediatric",
+            type: "weight_based",
 
             mgPerKgPerDay: 8,
 
             alternatives: [
+
                 "8 mg/kg once daily",
+
                 "4 mg/kg every 12 hours"
-            ]
+
+            ],
+
+            maxDoseMgPerDay: 400,
+
+            duration:
+
+                "حسب نوع العدوى؛ Streptococcus pyogenes requires at least 10 days"
+
         },
 
         age: {
+
             minAge: 0.5,
-            maxAge: 18
+
+            maxAge: 12
+
         },
 
         indications:
-            "التهابات المسالك البولية غير المعقدة، التهاب الأذن الوسطى، التهاب البلعوم واللوزتين وبعض الاستطبابات المحددة الأخرى.",
+
+            "Uncomplicated urinary tract infections, acute otitis media, and pharyngitis/tonsillitis caused by susceptible bacteria.",
 
         contraindications:
-            "فرط الحساسية للسيفالوسبورينات.",
+
+            "Known hypersensitivity to cefixime or other cephalosporin antibiotics.",
 
         warnings:
-            "يستخدم بحذر عند وجود قصور كلوي، ويجب تعديل الجرعة عند الحاجة.",
+
+            "Use cautiously in patients with severe beta-lactam allergy or renal impairment. The dose in mL must always be interpreted together with the suspension concentration.",
 
         sideEffects:
-            "إسهال، غثيان، ألم بطني، قيء وطفح جلدي.",
+
+            "Diarrhea, nausea, abdominal pain, vomiting, dyspepsia, and skin rash. Serious hypersensitivity reactions and C. difficile-associated diarrhea may occur.",
+
+        pregnancy:
+
+            "Use only when clinically indicated and according to professional medical advice.",
+
+        lactation:
+
+            "Cefixime is generally considered compatible with breastfeeding; monitor the infant for gastrointestinal effects or rash.",
 
         notes:
-            "يتوفر بعدة تراكيز للمعلق، لذلك يجب أن يظهر التركيز بوضوح عند حساب mL.",
+
+            "Available oral suspension concentrations differ by product. Always verify the concentration before converting mg to mL.",
 
         monitoring: [
-            "الاستجابة للعلاج.",
-            "علامات الحساسية.",
-            "وظائف الكلى عند وجود قصور."
+
+            "Clinical response to treatment.",
+
+            "Signs of hypersensitivity.",
+
+            "Renal function when clinically indicated.",
+
+            "Persistent or severe diarrhea."
+
         ],
+
+        interactions:
+
+            "Check for clinically relevant interactions and anticoagulant effects when used with warfarin or other anticoagulants.",
+
+        clinicalPearls:
+
+            "For pediatric patients 6 months and older, the labeled dose is 8 mg/kg/day, given once daily or divided every 12 hours.",
 
         alerts: [
-            "العمر الأدنى الموصى به للمعلق هو 6 أشهر.",
-            "تأكد من التركيز قبل تحويل mg إلى mL.",
-            "لا تستخدمه للعدوى الفيروسية."
+
+            "Minimum labeled pediatric age is 6 months.",
+
+            "Always verify the suspension concentration before calculating mL.",
+
+            "Do not use antibiotics for viral infections.",
+
+            "Streptococcal pharyngitis requires an adequate treatment duration."
+
         ],
 
+        blackBox:
+
+            "No boxed warning in the current DailyMed labeling.",
+
+        storage:
+
+            "Store the reconstituted suspension according to the specific manufacturer's labeling.",
+
+        metabolism:
+
+            "Cefixime undergoes limited metabolism.",
+
+        elimination:
+
+            "Primarily eliminated through the kidneys.",
+
+        onset:
+
+            "Clinical improvement is generally expected after effective antibacterial therapy is initiated.",
+
+        duration:
+
+            "Depends on the indication and clinical response.",
+
+        halfLife:
+
+            "Approximately 3–4 hours.",
+
+        proteinBinding:
+
+            "Approximately 65%.",
+
         source:
-            "FDA/DailyMed Cefixime Oral Suspension."
+
+            "FDA/DailyMed Cefixime for Oral Suspension."
+
     },
 
 
     // ==================================================
-    // 5. CO-TRIMOXAZOLE
-    // ==================================================
-
-    co_trimoxazole: {
-
-        id: "co_trimoxazole",
-
-        name: "Co-trimoxazole",
-
-        genericName: "Trimethoprim + Sulfamethoxazole",
-
-        brandNames: [
-            "Bactrim",
-            "Septrin"
-        ],
-
-        category: "Antibiotic",
-
-        therapeuticClass:
-            "Sulfonamide + Folate Antagonist",
-
-        pharmacologicalClass:
-            "Trimethoprim-Sulfamethoxazole",
-
-        diseases: [
-            "uti",
-            "otitis",
-            "shigellosis"
-        ],
-
-        dosageForm: "Oral Suspension",
-
-        route: "Oral",
-
-        strengths: [
-            {
-                name: "40 mg Trimethoprim + 200 mg Sulfamethoxazole / 5 mL",
-                concentration: 40,
-                sulfamethoxazole: 200,
-                volume: 5,
-                unit: "mg/5mL"
-            }
-        ],
-
-        dose: {
-
-            type: "component_based",
-
-            uti: {
-                trimethoprimMgPerKgPerDay: 8,
-                sulfamethoxazoleMgPerKgPerDay: 40,
-                frequency: "Every 12 hours",
-                duration: "10 days"
-            },
-
-            otitis: {
-                trimethoprimMgPerKgPerDay: 8,
-                sulfamethoxazoleMgPerKgPerDay: 40,
-                frequency: "Every 12 hours",
-                duration: "10 days"
-            },
-
-            shigellosis: {
-                trimethoprimMgPerKgPerDay: 8,
-                sulfamethoxazoleMgPerKgPerDay: 40,
-                frequency: "Every 12 hours",
-                duration: "5 days"
-            }
-        },
-
-        age: {
-            minAge: 0.167,
-            maxAge: 18
-        },
-
-        indications:
-            "بعض التهابات المسالك البولية والتهاب الأذن الوسطى وحالات محددة من shigellosis حسب الحساسية والبروتوكول.",
-
-        contraindications:
-            "يمنع استخدامه عند الأطفال دون عمر شهرين، وكذلك عند وجود حساسية شديدة للسلفوناميدات أو trimethoprim وبعض حالات القصور الكلوي أو الكبدي الشديد.",
-
-        warnings:
-            "قد يسبب hyperkalemia، اضطرابات دموية، تفاعلات جلدية شديدة، ويحتاج إلى حذر عند وجود قصور كلوي.",
-
-        sideEffects:
-            "غثيان، قيء، طفح جلدي، فرط بوتاسيوم الدم، اضطرابات دموية وتفاعلات جلدية شديدة نادرة.",
-
-        notes:
-            "الجرعة يجب أن تحسب اعتماداً على مكون Trimethoprim مع الانتباه إلى كمية Sulfamethoxazole الموجودة في المستحضر.",
-
-        monitoring: [
-            "الاستجابة للعلاج.",
-            "وظائف الكلى عند وجود عوامل خطورة.",
-            "Potassium عند الاستخدام المطول أو وجود عوامل خطورة.",
-            "CBC عند الاستخدام المطول."
-        ],
-
-        alerts: [
-            "ممنوع تحت عمر شهرين.",
-            "أوقفه واطلب المساعدة عند ظهور طفح جلدي شديد.",
-            "تأكد من مكونات المستحضر قبل حساب الجرعة."
-        ],
-
-        source:
-            "FDA/DailyMed Sulfamethoxazole + Trimethoprim Oral Suspension."
-    }
-
-};
-
-
-// ======================================================
-// Register Additional Antibiotics
-// ======================================================
-
-if (typeof registerDrugs === "function") {
-
-    registerDrugs(additionalAntibioticDrugs);
-
-} else {
-
-    console.error(
-        "DoseCare Error: registerDrugs() is not available."
-    );
-
-}
-
-
-// ======================================================
-// Debug
-// ======================================================
-
-console.log(
-    "Additional Antibiotics Loaded:",
-    Object.keys(additionalAntibioticDrugs)
-);
-// ======================================================
-// DoseCare AI v7
-// Additional Antibiotics Database - Part 2
-// Pediatric Oral Liquids
-// ======================================================
-
-const additionalAntibioticDrugsPart2 = {
-
-    // ==================================================
-    // 6. CEFDINIR
+    // 8. CEFDINIR
     // ==================================================
 
     cefdinir: {
@@ -596,22 +858,28 @@ const additionalAntibioticDrugsPart2 = {
         genericName: "Cefdinir",
 
         brandNames: [
-            "Omnicef",
-            "Cefdinir"
+
+            "Omnicef"
+
         ],
 
         category: "Antibiotic",
 
-        therapeuticClass: "Cephalosporin Antibiotic",
+        therapeuticClass:
+
+            "Cephalosporin Antibiotic",
 
         pharmacologicalClass:
+
             "Third Generation Cephalosporin",
 
         diseases: [
+
             "otitis",
             "sinusitis",
             "pharyngitis",
             "skin"
+
         ],
 
         dosageForm: "Oral Suspension",
@@ -619,93 +887,152 @@ const additionalAntibioticDrugsPart2 = {
         route: "Oral",
 
         strengths: [
+
             {
                 name: "125 mg / 5 mL",
                 concentration: 125,
                 volume: 5,
                 unit: "mg/5mL"
             },
+
             {
                 name: "250 mg / 5 mL",
                 concentration: 250,
                 volume: 5,
                 unit: "mg/5mL"
             }
+
         ],
 
         dose: {
 
-            type: "disease_based",
+            type: "weight_based",
 
-            standard: {
-                mgPerKgPerDay: 14,
-                maxDoseMgPerDay: 600
-            },
+            mgPerKgPerDay: 14,
 
-            otitis: {
-                mgPerKgPerDose: 7,
-                frequency: "Every 12 hours",
-                duration: "5–10 days"
-            },
+            alternatives: [
 
-            sinusitis: {
-                mgPerKgPerDose: 7,
-                frequency: "Every 12 hours",
-                duration: "10 days"
-            },
+                "7 mg/kg every 12 hours",
 
-            pharyngitis: {
-                mgPerKgPerDose: 7,
-                frequency: "Every 12 hours",
-                duration: "5–10 days"
-            },
+                "14 mg/kg once daily"
 
-            skin: {
-                mgPerKgPerDose: 7,
-                frequency: "Every 12 hours",
-                duration: "10 days"
-            }
+            ],
+
+            maxDoseMgPerDay: 600,
+
+            duration: "5–10 days depending on indication"
+
         },
 
         age: {
+
             minAge: 0.5,
+
             maxAge: 12
+
         },
 
         indications:
-            "التهاب الأذن الوسطى، التهاب الجيوب الأنفية البكتيري، التهاب البلعوم/اللوزتين وبعض التهابات الجلد والأنسجة الرخوة.",
+
+            "Acute bacterial otitis media, acute maxillary sinusitis, pharyngitis/tonsillitis, and uncomplicated skin and skin structure infections caused by susceptible organisms.",
 
         contraindications:
-            "فرط الحساسية للسيفالوسبورينات أو وجود تفاعل تحسسي شديد سابق تجاه beta-lactam antibiotics.",
+
+            "Known hypersensitivity to cefdinir or cephalosporin antibiotics.",
 
         warnings:
-            "يستخدم بحذر عند وجود حساسية شديدة سابقة للبنسلينات أو قصور كلوي. يجب التأكد من التركيز قبل تحويل الجرعة إلى mL.",
+
+            "Use cautiously in patients with beta-lactam hypersensitivity or renal impairment. Iron-containing products may reduce cefdinir absorption.",
 
         sideEffects:
-            "إسهال، غثيان، قيء، ألم بطني وطفح جلدي.",
+
+            "Diarrhea, nausea, abdominal pain, vomiting, headache, and rash.",
+
+        pregnancy:
+
+            "Use when clinically indicated after professional assessment.",
+
+        lactation:
+
+            "Use with clinical consideration; monitor the infant for diarrhea or candidiasis.",
 
         notes:
-            "يمكن إعطاؤه مع أو بدون الطعام. الجرعة القصوى للأطفال هي 600 mg/day.",
+
+            "Cefdinir suspension may be administered without regard to meals. Iron-containing products should be separated because of reduced absorption.",
 
         monitoring: [
-            "متابعة الاستجابة للعلاج.",
-            "مراقبة الحساسية.",
-            "مراقبة وظائف الكلى عند وجود عوامل خطورة."
+
+            "Clinical response.",
+
+            "Hypersensitivity reactions.",
+
+            "Renal function when indicated.",
+
+            "Persistent diarrhea."
+
         ],
+
+        interactions:
+
+            "Iron-containing products and antacids containing aluminum or magnesium can reduce cefdinir absorption.",
+
+        clinicalPearls:
+
+            "The labeled pediatric total daily dose is 14 mg/kg/day, with a maximum of 600 mg/day.",
 
         alerts: [
-            "لا تستخدمه للعدوى الفيروسية.",
-            "تأكد من التركيز قبل حساب mL.",
-            "الجرعة القصوى 600 mg/day."
+
+            "Maximum pediatric dose is 600 mg/day.",
+
+            "Check concentration before converting mg to mL.",
+
+            "Separate from iron-containing products when appropriate.",
+
+            "Do not use for viral infections."
+
         ],
 
+        blackBox:
+
+            "No boxed warning in current DailyMed labeling.",
+
+        storage:
+
+            "Store reconstituted suspension according to the manufacturer's labeling.",
+
+        metabolism:
+
+            "Limited metabolism.",
+
+        elimination:
+
+            "Primarily eliminated through the kidneys.",
+
+        onset:
+
+            "Clinical response usually develops after effective antibacterial therapy begins.",
+
+        duration:
+
+            "Usually 5–10 days depending on indication.",
+
+        halfLife:
+
+            "Approximately 1.7 hours in pediatric patients.",
+
+        proteinBinding:
+
+            "Approximately 60–70%.",
+
         source:
-            "DailyMed - Cefdinir for Oral Suspension."
+
+            "FDA/DailyMed Cefdinir for Oral Suspension."
+
     },
 
 
     // ==================================================
-    // 7. CEFPODOXIME
+    // 9. CEFPODOXIME
     // ==================================================
 
     cefpodoxime: {
@@ -717,21 +1044,28 @@ const additionalAntibioticDrugsPart2 = {
         genericName: "Cefpodoxime Proxetil",
 
         brandNames: [
+
             "Vantin",
             "Cefodox"
+
         ],
 
         category: "Antibiotic",
 
-        therapeuticClass: "Cephalosporin Antibiotic",
+        therapeuticClass:
+
+            "Cephalosporin Antibiotic",
 
         pharmacologicalClass:
+
             "Third Generation Cephalosporin",
 
         diseases: [
+
             "otitis",
             "sinusitis",
             "pharyngitis"
+
         ],
 
         dosageForm: "Oral Suspension",
@@ -739,18 +1073,202 @@ const additionalAntibioticDrugsPart2 = {
         route: "Oral",
 
         strengths: [
+
             {
                 name: "50 mg / 5 mL",
                 concentration: 50,
                 volume: 5,
                 unit: "mg/5mL"
             },
+
             {
                 name: "100 mg / 5 mL",
                 concentration: 100,
                 volume: 5,
                 unit: "mg/5mL"
             }
+
+        ],
+
+        dose: {
+
+            type: "weight_based",
+
+            mgPerKgPerDay: 10,
+
+            frequency: "Every 12 hours",
+
+            maxDoseMgPerDay: 400,
+
+            duration: "Usually 5–10 days depending on indication"
+
+        },
+
+        age: {
+
+            minAge: 0.0833,
+
+            maxAge: 12
+
+        },
+
+        indications:
+
+            "Selected bacterial infections including acute otitis media, pharyngitis/tonsillitis, and acute maxillary sinusitis in appropriate pediatric patients.",
+
+        contraindications:
+
+            "Known hypersensitivity to cefpodoxime, cephalosporins, or severe beta-lactam allergy.",
+
+        warnings:
+
+            "Use cautiously in patients with renal impairment or previous serious beta-lactam hypersensitivity. Food increases absorption of cefpodoxime proxetil.",
+
+        sideEffects:
+
+            "Diarrhea, nausea, vomiting, abdominal pain, headache, and rash.",
+
+        pregnancy:
+
+            "Use only when clinically indicated.",
+
+        lactation:
+
+            "Use with clinical consideration; monitor the infant for gastrointestinal effects.",
+
+        notes:
+
+            "Administer with food to improve absorption. Dose must be based on cefpodoxime component.",
+
+        monitoring: [
+
+            "Clinical response.",
+
+            "Signs of hypersensitivity.",
+
+            "Renal function when indicated.",
+
+            "Persistent diarrhea."
+
+        ],
+
+        interactions:
+
+            "Antacids and H2-receptor antagonists may reduce absorption by increasing gastric pH.",
+
+        clinicalPearls:
+
+            "Pediatric dosing is commonly expressed as 10 mg/kg/day divided every 12 hours, with indication-specific maximum doses.",
+
+        alerts: [
+
+            "Give with food.",
+
+            "Check suspension concentration before calculating mL.",
+
+            "Review renal function when clinically indicated.",
+
+            "Avoid unnecessary antibiotic use."
+
+        ],
+
+        blackBox:
+
+            "No boxed warning in current labeling.",
+
+        storage:
+
+            "Store reconstituted suspension according to the manufacturer's instructions.",
+
+        metabolism:
+
+            "Cefpodoxime proxetil is converted to the active cefpodoxime after absorption.",
+
+        elimination:
+
+            "Primarily renal elimination.",
+
+        onset:
+
+            "Clinical improvement generally follows effective antibacterial therapy.",
+
+        duration:
+
+            "Depends on infection and clinical response.",
+
+        halfLife:
+
+            "Approximately 2–3 hours.",
+
+        proteinBinding:
+
+            "Approximately 22–33%.",
+
+        source:
+
+            "FDA/DailyMed Cefpodoxime Proxetil for Oral Suspension."
+
+    },
+
+
+    // ==================================================
+    // 10. AZITHROMYCIN
+    // ==================================================
+
+    azithromycin: {
+
+        id: "azithromycin",
+
+        name: "Azithromycin",
+
+        genericName: "Azithromycin",
+
+        brandNames: [
+
+            "Zithromax",
+            "Azithro"
+
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+
+            "Macrolide Antibiotic",
+
+        pharmacologicalClass:
+
+            "Azalide Macrolide",
+
+        diseases: [
+
+            "otitis",
+            "sinusitis",
+            "pneumonia",
+            "pharyngitis"
+
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        route: "Oral",
+
+        strengths: [
+
+            {
+                name: "100 mg / 5 mL",
+                concentration: 100,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+
+            {
+                name: "200 mg / 5 mL",
+                concentration: 200,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+
         ],
 
         dose: {
@@ -758,197 +1276,195 @@ const additionalAntibioticDrugsPart2 = {
             type: "disease_based",
 
             otitis: {
-                mgPerKgPerDose: 5,
-                frequency: "Every 12 hours",
-                duration: "5 days",
-                maxDoseMgPerDose: 200
-            },
 
-            pharyngitis: {
-                mgPerKgPerDose: 5,
-                frequency: "Every 12 hours",
-                duration: "5–10 days",
-                maxDoseMgPerDose: 100
+                regimens: [
+
+                    "30 mg/kg as a single dose",
+
+                    "10 mg/kg once daily for 3 days",
+
+                    "10 mg/kg on Day 1 followed by 5 mg/kg/day on Days 2–5"
+
+                ]
+
             },
 
             sinusitis: {
-                mgPerKgPerDose: 5,
-                frequency: "Every 12 hours",
-                duration: "10 days",
-                maxDoseMgPerDose: 200
+
+                mgPerKg: 10,
+
+                frequency: "Once daily",
+
+                duration: "3 days"
+
+            },
+
+            pneumonia: {
+
+                day1MgPerKg: 10,
+
+                days2to5MgPerKg: 5,
+
+                frequency: "Once daily",
+
+                duration: "5 days"
+
+            },
+
+            pharyngitis: {
+
+                mgPerKg: 12,
+
+                frequency: "Once daily",
+
+                duration: "5 days"
+
             }
+
         },
 
         age: {
-            minAge: 0.167,
-            maxAge: 12
-        },
 
-        indications:
-            "التهاب الأذن الوسطى، التهاب البلعوم واللوزتين، والتهاب الجيوب الأنفية البكتيري في الأعمار المناسبة.",
+            minAge: 0.5,
 
-        contraindications:
-            "فرط الحساسية للسيفالوسبورينات أو beta-lactam antibiotics.",
-
-        warnings:
-            "يستخدم بحذر عند وجود قصور كلوي أو تاريخ من الحساسية الشديدة للبنسلينات.",
-
-        sideEffects:
-            "إسهال، قيء، ألم بطني، غثيان وطفح جلدي.",
-
-        notes:
-            "الجرعة الموصى بها للأطفال هي 10 mg/kg/day مقسمة كل 12 ساعة، مع اختلاف الحد الأقصى حسب التشخيص.",
-
-        monitoring: [
-            "الاستجابة للعلاج.",
-            "علامات الحساسية.",
-            "وظائف الكلى عند وجود عوامل خطورة."
-        ],
-
-        alerts: [
-            "تأكد من التركيز قبل حساب mL.",
-            "لا تستخدمه للعدوى الفيروسية.",
-            "التزم بالحد الأقصى الخاص بالتشخيص."
-        ],
-
-        source:
-            "DailyMed - Cefpodoxime Proxetil for Oral Suspension."
-    },
-
-
-    // ==================================================
-    // 8. CLINDAMYCIN
-    // ==================================================
-
-    clindamycin: {
-
-        id: "clindamycin",
-
-        name: "Clindamycin",
-
-        genericName: "Clindamycin",
-
-        brandNames: [
-            "Cleocin",
-            "Dalacin"
-        ],
-
-        category: "Antibiotic",
-
-        therapeuticClass:
-            "Lincosamide Antibiotic",
-
-        pharmacologicalClass:
-            "Lincosamide",
-
-        diseases: [
-            "skin",
-            "dental",
-            "anaerobic_infection"
-        ],
-
-        dosageForm: "Oral Solution",
-
-        route: "Oral",
-
-        strengths: [
-            {
-                name: "75 mg / 5 mL",
-                concentration: 75,
-                volume: 5,
-                unit: "mg/5mL"
-            }
-        ],
-
-        dose: {
-
-            type: "severity_based",
-
-            serious: {
-                minMgPerKgPerDay: 8,
-                maxMgPerKgPerDay: 12,
-                frequency: "3–4 divided doses"
-            },
-
-            severe: {
-                minMgPerKgPerDay: 13,
-                maxMgPerKgPerDay: 16,
-                frequency: "3–4 divided doses"
-            },
-
-            moreSevere: {
-                minMgPerKgPerDay: 17,
-                maxMgPerKgPerDay: 25,
-                frequency: "3–4 divided doses"
-            }
-        },
-
-        age: {
-            minAge: 0,
             maxAge: 18
+
         },
 
         indications:
-            "بعض التهابات الجلد والأنسجة الرخوة والالتهابات اللاهوائية وبعض الاستطبابات السنية حسب التشخيص.",
+
+            "Selected bacterial respiratory infections, acute otitis media, and other susceptible infections according to the specific regimen and local guidance.",
 
         contraindications:
-            "فرط الحساسية للـ clindamycin أو lincomycin.",
+
+            "Known hypersensitivity to azithromycin, erythromycin, or macrolide antibiotics; history of cholestatic jaundice/hepatic dysfunction associated with previous azithromycin use.",
 
         warnings:
-            "قد يسبب antibiotic-associated diarrhea وC. difficile colitis، وقد تكون الحالة شديدة.",
+
+            "May prolong QT and increase risk of serious arrhythmias in susceptible patients. Hepatotoxicity and C. difficile-associated diarrhea are possible.",
 
         sideEffects:
-            "إسهال، ألم بطني، غثيان، قيء وطفح جلدي.",
+
+            "Diarrhea, nausea, abdominal pain, vomiting, headache, and rarely hepatic or cardiac adverse effects.",
+
+        pregnancy:
+
+            "Use when clinically indicated after professional assessment.",
+
+        lactation:
+
+            "Generally considered compatible with breastfeeding; monitor infant for gastrointestinal effects.",
 
         notes:
-            "في حالات الإسهال الشديد أثناء العلاج يجب إيقاف الدواء وتقييم المريض.",
+
+            "May be administered with or without food depending on formulation.",
 
         monitoring: [
-            "الاستجابة للعلاج.",
-            "مراقبة الإسهال.",
-            "مراقبة علامات C. difficile infection."
+
+            "Clinical response.",
+
+            "Hepatic symptoms when clinically indicated.",
+
+            "QT risk factors in susceptible patients.",
+
+            "Persistent diarrhea."
+
         ],
+
+        interactions:
+
+            "Review other QT-prolonging medicines and clinically important drug interactions.",
+
+        clinicalPearls:
+
+            "Azithromycin dosing varies considerably by indication. Do not use one regimen for every infection.",
 
         alerts: [
-            "الإسهال الشديد أثناء العلاج علامة مهمة.",
-            "لا يستخدم للعدوى الفيروسية.",
-            "الجرعة تعتمد على شدة العدوى."
+
+            "Do not use for viral infections.",
+
+            "Review QT-prolongation risk.",
+
+            "Choose the regimen according to the confirmed indication.",
+
+            "Verify the suspension concentration before calculating mL."
+
         ],
 
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Follow the specific manufacturer's storage instructions after reconstitution.",
+
+        metabolism:
+
+            "Hepatic metabolism is limited; azithromycin is extensively distributed into tissues.",
+
+        elimination:
+
+            "Primarily eliminated through biliary/fecal pathways.",
+
+        onset:
+
+            "Clinical improvement depends on infection and susceptibility.",
+
+        duration:
+
+            "Usually short-course therapy depending on indication.",
+
+        halfLife:
+
+            "Approximately 68 hours.",
+
+        proteinBinding:
+
+            "Approximately 7–51%, depending on concentration.",
+
         source:
-            "DailyMed - Clindamycin Palmitate Hydrochloride Oral Solution."
+
+            "FDA/DailyMed Azithromycin Oral Suspension."
+
     },
 
 
     // ==================================================
-    // 9. METRONIDAZOLE
+    // 11. CLARITHROMYCIN
     // ==================================================
 
-    metronidazole: {
+    clarithromycin: {
 
-        id: "metronidazole",
+        id: "clarithromycin",
 
-        name: "Metronidazole",
+        name: "Clarithromycin",
 
-        genericName: "Metronidazole",
+        genericName: "Clarithromycin",
 
         brandNames: [
-            "Flagyl",
-            "Likmez"
+
+            "Klacid",
+            "Biaxin"
+
         ],
 
         category: "Antibiotic",
 
         therapeuticClass:
-            "Nitroimidazole Antimicrobial",
+
+            "Macrolide Antibiotic",
 
         pharmacologicalClass:
-            "Nitroimidazole",
+
+            "Macrolide",
 
         diseases: [
-            "anaerobic_infection",
-            "amebiasis",
-            "giardiasis"
+
+            "pharyngitis",
+            "pneumonia",
+            "respiratory_infection"
+
         ],
 
         dosageForm: "Oral Suspension",
@@ -956,170 +1472,148 @@ const additionalAntibioticDrugsPart2 = {
         route: "Oral",
 
         strengths: [
+
             {
-                name: "500 mg / 10 mL",
-                concentration: 50,
-                volume: 10,
-                unit: "mg/10mL"
-            }
-        ],
-
-        dose: {
-
-            type: "disease_based",
-
-            amebiasis: {
-                minMgPerKgPerDay: 35,
-                maxMgPerKgPerDay: 50,
-                frequency: "3 divided doses",
-                duration: "10 days",
-                maxDoseMgPerDay: 2250
-            },
-
-            anaerobic: {
-                mgPerKgPerDose: 7.5,
-                frequency: "Every 6 hours",
-                duration: "7–10 days"
-            }
-        },
-
-        age: {
-            minAge: 0,
-            maxAge: 18
-        },
-
-        indications:
-            "بعض العدوى اللاهوائية والـ amebiasis وبعض الطفيليات المعوية حسب التشخيص والبروتوكول.",
-
-        contraindications:
-            "فرط الحساسية للـ metronidazole أو مشتقات nitroimidazole.",
-
-        warnings:
-            "يجب الانتباه إلى أمراض الكبد والتداخلات الدوائية، وتجنب الكحول أثناء العلاج وبعده حسب التوصيات الرسمية.",
-
-        sideEffects:
-            "غثيان، قيء، إسهال، ألم بطني وطعم معدني في الفم.",
-
-        notes:
-            "بعض حالات العدوى اللاهوائية الشديدة تحتاج إلى العلاج الوريدي أولاً.",
-
-        monitoring: [
-            "الاستجابة للعلاج.",
-            "وظائف الكبد عند وجود عوامل خطورة.",
-            "الأعراض العصبية عند الاستخدام المطول."
-        ],
-
-        alerts: [
-            "لا يستخدم للعدوى الفيروسية.",
-            "راجع التداخلات الدوائية.",
-            "الجرعة تعتمد على نوع العدوى."
-        ],
-
-        source:
-            "DailyMed - Metronidazole Oral Suspension."
-    },
-
-
-    // ==================================================
-    // 10. NITROFURANTOIN
-    // ==================================================
-
-    nitrofurantoin: {
-
-        id: "nitrofurantoin",
-
-        name: "Nitrofurantoin",
-
-        genericName: "Nitrofurantoin",
-
-        brandNames: [
-            "Furadantin",
-            "Macrodantin"
-        ],
-
-        category: "Antibiotic",
-
-        therapeuticClass:
-            "Urinary Antibacterial",
-
-        pharmacologicalClass:
-            "Nitrofuran",
-
-        diseases: [
-            "uti"
-        ],
-
-        dosageForm: "Oral Suspension",
-
-        route: "Oral",
-
-        strengths: [
-            {
-                name: "25 mg / 5 mL",
-                concentration: 25,
+                name: "125 mg / 5 mL",
+                concentration: 125,
                 volume: 5,
                 unit: "mg/5mL"
             },
+
             {
-                name: "50 mg / 5 mL",
-                concentration: 50,
+                name: "250 mg / 5 mL",
+                concentration: 250,
                 volume: 5,
                 unit: "mg/5mL"
             }
+
         ],
 
         dose: {
 
             type: "weight_based",
 
-            minMgPerKgPerDay: 5,
-            maxMgPerKgPerDay: 7,
+            mgPerKgPerDay: 15,
 
-            frequency: "4 divided doses",
+            frequency: "Every 12 hours",
 
-            duration:
-                "حسب الاستجابة وبروتوكول علاج UTI"
+            maxDoseMgPerDay: 1000,
+
+            duration: "10 days"
+
         },
 
         age: {
-            minAge: 0.0833,
+
+            minAge: 0.5,
+
             maxAge: 18
+
         },
 
         indications:
-            "علاج التهابات المسالك البولية الناتجة عن البكتيريا الحساسة.",
+
+            "Selected bacterial respiratory infections and other susceptible infections according to the specific clinical indication.",
 
         contraindications:
-            "ممنوع تحت عمر شهر واحد. لا يستخدم لعلاج pyelonephritis أو perinephric abscess.",
+
+            "Known hypersensitivity to clarithromycin or macrolides; contraindicated with certain interacting drugs and in specific QT-risk situations.",
 
         warnings:
-            "يجب إعطاؤه مع الطعام لتحسين الامتصاص والتحمل. يحتاج إلى تقييم وظائف الكلى حسب الحالة.",
+
+            "Strong CYP3A4 inhibitor. Can cause significant drug interactions, QT prolongation, hepatotoxicity, and C. difficile-associated diarrhea.",
 
         sideEffects:
-            "غثيان، قيء، ألم بطني، صداع، وقد تحدث تفاعلات رئوية أو كبدية نادرة خصوصاً مع الاستخدام المطول.",
+
+            "Nausea, vomiting, diarrhea, abdominal pain, dysgeusia, headache, and hepatic or cardiac adverse effects.",
+
+        pregnancy:
+
+            "Use only when the expected benefit justifies potential risk.",
+
+        lactation:
+
+            "Use with clinical consideration and monitor the infant for gastrointestinal effects.",
 
         notes:
-            "دواء مخصص للـ lower urinary tract infection وليس لعلاج pyelonephritis.",
+
+            "May be administered with or without food. Shake the suspension well before each dose.",
 
         monitoring: [
-            "الاستجابة لعلاج UTI.",
-            "وظائف الكلى عند وجود عوامل خطورة.",
-            "مراقبة الأعراض الرئوية أو الكبدية عند الاستخدام المطول."
+
+            "Clinical response.",
+
+            "Drug interactions.",
+
+            "Liver function when indicated.",
+
+            "QT risk.",
+
+            "Persistent diarrhea."
+
         ],
+
+        interactions:
+
+            "Major CYP3A4-mediated interactions may occur. Review all concomitant medications before use.",
+
+        clinicalPearls:
+
+            "The labeled pediatric dose for many indications is 15 mg/kg/day divided every 12 hours for 10 days, up to the adult dose.",
 
         alerts: [
-            "ممنوع تحت عمر شهر.",
-            "يعطى مع الطعام.",
-            "لا يستخدم لعلاج pyelonephritis."
+
+            "Check CYP3A4 interactions.",
+
+            "Review QT-prolonging drugs.",
+
+            "Verify concentration before calculating mL.",
+
+            "Do not use for viral infections."
+
         ],
 
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Store reconstituted suspension according to product labeling.",
+
+        metabolism:
+
+            "Extensively metabolized in the liver, mainly via CYP3A4.",
+
+        elimination:
+
+            "Eliminated through hepatic metabolism and renal/fecal routes.",
+
+        onset:
+
+            "Clinical response depends on infection and bacterial susceptibility.",
+
+        duration:
+
+            "Usually 7–14 days depending on indication; product labeling specifies regimen-specific durations.",
+
+        halfLife:
+
+            "Approximately 3–7 hours depending on dose and formulation.",
+
+        proteinBinding:
+
+            "Approximately 42–70%.",
+
         source:
-            "DailyMed - Nitrofurantoin Oral Suspension."
+
+            "FDA/DailyMed Clarithromycin for Oral Suspension."
+
     },
 
 
     // ==================================================
-    // 11. ERYTHROMYCIN
+    // 12. ERYTHROMYCIN
     // ==================================================
 
     erythromycin: {
@@ -1131,22 +1625,28 @@ const additionalAntibioticDrugsPart2 = {
         genericName: "Erythromycin Ethylsuccinate",
 
         brandNames: [
+
             "Ery-Ped",
             "EES"
+
         ],
 
         category: "Antibiotic",
 
         therapeuticClass:
+
             "Macrolide Antibiotic",
 
         pharmacologicalClass:
+
             "Macrolide",
 
         diseases: [
+
             "pharyngitis",
             "pertussis",
             "respiratory_infection"
+
         ],
 
         dosageForm: "Oral Suspension",
@@ -1154,18 +1654,21 @@ const additionalAntibioticDrugsPart2 = {
         route: "Oral",
 
         strengths: [
+
             {
                 name: "200 mg / 5 mL",
                 concentration: 200,
                 volume: 5,
                 unit: "mg/5mL"
             },
+
             {
                 name: "400 mg / 5 mL",
                 concentration: 400,
                 volume: 5,
                 unit: "mg/5mL"
             }
+
         ],
 
         dose: {
@@ -1173,60 +1676,920 @@ const additionalAntibioticDrugsPart2 = {
             type: "weight_based",
 
             minMgPerKgPerDay: 30,
+
             maxMgPerKgPerDay: 50,
 
             frequency: "Every 6 hours",
 
-            severeMultiplier:
-                2
+            severeMultiplier: 2
+
         },
 
         age: {
+
             minAge: 0,
+
             maxAge: 18
+
         },
 
         indications:
-            "بعض الالتهابات البكتيرية التنفسية، streptococcal infections، pertussis وبعض الاستطبابات المحددة.",
+
+            "Selected bacterial respiratory infections, streptococcal infections, pertussis, and other susceptible infections.",
 
         contraindications:
-            "فرط الحساسية للإريثرومايسين أو وجود تداخلات دوائية خطيرة حسب المستحضر.",
+
+            "Known hypersensitivity to erythromycin. Avoid clinically significant interacting combinations and use caution in patients with QT prolongation.",
 
         warnings:
-            "قد يسبب QT prolongation وتداخلات دوائية، ويجب الانتباه إلى وظائف الكبد.",
+
+            "Can prolong QT and cause serious drug interactions. Hepatotoxicity and gastrointestinal intolerance may occur.",
 
         sideEffects:
-            "غثيان، قيء، ألم بطني، إسهال واضطرابات كبدية أو قلبية نادرة.",
+
+            "Nausea, vomiting, abdominal pain, diarrhea, and rarely hepatic or cardiac adverse effects.",
+
+        pregnancy:
+
+            "Use when clinically indicated after risk-benefit assessment.",
+
+        lactation:
+
+            "Generally compatible with breastfeeding in appropriate clinical use; monitor infant for gastrointestinal effects.",
 
         notes:
-            "يمكن إعطاؤه مع أو بدون الطعام حسب المستحضر.",
+
+            "Dose depends on age, weight, severity, and infection. The ethylsuccinate formulation can be administered according to product-specific instructions.",
 
         monitoring: [
-            "الاستجابة للعلاج.",
-            "التداخلات الدوائية.",
-            "وظائف الكبد عند وجود عوامل خطورة."
+
+            "Clinical response.",
+
+            "GI tolerance.",
+
+            "Liver function when indicated.",
+
+            "QT risk and interactions."
+
         ],
+
+        interactions:
+
+            "Erythromycin is a clinically important CYP3A4 inhibitor and can interact with numerous medications.",
+
+        clinicalPearls:
+
+            "For mild-to-moderate pediatric infections, the usual labeled dosage is 30–50 mg/kg/day divided every 6 hours.",
 
         alerts: [
-            "انتبه للتداخلات الدوائية.",
-            "مراقبة عوامل خطر QT.",
-            "لا يستخدم للعدوى الفيروسية."
+
+            "Check QT-prolonging medications.",
+
+            "Review CYP3A4 interactions.",
+
+            "Verify the exact formulation and concentration.",
+
+            "Do not use for viral infections."
+
         ],
 
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Follow manufacturer-specific storage instructions for the reconstituted suspension.",
+
+        metabolism:
+
+            "Extensively metabolized in the liver.",
+
+        elimination:
+
+            "Primarily biliary/fecal elimination with some renal elimination.",
+
+        onset:
+
+            "Clinical response depends on infection and susceptibility.",
+
+        duration:
+
+            "Depends on the infection and treatment protocol.",
+
+        halfLife:
+
+            "Approximately 1.5–2 hours for erythromycin base; formulation dependent.",
+
+        proteinBinding:
+
+            "Approximately 70–90%.",
+
         source:
-            "DailyMed - Erythromycin Ethylsuccinate Oral Suspension."
+
+            "FDA/DailyMed Erythromycin Ethylsuccinate for Oral Suspension."
+
+    },
+
+
+    // ==================================================
+    // 13. CLINDAMYCIN
+    // ==================================================
+
+    clindamycin: {
+
+        id: "clindamycin",
+
+        name: "Clindamycin",
+
+        genericName: "Clindamycin Palmitate Hydrochloride",
+
+        brandNames: [
+
+            "Cleocin",
+            "Dalacin"
+
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+
+            "Lincosamide Antibiotic",
+
+        pharmacologicalClass:
+
+            "Lincosamide",
+
+        diseases: [
+
+            "skin",
+            "dental",
+            "anaerobic_infection"
+
+        ],
+
+        dosageForm: "Oral Solution",
+
+        route: "Oral",
+
+        strengths: [
+
+            {
+                name: "75 mg / 5 mL",
+                concentration: 75,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+
+        ],
+
+        dose: {
+
+            type: "severity_based",
+
+            serious: {
+
+                minMgPerKgPerDay: 8,
+
+                maxMgPerKgPerDay: 12,
+
+                frequency: "3–4 divided doses"
+
+            },
+
+            severe: {
+
+                minMgPerKgPerDay: 13,
+
+                maxMgPerKgPerDay: 16,
+
+                frequency: "3–4 divided doses"
+
+            },
+
+            moreSevere: {
+
+                minMgPerKgPerDay: 17,
+
+                maxMgPerKgPerDay: 25,
+
+                frequency: "3–4 divided doses"
+
+            }
+
+        },
+
+        age: {
+
+            minAge: 0,
+
+            maxAge: 18
+
+        },
+
+        indications:
+
+            "Serious bacterial infections caused by susceptible organisms, including selected skin/soft tissue, dental, and anaerobic infections.",
+
+        contraindications:
+
+            "Known hypersensitivity to clindamycin or lincomycin.",
+
+        warnings:
+
+            "Clindamycin carries a major risk of antibiotic-associated diarrhea and C. difficile-associated colitis, which may be severe.",
+
+        sideEffects:
+
+            "Diarrhea, abdominal pain, nausea, vomiting, rash, and rarely severe C. difficile-associated colitis.",
+
+        pregnancy:
+
+            "Use when clinically indicated.",
+
+        lactation:
+
+            "Clindamycin can be used when indicated; monitor the infant for diarrhea, candidiasis, or blood in stool.",
+
+        notes:
+
+            "Significant diarrhea during therapy requires prompt clinical assessment and discontinuation when appropriate.",
+
+        monitoring: [
+
+            "Clinical response.",
+
+            "Frequency and severity of diarrhea.",
+
+            "Signs of C. difficile infection.",
+
+            "Hepatic/renal status when clinically indicated."
+
+        ],
+
+        interactions:
+
+            "May interact with neuromuscular blocking agents. Review concomitant medicines for clinically important interactions.",
+
+        clinicalPearls:
+
+            "Pediatric oral dosing is based on total body weight and infection severity, with labeled ranges of 8–25 mg/kg/day divided into 3 or 4 doses.",
+
+        alerts: [
+
+            "STOP and evaluate significant diarrhea.",
+
+            "Consider C. difficile with severe or persistent diarrhea.",
+
+            "Dose according to infection severity.",
+
+            "Verify concentration before calculating mL."
+
+        ],
+
+        blackBox:
+
+            "Boxed warning: Clindamycin can cause severe colitis that may be fatal.",
+
+        storage:
+
+            "Store according to the manufacturer's labeling.",
+
+        metabolism:
+
+            "Hepatically metabolized.",
+
+        elimination:
+
+            "Eliminated through hepatic metabolism with urinary and fecal excretion.",
+
+        onset:
+
+            "Clinical response depends on infection and susceptibility.",
+
+        duration:
+
+            "Usually determined by infection severity and clinical response.",
+
+        halfLife:
+
+            "Approximately 2–4 hours in pediatric patients.",
+
+        proteinBinding:
+
+            "Approximately 90%.",
+
+        source:
+
+            "FDA/DailyMed Clindamycin Palmitate Hydrochloride Oral Solution."
+
+    },
+
+
+    // ==================================================
+    // 14. CO-TRIMOXAZOLE
+    // ==================================================
+
+    co_trimoxazole: {
+
+        id: "co_trimoxazole",
+
+        name: "Co-trimoxazole",
+
+        genericName:
+            "Trimethoprim + Sulfamethoxazole",
+
+        brandNames: [
+
+            "Bactrim",
+            "Septrin"
+
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+
+            "Sulfonamide + Folate Antagonist",
+
+        pharmacologicalClass:
+
+            "Trimethoprim-Sulfamethoxazole",
+
+        diseases: [
+
+            "uti",
+            "otitis",
+            "shigellosis"
+
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        route: "Oral",
+
+        strengths: [
+
+            {
+                name:
+                    "40 mg Trimethoprim + 200 mg Sulfamethoxazole / 5 mL",
+
+                concentration: 40,
+
+                sulfamethoxazole: 200,
+
+                volume: 5,
+
+                unit: "mg/5mL"
+
+            }
+
+        ],
+
+        dose: {
+
+            type: "component_based",
+
+            uti: {
+
+                trimethoprimMgPerKgPerDay: 8,
+
+                sulfamethoxazoleMgPerKgPerDay: 40,
+
+                frequency: "Every 12 hours",
+
+                duration: "10 days"
+
+            },
+
+            otitis: {
+
+                trimethoprimMgPerKgPerDay: 8,
+
+                sulfamethoxazoleMgPerKgPerDay: 40,
+
+                frequency: "Every 12 hours",
+
+                duration: "10 days"
+
+            },
+
+            shigellosis: {
+
+                trimethoprimMgPerKgPerDay: 8,
+
+                sulfamethoxazoleMgPerKgPerDay: 40,
+
+                frequency: "Every 12 hours",
+
+                duration: "5 days"
+
+            }
+
+        },
+
+        age: {
+
+            minAge: 0.167,
+
+            maxAge: 18
+
+        },
+
+        indications:
+
+            "Selected urinary tract infections, otitis media, shigellosis, and other susceptible bacterial infections according to local susceptibility and clinical guidance.",
+
+        contraindications:
+
+            "Contraindicated in infants younger than 2 months and in patients with severe hypersensitivity to sulfonamides or trimethoprim.",
+
+        warnings:
+
+            "May cause serious skin reactions, blood dyscrasias, hyperkalemia, and renal adverse effects. Use caution in renal impairment.",
+
+        sideEffects:
+
+            "Nausea, vomiting, diarrhea, rash, hyperkalemia, photosensitivity, and hematologic abnormalities.",
+
+        pregnancy:
+
+            "Avoid when possible, particularly near term, unless clearly indicated by the treating clinician.",
+
+        lactation:
+
+            "Clinical consideration is required, especially in premature infants, newborns, or infants with hyperbilirubinemia or G6PD deficiency.",
+
+        notes:
+
+            "Pediatric dosing is based on the trimethoprim component while accounting for the sulfamethoxazole component.",
+
+        monitoring: [
+
+            "Clinical response.",
+
+            "Renal function when indicated.",
+
+            "Potassium in patients at risk.",
+
+            "CBC during prolonged therapy.",
+
+            "Skin reactions."
+
+        ],
+
+        interactions:
+
+            "May interact with warfarin, ACE inhibitors/ARBs, potassium-sparing medicines, methotrexate, and other clinically important drugs.",
+
+        clinicalPearls:
+
+            "Always calculate using the trimethoprim component while verifying the sulfamethoxazole amount in the selected suspension.",
+
+        alerts: [
+
+            "Contraindicated under 2 months of age.",
+
+            "Stop and seek evaluation for severe rash.",
+
+            "Monitor potassium in high-risk patients.",
+
+            "Check the exact formulation concentration."
+
+        ],
+
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Store according to manufacturer instructions.",
+
+        metabolism:
+
+            "Both components undergo hepatic metabolism.",
+
+        elimination:
+
+            "Primarily renal elimination of both components and metabolites.",
+
+        onset:
+
+            "Clinical response depends on infection and susceptibility.",
+
+        duration:
+
+            "Depends on the indication.",
+
+        halfLife:
+
+            "Trimethoprim approximately 8–10 hours; sulfamethoxazole approximately 10–13 hours.",
+
+        proteinBinding:
+
+            "Trimethoprim approximately 44%; sulfamethoxazole approximately 70%.",
+
+        source:
+
+            "FDA/DailyMed Sulfamethoxazole and Trimethoprim Oral Suspension."
+
+    },
+
+
+    // ==================================================
+    // 15. METRONIDAZOLE
+    // ==================================================
+
+    metronidazole: {
+
+        id: "metronidazole",
+
+        name: "Metronidazole",
+
+        genericName: "Metronidazole",
+
+        brandNames: [
+
+            "Flagyl",
+            "Likmez"
+
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+
+            "Nitroimidazole Antimicrobial",
+
+        pharmacologicalClass:
+
+            "Nitroimidazole",
+
+        diseases: [
+
+            "anaerobic_infection",
+            "amebiasis",
+            "giardiasis"
+
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        route: "Oral",
+
+        strengths: [
+
+            {
+                name: "500 mg / 10 mL",
+                concentration: 50,
+                volume: 10,
+                unit: "mg/10mL"
+            }
+
+        ],
+
+        dose: {
+
+            type: "disease_based",
+
+            amebiasis: {
+
+                minMgPerKgPerDay: 35,
+
+                maxMgPerKgPerDay: 50,
+
+                frequency: "3 divided doses",
+
+                duration: "10 days",
+
+                maxDoseMgPerDay: 2250
+
+            },
+
+            anaerobic: {
+
+                mgPerKgPerDose: 7.5,
+
+                frequency: "Every 6 hours",
+
+                duration: "7–10 days"
+
+            },
+
+            giardiasis: {
+
+                mgPerKgPerDay: 15,
+
+                frequency: "3 divided doses",
+
+                duration: "5–7 days"
+
+            }
+
+        },
+
+        age: {
+
+            minAge: 0,
+
+            maxAge: 18
+
+        },
+
+        indications:
+
+            "Anaerobic bacterial infections and selected protozoal infections including amebiasis and giardiasis.",
+
+        contraindications:
+
+            "Known hypersensitivity to metronidazole or other nitroimidazole derivatives.",
+
+        warnings:
+
+            "Use cautiously in hepatic impairment and with drugs that have significant interactions. Neurologic toxicity may occur with prolonged therapy.",
+
+        sideEffects:
+
+            "Nausea, vomiting, diarrhea, abdominal discomfort, metallic taste, headache, and rarely peripheral neuropathy or seizures.",
+
+        pregnancy:
+
+            "Use when clinically indicated; treatment decisions should be based on the specific infection and pregnancy stage.",
+
+        lactation:
+
+            "Clinical consideration is required; exposure through breast milk should be considered according to dose and treatment duration.",
+
+        notes:
+
+            "The exact regimen depends strongly on the organism and infection. Some serious anaerobic infections may require intravenous therapy initially.",
+
+        monitoring: [
+
+            "Clinical response.",
+
+            "Liver function in hepatic impairment.",
+
+            "Neurologic symptoms during prolonged therapy.",
+
+            "Drug interactions."
+
+        ],
+
+        interactions:
+
+            "Important interactions include warfarin and other anticoagulants; review concomitant medications carefully.",
+
+        clinicalPearls:
+
+            "Do not use one metronidazole regimen for all infections. The indication determines dose, frequency, and duration.",
+
+        alerts: [
+
+            "Verify the exact indication.",
+
+            "Review drug interactions.",
+
+            "Monitor for neurologic adverse effects with prolonged treatment.",
+
+            "Verify concentration before converting mg to mL."
+
+        ],
+
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Follow manufacturer-specific storage instructions.",
+
+        metabolism:
+
+            "Extensively metabolized in the liver.",
+
+        elimination:
+
+            "Primarily renal elimination of metabolites with some unchanged drug.",
+
+        onset:
+
+            "Clinical response depends on the underlying infection.",
+
+        duration:
+
+            "Depends on infection and clinical response.",
+
+        halfLife:
+
+            "Approximately 8 hours.",
+
+        proteinBinding:
+
+            "Less than 20%.",
+
+        source:
+
+            "FDA/DailyMed Metronidazole Oral Suspension."
+
+    },
+
+
+    // ==================================================
+    // 16. NITROFURANTOIN
+    // ==================================================
+
+    nitrofurantoin: {
+
+        id: "nitrofurantoin",
+
+        name: "Nitrofurantoin",
+
+        genericName: "Nitrofurantoin",
+
+        brandNames: [
+
+            "Furadantin",
+            "Macrodantin"
+
+        ],
+
+        category: "Antibiotic",
+
+        therapeuticClass:
+
+            "Urinary Antibacterial",
+
+        pharmacologicalClass:
+
+            "Nitrofuran",
+
+        diseases: [
+
+            "uti"
+
+        ],
+
+        dosageForm: "Oral Suspension",
+
+        route: "Oral",
+
+        strengths: [
+
+            {
+                name: "25 mg / 5 mL",
+                concentration: 25,
+                volume: 5,
+                unit: "mg/5mL"
+            },
+
+            {
+                name: "50 mg / 5 mL",
+                concentration: 50,
+                volume: 5,
+                unit: "mg/5mL"
+            }
+
+        ],
+
+        dose: {
+
+            type: "weight_based",
+
+            minMgPerKgPerDay: 5,
+
+            maxMgPerKgPerDay: 7,
+
+            frequency: "4 divided doses",
+
+            duration:
+
+                "Usually continue according to the prescribed UTI treatment course and clinical response."
+
+        },
+
+        age: {
+
+            minAge: 0.0833,
+
+            maxAge: 18
+
+        },
+
+        indications:
+
+            "Treatment of susceptible bacterial lower urinary tract infections.",
+
+        contraindications:
+
+            "Contraindicated in infants younger than 1 month and in patients with significant renal impairment according to product labeling. Not indicated for pyelonephritis or perinephric abscess.",
+
+        warnings:
+
+            "Administer with food to improve absorption and tolerance. Serious pulmonary, hepatic, neurologic, and hematologic reactions can occur, especially with prolonged use.",
+
+        sideEffects:
+
+            "Nausea, vomiting, abdominal discomfort, headache, and rare pulmonary, hepatic, neurologic, or hematologic toxicity.",
+
+        pregnancy:
+
+            "Use only when clinically indicated. Avoid near term according to product labeling because of potential neonatal hemolysis.",
+
+        lactation:
+
+            "Use with caution in infants with G6PD deficiency and in very young infants.",
+
+        notes:
+
+            "Nitrofurantoin is intended for lower UTI and should not be used to treat pyelonephritis because adequate renal tissue concentrations are not achieved.",
+
+        monitoring: [
+
+            "Clinical response to UTI treatment.",
+
+            "Renal function when indicated.",
+
+            "Pulmonary symptoms during prolonged treatment.",
+
+            "Hepatic symptoms during prolonged treatment.",
+
+            "Neurologic symptoms during prolonged treatment."
+
+        ],
+
+        interactions:
+
+            "Antacids containing magnesium trisilicate may reduce absorption. Probenecid and other drugs affecting renal tubular secretion may alter nitrofurantoin exposure.",
+
+        clinicalPearls:
+
+            "For pediatric patients ≥1 month, the labeled dose is 5–7 mg/kg/day divided into four doses. The official label provides weight-based mL tables for 25 mg/5 mL and 50 mg/5 mL suspensions.",
+
+        alerts: [
+
+            "Minimum labeled pediatric age is 1 month.",
+
+            "Give with food.",
+
+            "Do NOT use for pyelonephritis.",
+
+            "Verify renal function when clinically indicated.",
+
+            "Use an oral syringe for accurate mL measurement."
+
+        ],
+
+        blackBox:
+
+            "No boxed warning in current U.S. labeling.",
+
+        storage:
+
+            "Store according to the manufacturer's labeling.",
+
+        metabolism:
+
+            "Partially metabolized; exact pathways vary by formulation.",
+
+        elimination:
+
+            "Primarily eliminated through the kidneys.",
+
+        onset:
+
+            "Clinical improvement depends on bacterial susceptibility and infection severity.",
+
+        duration:
+
+            "Depends on UTI treatment protocol and clinical response.",
+
+        halfLife:
+
+            "Approximately 20 minutes.",
+
+        proteinBinding:
+
+            "Approximately 20–60%.",
+
+        source:
+
+            "FDA/DailyMed Nitrofurantoin Oral Suspension."
+
     }
 
 };
 
 
 // ======================================================
-// Register Part 2
+// Register Additional Antibiotics - Part 3
 // ======================================================
 
 if (typeof registerDrugs === "function") {
 
-    registerDrugs(additionalAntibioticDrugsPart2);
+    registerDrugs(additionalAntibioticDrugsPart3);
 
 } else {
 
@@ -1242,6 +2605,6 @@ if (typeof registerDrugs === "function") {
 // ======================================================
 
 console.log(
-    "Additional Antibiotics Part 2 Loaded:",
-    Object.keys(additionalAntibioticDrugsPart2)
+    "Additional Antibiotics Part 3 Loaded:",
+    Object.keys(additionalAntibioticDrugsPart3)
 );
