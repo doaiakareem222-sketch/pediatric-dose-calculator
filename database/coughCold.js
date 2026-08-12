@@ -106,5 +106,23 @@ const coughColdDrugs = [
   }
 
 ];
+// ======================================================
+// Register Cough & Cold Drugs
+// ======================================================
 
-export default coughColdDrugs;
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(coughColdDrugs);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
+}
+
+console.log(
+    "Cough & Cold Database Loaded:",
+    coughColdDrugs.map(drug => drug.id)
+);
