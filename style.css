@@ -1,2166 +1,4943 @@
-/* ==========================================
-   DoseCare AI v7
+/* =========================================================
+   DOSECARE
    Professional Medical UI
-   Developed by Duaa Kareem
-==========================================*/
+   Style System — Part 1/4
+   ========================================================= */
 
-/* ==========================================
-   Reset
-==========================================*/
 
-*{
+/* =========================================================
+   01. DESIGN TOKENS
+   ========================================================= */
 
-margin:0;
+:root {
 
-padding:0;
+    /* ---------- Background ---------- */
 
-box-sizing:border-box;
+    --bg-primary: #070A12;
+    --bg-secondary: #0B1020;
+    --bg-tertiary: #101727;
 
+    /* ---------- Cards ---------- */
+
+    --card-bg: rgba(17, 24, 39, 0.72);
+    --card-bg-solid: #111827;
+    --card-bg-hover: #151E30;
+
+    /* ---------- Primary ---------- */
+
+    --primary: #3B82F6;
+    --primary-dark: #2563EB;
+    --primary-light: #60A5FA;
+
+    --primary-soft: rgba(59, 130, 246, 0.12);
+    --primary-glow: rgba(59, 130, 246, 0.28);
+
+    /* ---------- Accent Colors ---------- */
+
+    --purple: #A855F7;
+    --purple-soft: rgba(168, 85, 247, 0.12);
+
+    --cyan: #06B6D4;
+    --cyan-soft: rgba(6, 182, 212, 0.12);
+
+    --green: #22C55E;
+    --green-soft: rgba(34, 197, 94, 0.12);
+
+    --orange: #F59E0B;
+    --orange-soft: rgba(245, 158, 11, 0.12);
+
+    --red: #EF4444;
+    --red-soft: rgba(239, 68, 68, 0.12);
+
+    --pink: #EC4899;
+    --pink-soft: rgba(236, 72, 153, 0.12);
+
+    /* ---------- Text ---------- */
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-faint: #64748B;
+
+    /* ---------- Borders ---------- */
+
+    --border: rgba(255, 255, 255, 0.075);
+    --border-light: rgba(255, 255, 255, 0.11);
+
+    /* ---------- Radius ---------- */
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
+    --radius-2xl: 26px;
+
+    /* ---------- Shadows ---------- */
+
+    --shadow-card:
+        0 12px 35px rgba(0, 0, 0, 0.28);
+
+    --shadow-heavy:
+        0 20px 55px rgba(0, 0, 0, 0.38);
+
+    --shadow-primary:
+        0 10px 30px rgba(37, 99, 235, 0.22);
+
+    /* ---------- Transitions ---------- */
+
+    --transition-fast: 0.18s ease;
+    --transition: 0.25s ease;
+    --transition-slow: 0.4s ease;
 }
 
-html{
 
-scroll-behavior:smooth;
+/* =========================================================
+   02. RESET
+   ========================================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-font-family:
-
--apple-system,
-
-BlinkMacSystemFont,
-
-"SF Pro Display",
-
-"Segoe UI",
-
-sans-serif;
-
-background:#090B12;
-
-color:#FFFFFF;
-
-overflow-x:hidden;
-
-position:relative;
-
-min-height:100vh;
-
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
-/* ==========================================
-   Background Glow
-==========================================*/
+body {
+    min-height: 100vh;
 
-body::before{
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
 
-content:"";
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(37, 99, 235, 0.11),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 100%,
+            rgba(96, 165, 250, 0.07),
+            transparent 28%
+        ),
+        var(--bg-primary);
 
-position:fixed;
+    color: var(--text-primary);
 
-top:-250px;
+    overflow-x: hidden;
 
-left:-250px;
+    position: relative;
 
-width:520px;
-
-height:520px;
-
-background:#2563EB;
-
-opacity:.16;
-
-filter:blur(180px);
-
-border-radius:50%;
-
-z-index:-2;
-
-animation:moveGlow1 18s ease-in-out infinite alternate;
-
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-body::after{
 
-content:"";
+/* =========================================================
+   03. BACKGROUND GLOW
+   ========================================================= */
 
-position:fixed;
+body::before {
 
-bottom:-250px;
+    content: "";
 
-right:-250px;
+    position: fixed;
 
-width:540px;
+    width: 420px;
+    height: 420px;
 
-height:540px;
+    top: -220px;
+    left: -180px;
 
-background:#60A5FA;
+    background: var(--primary);
 
-opacity:.12;
+    opacity: 0.12;
 
-filter:blur(180px);
+    filter: blur(150px);
 
-border-radius:50%;
+    border-radius: 50%;
 
-z-index:-2;
+    pointer-events: none;
 
-animation:moveGlow2 22s ease-in-out infinite alternate;
+    z-index: -2;
 
+    animation:
+        moveGlowOne 18s ease-in-out infinite alternate;
 }
 
-/* ==========================================
-   Main Container
-==========================================*/
+body::after {
 
-.container{
+    content: "";
 
-max-width:760px;
+    position: fixed;
 
-margin:auto;
+    width: 430px;
+    height: 430px;
 
-padding:28px 18px 60px;
+    right: -220px;
+    bottom: -220px;
 
+    background: #60A5FA;
+
+    opacity: 0.08;
+
+    filter: blur(160px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    animation:
+        moveGlowTwo 22s ease-in-out infinite alternate;
 }
 
-/* ==========================================
-   Header
-==========================================*/
 
-.header{
+/* =========================================================
+   04. MAIN CONTAINER
+   ========================================================= */
 
-text-align:center;
+.container {
 
-margin-bottom:28px;
+    width: 100%;
 
-animation:fadeUp .8s ease;
+    max-width: 760px;
 
+    margin: 0 auto;
+
+    padding:
+        28px
+        18px
+        70px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
-.logo{
 
-width:92px;
+/* =========================================================
+   05. HEADER
+   ========================================================= */
 
-height:92px;
+.header {
 
-object-fit:contain;
+    text-align: center;
 
-margin-bottom:16px;
+    margin-bottom: 30px;
 
+    animation:
+        fadeUp 0.65s ease both;
 }
 
-.header h1{
 
-font-size:42px;
+/* Logo */
 
-font-weight:700;
+.logo {
 
-letter-spacing:.5px;
+    width: 78px;
+    height: 78px;
 
-color:#FFFFFF;
+    object-fit: contain;
 
+    display: block;
+
+    margin:
+        0 auto
+        16px;
+
+    filter:
+        drop-shadow(
+            0 8px 20px
+            rgba(59, 130, 246, 0.18)
+        );
 }
 
-.header p{
 
-margin-top:8px;
+/* Main title */
 
-font-size:17px;
+.header h1 {
 
-color:#94A3B8;
+    font-size: clamp(30px, 8vw, 42px);
 
+    line-height: 1.15;
+
+    font-weight: 750;
+
+    letter-spacing: -0.7px;
+
+    color: var(--text-primary);
 }
 
-/* ==========================================
-   Glass Card
-==========================================*/
 
-.card{
+/* Subtitle */
 
-background:rgba(255,255,255,.05);
+.header p {
 
-border:1px solid rgba(255,255,255,.08);
+    margin-top: 9px;
 
-backdrop-filter:blur(20px);
+    font-size: 15px;
 
--webkit-backdrop-filter:blur(20px);
+    line-height: 1.6;
 
-border-radius:24px;
+    color: var(--text-muted);
 
-padding:22px;
-
-margin-bottom:22px;
-
-box-shadow:
-
-0 10px 35px rgba(0,0,0,.35);
-
-animation:fadeUp .45s ease;
-
+    font-weight: 450;
 }
 
-.section-title{
 
-font-size:25px;
+/* =========================================================
+   06. GLASS CARD SYSTEM
+   ========================================================= */
 
-font-weight:700;
+.card {
 
-margin-bottom:20px;
+    position: relative;
 
-color:#FFFFFF;
+    width: 100%;
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-2xl);
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    box-shadow: var(--shadow-card);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    animation:
+        fadeUp 0.45s ease both;
+
+    overflow: hidden;
 }
 
-/* ==========================================
-   Form Controls
-==========================================*/
 
-label{
+/* Soft light inside card */
 
-display:block;
+.card::before {
 
-margin-top:18px;
+    content: "";
 
-margin-bottom:8px;
+    position: absolute;
 
-font-size:15px;
+    width: 180px;
+    height: 180px;
 
-font-weight:600;
+    top: -110px;
+    right: -90px;
 
-color:#CBD5E1;
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,0.10),
+            transparent 70%
+        );
 
+    pointer-events: none;
 }
+
+
+/* Card hover */
+
+.card {
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.card:hover {
+
+    border-color:
+        rgba(255,255,255,0.11);
+
+    box-shadow:
+        0 16px 42px rgba(0,0,0,0.32);
+}
+
+
+/* =========================================================
+   07. SECTION TITLES
+   ========================================================= */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    font-weight: 750;
+
+    letter-spacing: -0.25px;
+
+    color: var(--text-primary);
+
+    margin-bottom: 20px;
+}
+
+
+/* Small accent line */
+
+.section-title::before {
+
+    content: "";
+
+    width: 4px;
+
+    min-width: 4px;
+
+    height: 22px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--primary-light),
+            var(--primary-dark)
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(59,130,246,0.35);
+}
+
+
+/* =========================================================
+   08. LABELS
+   ========================================================= */
+
+label {
+
+    display: block;
+
+    margin-top: 17px;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    font-weight: 650;
+
+    letter-spacing: 0.1px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   09. INPUTS & SELECTS
+   ========================================================= */
 
 input,
-select{
+select {
 
-width:100%;
+    width: 100%;
 
-height:58px;
+    height: 56px;
 
-padding:0 18px;
+    padding:
+        0 17px;
 
-border-radius:18px;
+    border-radius:
+        var(--radius-lg);
 
-border:1px solid rgba(255,255,255,.06);
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
 
-background:#131926;
+    background:
+        rgba(15, 23, 42, 0.82);
 
-color:#FFFFFF;
+    color:
+        var(--text-primary);
 
-font-size:16px;
+    font-family: inherit;
 
-transition:.25s;
+    font-size: 15px;
 
-outline:none;
+    font-weight: 500;
 
-appearance:none;
+    outline: none;
 
--webkit-appearance:none;
+    appearance: none;
+    -webkit-appearance: none;
 
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
 }
 
-input::placeholder{
 
-color:#7C8596;
+/* Placeholder */
 
+input::placeholder {
+
+    color: var(--text-faint);
+
+    opacity: 1;
 }
+
+
+/* Hover */
 
 input:hover,
-select:hover{
+select:hover {
 
-border-color:rgba(59,130,246,.28);
+    border-color:
+        rgba(96,165,250,0.22);
 
+    background:
+        rgba(20, 30, 48, 0.9);
 }
+
+
+/* Focus */
 
 input:focus,
-select:focus{
+select:focus {
 
-border-color:#3B82F6;
+    border-color:
+        var(--primary);
 
-background:#181F2E;
+    background:
+        #111A2B;
 
-box-shadow:
+    box-shadow:
+        0 0 0 4px
+        rgba(59,130,246,0.11),
 
-0 0 0 5px rgba(59,130,246,.15);
-
-}
-
-select{
-
-padding-right:48px;
-
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white'%3E%3Cpath d='M4 7l5 5 5-5'/%3E%3C/svg%3E");
-
-background-repeat:no-repeat;
-
-background-position:right 18px center;
-
+        0 8px 24px
+        rgba(0,0,0,0.16);
 }
-
-/* ==========================================
-   Calculate Button
-==========================================*/
 
-#calculateBtn{
 
-width:100%;
+/* Select arrow */
 
-height:58px;
+select {
 
-margin-top:28px;
-
-border:none;
-
-border-radius:18px;
-
-background:#2563EB;
-
-color:#FFFFFF;
-
-font-size:18px;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
+    padding-right: 48px;
 
-#calculateBtn:hover{
+    background-image:
 
-background:#1D4ED8;
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            #94A3B8 50%
+        ),
 
-transform:translateY(-2px);
+        linear-gradient(
+            135deg,
+            #94A3B8 50%,
+            transparent 50%
+        );
 
-}
+    background-position:
 
-#calculateBtn:active{
+        calc(100% - 21px) 23px,
+        calc(100% - 15px) 23px;
 
-transform:scale(.98);
+    background-size:
+        6px 6px,
+        6px 6px;
 
+    background-repeat: no-repeat;
 }
-/* ==========================================
-   Welcome Screen
-==========================================*/
-
-#welcomeScreen{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:linear-gradient(
-180deg,
-#050816 0%,
-#0B1023 100%
-);
-
-z-index:9999;
-
-overflow:hidden;
 
-transition:
 
-opacity .8s ease,
+/* Select options */
 
-visibility .8s ease,
+select option {
 
-transform .8s ease;
+    background:
+        #111827;
 
+    color:
+        #F8FAFC;
 }
 
-#welcomeScreen.hide{
 
-opacity:0;
+/* =========================================================
+   10. CALCULATE BUTTON
+   ========================================================= */
 
-visibility:hidden;
+#calculateBtn {
 
-pointer-events:none;
+    width: 100%;
 
-transform:scale(1.05);
+    min-height: 56px;
 
-}
-
-.welcome-content{
+    margin-top: 25px;
 
-position:relative;
+    padding:
+        0 20px;
 
-z-index:2;
+    border: none;
 
-text-align:center;
-
-animation:zoomIn 1s ease;
-
-}
+    border-radius:
+        var(--radius-lg);
 
-/* ==========================================
-   Welcome Text
-==========================================*/
+    background:
+        linear-gradient(
+            135deg,
+            #2563EB 0%,
+            #3B82F6 100%
+        );
 
-.welcome-title{
+    color: #FFFFFF;
 
-font-size:56px;
+    font-family: inherit;
 
-font-weight:300;
+    font-size: 16px;
 
-letter-spacing:4px;
+    font-weight: 750;
 
-color:#FFFFFF;
+    letter-spacing: 0.1px;
 
-opacity:0;
+    cursor: pointer;
 
-animation:welcomeTitle .9s ease forwards;
+    box-shadow:
+        0 10px 26px
+        rgba(37,99,235,0.22);
 
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition),
+        filter var(--transition);
 }
-
-.app-title{
-
-margin-top:12px;
-
-font-size:72px;
-
-font-weight:700;
-
-letter-spacing:2px;
 
-color:#3B82F6;
 
-text-shadow:
+/* Button hover */
 
-0 0 12px rgba(59,130,246,.55),
+#calculateBtn:hover {
 
-0 0 35px rgba(59,130,246,.25);
+    transform:
+        translateY(-2px);
 
-opacity:0;
+    filter:
+        brightness(1.06);
 
-animation:welcomeApp .9s .45s forwards;
-
+    box-shadow:
+        0 14px 32px
+        rgba(37,99,235,0.30);
 }
-
-.app-subtitle{
 
-margin-top:22px;
 
-font-size:24px;
+/* Button active */
 
-line-height:1.7;
+#calculateBtn:active {
 
-color:#B8C5FF;
+    transform:
+        translateY(0)
+        scale(0.985);
 
-opacity:0;
-
-animation:welcomeSubtitle .9s .8s forwards;
-
+    box-shadow:
+        0 6px 16px
+        rgba(37,99,235,0.20);
 }
-
-.developer{
 
-margin-top:42px;
 
-font-size:18px;
+/* =========================================================
+   11. GENERAL BUTTON RESET
+   ========================================================= */
 
-color:#CBD5E1;
+button {
 
-opacity:0;
+    font-family: inherit;
 
-animation:welcomeDeveloper .9s 1.15s forwards;
-
+    -webkit-tap-highlight-color:
+        transparent;
 }
-
-.developer span{
-
-display:block;
-
-margin-top:10px;
-
-font-size:28px;
 
-font-weight:700;
 
-letter-spacing:2px;
+/* =========================================================
+   12. RESULT CARD
+   ========================================================= */
 
-background:linear-gradient(
+#resultCard {
 
-180deg,
+    display: none;
 
-#FFFFFF 0%,
-
-#E5E7EB 35%,
-
-#C5CDD8 70%,
-
-#97A1AF 100%
-
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
+    animation:
+        fadeUp 0.45s ease both;
 }
 
-/* ==========================================
-   Floating Stars
-==========================================*/
 
-.stars{
+.result-grid {
 
-position:absolute;
+    display: flex;
 
-inset:0;
+    flex-direction: column;
 
-pointer-events:none;
-
-overflow:hidden;
-
+    gap: 0;
 }
-
-.star{
 
-position:absolute;
 
-width:2px;
+.result-item {
 
-height:2px;
+    display: flex;
 
-background:#FFFFFF;
+    justify-content: space-between;
 
-border-radius:50%;
+    align-items: flex-start;
 
-opacity:.35;
+    gap: 20px;
 
-animation:twinkle 4s ease-in-out infinite;
+    padding:
+        15px 0;
 
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.065);
 }
 
-.star:nth-child(1){top:10%;left:15%;animation-delay:0s;}
-.star:nth-child(2){top:20%;left:70%;animation-delay:1s;}
-.star:nth-child(3){top:35%;left:40%;animation-delay:2s;}
-.star:nth-child(4){top:55%;left:85%;animation-delay:3s;}
-.star:nth-child(5){top:70%;left:20%;animation-delay:1.5s;}
-.star:nth-child(6){top:82%;left:60%;animation-delay:2.5s;}
-.star:nth-child(7){top:14%;left:88%;animation-delay:.5s;}
-.star:nth-child(8){top:62%;left:8%;animation-delay:3.5s;}
 
-/* ==========================================
-   Animations
-==========================================*/
+.result-item:first-child {
 
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(24px);
-
+    padding-top: 4px;
 }
-
-to{
 
-opacity:1;
 
-transform:translateY(0);
+.result-item:last-child {
 
-}
+    border-bottom: none;
 
+    padding-bottom: 4px;
 }
-
-@keyframes zoomIn{
 
-0%{
 
-opacity:0;
-
-transform:scale(.88);
-
-}
+.result-label {
 
-100%{
+    flex: 1;
 
-opacity:1;
+    font-size: 13px;
 
-transform:scale(1);
+    line-height: 1.5;
 
-}
+    font-weight: 600;
 
+    color:
+        var(--text-muted);
 }
-
-@keyframes welcomeTitle{
 
-from{
 
-opacity:0;
+.result-value {
 
-transform:translateY(30px);
-
-filter:blur(8px);
-
-}
+    max-width: 62%;
 
-to{
+    font-size: 16px;
 
-opacity:1;
+    line-height: 1.6;
 
-transform:translateY(0);
+    font-weight: 700;
 
-filter:blur(0);
+    color:
+        var(--text-primary);
 
-}
+    text-align: right;
 
+    word-break: break-word;
 }
-
-@keyframes welcomeApp{
 
-from{
 
-opacity:0;
+.full-width {
 
-transform:translateY(20px);
-
+    display: block;
 }
 
-to{
 
-opacity:1;
+.full-width .result-label {
 
-transform:translateY(0);
+    display: block;
 
+    margin-bottom: 7px;
 }
 
-}
 
-@keyframes welcomeSubtitle{
+.full-width .result-value {
 
-from{
+    display: block;
 
-opacity:0;
+    max-width: 100%;
 
-transform:translateY(18px);
+    text-align: left;
 
+    line-height: 1.8;
 }
 
-to{
 
-opacity:1;
+/* =========================================================
+   13. DRUG INFORMATION CARD
+   ========================================================= */
 
-transform:translateY(0);
+#drugInfoCard {
 
-}
+    display: none;
 
+    animation:
+        fadeUp 0.45s ease both;
 }
 
-@keyframes welcomeDeveloper{
 
-from{
+.info-grid {
 
-opacity:0;
+    display: flex;
 
-transform:translateY(18px);
+    flex-direction: column;
 
+    gap: 0;
 }
 
-to{
 
-opacity:1;
+.info-item {
 
-transform:translateY(0);
+    padding:
+        15px 0;
 
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.065);
 }
 
-}
-
-@keyframes twinkle{
 
-0%,100%{
+.info-item:first-child {
 
-opacity:.2;
-
-transform:scale(1);
-
+    padding-top: 3px;
 }
-
-50%{
 
-opacity:.85;
 
-transform:scale(1.8);
+.info-item:last-child {
 
-}
+    border-bottom: none;
 
+    padding-bottom: 3px;
 }
-
-@keyframes moveGlow1{
 
-0%{
 
-transform:translate(0,0) scale(1);
+.info-label {
 
-}
+    display: block;
 
-50%{
+    margin-bottom: 7px;
 
-transform:translate(70px,35px) scale(1.12);
-
-}
+    font-size: 13px;
 
-100%{
+    line-height: 1.5;
 
-transform:translate(-40px,75px) scale(.95);
+    font-weight: 700;
 
-}
+    color:
+        var(--primary-light);
 
+    letter-spacing: 0.1px;
 }
-
-@keyframes moveGlow2{
 
-0%{
-
-transform:translate(0,0) scale(1);
-
-}
 
-50%{
+.info-value {
 
-transform:translate(-60px,-40px) scale(1.12);
+    display: block;
 
-}
+    font-size: 14px;
 
-100%{
+    line-height: 1.8;
 
-transform:translate(45px,-75px) scale(.92);
+    font-weight: 450;
 
-}
+    color:
+        var(--text-secondary);
 
+    word-break: break-word;
 }
-/* ==========================================
-   Dose Result Card
-==========================================*/
 
-#resultCard{
 
-display:none;
+/* =========================================================
+   14. BLACK BOX WARNING
+   ========================================================= */
 
-animation:fadeUp .45s ease;
+.black-box {
 
-}
+    margin-top: 12px;
 
-.result-grid{
+    padding: 17px;
 
-display:flex;
+    border-radius:
+        var(--radius-lg);
 
-flex-direction:column;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(239,68,68,0.13),
+            rgba(239,68,68,0.06)
+        );
 
-gap:14px;
+    border:
+        1px solid
+        rgba(239,68,68,0.26);
 
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.025);
 }
-
-.result-item{
-
-display:flex;
 
-justify-content:space-between;
 
-align-items:flex-start;
+.black-box .info-label {
 
-padding:14px 0;
+    color:
+        #F87171;
 
-border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-.result-item:last-child{
-
-border-bottom:none;
-
+    font-size: 14px;
 }
 
-.result-label{
 
-font-size:15px;
+.black-box .info-value {
 
-font-weight:600;
+    color:
+        #FECACA;
 
-color:#94A3B8;
-
+    font-weight: 600;
 }
-
-.result-value{
 
-font-size:17px;
 
-font-weight:700;
+/* =========================================================
+   15. CLINICAL ALERT
+   ========================================================= */
 
-color:#FFFFFF;
+#clinicalAlertCard {
 
-text-align:right;
-
-word-break:break-word;
-
-}
+    display: none;
 
-.full-width{
+    animation:
+        fadeUp 0.45s ease both;
 
-display:block;
+    border-left:
+        4px solid
+        var(--primary);
 
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,0.12),
+            rgba(37,99,235,0.045)
+        );
 }
 
-.full-width .result-label{
 
-display:block;
+#clinicalAlertContent {
 
-margin-bottom:8px;
+    color:
+        var(--text-secondary);
 
-}
-
-.full-width .result-value{
+    line-height:
+        1.8;
 
-display:block;
-
-line-height:1.8;
-
+    font-size:
+        14px;
 }
-
 
-/* ==========================================
-   Drug Information Card
-==========================================*/
 
-#drugInfoCard{
+/* =========================================================
+   16. SCROLLBAR
+   ========================================================= */
 
-display:none;
+::-webkit-scrollbar {
 
-animation:fadeUp .45s ease;
-
+    width: 6px;
+    height: 6px;
 }
-
-.info-grid{
 
-display:flex;
 
-flex-direction:column;
+::-webkit-scrollbar-track {
 
-gap:16px;
-
+    background:
+        transparent;
 }
-
-.info-item{
-
-padding:14px 0;
 
-border-bottom:1px solid rgba(255,255,255,.08);
 
-}
-
-.info-item:last-child{
+::-webkit-scrollbar-thumb {
 
-border-bottom:none;
+    background:
+        rgba(148,163,184,0.22);
 
+    border-radius:
+        999px;
 }
-
-.info-label{
-
-display:block;
-
-font-size:15px;
 
-font-weight:700;
 
-color:#60A5FA;
+::-webkit-scrollbar-thumb:hover {
 
-margin-bottom:8px;
-
+    background:
+        rgba(148,163,184,0.38);
 }
-
-.info-value{
 
-display:block;
 
-font-size:15px;
+/* =========================================================
+   17. SELECTION
+   ========================================================= */
 
-line-height:1.8;
+::selection {
 
-color:#E2E8F0;
+    background:
+        rgba(59,130,246,0.30);
 
-word-break:break-word;
-
+    color:
+        #FFFFFF;
 }
-
-
-/* ==========================================
-   Black Box Warning
-==========================================*/
 
-.black-box{
 
-background:rgba(239,68,68,.12);
+/* =========================================================
+   18. ANIMATIONS
+   ========================================================= */
 
-border:1px solid rgba(239,68,68,.35);
+@keyframes fadeUp {
 
-border-radius:18px;
+    from {
 
-padding:18px;
+        opacity: 0;
 
-margin-top:10px;
+        transform:
+            translateY(18px);
+    }
 
-}
-
-.black-box .info-label{
-
-color:#F87171;
-
-font-size:16px;
-
-}
-
-.black-box .info-value{
+    to {
 
-color:#FDECEC;
+        opacity: 1;
 
-font-weight:600;
-
+        transform:
+            translateY(0);
+    }
 }
-
-
-/* ==========================================
-   Clinical Alert Card
-==========================================*/
 
-#clinicalAlertCard{
 
-display:none;
+@keyframes moveGlowOne {
 
-animation:fadeUp .45s ease;
+    0% {
 
-border-left:5px solid #2563EB;
+        transform:
+            translate(0,0)
+            scale(1);
+    }
 
-background:rgba(37,99,235,.08);
+    50% {
 
-}
-
-#clinicalAlertContent{
+        transform:
+            translate(55px,35px)
+            scale(1.08);
+    }
 
-line-height:1.8;
+    100% {
 
-color:#FFFFFF;
-
+        transform:
+            translate(-25px,65px)
+            scale(0.96);
+    }
 }
 
 
-/* ==========================================
-   Dashboard
-==========================================*/
+@keyframes moveGlowTwo {
 
-.dashboard-grid{
+    0% {
 
-display:grid;
+        transform:
+            translate(0,0)
+            scale(1);
+    }
 
-grid-template-columns:repeat(2,1fr);
+    50% {
 
-gap:18px;
+        transform:
+            translate(-45px,-35px)
+            scale(1.08);
+    }
 
-margin-top:18px;
+    100% {
 
+        transform:
+            translate(35px,-65px)
+            scale(0.94);
+    }
 }
-
-.dashboard-box{
-
-background:#141925;
 
-border-radius:18px;
 
-padding:20px;
+/* =========================================================
+   END OF PART 1
+   ========================================================= */
+/* =========================================================
+   DOSECARE
+   Professional Medical UI
+   Style System — Part 2/4
+   ========================================================= */
 
-text-align:center;
 
-transition:.25s;
+/* =========================================================
+   19. DASHBOARD
+   ========================================================= */
 
-border:1px solid rgba(255,255,255,.05);
+.dashboard-grid {
 
-}
-
-.dashboard-box:hover{
+    display: grid;
 
-transform:translateY(-4px);
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-background:#1A2233;
+    gap: 14px;
 
+    margin-top: 18px;
 }
 
-.dashboard-box h3{
 
-font-size:34px;
+.dashboard-box {
 
-color:#3B82F6;
+    position: relative;
 
-margin-bottom:8px;
+    min-height: 120px;
 
-}
+    padding: 20px 16px;
 
-.dashboard-box p{
+    display: flex;
 
-font-size:15px;
+    flex-direction: column;
 
-color:#94A3B8;
-
-}
+    justify-content: center;
 
+    align-items: center;
 
-/* ==========================================
-   History
-==========================================*/
+    text-align: center;
 
-#history{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        );
 
-display:flex;
+    border:
+        1px solid
+        var(--border);
 
-flex-direction:column;
+    border-radius:
+        var(--radius-xl);
 
-gap:14px;
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,0.20);
 
-margin-top:18px;
+    overflow: hidden;
 
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
-.history-item{
 
-background:#141925;
+.dashboard-box::before {
 
-border:1px solid rgba(255,255,255,.05);
+    content: "";
 
-border-radius:18px;
+    position: absolute;
 
-padding:18px;
+    width: 90px;
+    height: 90px;
 
-transition:.25s;
+    top: -45px;
+    right: -35px;
 
-}
-
-.history-item:hover{
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,0.16),
+            transparent 70%
+        );
 
-background:#1B2435;
-
-transform:translateY(-2px);
-
+    pointer-events: none;
 }
-
 
-/* ==========================================
-   About
-==========================================*/
 
-.about p{
+.dashboard-box:hover {
 
-margin-top:14px;
+    transform:
+        translateY(-3px);
 
-line-height:1.9;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(59,130,246,0.09),
+            rgba(255,255,255,0.025)
+        );
 
-color:#CBD5E1;
+    border-color:
+        rgba(59,130,246,0.22);
 
+    box-shadow:
+        0 14px 30px
+        rgba(0,0,0,0.26);
 }
 
 
-/* ==========================================
-   Responsive
-==========================================*/
+.dashboard-box h3 {
 
-@media (max-width:768px){
+    position: relative;
 
-.container{
+    margin-bottom: 7px;
 
-padding:20px 15px 50px;
+    font-size: 30px;
 
-}
-
-.header h1{
-
-font-size:34px;
-
-}
+    line-height: 1;
 
-.app-title{
+    font-weight: 750;
 
-font-size:56px;
+    letter-spacing: -0.5px;
 
+    color:
+        var(--primary-light);
 }
 
-.welcome-title{
 
-font-size:44px;
+.dashboard-box p {
 
-}
-
-.app-subtitle{
+    position: relative;
 
-font-size:20px;
-
-}
+    font-size: 13px;
 
-.dashboard-grid{
+    line-height: 1.5;
 
-grid-template-columns:1fr;
+    font-weight: 550;
 
+    color:
+        var(--text-muted);
 }
 
-.result-item{
 
-flex-direction:column;
+/* =========================================================
+   20. HISTORY
+   ========================================================= */
 
-align-items:flex-start;
+#history {
 
-gap:6px;
+    display: flex;
 
-}
-
-.result-value{
+    flex-direction: column;
 
-text-align:left;
+    gap: 10px;
 
+    margin-top: 18px;
 }
-
-}
-/* ==========================================
-   Side Menu
-========================================== */
-
-.menu-btn{
 
-position:fixed;
 
-top:20px;
-left:20px;
+.history-item {
 
-width:52px;
-height:52px;
+    position: relative;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    padding: 16px 17px;
 
-padding:0;
+    background:
+        rgba(17,24,39,0.65);
 
-background:#1F2937;
+    border:
+        1px solid
+        var(--border);
 
-color:#fff;
+    border-radius:
+        var(--radius-lg);
 
-border:none;
+    box-shadow:
+        0 7px 20px
+        rgba(0,0,0,0.18);
 
-border-radius:14px;
-
-font-size:28px;
-
-cursor:pointer;
-
-z-index:6000;
-
-box-shadow:
-0 8px 20px rgba(0,0,0,.35);
-
-transition:.25s;
-
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
 }
 
 
-.menu-btn:hover{
+.history-item:hover {
 
-background:#2563EB;
+    transform:
+        translateY(-2px);
 
-transform:scale(1.05);
+    background:
+        rgba(21,30,48,0.82);
 
+    border-color:
+        rgba(59,130,246,0.18);
 }
 
 
-.menu-btn:active{
+/* =========================================================
+   21. ABOUT SECTION
+   ========================================================= */
 
-transform:scale(.96);
+.about {
 
+    color:
+        var(--text-secondary);
 }
-
-
-/* ==========================================
-   Side Menu Panel
-========================================== */
-
-.side-menu{
-
-position:fixed;
 
-top:0;
-left:-100%;
 
-width:280px;
-max-width:80%;
+.about p {
 
-height:100vh;
+    margin-top: 13px;
 
-background:#111827;
+    font-size: 14px;
 
-padding-top:25px;
+    line-height: 1.9;
 
-transition:.35s ease;
-
-z-index:5000;
-
-overflow-y:auto;
-
-box-shadow:
-8px 0 30px rgba(0,0,0,.45);
-
+    color:
+        var(--text-secondary);
 }
 
 
-.side-menu.open{
+.about strong {
 
-left:0;
+    color:
+        var(--text-primary);
 
+    font-weight: 700;
 }
-
 
-.menu-header{
 
-padding:35px 25px;
+/* =========================================================
+   22. SIDE MENU — OVERLAY
+   ========================================================= */
 
-border-bottom:
-1px solid rgba(255,255,255,.08);
+.menu-overlay {
 
-}
+    position: fixed;
 
+    inset: 0;
 
-.menu-header h2{
+    width: 100%;
+    height: 100%;
 
-font-size:28px;
+    background:
+        rgba(2,6,23,0.58);
 
-color:#3B82F6;
+    backdrop-filter:
+        blur(5px);
 
-}
+    -webkit-backdrop-filter:
+        blur(5px);
 
+    opacity: 0;
 
-.side-menu ul{
+    visibility: hidden;
 
-list-style:none;
+    pointer-events: none;
 
-padding:15px 0;
+    transition:
+        opacity var(--transition-slow),
+        visibility var(--transition-slow);
 
+    z-index: 4500;
 }
-
-
-.side-menu li{
-
-padding:18px 25px;
 
-font-size:17px;
 
-cursor:pointer;
+.menu-overlay.show {
 
-color:#fff;
+    opacity: 1;
 
-transition:.25s;
+    visibility: visible;
 
+    pointer-events: auto;
 }
 
 
-.side-menu li:hover{
+/* =========================================================
+   23. SIDE MENU — BUTTON
+   ========================================================= */
 
-background:
-rgba(59,130,246,.12);
+.menu-btn {
 
-padding-left:32px;
+    position: fixed;
 
-}
-
+    top: 18px;
+    left: 18px;
 
-/* ==========================================
-   Overlay
-========================================== */
+    width: 48px;
+    height: 48px;
 
-.menu-overlay{
+    display: flex;
 
-position:fixed;
+    align-items: center;
+    justify-content: center;
 
-top:0;
-left:0;
+    padding: 0;
 
-width:100%;
-height:100%;
+    background:
+        rgba(17,24,39,0.82);
 
-background:
-rgba(0,0,0,.45);
+    color:
+        var(--text-primary);
 
-backdrop-filter:blur(3px);
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-opacity:0;
+    border-radius:
+        15px;
 
-visibility:hidden;
+    font-size: 23px;
 
-transition:.3s;
+    line-height: 1;
 
-z-index:3500;
+    cursor: pointer;
 
-}
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,0.28);
 
+    backdrop-filter:
+        blur(16px);
 
-.menu-overlay.show{
+    -webkit-backdrop-filter:
+        blur(16px);
 
-opacity:1;
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
 
-visibility:visible;
+    z-index: 6000;
 
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
 
-/* ==========================================
-   Sub Menu
-========================================== */
+.menu-btn:hover {
 
-.sub-menu{
+    background:
+        var(--primary);
 
-display:none;
+    border-color:
+        var(--primary);
 
-padding:10px 18px;
+    transform:
+        translateY(-1px);
 
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,0.28);
 }
 
 
-.sub-menu.show{
+.menu-btn:active {
 
-display:block;
-
+    transform:
+        scale(0.94);
 }
-
 
-.sub-menu button{
 
-width:100%;
+/* =========================================================
+   24. SIDE MENU — PANEL
+   ========================================================= */
 
-height:42px;
-
-margin:8px 0;
-
-border-radius:12px;
-
-font-size:15px;
-
-}
+.side-menu {
 
+    position: fixed;
 
-/* ==========================================
-   Premium Light Mode
-==========================================*/
+    top: 0;
+    left: -100%;
 
-body.light{
+    width: 290px;
 
-background:linear-gradient(
-135deg,
-#EEF2F6 0%,
-#E7EBF0 50%,
-#DDE3EA 100%
-);
+    max-width: 86vw;
 
-color:#4B5563;
+    height: 100dvh;
 
-position:relative;
+    padding:
+        0 0 30px;
 
-overflow-x:hidden;
+    background:
+        rgba(15,23,42,0.96);
 
-}
-/* ==========================================
-   Light Titles
-==========================================*/
+    border-right:
+        1px solid
+        rgba(255,255,255,0.07);
 
-body.light h1,
-body.light h2,
-body.light h3,
-body.light .section-title{
+    box-shadow:
+        15px 0 45px
+        rgba(0,0,0,0.42);
 
-color:#2563EB;
+    backdrop-filter:
+        blur(25px);
 
-}
-/* ==========================================
-   Light Text
-==========================================*/
+    -webkit-backdrop-filter:
+        blur(25px);
 
-body.light p,
-body.light span,
-body.light label{
+    overflow-y: auto;
 
-color:#6B7280;
+    transition:
+        left 0.38s cubic-bezier(.22,.61,.36,1);
 
+    z-index: 5000;
 }
-/* ==========================================
-   Glass Cards
-========================================== */
-
-body.light .card{
-
-background:
-rgba(255,255,255,.55);
-
-backdrop-filter:
-blur(25px);
-
--webkit-backdrop-filter:
-blur(25px);
-
-border:
-
-1px solid rgba(255,255,255,.7);
-
-
-box-shadow:
 
-0 20px 40px rgba(0,0,0,.08);
 
-color:#111827;
+.side-menu.open {
 
+    left: 0;
 }
 
 
-/* ==========================================
-   Inputs
-========================================== */
+/* =========================================================
+   25. SIDE MENU HEADER
+   ========================================================= */
 
-body.light input,
-body.light select{
+.menu-header {
 
-background:#fff;
+    padding:
+        34px 22px 24px;
 
-border:
+    text-align: center;
 
-1px solid #C7D7FE;
-
-color:#111827;
-
-box-shadow:
-
-0 4px 12px rgba(37,99,235,.05);
-
-}
-body.light input::placeholder{
-
-color:#9CA3AF;
-
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
 }
-body.light option{
 
-background:#FFFFFF;
 
-color:#374151;
+/* =========================================================
+   26. MENU LOGO CIRCLE
+   ========================================================= */
 
-}
-body.light input:focus,
-body.light select:focus{
+.logo-circle {
 
-outline:none;
+    width: 62px;
+    height: 62px;
 
-border-color:#3B82F6;
+    margin:
+        0 auto 14px;
 
-box-shadow:0 0 0 4px rgba(59,130,246,.15);
-
-}
-/* ==========================================
-   Buttons
-========================================== */
+    display: flex;
 
-body.light button{
+    align-items: center;
+    justify-content: center;
 
-background:
-linear-gradient(
-135deg,
-#2563EB,
-#3B82F6
-);
+    border-radius: 20px;
 
-color:white;
+    background:
+        linear-gradient(
+            145deg,
+            #2563EB,
+            #3B82F6
+        );
 
-box-shadow:
+    color:
+        #FFFFFF;
 
-0 10px 20px rgba(37,99,235,.25);
+    font-size: 28px;
 
-transition:.3s;
+    box-shadow:
+        0 12px 28px
+        rgba(37,99,235,0.28);
 
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 
-body.light button:hover{
+.logo-circle:hover {
 
-transform:
-translateY(-2px);
+    transform:
+        translateY(-2px)
+        rotate(-2deg);
 
+    box-shadow:
+        0 16px 32px
+        rgba(37,99,235,0.34);
 }
 
 
-/* ==========================================
-   Light Side Menu
-========================================== */
+.menu-header h2 {
 
-body.light .side-menu{
+    margin: 0;
 
-background:
+    font-size: 23px;
 
-rgba(255,255,255,.95);
+    line-height: 1.25;
 
-backdrop-filter:
+    font-weight: 750;
 
-blur(20px);
+    letter-spacing: -0.3px;
 
+    color:
+        var(--text-primary);
 }
 
 
-body.light .side-menu li{
+.menu-header p {
 
-color:#111827;
+    margin-top: 6px;
 
-}
-
-
-body.light .menu-btn{
-
-background:rgba(255,255,255,.45);
-
-backdrop-filter:blur(20px);
+    font-size: 13px;
 
--webkit-backdrop-filter:blur(20px);
+    line-height: 1.5;
 
-color:#2563EB;
-
-border:1px solid rgba(255,255,255,.8);
-
+    color:
+        var(--text-muted);
 }
-
-
-/* ==========================================
-   About Modal
-========================================== */
-
-.about-modal{
 
-display:none;
 
-position:fixed;
+.menu-header small {
 
-top:0;
-left:0;
+    display: block;
 
-width:100%;
-height:100%;
+    margin-top: 9px;
 
-background:
+    font-size: 11px;
 
-rgba(0,0,0,.55);
+    color:
+        var(--text-faint);
 
-backdrop-filter:
-
-blur(6px);
-
-justify-content:center;
-
-align-items:center;
-
-z-index:9999;
-
+    letter-spacing: 0.2px;
 }
-
-
-.about-box{
-
-width:90%;
-
-max-width:500px;
-
-background:#111827;
 
-color:white;
 
-padding:28px;
+/* =========================================================
+   27. MENU LIST
+   ========================================================= */
 
-border-radius:22px;
+.side-menu ul {
 
-box-shadow:
+    list-style: none;
 
-0 20px 50px rgba(0,0,0,.45);
-
+    padding:
+        12px 10px;
 }
-
 
-body.light .about-box{
 
-background:white;
+.side-menu li {
 
-color:#111827;
+    position: relative;
 
-}
+    display: flex;
 
+    align-items: center;
 
-/* ==========================================
-   Popup Animation
-========================================== */
+    gap: 11px;
 
-@keyframes popup{
+    min-height: 48px;
 
-from{
+    padding:
+        12px 14px;
 
-transform:scale(.9);
+    margin:
+        3px 0;
 
-opacity:0;
-
-}
+    border-radius:
+        var(--radius-md);
 
-to{
+    color:
+        var(--text-secondary);
 
-transform:scale(1);
+    font-size: 14px;
 
-opacity:1;
+    font-weight: 600;
 
-}
+    cursor: pointer;
 
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
 }
-
-
-/* ==========================================
-   Glass Floating Bubbles
-========================================== */
-
-body.light::before,
-body.light::after{
-
-content:"";
 
-position:fixed;
 
-border-radius:50%;
+.side-menu li:hover {
 
-pointer-events:none;
+    background:
+        rgba(59,130,246,0.10);
 
-z-index:0;
+    color:
+        var(--text-primary);
 
-background:
-
-rgba(255,255,255,.35);
-
-backdrop-filter:
-
-blur(30px);
-
--webkit-backdrop-filter:
-
-blur(30px);
-
+    transform:
+        translateX(3px);
 }
-
-
-/* Bubble 1 */
-
-body.light::before{
-
-width:350px;
 
-height:350px;
 
-top:-100px;
+/* Active menu item */
 
-left:-80px;
+.side-menu li.active {
 
-animation:
+    background:
+        linear-gradient(
+            90deg,
+            rgba(59,130,246,0.16),
+            rgba(59,130,246,0.05)
+        );
 
-floatBubble 14s infinite alternate;
-
+    color:
+        var(--primary-light);
 }
-
 
-/* Bubble 2 */
 
-body.light::after{
+.side-menu li.active::before {
 
-width:260px;
+    content: "";
 
-height:260px;
+    position: absolute;
 
-right:-70px;
+    left: 0;
 
-bottom:80px;
+    width: 3px;
+    height: 22px;
 
-animation:
+    border-radius:
+        0 5px 5px 0;
 
-floatBubble 18s infinite alternate-reverse;
-
+    background:
+        var(--primary);
 }
-
-
-/* Keep App Above Bubbles */
 
-.container{
 
-position:relative;
+/* =========================================================
+   28. MENU SECTION TITLES
+   ========================================================= */
 
-z-index:1;
+.menu-title {
 
-}
-
+    padding:
+        18px 15px 7px;
 
-/* Bubble Animation */
+    font-size: 10px;
 
-@keyframes floatBubble{
+    line-height: 1.4;
 
-from{
-
-transform:
-translate(0,0);
-
-}
+    font-weight: 750;
 
-to{
+    letter-spacing: 1.7px;
 
-transform:
-translate(40px,-50px);
+    text-transform: uppercase;
 
-}
+    color:
+        var(--text-faint);
 
+    cursor: default;
 }
-
 
-/* ==========================================
-   Calculate Button
-========================================== */
 
-body.light #calculateBtn{
+.menu-title:hover {
 
-background:#2563EB;
+    background:
+        transparent;
 
-color:white;
-
+    transform:
+        none;
 }
-
-/* ==========================================
-   Premium Glass Bubble Background
-========================================== */
-
 
-.glass-bubbles{
 
-position:fixed;
+/* =========================================================
+   29. SUB MENU
+   ========================================================= */
 
-top:0;
-left:0;
+.sub-menu {
 
-width:100%;
-height:100%;
+    display: none;
 
-overflow:hidden;
-
-pointer-events:none;
-
-z-index:0;
-
-display:none;
-
+    padding:
+        3px 5px 8px;
 }
 
 
-body.light .glass-bubbles{
+.sub-menu.show {
 
-display:block;
+    display: block;
 
+    animation:
+        fadeUp 0.25s ease both;
 }
-
 
-.bubble{
 
-position:absolute;
+.sub-menu button {
 
-border-radius:50%;
+    width: 100%;
 
-background:
+    min-height: 42px;
 
-rgba(255,255,255,.35);
+    margin:
+        5px 0;
 
-backdrop-filter:
+    padding:
+        0 13px;
 
-blur(25px);
+    border:
+        1px solid
+        rgba(255,255,255,0.055);
 
--webkit-backdrop-filter:
+    border-radius:
+        var(--radius-md);
 
-blur(25px);
+    background:
+        rgba(255,255,255,0.035);
 
-box-shadow:
+    color:
+        var(--text-secondary);
 
-inset 0 0 30px rgba(255,255,255,.4);
+    font-family: inherit;
 
-animation:
+    font-size: 13px;
 
-bubbleMove 18s infinite ease-in-out alternate;
+    font-weight: 600;
 
-}
-
-
-/* Bubble 1 */
-
-.bubble1{
-
-width:180px;
-height:180px;
+    cursor: pointer;
 
-top:10%;
-
-left:5%;
-
-animation-duration:16s;
-
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
 }
-
-
-/* Bubble 2 */
 
-.bubble2{
 
-width:280px;
-height:280px;
+.sub-menu button:hover {
 
-top:55%;
+    background:
+        rgba(59,130,246,0.12);
 
-left:-80px;
+    color:
+        var(--primary-light);
 
-animation-duration:22s;
-
+    transform:
+        translateX(3px);
 }
-
-
-/* Bubble 3 */
-
-.bubble3{
-
-width:130px;
-height:130px;
 
-top:25%;
 
-right:10%;
+/* =========================================================
+   30. TOOL CARDS
+   ========================================================= */
 
-animation-duration:14s;
+.tool-card {
 
-}
-
+    position: relative;
 
-/* Bubble 4 */
+    display: flex;
 
-.bubble4{
+    align-items: center;
 
-width:220px;
-height:220px;
+    gap: 12px;
 
-bottom:-40px;
+    min-height: 66px;
 
-right:5%;
+    padding:
+        15px 16px;
 
-animation-duration:20s;
+    margin:
+        12px 0;
 
-}
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,41,59,0.78),
+            rgba(15,23,42,0.72)
+        );
 
+    border:
+        1px solid
+        var(--border);
 
-/* Bubble 5 */
+    border-radius:
+        var(--radius-lg);
 
-.bubble5{
+    color:
+        var(--text-secondary);
 
-width:90px;
-height:90px;
+    font-size: 15px;
 
-top:70%;
+    font-weight: 650;
 
-left:45%;
+    cursor: pointer;
 
-animation-duration:12s;
+    box-shadow:
+        0 7px 20px
+        rgba(0,0,0,0.16);
 
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition);
 }
-
-
-/* Bubble 6 */
 
-.bubble6{
 
-width:150px;
-height:150px;
+.tool-card:hover {
 
-top:5%;
+    transform:
+        translateX(4px);
 
-right:40%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,99,235,0.16),
+            rgba(15,23,42,0.80)
+        );
 
-animation-duration:19s;
+    border-color:
+        rgba(59,130,246,0.25);
 
+    color:
+        var(--text-primary);
 }
 
 
+/* =========================================================
+   31. ABOUT MODAL
+   ========================================================= */
 
-/* Movement */
+.about-modal {
 
-@keyframes bubbleMove{
+    display: none;
 
+    position: fixed;
 
-0%{
+    inset: 0;
 
-transform:
+    width: 100%;
+    height: 100%;
 
-translate(0,0)
-scale(1);
+    padding: 20px;
 
-}
-
-
-50%{
-
-transform:
-
-translate(35px,-40px)
-scale(1.05);
-
-}
-
-
-100%{
-
-transform:
+    background:
+        rgba(2,6,23,0.62);
 
-translate(-20px,30px)
-scale(.95);
+    backdrop-filter:
+        blur(7px);
 
-}
+    -webkit-backdrop-filter:
+        blur(7px);
 
+    justify-content: center;
+    align-items: center;
 
+    z-index: 9999;
 }
-
 
-/* Keep Content Above */
 
-.container{
+.about-box {
 
-position:relative;
+    width: 100%;
 
-z-index:2;
-}
-   .menu-btn{
+    max-width: 500px;
 
-z-index:6000;
-} 
-.side-menu{
+    max-height: 85vh;
 
-z-index:5000;
+    overflow-y: auto;
 
-}
+    padding:
+        26px 22px;
 
-.menu-overlay{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,24,39,0.97),
+            rgba(15,23,42,0.97)
+        );
 
-z-index:4500;
+    color:
+        var(--text-primary);
 
-}
-/* ==========================================
-   Contact Buttons
-========================================== */
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-#telegramBtn{
+    border-radius:
+        var(--radius-2xl);
 
-background:#229ED9;
+    box-shadow:
+        var(--shadow-heavy);
 
+    animation:
+        popup 0.3s ease both;
 }
 
-#bugBtn{
 
-background:#EF4444;
+body.light .about-box {
 
-}
-
-#featureBtn{
+    background:
+        rgba(255,255,255,0.96);
 
-background:#10B981;
-
+    color:
+        #111827;
 }
 
-#rateBtn{
 
-background:#F59E0B;
-
-}
+/* =========================================================
+   32. CONTACT BUTTONS
+   ========================================================= */
 
 #telegramBtn,
 #bugBtn,
 #featureBtn,
-#rateBtn{
+#rateBtn {
 
-width:100%;
+    width: 100%;
 
-margin:10px 0;
+    min-height: 48px;
 
-height:48px;
+    margin:
+        7px 0;
 
-border:none;
+    padding:
+        0 16px;
 
-border-radius:14px;
+    border: none;
 
-font-size:16px;
+    border-radius:
+        var(--radius-md);
 
-font-weight:600;
+    font-family: inherit;
 
-color:#fff;
+    font-size: 14px;
 
-cursor:pointer;
+    font-weight: 700;
 
-transition:.25s;
+    color:
+        #FFFFFF;
 
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        filter var(--transition),
+        box-shadow var(--transition);
 }
+
+
+#telegramBtn {
+
+    background:
+        #229ED9;
+
+    box-shadow:
+        0 8px 20px
+        rgba(34,158,217,0.18);
+}
+
+
+#bugBtn {
+
+    background:
+        #EF4444;
+
+    box-shadow:
+        0 8px 20px
+        rgba(239,68,68,0.16);
+}
+
+
+#featureBtn {
+
+    background:
+        #10B981;
+
+    box-shadow:
+        0 8px 20px
+        rgba(16,185,129,0.16);
+}
+
+
+#rateBtn {
+
+    background:
+        #F59E0B;
+
+    box-shadow:
+        0 8px 20px
+        rgba(245,158,11,0.16);
+}
+
 
 #telegramBtn:hover,
 #bugBtn:hover,
 #featureBtn:hover,
-#rateBtn:hover{
+#rateBtn:hover {
 
-transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 
-box-shadow:0 10px 20px rgba(0,0,0,.25);
-
-}
-.menu-header{
-
-text-align:center;
-
-padding:30px 20px;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
+    filter:
+        brightness(1.05);
 }
 
-.logo-circle{
 
-width:70px;
-height:70px;
+#telegramBtn:active,
+#bugBtn:active,
+#featureBtn:active,
+#rateBtn:active {
 
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:34px;
-
-background:#2563EB;
-
-box-shadow:
-0 10px 25px rgba(37,99,235,.35);
-
-margin-bottom:15px;
-
+    transform:
+        scale(0.98);
 }
 
-.menu-header h2{
 
-margin:0;
+/* =========================================================
+   33. POPUP ANIMATION
+   ========================================================= */
 
-font-size:26px;
+@keyframes popup {
 
-color:#3B82F6;
+    from {
 
+        opacity: 0;
+
+        transform:
+            scale(0.94)
+            translateY(10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
 }
 
-.menu-header p{
 
-margin-top:6px;
+/* =========================================================
+   34. LIGHT MODE — BASE
+   ========================================================= */
 
-font-size:14px;
+body.light {
 
-opacity:.8;
+    --bg-primary: #F1F5F9;
 
+    --bg-secondary: #E8EEF5;
+
+    --bg-tertiary: #FFFFFF;
+
+    --card-bg: rgba(255,255,255,0.70);
+
+    --card-bg-solid: #FFFFFF;
+
+    --card-bg-hover: #FFFFFF;
+
+    --text-primary: #111827;
+
+    --text-secondary: #475569;
+
+    --text-muted: #64748B;
+
+    --text-faint: #94A3B8;
+
+    --border:
+        rgba(15,23,42,0.075);
+
+    --border-light:
+        rgba(15,23,42,0.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            #F5F7FA 0%,
+            #EAF0F6 50%,
+            #E2E8F0 100%
+        );
+
+    color:
+        var(--text-primary);
 }
 
-.menu-header small{
 
-display:block;
+/* =========================================================
+   35. LIGHT MODE — CARDS
+   ========================================================= */
 
-margin-top:10px;
+body.light .card {
 
-font-size:13px;
+    background:
+        rgba(255,255,255,0.66);
 
-color:#9CA3AF;
+    border:
+        1px solid
+        rgba(255,255,255,0.85);
 
-}
-.menu-title{
+    box-shadow:
+        0 15px 35px
+        rgba(15,23,42,0.07);
 
-padding:18px 25px 10px;
+    backdrop-filter:
+        blur(25px);
 
-font-size:12px;
-
-font-weight:700;
-
-letter-spacing:2px;
-
-text-transform:uppercase;
-
-color:#6B7280;
-
-cursor:default;
-
+    -webkit-backdrop-filter:
+        blur(25px);
 }
 
-.menu-title:hover{
 
-background:none;
+body.light .card:hover {
 
-padding-left:25px;
+    border-color:
+        rgba(37,99,235,0.13);
 
-}
-/* ==========================================
-   Calculator Buttons
-========================================== */
-
-.about-box button{
-
-width:100%;
-
-margin-top:12px;
-
-padding:14px;
-
-font-size:16px;
-
-border-radius:14px;
-
-cursor:pointer;
-
-}
-.tool-card{
-
-background:#1E293B;
-
-border-radius:18px;
-
-padding:18px;
-
-margin:14px 0;
-
-cursor:pointer;
-
-font-size:17px;
-
-font-weight:600;
-
-transition:.25s;
-
+    box-shadow:
+        0 18px 40px
+        rgba(15,23,42,0.09);
 }
 
-.tool-card:hover{
 
-transform:translateX(6px);
+/* =========================================================
+   36. LIGHT MODE — INPUTS
+   ========================================================= */
 
-background:#2563EB;
+body.light input,
+body.light select {
 
-color:white;
+    background:
+        rgba(255,255,255,0.88);
 
+    border:
+        1px solid
+        #D7E0EC;
+
+    color:
+        #111827;
+
+    box-shadow:
+        0 4px 14px
+        rgba(37,99,235,0.035);
 }
+
+
+body.light input:hover,
+body.light select:hover {
+
+    border-color:
+        rgba(59,130,246,0.30);
+}
+
+
+body.light input:focus,
+body.light select:focus {
+
+    background:
+        #FFFFFF;
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(59,130,246,0.10);
+}
+
+
+body.light input::placeholder {
+
+    color:
+        #94A3B8;
+}
+
+
+body.light select option {
+
+    background:
+        #FFFFFF;
+
+    color:
+        #111827;
+}
+
+
+/* =========================================================
+   37. LIGHT MODE — DASHBOARD
+   ========================================================= */
+
+body.light .dashboard-box {
+
+    background:
+        rgba(255,255,255,0.70);
+
+    border:
+        1px solid
+        rgba(15,23,42,0.055);
+
+    box-shadow:
+        0 10px 25px
+        rgba(15,23,42,0.06);
+}
+
+
+body.light .dashboard-box:hover {
+
+    background:
+        rgba(255,255,255,0.90);
+
+    border-color:
+        rgba(59,130,246,0.16);
+}
+
+
+/* =========================================================
+   38. LIGHT MODE — HISTORY
+   ========================================================= */
+
+body.light .history-item {
+
+    background:
+        rgba(255,255,255,0.68);
+
+    border-color:
+        rgba(15,23,42,0.055);
+
+    box-shadow:
+        0 7px 20px
+        rgba(15,23,42,0.045);
+}
+
+
+body.light .history-item:hover {
+
+    background:
+        rgba(255,255,255,0.92);
+
+    border-color:
+        rgba(59,130,246,0.15);
+}
+
+
+/* =========================================================
+   39. LIGHT MODE — SIDE MENU
+   ========================================================= */
+
+body.light .side-menu {
+
+    background:
+        rgba(248,250,252,0.96);
+
+    border-right:
+        1px solid
+        rgba(15,23,42,0.06);
+
+    box-shadow:
+        15px 0 45px
+        rgba(15,23,42,0.12);
+}
+
+
+body.light .side-menu li {
+
+    color:
+        #475569;
+}
+
+
+body.light .side-menu li:hover {
+
+    background:
+        rgba(59,130,246,0.07);
+
+    color:
+        #1E3A8A;
+}
+
+
+body.light .side-menu li.active {
+
+    background:
+        rgba(59,130,246,0.10);
+
+    color:
+        #2563EB;
+}
+
+
+body.light .menu-title {
+
+    color:
+        #94A3B8;
+}
+
+
+body.light .menu-header {
+
+    border-bottom-color:
+        rgba(15,23,42,0.07);
+}
+
+
+/* =========================================================
+   40. LIGHT MODE — MENU BUTTON
+   ========================================================= */
+
+body.light .menu-btn {
+
+    background:
+        rgba(255,255,255,0.72);
+
+    color:
+        #2563EB;
+
+    border:
+        1px solid
+        rgba(15,23,42,0.06);
+
+    box-shadow:
+        0 8px 22px
+        rgba(15,23,42,0.08);
+}
+
+
+body.light .menu-btn:hover {
+
+    background:
+        #2563EB;
+
+    color:
+        #FFFFFF;
+}
+
+
+/* =========================================================
+   41. LIGHT MODE — TOOL CARDS
+   ========================================================= */
+
+body.light .tool-card {
+
+    background:
+        rgba(255,255,255,0.70);
+
+    border:
+        1px solid
+        rgba(15,23,42,0.06);
+
+    color:
+        #475569;
+
+    box-shadow:
+        0 7px 18px
+        rgba(15,23,42,0.045);
+}
+
+
+body.light .tool-card:hover {
+
+    background:
+        rgba(37,99,235,0.08);
+
+    border-color:
+        rgba(37,99,235,0.14);
+
+    color:
+        #1D4ED8;
+}
+
+
+/* =========================================================
+   42. LIGHT MODE — SUB MENU
+   ========================================================= */
+
+body.light .sub-menu button {
+
+    background:
+        rgba(15,23,42,0.035);
+
+    border-color:
+        rgba(15,23,42,0.055);
+
+    color:
+        #475569;
+}
+
+
+body.light .sub-menu button:hover {
+
+    background:
+        rgba(59,130,246,0.08);
+
+    color:
+        #2563EB;
+}
+
+
+/* =========================================================
+   43. LIGHT MODE — RESULT & INFO
+   ========================================================= */
+
+body.light .result-item,
+body.light .info-item {
+
+    border-bottom-color:
+        rgba(15,23,42,0.065);
+}
+
+
+body.light .result-label {
+
+    color:
+        #64748B;
+}
+
+
+body.light .result-value {
+
+    color:
+        #111827;
+}
+
+
+body.light .info-label {
+
+    color:
+        #2563EB;
+}
+
+
+body.light .info-value {
+
+    color:
+        #475569;
+}
+
+
+/* =========================================================
+   44. LIGHT MODE — BLACK BOX
+   ========================================================= */
+
+body.light .black-box {
+
+    background:
+        rgba(239,68,68,0.07);
+
+    border-color:
+        rgba(239,68,68,0.20);
+}
+
+
+body.light .black-box .info-value {
+
+    color:
+        #991B1B;
+}
+
+
+/* =========================================================
+   45. LIGHT MODE — CLINICAL ALERT
+   ========================================================= */
+
+body.light #clinicalAlertCard {
+
+    background:
+        rgba(37,99,235,0.06);
+
+    border-left-color:
+        #2563EB;
+}
+
+
+body.light #clinicalAlertContent {
+
+    color:
+        #334155;
+}
+
+
+/* =========================================================
+   46. LIGHT MODE — ABOUT
+   ========================================================= */
+
+body.light .about p {
+
+    color:
+        #475569;
+}
+
+
+body.light .about strong {
+
+    color:
+        #111827;
+}
+
+
+/* =========================================================
+   END OF PART 2
+   ========================================================= */
+/* =========================================================
+   DOSECARE — STYLE.CSS
+   PART 3 / 4
+   Welcome Screen + Typography + Responsive
+   ========================================================= */
+
+
+/* =========================================================
+   47. WELCOME SCREEN
+   ========================================================= */
+
+#welcomeScreen {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+    height: 100dvh;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(37,99,235,0.12),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #050816 0%,
+            #080D1C 48%,
+            #0B1023 100%
+        );
+
+    overflow: hidden;
+
+    z-index: 9999;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity .65s ease,
+        visibility .65s ease,
+        transform .65s ease;
+}
+
+
+#welcomeScreen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
+   48. WELCOME BACKGROUND GLOW
+   ========================================================= */
+
+#welcomeScreen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37,99,235,0.18) 0%,
+            rgba(37,99,235,0.06) 35%,
+            transparent 72%
+        );
+
+    filter:
+        blur(20px);
+
+    pointer-events: none;
+
+    animation:
+        welcomeGlow 7s ease-in-out infinite alternate;
+}
+
+
+#welcomeScreen::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: 8%;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(59,130,246,0.10);
+
+    filter:
+        blur(70px);
+
+    pointer-events: none;
+
+    animation:
+        welcomeFloat 12s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   49. WELCOME CONTENT
+   ========================================================= */
+
+.welcome-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    animation:
+        zoomIn .8s ease both;
+}
+
+
+/* =========================================================
+   50. WELCOME TITLE
+   ========================================================= */
+
+.welcome-title {
+
+    margin: 0;
+
+    font-size: clamp(
+        34px,
+        7vw,
+        56px
+    );
+
+    line-height: 1.15;
+
+    font-weight: 300;
+
+    letter-spacing:
+        clamp(
+            2px,
+            1vw,
+            5px
+        );
+
+    color:
+        #FFFFFF;
+
+    opacity: 0;
+
+    animation:
+        welcomeTitle .9s ease forwards;
+}
+
+
+/* =========================================================
+   51. APP TITLE
+   ========================================================= */
+
+.app-title {
+
+    margin-top: 12px;
+
+    font-size: clamp(
+        52px,
+        10vw,
+        76px
+    );
+
+    line-height: 1;
+
+    font-weight: 750;
+
+    letter-spacing:
+        clamp(
+            1px,
+            .5vw,
+            3px
+        );
+
+    color:
+        #3B82F6;
+
+    text-shadow:
+        0 0 15px
+        rgba(59,130,246,.45),
+
+        0 0 40px
+        rgba(59,130,246,.18);
+
+    opacity: 0;
+
+    animation:
+        welcomeApp .9s .35s ease forwards;
+}
+
+
+/* =========================================================
+   52. WELCOME SUBTITLE
+   ========================================================= */
+
+.app-subtitle {
+
+    max-width: 580px;
+
+    margin:
+        22px auto 0;
+
+    font-size:
+        clamp(
+            17px,
+            3.5vw,
+            24px
+        );
+
+    line-height:
+        1.75;
+
+    font-weight: 450;
+
+    color:
+        #B8C5FF;
+
+    opacity: 0;
+
+    animation:
+        welcomeSubtitle .9s .7s ease forwards;
+}
+
+
+/* =========================================================
+   53. DEVELOPER
+   ========================================================= */
+
+.developer {
+
+    margin-top: 38px;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    color:
+        #94A3B8;
+
+    opacity: 0;
+
+    animation:
+        welcomeDeveloper .9s 1s ease forwards;
+}
+
+
+.developer span {
+
+    display: block;
+
+    margin-top: 9px;
+
+    font-size:
+        clamp(
+            22px,
+            5vw,
+            28px
+        );
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing:
+        1.5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFFFFF 0%,
+            #E5E7EB 45%,
+            #94A3B8 100%
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+/* =========================================================
+   54. WELCOME STARS
+   ========================================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+        #FFFFFF;
+
+    opacity: .25;
+
+    box-shadow:
+        0 0 6px
+        rgba(255,255,255,.45);
+
+    animation:
+        twinkle 4s ease-in-out infinite;
+}
+
+
+.star:nth-child(1) {
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+
+.star:nth-child(2) {
+    top: 20%;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+
+.star:nth-child(3) {
+    top: 35%;
+    left: 40%;
+    animation-delay: 2s;
+}
+
+
+.star:nth-child(4) {
+    top: 55%;
+    left: 85%;
+    animation-delay: 3s;
+}
+
+
+.star:nth-child(5) {
+    top: 70%;
+    left: 20%;
+    animation-delay: 1.5s;
+}
+
+
+.star:nth-child(6) {
+    top: 82%;
+    left: 60%;
+    animation-delay: 2.5s;
+}
+
+
+.star:nth-child(7) {
+    top: 14%;
+    left: 88%;
+    animation-delay: .5s;
+}
+
+
+.star:nth-child(8) {
+    top: 62%;
+    left: 8%;
+    animation-delay: 3.5s;
+}
+
+
+/* =========================================================
+   55. WELCOME ANIMATIONS
+   ========================================================= */
+
+@keyframes welcomeGlow {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(.92);
+
+        opacity: .65;
+    }
+
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.12);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes welcomeFloat {
+
+    0% {
+
+        transform:
+            translate(0,0);
+    }
+
+    100% {
+
+        transform:
+            translate(-70px,55px);
+    }
+}
+
+
+@keyframes zoomIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.94);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes welcomeTitle {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+
+        filter:
+            blur(8px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes welcomeApp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(22px)
+            scale(.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes welcomeSubtitle {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes welcomeDeveloper {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(16px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .18;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        opacity: .9;
+
+        transform:
+            scale(1.8);
+    }
+}
+
+
+/* =========================================================
+   56. MAIN BACKGROUND ANIMATIONS
+   ========================================================= */
+
+@keyframes moveGlow1 {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            translate(65px,35px)
+            scale(1.10);
+    }
+
+    100% {
+
+        transform:
+            translate(-35px,70px)
+            scale(.96);
+    }
+}
+
+
+@keyframes moveGlow2 {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            translate(-55px,-35px)
+            scale(1.10);
+    }
+
+    100% {
+
+        transform:
+            translate(40px,-70px)
+            scale(.94);
+    }
+}
+
+
+/* =========================================================
+   57. LIGHT MODE BUBBLES
+   ========================================================= */
+
+.glass-bubbles {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    display: none;
+}
+
+
+body.light .glass-bubbles {
+
+    display: block;
+}
+
+
+.bubble {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.34);
+
+    border:
+        1px solid
+        rgba(255,255,255,.42);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        inset 0 0 30px
+        rgba(255,255,255,.38),
+
+        0 10px 30px
+        rgba(148,163,184,.10);
+
+    animation:
+        bubbleMove 18s infinite ease-in-out alternate;
+}
+
+
+.bubble1 {
+
+    width: 180px;
+    height: 180px;
+
+    top: 10%;
+    left: 5%;
+
+    animation-duration:
+        16s;
+}
+
+
+.bubble2 {
+
+    width: 280px;
+    height: 280px;
+
+    top: 55%;
+    left: -80px;
+
+    animation-duration:
+        22s;
+}
+
+
+.bubble3 {
+
+    width: 130px;
+    height: 130px;
+
+    top: 25%;
+    right: 10%;
+
+    animation-duration:
+        14s;
+}
+
+
+.bubble4 {
+
+    width: 220px;
+    height: 220px;
+
+    right: 5%;
+    bottom: -40px;
+
+    animation-duration:
+        20s;
+}
+
+
+.bubble5 {
+
+    width: 90px;
+    height: 90px;
+
+    top: 70%;
+    left: 45%;
+
+    animation-duration:
+        12s;
+}
+
+
+.bubble6 {
+
+    width: 150px;
+    height: 150px;
+
+    top: 5%;
+    right: 40%;
+
+    animation-duration:
+        19s;
+}
+
+
+@keyframes bubbleMove {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            translate(35px,-40px)
+            scale(1.05);
+    }
+
+    100% {
+
+        transform:
+            translate(-20px,30px)
+            scale(.95);
+    }
+}
+
+
+/* =========================================================
+   58. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        padding:
+            20px 15px 50px;
+    }
+
+
+    .header {
+
+        margin-bottom:
+            22px;
+    }
+
+
+    .header h1 {
+
+        font-size:
+            34px;
+
+        letter-spacing:
+            .2px;
+    }
+
+
+    .header p {
+
+        font-size:
+            15px;
+    }
+
+
+    .logo {
+
+        width: 78px;
+        height: 78px;
+
+        margin-bottom:
+            12px;
+    }
+
+
+    .card {
+
+        padding:
+            19px;
+
+        margin-bottom:
+            16px;
+
+        border-radius:
+            21px;
+    }
+
+
+    .section-title {
+
+        font-size:
+            22px;
+
+        margin-bottom:
+            17px;
+    }
+
+
+    input,
+    select {
+
+        height:
+            55px;
+
+        border-radius:
+            16px;
+
+        font-size:
+            15px;
+    }
+
+
+    #calculateBtn {
+
+        height:
+            56px;
+
+        border-radius:
+            16px;
+
+        font-size:
+            17px;
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+
+        gap:
+            12px;
+    }
+
+
+    .dashboard-box {
+
+        min-height:
+            112px;
+
+        padding:
+            17px 12px;
+    }
+
+
+    .dashboard-box h3 {
+
+        font-size:
+            27px;
+    }
+
+
+    .dashboard-box p {
+
+        font-size:
+            12px;
+    }
+
+
+    .result-item {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            6px;
+    }
+
+
+    .result-value {
+
+        width:
+            100%;
+
+        text-align:
+            left;
+    }
+
+
+    .side-menu {
+
+        width:
+            285px;
+    }
+
+
+    .menu-btn {
+
+        top:
+            15px;
+
+        left:
+            15px;
+    }
+}
+
+
+/* =========================================================
+   59. RESPONSIVE — SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+
+        padding:
+            17px 12px 42px;
+    }
+
+
+    .header h1 {
+
+        font-size:
+            30px;
+    }
+
+
+    .header p {
+
+        font-size:
+            14px;
+    }
+
+
+    .card {
+
+        padding:
+            17px;
+
+        border-radius:
+            19px;
+    }
+
+
+    .section-title {
+
+        font-size:
+            20px;
+    }
+
+
+    label {
+
+        font-size:
+            14px;
+    }
+
+
+    input,
+    select {
+
+        height:
+            53px;
+
+        padding:
+            0 15px;
+
+        border-radius:
+            15px;
+
+        font-size:
+            15px;
+    }
+
+
+    #calculateBtn {
+
+        height:
+            54px;
+
+        margin-top:
+            23px;
+
+        border-radius:
+            15px;
+
+        font-size:
+            16px;
+    }
+
+
+    .dashboard-grid {
+
+        gap:
+            10px;
+    }
+
+
+    .dashboard-box {
+
+        min-height:
+            104px;
+
+        padding:
+            15px 8px;
+
+        border-radius:
+            16px;
+    }
+
+
+    .dashboard-box h3 {
+
+        font-size:
+            25px;
+    }
+
+
+    .history-item {
+
+        padding:
+            14px;
+    }
+
+
+    .menu-btn {
+
+        width:
+            46px;
+
+        height:
+            46px;
+
+        border-radius:
+            14px;
+
+        font-size:
+            21px;
+    }
+
+
+    .welcome-content {
+
+        padding:
+            10px;
+    }
+
+
+    .welcome-title {
+
+        font-size:
+            35px;
+
+        letter-spacing:
+            2px;
+    }
+
+
+    .app-title {
+
+        font-size:
+            54px;
+    }
+
+
+    .app-subtitle {
+
+        margin-top:
+            18px;
+
+        font-size:
+            17px;
+
+        line-height:
+            1.7;
+    }
+
+
+    .developer {
+
+        margin-top:
+            30px;
+
+        font-size:
+            14px;
+    }
+
+
+    .developer span {
+
+        font-size:
+            22px;
+    }
+}
+
+
+/* =========================================================
+   60. RESPONSIVE — VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .container {
+
+        padding-left:
+            10px;
+
+        padding-right:
+            10px;
+    }
+
+
+    .card {
+
+        padding:
+            15px;
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dashboard-box {
+
+        min-height:
+            95px;
+    }
+
+
+    .welcome-title {
+
+        font-size:
+            31px;
+    }
+
+
+    .app-title {
+
+        font-size:
+            47px;
+    }
+
+
+    .app-subtitle {
+
+        font-size:
+            16px;
+    }
+}
+
+
+/* =========================================================
+   61. IPAD / TABLET PORTRAIT
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+    .container {
+
+        max-width:
+            720px;
+
+        padding:
+            28px 24px 60px;
+    }
+
+
+    .card {
+
+        padding:
+            24px;
+    }
+
+
+    .header h1 {
+
+        font-size:
+            40px;
+    }
+
+
+    .dashboard-grid {
+
+        gap:
+            16px;
+    }
+}
+
+
+/* =========================================================
+   62. TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .dashboard-box:hover,
+    .history-item:hover,
+    .tool-card:hover,
+    .menu-btn:hover {
+
+        transform:
+            none;
+    }
+
+
+    .dashboard-box:active {
+
+        transform:
+            scale(.985);
+    }
+
+
+    .tool-card:active {
+
+        transform:
+            scale(.985);
+    }
+
+
+    .menu-btn:active {
+
+        transform:
+            scale(.94);
+    }
+}
+
+
+/* =========================================================
+   63. REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior:
+            auto !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   END OF PART 3
+   ========================================================= */
+/* =========================================================
+   DOSECARE — STYLE.CSS
+   PART 4 / 4
+   Final Polish + Glass Effects + Accessibility
+   ========================================================= */
+
+
+/* =========================================================
+   64. FINAL COLOR SYSTEM
+   ========================================================= */
+
+:root {
+
+    --primary:
+        #2563EB;
+
+    --primary-light:
+        #60A5FA;
+
+    --primary-dark:
+        #1D4ED8;
+
+    --success:
+        #10B981;
+
+    --warning:
+        #F59E0B;
+
+    --danger:
+        #EF4444;
+
+    --info:
+        #229ED9;
+
+
+    --bg-primary:
+        #090B12;
+
+    --bg-secondary:
+        #0F172A;
+
+    --bg-tertiary:
+        #131926;
+
+
+    --card-bg:
+        rgba(255,255,255,.045);
+
+    --card-bg-solid:
+        #111827;
+
+    --card-bg-hover:
+        rgba(255,255,255,.065);
+
+
+    --text-primary:
+        #FFFFFF;
+
+    --text-secondary:
+        #CBD5E1;
+
+    --text-muted:
+        #94A3B8;
+
+    --text-faint:
+        #64748B;
+
+
+    --border:
+        rgba(255,255,255,.075);
+
+    --border-light:
+        rgba(255,255,255,.11);
+
+
+    --radius-sm:
+        10px;
+
+    --radius-md:
+        14px;
+
+    --radius-lg:
+        18px;
+
+    --radius-xl:
+        22px;
+
+    --radius-2xl:
+        26px;
+
+
+    --shadow-soft:
+        0 8px 25px rgba(0,0,0,.18);
+
+    --shadow-medium:
+        0 14px 35px rgba(0,0,0,.25);
+
+    --shadow-heavy:
+        0 22px 55px rgba(0,0,0,.40);
+
+
+    --transition:
+        .25s ease;
+
+    --transition-slow:
+        .4s ease;
+}
+
+
+/* =========================================================
+   65. GLOBAL SELECTION
+   ========================================================= */
+
+::selection {
+
+    background:
+        rgba(59,130,246,.35);
+
+    color:
+        #FFFFFF;
+}
+
+
+/* =========================================================
+   66. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+    width:
+        7px;
+
+    height:
+        7px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(148,163,184,.25);
+
+    border-radius:
+        999px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        rgba(96,165,250,.45);
+}
+
+
+/* =========================================================
+   67. SMOOTH CARD GLASS
+   ========================================================= */
+
+.card {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    right: -100px;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,.075),
+            transparent 70%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+}
+
+
+/* =========================================================
+   68. CARD INNER LIGHT
+   ========================================================= */
+
+.card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            transparent 40%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+}
+
+
+/* =========================================================
+   69. BUTTON POLISH
+   ========================================================= */
+
+button {
+
+    font-family:
+        inherit;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+button:focus-visible {
+
+    outline:
+        3px solid
+        rgba(59,130,246,.35);
+
+    outline-offset:
+        3px;
+}
+
+
+#calculateBtn {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    isolation:
+        isolate;
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.20);
+}
+
+
+#calculateBtn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .65s ease;
+
+    pointer-events:
+        none;
+}
+
+
+#calculateBtn:hover::before {
+
+    left:
+        140%;
+}
+
+
+#calculateBtn:hover {
+
+    box-shadow:
+        0 14px 30px
+        rgba(37,99,235,.30);
+}
+
+
+/* =========================================================
+   70. INPUT ICON / FOCUS POLISH
+   ========================================================= */
+
+input,
+select {
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+input:focus,
+select:focus {
+
+    transform:
+        translateY(-1px);
+}
+
+
+input:disabled,
+select:disabled {
+
+    opacity:
+        .55;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   71. RESULT CARD POLISH
+   ========================================================= */
+
+#resultCard {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+#resultCard::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563EB,
+            #60A5FA,
+            transparent
+        );
+
+    opacity:
+        .8;
+}
+
+
+/* =========================================================
+   72. DRUG INFO CARD POLISH
+   ========================================================= */
+
+#drugInfoCard {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+#drugInfoCard::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #60A5FA,
+            #2563EB,
+            transparent
+        );
+
+    opacity:
+        .75;
+}
+
+
+/* =========================================================
+   73. CLINICAL ALERT POLISH
+   ========================================================= */
+
+#clinicalAlertCard {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+#clinicalAlertCard::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -50px;
+    right: -50px;
+
+    width: 140px;
+    height: 140px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(59,130,246,.08);
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   74. BLACK BOX WARNING POLISH
+   ========================================================= */
+
+.black-box {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.black-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background:
+        #EF4444;
+
+    border-radius:
+        5px;
+}
+
+
+/* =========================================================
+   75. LIGHT MODE — FINAL POLISH
+   ========================================================= */
+
+body.light {
+
+    --card-bg:
+        rgba(255,255,255,.68);
+
+    --card-bg-hover:
+        rgba(255,255,255,.88);
+
+    --border:
+        rgba(15,23,42,.065);
+
+    --border-light:
+        rgba(15,23,42,.10);
+
+    --text-primary:
+        #111827;
+
+    --text-secondary:
+        #475569;
+
+    --text-muted:
+        #64748B;
+
+    --text-faint:
+        #94A3B8;
+}
+
+
+body.light::before {
+
+    background:
+        #60A5FA;
+
+    opacity:
+        .08;
+
+    filter:
+        blur(150px);
+}
+
+
+body.light::after {
+
+    background:
+        #93C5FD;
+
+    opacity:
+        .10;
+
+    filter:
+        blur(150px);
+}
+
+
+/* =========================================================
+   76. LIGHT MODE — CARD EFFECT
+   ========================================================= */
+
+body.light .card::before {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,.055),
+            transparent 70%
+        );
+}
+
+
+body.light .card::after {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.32),
+            transparent 45%
+        );
+}
+
+
+/* =========================================================
+   77. LIGHT MODE — RESULT
+   ========================================================= */
+
+body.light #resultCard::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563EB,
+            #60A5FA,
+            transparent
+        );
+}
+
+
+body.light #drugInfoCard::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            #60A5FA,
+            #2563EB,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   78. LIGHT MODE — CLINICAL ALERT
+   ========================================================= */
+
+body.light #clinicalAlertCard {
+
+    box-shadow:
+        0 10px 30px
+        rgba(37,99,235,.06);
+}
+
+
+/* =========================================================
+   79. LIGHT MODE — BUTTON
+   ========================================================= */
+
+body.light #calculateBtn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563EB,
+            #3B82F6
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.20);
+}
+
+
+body.light #calculateBtn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1D4ED8,
+            #2563EB
+        );
+}
+
+
+/* =========================================================
+   80. LIGHT MODE — MENU OVERLAY
+   ========================================================= */
+
+body.light .menu-overlay {
+
+    background:
+        rgba(15,23,42,.30);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+}
+
+
+/* =========================================================
+   81. LIGHT MODE — ABOUT MODAL
+   ========================================================= */
+
+body.light .about-modal {
+
+    background:
+        rgba(15,23,42,.30);
+}
+
+
+body.light .about-box {
+
+    border:
+        1px solid
+        rgba(15,23,42,.06);
+
+    box-shadow:
+        0 25px 60px
+        rgba(15,23,42,.16);
+}
+
+
+/* =========================================================
+   82. SAFE AREA — IPHONE / IPAD
+   ========================================================= */
+
+@supports (padding: env(safe-area-inset-top)) {
+
+    .container {
+
+        padding-top:
+            max(
+                20px,
+                env(safe-area-inset-top)
+            );
+
+        padding-bottom:
+            max(
+                50px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+
+    .menu-btn {
+
+        top:
+            max(
+                15px,
+                calc(
+                    15px +
+                    env(safe-area-inset-top)
+                )
+            );
+
+        left:
+            max(
+                15px,
+                env(safe-area-inset-left)
+            );
+    }
+
+
+    .side-menu {
+
+        padding-bottom:
+            max(
+                30px,
+                env(safe-area-inset-bottom)
+            );
+    }
+}
+
+
+/* =========================================================
+   83. IPAD LANDSCAPE
+   ========================================================= */
+
+@media
+    (min-width: 900px)
+    and (max-width: 1366px) {
+
+    .container {
+
+        max-width:
+            780px;
+
+        padding-top:
+            34px;
+    }
+
+
+    .card {
+
+        padding:
+            26px;
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:
+            16px;
+    }
+
+
+    .dashboard-box {
+
+        min-height:
+            125px;
+    }
+}
+
+
+/* =========================================================
+   84. LARGE SCREENS
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .container {
+
+        max-width:
+            820px;
+    }
+
+
+    .card {
+
+        padding:
+            28px;
+    }
+}
+
+
+/* =========================================================
+   85. MOBILE TOUCH IMPROVEMENTS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    input,
+    select,
+    button {
+
+        touch-action:
+            manipulation;
+    }
+
+
+    .side-menu li {
+
+        min-height:
+            50px;
+    }
+
+
+    .sub-menu button {
+
+        min-height:
+            44px;
+    }
+
+
+    #telegramBtn,
+    #bugBtn,
+    #featureBtn,
+    #rateBtn {
+
+        min-height:
+            50px;
+    }
+}
+
+
+/* =========================================================
+   86. NO HORIZONTAL OVERFLOW
+   ========================================================= */
+
+html,
+body {
+
+    max-width:
+        100%;
+
+    overflow-x:
+        hidden;
+}
+
+
+img,
+svg {
+
+    max-width:
+        100%;
+
+    height:
+        auto;
+}
+
+
+/* =========================================================
+   87. TEXT SAFETY
+   ========================================================= */
+
+.result-value,
+.info-value,
+.history-item,
+.about-box {
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+/* =========================================================
+   88. FINAL DARK MODE BODY
+   ========================================================= */
+
+body:not(.light) {
+
+    background-color:
+        var(--bg-primary);
+
+    color:
+        var(--text-primary);
+}
+
+
+/* =========================================================
+   89. FINAL LIGHT MODE BODY
+   ========================================================= */
+
+body.light {
+
+    color:
+        var(--text-primary);
+}
+
+
+/* =========================================================
+   90. FINAL CONTAINER LAYER
+   ========================================================= */
+
+.container {
+
+    isolation:
+        isolate;
+}
+
+
+/* =========================================================
+   91. FINAL MENU LAYER
+   ========================================================= */
+
+.side-menu,
+.menu-overlay,
+.menu-btn {
+
+    isolation:
+        isolate;
+}
+
+
+/* =========================================================
+   92. FINAL ANTI-BLINK
+   ========================================================= */
+
+#welcomeScreen,
+.card,
+.history-item,
+.dashboard-box,
+.tool-card {
+
+    -webkit-backface-visibility:
+        hidden;
+
+    backface-visibility:
+        hidden;
+}
+
+
+/* =========================================================
+   93. FINAL BUTTON PRESS
+   ========================================================= */
+
+button:active {
+
+    transition:
+        transform .08s ease;
+}
+
+
+/* =========================================================
+   94. FINAL INPUT AUTOFILL
+   ========================================================= */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+
+    -webkit-text-fill-color:
+        #FFFFFF;
+
+    transition:
+        background-color 9999s ease-in-out 0s;
+}
+
+
+body.light input:-webkit-autofill,
+body.light input:-webkit-autofill:hover,
+body.light input:-webkit-autofill:focus {
+
+    -webkit-text-fill-color:
+        #111827;
+}
+
+
+/* =========================================================
+   95. FINAL
+   ========================================================= */
+
+/*
+   DoseCare UI
+   Professional Medical Interface
+
+   End of Style Sheet
+   =========================================================
+*/
