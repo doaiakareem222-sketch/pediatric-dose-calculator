@@ -1,7 +1,10 @@
- // ======================================================
+// ======================================================
 // DoseCare AI v7
 // Main Script
+// Pediatric Dose Engine
 // ======================================================
+
+"use strict";
 
 console.log("DoseCare AI v7 Loaded");
 
@@ -9,52 +12,112 @@ console.log("DoseCare AI v7 Loaded");
 // DOM Elements
 // ======================================================
 
-const welcomeScreen = document.getElementById("welcomeScreen");
+const welcomeScreen =
+    document.getElementById("welcomeScreen");
 
-const diseaseSelect = document.getElementById("disease");
-const diseaseGuide = document.getElementById("diseaseGuide");
+const diseaseSelect =
+    document.getElementById("disease");
 
-const searchDrug = document.getElementById("searchDrug");
+const diseaseGuide =
+    document.getElementById("diseaseGuide");
 
-const drugSelect = document.getElementById("drug");
-const strengthSelect = document.getElementById("strength");
+const searchDrug =
+    document.getElementById("searchDrug");
 
-const ageInput = document.getElementById("age");
-const ageUnit = document.getElementById("ageUnit");
-const weightInput = document.getElementById("weight");
+const drugSelect =
+    document.getElementById("drug");
 
-const calculateBtn = document.getElementById("calculateBtn");
+const strengthSelect =
+    document.getElementById("strength");
 
-// Result
+const ageInput =
+    document.getElementById("age");
 
-const resultCard = document.getElementById("resultCard");
+const ageUnit =
+    document.getElementById("ageUnit");
 
-const drugName = document.getElementById("drugName");
-const patientAge = document.getElementById("patientAge");
-const doseMg = document.getElementById("doseMg");
-const doseMl = document.getElementById("doseMl");
-const frequency = document.getElementById("frequency");
-const note = document.getElementById("note");
+const weightInput =
+    document.getElementById("weight");
 
+const calculateBtn =
+    document.getElementById("calculateBtn");
+
+// ======================================================
+// Result Elements
+// ======================================================
+
+const resultCard =
+    document.getElementById("resultCard");
+
+const drugName =
+    document.getElementById("drugName");
+
+const patientAge =
+    document.getElementById("patientAge");
+
+const doseMg =
+    document.getElementById("doseMg");
+
+const doseMl =
+    document.getElementById("doseMl");
+
+const frequency =
+    document.getElementById("frequency");
+
+const note =
+    document.getElementById("note");
+
+// ======================================================
 // Drug Information
+// ======================================================
 
-const drugInfoCard = document.getElementById("drugInfoCard");
+const drugInfoCard =
+    document.getElementById("drugInfoCard");
 
+// ======================================================
 // Dashboard
+// ======================================================
 
-const historyBox = document.getElementById("history");
-const calcCount = document.getElementById("calcCount");
-const lastDrug = document.getElementById("lastDrug");
+const historyBox =
+    document.getElementById("history");
+
+const calcCount =
+    document.getElementById("calcCount");
+
+const lastDrug =
+    document.getElementById("lastDrug");
 
 // ======================================================
 // Application Data
 // ======================================================
 
-let allDrugs = Object.values(drugs);
-let currentDrugList = allDrugs;
+let allDrugs =
+    Object.values(window.drugs || {});
+
+let currentDrugList =
+    allDrugs;
+
 let calculationHistory = [];
 
 let calculations = 0;
+
+// ======================================================
+// Refresh Drug Registry
+// ======================================================
+
+function refreshDrugRegistry() {
+
+    allDrugs =
+        Object.values(window.drugs || {});
+
+    currentDrugList =
+        allDrugs;
+
+    console.log(
+        "DoseCare Drug Count:",
+        allDrugs.length
+    );
+}
 
 // ======================================================
 // Welcome Screen
@@ -64,7 +127,11 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        welcomeScreen.classList.add("hide");
+        if (welcomeScreen) {
+
+            welcomeScreen.classList.add("hide");
+
+        }
 
     }, 2500);
 
@@ -74,22 +141,34 @@ window.addEventListener("load", () => {
 // Load Drugs
 // ======================================================
 
-function loadDrugs(list = allDrugs){
+function loadDrugs(list = allDrugs) {
+
+    if (!drugSelect) return;
 
     drugSelect.innerHTML = "";
 
-    const firstOption = document.createElement("option");
+    const firstOption =
+        document.createElement("option");
+
     firstOption.value = "";
-    firstOption.textContent = "Select Drug";
+
+    firstOption.textContent =
+        "Select Drug";
+
     drugSelect.appendChild(firstOption);
 
     list.forEach(drug => {
 
-        const option = document.createElement("option");
+        if (!drug || !drug.id) return;
 
-        option.value = drug.id;
+        const option =
+            document.createElement("option");
 
-        option.textContent = drug.name;
+        option.value =
+            drug.id;
+
+        option.textContent =
+            drug.name || drug.genericName || drug.id;
 
         drugSelect.appendChild(option);
 
@@ -97,467 +176,1073 @@ function loadDrugs(list = allDrugs){
 
 }
 
-
 // ======================================================
 // Search Drugs
 // ======================================================
 
-searchDrug.addEventListener("input", () => {
+if (searchDrug) {
 
-    const keyword = searchDrug.value.trim().toLowerCase();
+    searchDrug.addEventListener(
+        "input",
+        () => {
 
-    const filtered = currentDrugList.filter(drug => {
+            const keyword =
+                searchDrug.value
+                    .trim()
+                    .toLowerCase();
 
-        return (
+            const filtered =
+                currentDrugList.filter(drug => {
 
-            drug.name.toLowerCase().includes(keyword) ||
+                    const name =
+                        String(
+                            drug.name || ""
+                        ).toLowerCase();
 
-            drug.genericName.toLowerCase().includes(keyword) ||
+                    const generic =
+                        String(
+                            drug.genericName || ""
+                        ).toLowerCase();
 
-            drug.brandNames.some(brand =>
-                brand.toLowerCase().includes(keyword)
-            )
+                    const brands =
+                        Array.isArray(
+                            drug.brandNames
+                        )
+                            ? drug.brandNames
+                                .map(b =>
+                                    String(b)
+                                        .toLowerCase()
+                                )
+                            : [];
 
-        );
+                    return (
+                        name.includes(keyword) ||
+                        generic.includes(keyword) ||
+                        brands.some(
+                            brand =>
+                                brand.includes(keyword)
+                        )
+                    );
 
-    });
+                });
 
-    loadDrugs(keyword ? filtered : currentDrugList);
+            loadDrugs(
+                keyword
+                    ? filtered
+                    : currentDrugList
+            );
 
-});
-
-// ======================================================
-// Filter By Disease
-// ======================================================
-
-diseaseSelect.addEventListener("change", () => {
-
-    const disease = diseaseSelect.value;
-
-    strengthSelect.innerHTML =
-    `<option value="">Select Strength</option>`;
-
-    searchDrug.value = "";
-
-    if (!disease) {
-
-        currentDrugList = allDrugs;
-
-        loadDrugs(currentDrugList);
-
-        diseaseGuide.innerHTML = "";
-
-        return;
-
-    }
-
-    currentDrugList = allDrugs.filter(drug =>
-        drug.diseases.includes(disease)
+        }
     );
 
-    loadDrugs(currentDrugList);
+}
+// ======================================================
+// Filter Drugs By Disease
+// ======================================================
 
-    diseaseGuide.innerHTML = `
-        <strong>${currentDrugList.length}</strong>
-        medication(s) available for this condition.
-    `;
+if (diseaseSelect) {
 
-});
+    diseaseSelect.addEventListener(
+        "change",
+        () => {
+
+            const disease =
+                diseaseSelect.value;
+
+            if (strengthSelect) {
+
+                strengthSelect.innerHTML =
+                    `<option value="">Select Strength</option>`;
+
+            }
+
+            if (searchDrug) {
+
+                searchDrug.value = "";
+
+            }
+
+            if (!disease) {
+
+                currentDrugList =
+                    allDrugs;
+
+                loadDrugs(
+                    currentDrugList
+                );
+
+                if (diseaseGuide) {
+
+                    diseaseGuide.innerHTML =
+                        "";
+
+                }
+
+                return;
+            }
+
+            currentDrugList =
+                allDrugs.filter(
+                    drug => {
+
+                        return (
+                            Array.isArray(
+                                drug.diseases
+                            ) &&
+                            drug.diseases.includes(
+                                disease
+                            )
+                        );
+
+                    }
+                );
+
+            loadDrugs(
+                currentDrugList
+            );
+
+            if (diseaseGuide) {
+
+                diseaseGuide.innerHTML = `
+                    <strong>
+                        ${currentDrugList.length}
+                    </strong>
+                    medication(s) available
+                    for this condition.
+                `;
+
+            }
+
+        }
+    );
+
+}
+
 // ======================================================
 // Load Drug Strengths
 // ======================================================
 
-drugSelect.addEventListener("change", () => {
+if (drugSelect) {
 
-    strengthSelect.innerHTML = `
-        <option value="">Select Strength</option>
-    `;
+    drugSelect.addEventListener(
+        "change",
+        () => {
 
-    const selectedDrug = drugs[drugSelect.value];
+            if (strengthSelect) {
 
-   if (!selectedDrug) return;
+                strengthSelect.innerHTML =
+                    `<option value="">
+                        Select Strength
+                    </option>`;
 
-showDrugInfo(selectedDrug);
-    selectedDrug.strengths.forEach(strength => {
+            }
 
-        const option = document.createElement("option");
+            const selectedDrug =
+                window.drugs?.[
+                    drugSelect.value
+                ];
 
-        option.value = strength.concentration;
+            if (!selectedDrug) {
 
-        option.textContent = strength.name;
+                if (drugInfoCard) {
 
-        strengthSelect.appendChild(option);
+                    drugInfoCard.style.display =
+                        "none";
 
-    });
+                }
 
-});
+                return;
 
+            }
 
-// // ======================================================
-// Dose Calculation
+            // ------------------------------------------
+            // Show Drug Information
+            // ------------------------------------------
+
+            showDrugInfo(
+                selectedDrug
+            );
+
+            // ------------------------------------------
+            // Load Strengths
+            // ------------------------------------------
+
+            if (
+                Array.isArray(
+                    selectedDrug.strengths
+                )
+            ) {
+
+                selectedDrug.strengths.forEach(
+                    (strength, index) => {
+
+                        if (!strength) return;
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        /*
+                         * We use the index as the value.
+                         * This prevents problems when two
+                         * preparations have the same
+                         * concentration number.
+                         */
+
+                        option.value =
+                            String(index);
+
+                        option.textContent =
+                            strength.name ||
+                            `${strength.concentration} mg`;
+
+                        strengthSelect.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+}
+// ======================================================
+// DoseCare AI v7
+// Pediatric Dose Calculation Engine
 // ======================================================
 
-calculateBtn.addEventListener("click", () => {
+if (calculateBtn) {
 
-    const drug = drugs[drugSelect.value];
+    calculateBtn.addEventListener("click", () => {
 
-    const weight = parseFloat(weightInput.value);
-    const age = parseFloat(ageInput.value);
+        // ==================================================
+        // Get Selected Drug
+        // ==================================================
 
-    // ==================================================
-    // Age Validation
-    // ==================================================
+        const drug =
+            window.drugs?.[
+                drugSelect?.value
+            ];
 
-    if (isNaN(age) || age < 0) {
+        // ==================================================
+        // Get Patient Data
+        // ==================================================
 
-        alert("Please enter a valid age.");
+        const weight =
+            parseFloat(
+                weightInput?.value
+            );
 
-        return;
+        const age =
+            parseFloat(
+                ageInput?.value
+            );
 
-    }
+        // ==================================================
+        // Validation
+        // ==================================================
 
-    if (age > 12) {
+        if (!drug) {
 
-        alert(
-            "DoseCare AI is intended for pediatric patients (0–12 years) only."
-        );
+            alert(
+                "Please select a drug."
+            );
 
-        return;
-
-    }
-
-    // ==================================================
-    // Drug Validation
-    // ==================================================
-
-    if (!drug) {
-
-        alert("Please select a drug.");
-
-        return;
-
-    }
-
-    // ==================================================
-    // Weight Validation
-    // ==================================================
-
-    if (isNaN(weight) || weight <= 0) {
-
-        alert("Please enter patient's weight.");
-
-        return;
-
-    }
-
-    if (weight > 100) {
-
-        alert("Weight is outside the pediatric range.");
-
-        return;
-
-    }
-
-    // ==================================================
-    // Calculate Dose in mg
-    // ==================================================
-
-    let dose = weight * drug.mgPerKg;
-
-    // Maximum dose
-
-    if (drug.maxDose && dose > drug.maxDose) {
-
-        dose = drug.maxDose;
-
-    }
-
-    // ==================================================
-    // Calculate Liquid Volume
-    // ==================================================
-
-    let doseMl = null;
-
-    const selectedStrength =
-        drug.strengths?.find(
-            strength =>
-                String(strength.concentration) ===
-                String(strengthSelect.value)
-        );
-
-    if (selectedStrength) {
-
-        const concentration =
-            parseFloat(selectedStrength.concentration);
+            return;
+        }
 
         if (
-            !isNaN(concentration) &&
-            concentration > 0
+            isNaN(weight) ||
+            weight <= 0
         ) {
 
-            // ------------------------------------------
-            // If concentration is mg/mL
-            // ------------------------------------------
+            alert(
+                "Please enter patient's weight."
+            );
 
-            if (selectedStrength.unit === "mg/mL") {
+            return;
+        }
 
-                doseMl =
-                    dose / concentration;
+        if (
+            isNaN(age) ||
+            age < 0
+        ) {
+
+            alert(
+                "Please select a valid age."
+            );
+
+            return;
+        }
+
+        // ==================================================
+        // Pediatric Age Limit
+        // ==================================================
+
+        if (age > 12) {
+
+            alert(
+                "DoseCare AI is intended for pediatric patients 0–12 years."
+            );
+
+            return;
+        }
+
+        // ==================================================
+        // Get Selected Strength
+        // ==================================================
+
+        const strengthIndex =
+            parseInt(
+                strengthSelect?.value
+            );
+
+        let selectedStrength = null;
+
+        if (
+            !isNaN(strengthIndex) &&
+            Array.isArray(
+                drug.strengths
+            )
+        ) {
+
+            selectedStrength =
+                drug.strengths[
+                    strengthIndex
+                ];
+
+        }
+
+        // ==================================================
+        // Calculate Dose
+        // ==================================================
+
+        const result =
+            calculatePediatricDose(
+                drug,
+                weight,
+                diseaseSelect?.value,
+                selectedStrength
+            );
+
+        // ==================================================
+        // Calculation Error
+        // ==================================================
+
+        if (!result) {
+
+            alert(
+                "Dose information is not available for this drug and condition."
+            );
+
+            return;
+        }
+
+        // ==================================================
+        // Show Result Card
+        // ==================================================
+
+        if (resultCard) {
+
+            resultCard.style.display =
+                "block";
+
+        }
+
+        // ==================================================
+        // Drug Name
+        // ==================================================
+
+        if (drugName) {
+
+            drugName.textContent =
+                drug.name || "-";
+
+        }
+
+        // ==================================================
+        // Patient Age
+        // ==================================================
+
+        if (patientAge) {
+
+            if (
+                ageUnit?.value ===
+                "months"
+            ) {
+
+                if (age < 0.08) {
+
+                    patientAge.textContent =
+                        "👶 Neonate (0–28 Days)";
+
+                } else {
+
+                    const months =
+                        Math.round(
+                            age * 12
+                        );
+
+                    patientAge.textContent =
+                        `👶 ${months} Month(s)`;
+
+                }
+
+            } else {
+
+                patientAge.textContent =
+                    `🧒 ${age} Year(s)`;
 
             }
 
-            // ------------------------------------------
-            // If concentration is mg/5mL
-            // ------------------------------------------
+        }
 
-            else {
+        // ==================================================
+        // Dose in mg
+        // ==================================================
 
-                doseMl =
-                    (dose / concentration) * 5;
+        if (doseMg) {
+
+            doseMg.textContent =
+                `${formatDose(result.doseMg)} mg`;
+
+        }
+
+        // ==================================================
+        // Liquid Volume
+        // ==================================================
+
+        if (doseMl) {
+
+            if (
+                result.doseMl !== null
+            ) {
+
+                doseMl.textContent =
+                    `${result.doseMl.toFixed(2)} mL (${result.doseMl.toFixed(2)} cc)`;
+
+            } else {
+
+                doseMl.textContent =
+                    "-";
 
             }
 
         }
 
-    }
+        // ==================================================
+        // Frequency
+        // ==================================================
 
-    // ==================================================
-    // Show Result
-    // ==================================================
+        if (frequency) {
 
-    resultCard.style.display = "block";
-
-    drugName.textContent =
-        drug.name;
-
-    doseMg.textContent =
-        dose.toFixed(2) + " mg";
-
-    // ==================================================
-    // mL / cc Result
-    // ==================================================
-
-    if (doseMl !== null) {
-
-        doseMl.textContent =
-            doseMl.toFixed(2) + " mL (" +
-            doseMl.toFixed(2) + " cc)";
-
-    } else {
-
-        doseMl.textContent = "-";
-
-    }
-
-    // ==================================================
-    // Frequency
-    // ==================================================
-
-    frequency.textContent =
-        drug.frequency || "-";
-
-    // ==================================================
-    // Notes
-    // ==================================================
-
-    note.textContent =
-        drug.notes || "-";
-
-    // ==================================================
-    // Patient Age Display
-    // ==================================================
-
-    if (ageUnit.value === "months") {
-
-        if (Number(ageInput.value) < 0.08) {
-
-            patientAge.textContent =
-                "👶 Neonate (0–28 Days)";
-
-        } else {
-
-            patientAge.textContent =
-                `👶 ${Math.round(
-                    Number(ageInput.value) * 12
-                )} Month(s)`;
+            frequency.textContent =
+                result.frequency ||
+                drug.frequency ||
+                "-";
 
         }
 
-    } else {
+        // ==================================================
+        // Notes
+        // ==================================================
 
-        patientAge.textContent =
-            `🧒 ${ageInput.value} Year(s)`;
+        if (note) {
 
-    }
-
-    // ==================================================
-    // Drug Information
-    // ==================================================
-
-    showDrugInfo(drug);
-
-});
-// ======================================================
-// Drug Information Card
-// ======================================================
-
-function showDrugInfo(drug){
-
-    if(!drug) return;
-
-    drugInfoCard.style.display = "block";
-
-    document.getElementById("genericName").textContent =
-        drug.genericName || "-";
-
-    document.getElementById("brandNames").textContent =
-        drug.brandNames ? drug.brandNames.join(", ") : "-";
-
-    document.getElementById("category").textContent =
-        drug.category || "-";
-
-    document.getElementById("therapeuticClass").textContent =
-        drug.therapeuticClass || "-";
-
-    document.getElementById("pharmacologicalClass").textContent =
-        drug.pharmacologicalClass || "-";
-
-    document.getElementById("mechanism").textContent =
-        drug.mechanism || "-";
-
-    document.getElementById("indications").textContent =
-        drug.indications || "-";
-
-    document.getElementById("contraindications").textContent =
-        drug.contraindications || "-";
-
-    document.getElementById("warnings").textContent =
-        drug.warnings || "-";
-
-    document.getElementById("sideEffects").textContent =
-        drug.sideEffects || "-";
-
-    document.getElementById("pregnancy").textContent =
-        drug.pregnancy || "-";
-
-    document.getElementById("lactation").textContent =
-        drug.lactation || "-";
-
-    document.getElementById("doseRange").textContent =
-        drug.doseRange || "-";
-
-    document.getElementById("onset").textContent =
-        drug.onset || "-";
-
-    document.getElementById("duration").textContent =
-        drug.duration || "-";
-
-    document.getElementById("halfLife").textContent =
-        drug.halfLife || "-";
-
-    document.getElementById("proteinBinding").textContent =
-        drug.proteinBinding || "-";
-
-    document.getElementById("metabolism").textContent =
-        drug.metabolism || "-";
-
-    document.getElementById("elimination").textContent =
-        drug.elimination || "-";
-
-    document.getElementById("storage").textContent =
-        drug.storage || "-";
-
-    document.getElementById("monitoring").textContent =
-        Array.isArray(drug.monitoring)
-            ? drug.monitoring.join(" • ")
-            : "-";
-
-    document.getElementById("clinicalPearls").textContent =
-        Array.isArray(drug.clinicalPearls)
-            ? drug.clinicalPearls.join(" • ")
-            : "-";
-
-    document.getElementById("interactions").textContent =
-        Array.isArray(drug.interactions)
-            ? drug.interactions.join(" • ")
-            : "-";
-
-    document.getElementById("alerts").textContent =
-        Array.isArray(drug.alerts)
-            ? drug.alerts.join(" • ")
-            : "-";
-
-    document.getElementById("blackBox").textContent =
-        drug.blackBox || "-";
-
-}
-loadDrugs();
-
-function loadAgeOptions() {
-
-    ageInput.innerHTML = "";
-
-    if (ageUnit.value === "months") {
-
-        ageInput.innerHTML += `<option value="0.02">👶 Neonate (0–28 Days)</option>`;
-
-        for (let i = 1; i <= 11; i++) {
-
-            ageInput.innerHTML += `
-                <option value="${i / 12}">
-                    👶 ${i} Month${i > 1 ? "s" : ""}
-                </option>
-            `;
+            note.textContent =
+                result.note ||
+                drug.notes ||
+                "-";
 
         }
 
-    } else {
+        // ==================================================
+        // Drug Information
+        // ==================================================
 
-        ageInput.innerHTML += `<option value="1">🧒 1 Year</option>`;
-
-        for (let i = 2; i <= 18; i++) {
-
-            ageInput.innerHTML += `
-                <option value="${i}">
-                    🧒 ${i} Years
-                </option>
-            `;
-
-        }
-
-    }
-
-}
-ageUnit.addEventListener("change", loadAgeOptions);
-
-ageUnit.value = "months";
-loadAgeOptions();
-// ======================================================
-// Emergency Drugs → Drug Information
-// ======================================================
-
-document.addEventListener("click", (e) => {
-
-    if (!e.target.classList.contains("emDrug")) return;
-
-    const drug = drugs[e.target.dataset.drug];
-
-    if (!drug) {
-
-        alert("Drug not found.");
-
-        return;
-
-    }
-
-    showDrugInfo(drug);
-
-    drugInfoCard.style.display = "block";
-
-    drugInfoCard.scrollIntoView({
-
-        behavior: "smooth"
+        showDrugInfo(drug);
 
     });
 
-});
+}
+
+
+// ======================================================
+// Pediatric Dose Engine
+// ======================================================
+
+function calculatePediatricDose(
+    drug,
+    weight,
+    disease,
+    selectedStrength
+) {
+
+    if (!drug) {
+
+        return null;
+
+    }
+
+    // ==================================================
+    // 1. Standard mgPerKg
+    // ==================================================
+
+    if (
+        typeof drug.mgPerKg ===
+        "number"
+    ) {
+
+        let doseMg =
+            weight *
+            drug.mgPerKg;
+
+        if (
+            typeof drug.maxDose ===
+            "number" &&
+            doseMg >
+            drug.maxDose
+        ) {
+
+            doseMg =
+                drug.maxDose;
+
+        }
+
+        return buildDoseResult(
+            doseMg,
+            drug.frequency,
+            drug.notes,
+            selectedStrength
+        );
+
+    }
+
+
+    // ==================================================
+    // 2. Dose Object
+    // ==================================================
+
+    const doseData =
+        drug.dose;
+
+    if (!doseData) {
+
+        return null;
+
+    }
+
+
+    // ==================================================
+    // 3. Disease-Based Dose
+    // ==================================================
+
+    if (
+        doseData.type ===
+            "disease_based"
+    ) {
+
+        const diseaseDose =
+            doseData[disease];
+
+        if (!diseaseDose) {
+
+            // Try standard regimen
+            if (
+                doseData.standard
+            ) {
+
+                return calculateFromDoseData(
+                    doseData.standard,
+                    weight,
+                    selectedStrength,
+                    drug.notes
+                );
+
+            }
+
+            return null;
+
+        }
+
+        // ----------------------------------------------
+        // Handle special regimen arrays
+        // ----------------------------------------------
+
+        if (
+            Array.isArray(
+                diseaseDose.regimens
+            )
+        ) {
+
+            return {
+
+                doseMg: null,
+
+                doseMl: null,
+
+                frequency:
+                    "Multiple accepted regimens",
+
+                note:
+                    diseaseDose.regimens.join(
+                        " • "
+                    )
+
+            };
+
+        }
+
+        return calculateFromDoseData(
+            diseaseDose,
+            weight,
+            selectedStrength,
+            drug.notes
+        );
+
+    }
+
+
+    // ==================================================
+    // 4. Standard Pediatric Dose
+    // ==================================================
+
+    if (
+        doseData.type ===
+            "standard_pediatric"
+    ) {
+
+        return calculateFromDoseData(
+            doseData,
+            weight,
+            selectedStrength,
+            drug.notes
+        );
+
+    }
+
+
+    // ==================================================
+    // 5. Weight-Based Dose
+    // ==================================================
+
+    if (
+        doseData.type ===
+            "weight_based"
+    ) {
+
+        return calculateFromDoseData(
+            doseData,
+            weight,
+            selectedStrength,
+            drug.notes
+        );
+
+    }
+
+
+    // ==================================================
+    // 6. Component-Based Dose
+    // ==================================================
+
+    if (
+        doseData.type ===
+            "component_based"
+    ) {
+
+        const diseaseDose =
+            doseData[disease];
+
+        if (!diseaseDose) {
+
+            return null;
+
+        }
+
+        return calculateComponentDose(
+            diseaseDose,
+            weight,
+            selectedStrength,
+            drug.notes
+        );
+
+    }
+
+
+    // ==================================================
+    // 7. Severity-Based Dose
+    // ==================================================
+
+    if (
+        doseData.type ===
+            "severity_based"
+    ) {
+
+        return {
+
+            doseMg: null,
+
+            doseMl: null,
+
+            frequency:
+                "Dose depends on infection severity",
+
+            note:
+                "Select the appropriate severity-based regimen according to the prescribing guideline."
+
+        };
+
+    }
+
+
+    return null;
+
+}
+
+
+// ======================================================
+// Calculate From Dose Data
+// ======================================================
+
+function calculateFromDoseData(
+    data,
+    weight,
+    selectedStrength,
+    defaultNote
+) {
+
+    if (!data) {
+
+        return null;
+
+    }
+
+    let doseMg = null;
+
+    let frequency =
+        data.frequency ||
+        "-";
+
+    let note =
+        defaultNote ||
+        "-";
+
+
+    // ==================================================
+    // mg/kg/day
+    // ==================================================
+
+    if (
+        typeof data.mgPerKgPerDay ===
+        "number"
+    ) {
+
+        doseMg =
+            weight *
+            data.mgPerKgPerDay;
+
+    }
+
+
+    // ==================================================
+    // mg/kg/dose
+    // ==================================================
+
+    else if (
+        typeof data.mgPerKgPerDose ===
+        "number"
+    ) {
+
+        doseMg =
+            weight *
+            data.mgPerKgPerDose;
+
+    }
+
+
+    // ==================================================
+    // min/max mg/kg/day
+    // ==================================================
+
+    else if (
+        typeof data.minMgPerKgPerDay ===
+            "number" &&
+        typeof data.maxMgPerKgPerDay ===
+            "number"
+    ) {
+
+        const minDose =
+            weight *
+            data.minMgPerKgPerDay;
+
+        const maxDose =
+            weight *
+            data.maxMgPerKgPerDay;
+
+        doseMg =
+            (minDose +
+                maxDose) /
+            2;
+
+        note =
+            `Dose range: ${minDose.toFixed(2)}–${maxDose.toFixed(2)} mg/day. ${note}`;
+
+    }
+
+
+    // ==================================================
+    // Day 1 / Days 2–5
+    // ==================================================
+
+    else if (
+        typeof data.day1MgPerKg ===
+            "number"
+    ) {
+
+        doseMg =
+            weight *
+            data.day1MgPerKg;
+
+        note =
+            `Day 1: ${doseMg.toFixed(2)} mg. ${note}`;
+
+    }
+
+
+    if (
+        doseMg === null
+    ) {
+
+        return null;
+
+    }
+
+
+    // ==================================================
+    // Maximum Dose
+    // ==================================================
+
+    if (
+        typeof data.maxDoseMg ===
+            "number" &&
+        doseMg >
+            data.maxDoseMg
+    ) {
+
+        doseMg =
+            data.maxDoseMg;
+
+    }
+
+    if (
+        typeof data.maxDoseMgPerDay ===
+            "number" &&
+        doseMg >
+            data.maxDoseMgPerDay
+    ) {
+
+        doseMg =
+            data.maxDoseMgPerDay;
+
+    }
+
+    if (
+        typeof data.maxDoseMgPerDose ===
+            "number" &&
+        doseMg >
+            data.maxDoseMgPerDose
+    ) {
+
+        doseMg =
+            data.maxDoseMgPerDose;
+
+    }
+
+
+    // ==================================================
+    // Convert mg → mL
+    // ==================================================
+
+    const doseMl =
+        convertMgToMl(
+            doseMg,
+            selectedStrength
+        );
+
+
+    return {
+
+        doseMg,
+
+        doseMl,
+
+        frequency,
+
+        note
+
+    };
+
+}
+
+
+// ======================================================
+// Component-Based Dose
+// ======================================================
+
+function calculateComponentDose(
+    data,
+    weight,
+    selectedStrength,
+    defaultNote
+) {
+
+    if (!data) {
+
+        return null;
+
+    }
+
+    if (
+        typeof data.trimethoprimMgPerKgPerDay !==
+            "number"
+    ) {
+
+        return null;
+
+    }
+
+    const trimethoprimMg =
+        weight *
+        data.trimethoprimMgPerKgPerDay;
+
+    const sulfamethoxazoleMg =
+        weight *
+        data.sulfamethoxazoleMgPerKgPerDay;
+
+
+    const doseMl =
+        convertMgToMl(
+            trimethoprimMg,
+            selectedStrength
+        );
+
+
+    return {
+
+        doseMg:
+            trimethoprimMg,
+
+        doseMl,
+
+        frequency:
+            data.frequency ||
+            "-",
+
+        note:
+            `${defaultNote || ""} Dose is calculated using the Trimethoprim component.`
+
+    };
+
+}
+
+
+// ======================================================
+// Convert mg → mL
+// ======================================================
+
+function convertMgToMl(
+    doseMg,
+    strength
+) {
+
+    if (
+        !strength ||
+        !doseMg
+    ) {
+
+        return null;
+
+    }
+
+    const concentration =
+        parseFloat(
+            strength.concentration
+        );
+
+    const volume =
+        parseFloat(
+            strength.volume
+        ) || 5;
+
+
+    if (
+        isNaN(concentration) ||
+        concentration <= 0
+    ) {
+
+        return null;
+
+    }
+
+
+    /*
+     * IMPORTANT:
+     *
+     * concentration represents
+     * the active drug amount
+     * in the specified volume.
+     *
+     * Example:
+     * 250 mg / 5 mL
+     *
+     * Dose = 125 mg
+     *
+     * Volume =
+     *
+     * 125 / 250 × 5
+     *
+     * = 2.5 mL
+     */
+
+    return (
+        doseMg /
+        concentration
+    ) *
+    volume;
+
+}
+
+
+// ======================================================
+// Format Dose
+// ======================================================
+
+function formatDose(
+    value
+) {
+
+    if (
+        typeof value !==
+            "number" ||
+        isNaN(value)
+    ) {
+
+        return "-";
+
+    }
+
+    if (
+        Number.isInteger(value)
+    ) {
+
+        return String(value);
+
+    }
+
+    return value.toFixed(2);
+
+}
