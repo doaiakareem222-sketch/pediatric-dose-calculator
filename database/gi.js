@@ -415,9 +415,22 @@ const GI_DRUGS = [
 
 
 // ======================================================
-// EXPORT
+// Register GI Drugs
 // ======================================================
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = GI_DRUGS;
+if (typeof registerDrugs === "function") {
+
+  registerDrugs(GI_DRUGS);
+
+} else {
+
+  console.error(
+    "DoseCare Error: registerDrugs() is not available."
+  );
+
 }
+
+console.log(
+  "GI Database Loaded:",
+  Object.keys(GI_DRUGS)
+);
