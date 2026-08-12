@@ -2284,3 +2284,1284 @@ function validateLiquidStrength(
 // ======================================================
 // End of Part 3
 // ======================================================
+// ======================================================
+// DoseCare AI v8
+// Calculate Button Controller
+// Part 4
+// ======================================================
+
+if (calculateBtn) {
+
+    calculateBtn.addEventListener(
+        "click",
+        () => {
+
+            // ==================================================
+            // GET SELECTED DRUG
+            // ==================================================
+
+            const drugId =
+                drugSelect?.value;
+
+            const drug =
+                window.drugs?.[drugId];
+
+            if (!drug) {
+
+                alert(
+                    "Please select a medication."
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // GET PATIENT WEIGHT
+            // ==================================================
+
+            const weight =
+                parseFloat(
+                    weightInput?.value
+                );
+
+
+            if (
+                !Number.isFinite(weight) ||
+                weight <= 0
+            ) {
+
+                alert(
+                    "Please enter a valid patient's weight."
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // GET AGE
+            // ==================================================
+
+            const age =
+                parseFloat(
+                    ageInput?.value
+                );
+
+
+            if (
+                !Number.isFinite(age) ||
+                age < 0
+            ) {
+
+                alert(
+                    "Please enter a valid patient's age."
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // GET AGE IN YEARS
+            // ==================================================
+
+            let ageYears =
+                age;
+
+
+            if (
+                ageUnit?.value ===
+                "months"
+            ) {
+
+                ageYears =
+                    age / 12;
+
+            }
+
+
+            // ==================================================
+            // PEDIATRIC AGE LIMIT
+            // ==================================================
+
+            if (
+                ageYears > 12
+            ) {
+
+                alert(
+                    "DoseCare AI is intended for pediatric patients up to 12 years."
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // CHECK DRUG AGE LIMIT
+            // ==================================================
+
+            if (
+                drug.age &&
+                typeof drug.age.minAge ===
+                    "number" &&
+                ageYears <
+                    drug.age.minAge
+            ) {
+
+                alert(
+                    `This medication is not recommended for this age according to the database. Minimum age: ${drug.age.minAge} years.`
+                );
+
+                return;
+            }
+
+
+            if (
+                drug.age &&
+                typeof drug.age.maxAge ===
+                    "number" &&
+                ageYears >
+                    drug.age.maxAge
+            ) {
+
+                alert(
+                    `This medication is outside the stored pediatric age range. Maximum age: ${drug.age.maxAge} years.`
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // GET DISEASE
+            // ==================================================
+
+            const disease =
+                diseaseSelect?.value || "";
+
+
+            // ==================================================
+            // GET STRENGTH
+            // ==================================================
+
+            const selectedStrength =
+                getSelectedStrength(
+                    drug
+                );
+
+
+            // ==================================================
+            // VALIDATE LIQUID STRENGTH
+            // ==================================================
+
+            const strengthCheck =
+                validateLiquidStrength(
+                    selectedStrength
+                );
+
+
+            if (
+                !strengthCheck.valid
+            ) {
+
+                alert(
+                    strengthCheck.message
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // CALCULATE ACCURATE DOSE
+            // ==================================================
+
+            const result =
+                calculateAccurateDose(
+                    drug,
+                    weight,
+                    disease,
+                    selectedStrength
+                );
+
+
+            // ==================================================
+            // CALCULATION FAILED
+            // ==================================================
+
+            if (!result) {
+
+                alert(
+                    "Dose information is not available for this medication and condition."
+                );
+
+                return;
+            }
+
+
+            // ==================================================
+            // SHOW RESULT CARD
+            // ==================================================
+
+            if (resultCard) {
+
+                resultCard.style.display =
+                    "block";
+
+            }
+
+
+            // ==================================================
+            // DRUG NAME
+            // ==================================================
+
+            if (drugName) {
+
+                drugName.textContent =
+                    safeText(
+                        drug.name ||
+                        drug.genericName
+                    );
+
+            }
+
+
+            // ==================================================
+            // PATIENT AGE
+            // ==================================================
+
+            if (patientAge) {
+
+                if (
+                    ageUnit?.value ===
+                    "months"
+                ) {
+
+                    if (age === 0) {
+
+                        patientAge.textContent =
+                            "👶 Newborn";
+
+                    } else {
+
+                        patientAge.textContent =
+                            `👶 ${age} Month(s)`;
+
+                    }
+
+                } else {
+
+                    patientAge.textContent =
+                        `🧒 ${age} Year(s)`;
+
+                }
+
+            }
+
+
+            // ==================================================
+            // DOSE MG
+            // ==================================================
+
+            if (doseMg) {
+
+                if (
+                    Number.isFinite(
+                        result.doseMg
+                    )
+                ) {
+
+                    doseMg.textContent =
+                        `${formatDose(
+                            result.doseMg
+                        )} mg`;
+
+                } else {
+
+                    doseMg.textContent =
+                        "See regimen";
+
+                }
+
+            }
+
+
+            // ==================================================
+            // DOSE ML / CC
+            // ==================================================
+
+            if (doseMl) {
+
+                if (
+                    Number.isFinite(
+                        result.doseMl
+                    )
+                ) {
+
+                    const ml =
+                        mlToCc(
+                            result.doseMl
+                        );
+
+                    doseMl.textContent =
+                        `${formatVolume(
+                            ml
+                        )} mL (${formatVolume(
+                            ml
+                        )} cc)`;
+
+                } else {
+
+                    doseMl.textContent =
+                        "-";
+
+                }
+
+            }
+
+
+            // ==================================================
+            // FREQUENCY
+            // ==================================================
+
+            if (frequency) {
+
+                frequency.textContent =
+                    result.frequency ||
+                    "-";
+
+            }
+
+
+            // ==================================================
+            // DURATION
+            // ==================================================
+
+            const resultDuration =
+                document.getElementById(
+                    "duration"
+                );
+
+            if (resultDuration) {
+
+                resultDuration.textContent =
+                    result.duration ||
+                    "-";
+
+            }
+
+
+            // ==================================================
+            // NOTE
+            // ==================================================
+
+            if (note) {
+
+                note.textContent =
+                    result.note ||
+                    drug.notes ||
+                    "-";
+
+            }
+
+
+            // ==================================================
+            // SHOW DRUG INFORMATION
+            // ==================================================
+
+            showDrugInfo(
+                drug
+            );
+
+
+            // ==================================================
+            // SHOW CLINICAL ALERTS
+            // ==================================================
+
+            showClinicalAlerts(
+                drug
+            );
+
+
+            // ==================================================
+            // UPDATE CALCULATION COUNTER
+            // ==================================================
+
+            calculations++;
+
+            if (calcCount) {
+
+                calcCount.textContent =
+                    calculations;
+
+            }
+
+
+            // ==================================================
+            // UPDATE LAST DRUG
+            // ==================================================
+
+            if (lastDrug) {
+
+                lastDrug.textContent =
+                    drug.name ||
+                    drug.genericName ||
+                    "-";
+
+            }
+
+
+            // ==================================================
+            // SAVE HISTORY
+            // ==================================================
+
+            const historyItem = {
+
+                drug:
+                    drug.name ||
+                    drug.genericName ||
+                    "-",
+
+                weight,
+
+                age,
+
+                ageUnit:
+                    ageUnit?.value ||
+                    "years",
+
+                disease,
+
+                doseMg:
+                    result.doseMg,
+
+                doseMl:
+                    result.doseMl,
+
+                frequency:
+                    result.frequency ||
+                    "-",
+
+                duration:
+                    result.duration ||
+                    "-",
+
+                timestamp:
+                    new Date().toISOString()
+
+            };
+
+
+            calculationHistory.push(
+                historyItem
+            );
+
+
+            // Keep latest 20 calculations
+            if (
+                calculationHistory.length >
+                20
+            ) {
+
+                calculationHistory.shift();
+
+            }
+
+
+            // ==================================================
+            // UPDATE HISTORY UI
+            // ==================================================
+
+            updateHistoryUI();
+
+
+            // ==================================================
+            // SCROLL TO RESULT
+            // ==================================================
+
+            if (
+                resultCard &&
+                typeof resultCard.scrollIntoView ===
+                    "function"
+            ) {
+
+                resultCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// END OF PART 4
+// ======================================================
+// ======================================================
+// DoseCare AI v8
+// Drug Information & Clinical Alerts
+// Part 5
+// ======================================================
+
+
+// ======================================================
+// HIDE DRUG INFORMATION
+// ======================================================
+
+function hideDrugInfo() {
+
+    if (drugInfoCard) {
+
+        drugInfoCard.style.display =
+            "none";
+
+    }
+
+}
+
+
+// ======================================================
+// SHOW DRUG INFORMATION
+// ======================================================
+
+function showDrugInfo(
+    drug
+) {
+
+    if (!drug) {
+
+        hideDrugInfo();
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Show Card
+    // --------------------------------------------------
+
+    if (drugInfoCard) {
+
+        drugInfoCard.style.display =
+            "block";
+
+    }
+
+
+    // --------------------------------------------------
+    // Generic Name
+    // --------------------------------------------------
+
+    if (genericName) {
+
+        genericName.textContent =
+            safeText(
+                drug.genericName ||
+                drug.name
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Brand Names
+    // --------------------------------------------------
+
+    if (brandNames) {
+
+        brandNames.textContent =
+            arrayToText(
+                drug.brandNames
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Category
+    // --------------------------------------------------
+
+    if (category) {
+
+        category.textContent =
+            safeText(
+                drug.category
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Therapeutic Class
+    // --------------------------------------------------
+
+    if (therapeuticClass) {
+
+        therapeuticClass.textContent =
+            safeText(
+                drug.therapeuticClass
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Pharmacological Class
+    // --------------------------------------------------
+
+    if (pharmacologicalClass) {
+
+        pharmacologicalClass.textContent =
+            safeText(
+                drug.pharmacologicalClass
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Mechanism of Action
+    // --------------------------------------------------
+
+    if (mechanism) {
+
+        mechanism.textContent =
+            safeText(
+                drug.mechanism ||
+                drug.mechanismOfAction
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Indications
+    // --------------------------------------------------
+
+    if (indications) {
+
+        indications.textContent =
+            arrayToText(
+                drug.indications
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Contraindications
+    // --------------------------------------------------
+
+    if (contraindications) {
+
+        contraindications.textContent =
+            arrayToText(
+                drug.contraindications
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Warnings
+    // --------------------------------------------------
+
+    if (warnings) {
+
+        warnings.textContent =
+            arrayToText(
+                drug.warnings
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Side Effects
+    // --------------------------------------------------
+
+    if (sideEffects) {
+
+        sideEffects.textContent =
+            arrayToText(
+                drug.sideEffects
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Pregnancy
+    // --------------------------------------------------
+
+    if (pregnancy) {
+
+        pregnancy.textContent =
+            safeText(
+                drug.pregnancy
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Lactation
+    // --------------------------------------------------
+
+    if (lactation) {
+
+        lactation.textContent =
+            safeText(
+                drug.lactation
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Dose Range
+    // --------------------------------------------------
+
+    if (doseRange) {
+
+        doseRange.textContent =
+            safeText(
+                drug.doseRange
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Onset
+    // --------------------------------------------------
+
+    if (onset) {
+
+        onset.textContent =
+            safeText(
+                drug.onset
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Duration
+    // --------------------------------------------------
+
+    if (duration) {
+
+        duration.textContent =
+            safeText(
+                drug.duration
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Half Life
+    // --------------------------------------------------
+
+    if (halfLife) {
+
+        halfLife.textContent =
+            safeText(
+                drug.halfLife
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Protein Binding
+    // --------------------------------------------------
+
+    if (proteinBinding) {
+
+        proteinBinding.textContent =
+            safeText(
+                drug.proteinBinding
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Metabolism
+    // --------------------------------------------------
+
+    if (metabolism) {
+
+        metabolism.textContent =
+            safeText(
+                drug.metabolism
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Elimination
+    // --------------------------------------------------
+
+    if (elimination) {
+
+        elimination.textContent =
+            safeText(
+                drug.elimination
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Storage
+    // --------------------------------------------------
+
+    if (storage) {
+
+        storage.textContent =
+            safeText(
+                drug.storage
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Monitoring
+    // --------------------------------------------------
+
+    if (monitoring) {
+
+        monitoring.textContent =
+            arrayToText(
+                drug.monitoring
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Clinical Pearls
+    // --------------------------------------------------
+
+    if (clinicalPearls) {
+
+        clinicalPearls.textContent =
+            arrayToText(
+                drug.clinicalPearls
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Interactions
+    // --------------------------------------------------
+
+    if (interactions) {
+
+        interactions.textContent =
+            arrayToText(
+                drug.interactions
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Alerts
+    // --------------------------------------------------
+
+    if (alerts) {
+
+        alerts.textContent =
+            arrayToText(
+                drug.alerts
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Black Box
+    // --------------------------------------------------
+
+    if (blackBox) {
+
+        blackBox.textContent =
+            safeText(
+                drug.blackBox
+            );
+
+    }
+
+}
+
+
+// ======================================================
+// HIDE CLINICAL ALERTS
+// ======================================================
+
+function hideClinicalAlerts() {
+
+    if (clinicalAlertCard) {
+
+        clinicalAlertCard.style.display =
+            "none";
+
+    }
+
+
+    if (clinicalAlertContent) {
+
+        clinicalAlertContent.innerHTML =
+            "";
+
+    }
+
+}
+
+
+// ======================================================
+// SHOW CLINICAL ALERTS
+// ======================================================
+
+function showClinicalAlerts(
+    drug
+) {
+
+    if (!drug) {
+
+        hideClinicalAlerts();
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Collect Alerts
+    // --------------------------------------------------
+
+    const alertList = [];
+
+
+    // --------------------------------------------------
+    // Contraindications
+    // --------------------------------------------------
+
+    if (
+        Array.isArray(
+            drug.contraindications
+        )
+    ) {
+
+        drug.contraindications.forEach(
+            item => {
+
+                if (item) {
+
+                    alertList.push({
+                        type:
+                            "contraindication",
+
+                        text:
+                            String(item)
+
+                    });
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // --------------------------------------------------
+    // Warnings
+    // --------------------------------------------------
+
+    if (
+        Array.isArray(
+            drug.warnings
+        )
+    ) {
+
+        drug.warnings.forEach(
+            item => {
+
+                if (item) {
+
+                    alertList.push({
+                        type:
+                            "warning",
+
+                        text:
+                            String(item)
+
+                    });
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // --------------------------------------------------
+    // Drug Alerts
+    // --------------------------------------------------
+
+    if (
+        Array.isArray(
+            drug.alerts
+        )
+    ) {
+
+        drug.alerts.forEach(
+            item => {
+
+                if (item) {
+
+                    alertList.push({
+                        type:
+                            "alert",
+
+                        text:
+                            String(item)
+
+                    });
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // --------------------------------------------------
+    // Black Box Warning
+    // --------------------------------------------------
+
+    if (
+        drug.blackBox &&
+        String(
+            drug.blackBox
+        ).trim() !== ""
+    ) {
+
+        alertList.push({
+
+            type:
+                "blackbox",
+
+            text:
+                String(
+                    drug.blackBox
+                )
+
+        });
+
+    }
+
+
+    // --------------------------------------------------
+    // No Alerts
+    // --------------------------------------------------
+
+    if (
+        alertList.length === 0
+    ) {
+
+        hideClinicalAlerts();
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Show Alert Card
+    // --------------------------------------------------
+
+    if (clinicalAlertCard) {
+
+        clinicalAlertCard.style.display =
+            "block";
+
+    }
+
+
+    if (!clinicalAlertContent) {
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Build Alert UI
+    // --------------------------------------------------
+
+    clinicalAlertContent.innerHTML =
+        "";
+
+
+    alertList.forEach(
+        alert => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                `clinical-alert-item ${alert.type}`;
+
+
+            const icon =
+                document.createElement(
+                    "span"
+                );
+
+
+            const text =
+                document.createElement(
+                    "span"
+                );
+
+
+            // ------------------------------------------
+            // Alert Icon
+            // ------------------------------------------
+
+            if (
+                alert.type ===
+                "contraindication"
+            ) {
+
+                icon.textContent =
+                    "🚫";
+
+            }
+
+            else if (
+                alert.type ===
+                "blackbox"
+            ) {
+
+                icon.textContent =
+                    "⛔";
+
+            }
+
+            else if (
+                alert.type ===
+                "warning"
+            ) {
+
+                icon.textContent =
+                    "⚠️";
+
+            }
+
+            else {
+
+                icon.textContent =
+                    "🔔";
+
+            }
+
+
+            // ------------------------------------------
+            // Alert Text
+            // ------------------------------------------
+
+            text.textContent =
+                alert.text;
+
+
+            item.appendChild(
+                icon
+            );
+
+            item.appendChild(
+                text
+            );
+
+
+            clinicalAlertContent.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// RESET RESULT CARD
+// ======================================================
+
+function hideResult() {
+
+    if (resultCard) {
+
+        resultCard.style.display =
+            "none";
+
+    }
+
+
+    if (doseMg) {
+
+        doseMg.textContent =
+            "-";
+
+    }
+
+
+    if (doseMl) {
+
+        doseMl.textContent =
+            "-";
+
+    }
+
+
+    if (frequency) {
+
+        frequency.textContent =
+            "-";
+
+    }
+
+
+    if (note) {
+
+        note.textContent =
+            "-";
+
+    }
+
+}
+
+
+// ======================================================
+// END OF PART 5
+// ======================================================
