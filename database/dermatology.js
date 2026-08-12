@@ -133,4 +133,23 @@ const dermatologyDrugs = [
 
 ];
 
-export default dermatologyDrugs;
+// ======================================================
+// Register Dermatology Drugs
+// ======================================================
+
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(dermatologyDrugs);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
+}
+
+console.log(
+    "Dermatology Database Loaded:",
+    dermatologyDrugs.map(drug => drug.id)
+);
