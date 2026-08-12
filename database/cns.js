@@ -120,4 +120,23 @@ const cnsDrugs = [
 
 ];
 
-export default cnsDrugs;
+// ======================================================
+// Register CNS Drugs
+// ======================================================
+
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(cnsDrugs);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
+}
+
+console.log(
+    "CNS Database Loaded:",
+    cnsDrugs.map(drug => drug.id)
+);
