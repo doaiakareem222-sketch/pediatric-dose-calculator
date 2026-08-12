@@ -236,7 +236,31 @@ const ANTIPARASITIC_DRUGS = [
   }
 
 ];
+// ======================================================
+// Register Antiparasitic Drugs
+// ======================================================
 
+if (typeof registerDrugs === "function") {
+
+    registerDrugs(ANTIPARASITIC_DRUGS);
+
+} else {
+
+    console.error(
+        "DoseCare Error: registerDrugs() is not available."
+    );
+
+}
+
+
+// ======================================================
+// Debug
+// ======================================================
+
+console.log(
+    "Antiparasitic Database Loaded:",
+    ANTIPARASITIC_DRUGS.map(drug => drug.id)
+);
 
 // ======================================================
 // EXPORT
