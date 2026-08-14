@@ -4004,3 +4004,1112 @@ updateHistoryUI();
 // ======================================================
 // END OF PART 6
 // ======================================================
+// ======================================================
+// DoseCare AI v8
+// Persistent History & Local Storage
+// Part 7
+// ======================================================
+
+
+// ======================================================
+// STORAGE CONFIGURATION
+// ======================================================
+
+const DOSECARE_HISTORY_KEY =
+    "dosecare_calculation_history";
+
+const DOSECARE_CALCULATIONS_KEY =
+    "dosecare_calculations";
+
+const DOSECARE_LAST_DRUG_KEY =
+    "dosecare_last_drug";
+
+
+// ======================================================
+// SAVE HISTORY TO LOCAL STORAGE
+// ======================================================
+
+function saveHistoryToStorage() {
+
+    try {
+
+        localStorage.setItem(
+            DOSECARE_HISTORY_KEY,
+            JSON.stringify(
+                calculationHistory
+            )
+        );
+
+        localStorage.setItem(
+            DOSECARE_CALCULATIONS_KEY,
+            String(
+                calculations
+            )
+        );
+
+        if (lastDrug) {
+
+            localStorage.setItem(
+                DOSECARE_LAST_DRUG_KEY,
+                lastDrug.textContent || "-"
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: Unable to save history.",
+            error
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// LOAD HISTORY FROM LOCAL STORAGE
+// ======================================================
+
+function loadHistoryFromStorage() {
+
+    try {
+
+        // ------------------------------------------------
+        // Load calculation history
+        // ------------------------------------------------
+
+        const savedHistory =
+            localStorage.getItem(
+                DOSECARE_HISTORY_KEY
+            );
+
+
+        if (savedHistory) {
+
+            const parsedHistory =
+                JSON.parse(
+                    savedHistory
+                );
+
+
+            if (
+                Array.isArray(
+                    parsedHistory
+                )
+            ) {
+
+                calculationHistory =
+                    parsedHistory
+                        .filter(
+                            item =>
+                                item &&
+                                typeof item ===
+                                "object"
+                        )
+                        .slice(-20);
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // Load calculation counter
+        // ------------------------------------------------
+
+        const savedCalculations =
+            localStorage.getItem(
+                DOSECARE_CALCULATIONS_KEY
+            );
+
+
+        if (savedCalculations !== null) {
+
+            const parsedCalculations =
+                Number(
+                    savedCalculations
+                );
+
+
+            if (
+                Number.isFinite(
+                    parsedCalculations
+                ) &&
+                parsedCalculations >= 0
+            ) {
+
+                calculations =
+                    parsedCalculations;
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // Sync counter with history
+        // ------------------------------------------------
+
+        if (
+            calculationHistory.length >
+            calculations
+        ) {
+
+            calculations =
+                calculationHistory.length;
+
+        }
+
+
+        // ------------------------------------------------
+        // Restore counter UI
+        // ------------------------------------------------
+
+        if (calcCount) {
+
+            calcCount.textContent =
+                calculations;
+
+        }
+
+
+        // ------------------------------------------------
+        // Restore last drug
+        // ------------------------------------------------
+
+        const savedLastDrug =
+            localStorage.getItem(
+                DOSECARE_LAST_DRUG_KEY
+            );
+
+
+        if (
+            lastDrug &&
+            savedLastDrug
+        ) {
+
+            lastDrug.textContent =
+                savedLastDrug;
+
+        }
+
+
+        // ------------------------------------------------
+        // Refresh history UI
+        // ------------------------------------------------
+
+        updateHistoryUI();
+
+
+        console.log(
+            "DoseCare history restored:",
+            calculationHistory.length
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: Unable to load saved history.",
+            error
+        );
+
+        // ----------------------------------------------
+        // Prevent corrupted storage from breaking app
+        // ----------------------------------------------
+
+        calculationHistory =
+            [];
+
+        calculations =
+            0;
+
+        if (calcCount) {
+
+            calcCount.textContent =
+                "0";
+
+        }
+
+        updateHistoryUI();
+
+    }
+
+}
+
+
+// ======================================================
+// SAVE AFTER EVERY CALCULATION
+// ======================================================
+
+function persistCalculation(
+    historyItem
+) {
+
+    if (!historyItem) {
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // Add calculation
+    // --------------------------------------------------
+
+    calculationHistory.push(
+        historyItem
+    );
+
+
+    // --------------------------------------------------
+    // Keep latest 20 calculations
+    // --------------------------------------------------
+
+    if (
+        calculationHistory.length >
+        20
+    ) {
+
+        calculationHistory =
+            calculationHistory.slice(
+                -20
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // Update counter
+    // --------------------------------------------------
+
+    calculations++;
+
+
+    // --------------------------------------------------
+    // Update UI
+    // --------------------------------------------------
+
+    if (calcCount) {
+
+        calcCount.textContent =
+            calculations;
+
+    }
+
+
+    if (lastDrug) {
+
+        lastDrug.textContent =
+            historyItem.drug ||
+            "-";
+
+    }
+
+
+    updateHistoryUI();
+
+
+    // --------------------------------------------------
+    // Persist
+    // --------------------------------------------------
+
+    saveHistoryToStorage();
+
+}
+
+
+// ======================================================
+// OVERRIDE CLEAR HISTORY STORAGE
+// ======================================================
+
+function clearPersistentHistory() {
+
+    calculationHistory =
+        [];
+
+    calculations =
+        0;
+
+
+    // --------------------------------------------------
+    // Clear local storage
+    // --------------------------------------------------
+
+    try {
+
+        localStorage.removeItem(
+            DOSECARE_HISTORY_KEY
+        );
+
+        localStorage.removeItem(
+            DOSECARE_CALCULATIONS_KEY
+        );
+
+        localStorage.removeItem(
+            DOSECARE_LAST_DRUG_KEY
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: Unable to clear saved history.",
+            error
+        );
+
+    }
+
+
+    // --------------------------------------------------
+    // Reset UI
+    // --------------------------------------------------
+
+    if (calcCount) {
+
+        calcCount.textContent =
+            "0";
+
+    }
+
+
+    if (lastDrug) {
+
+        lastDrug.textContent =
+            "-";
+
+    }
+
+
+    updateHistoryUI();
+
+}
+
+
+// ======================================================
+// PATCH EXISTING CLEAR FUNCTION
+// ======================================================
+
+/*
+ * Part 6 already contains:
+ *
+ * clearCalculationHistory()
+ *
+ * We keep that function intact.
+ *
+ * This helper ensures that both memory
+ * and localStorage are cleared.
+ */
+
+function clearAllDoseCareHistory() {
+
+    clearPersistentHistory();
+
+}
+
+
+// ======================================================
+// INITIALIZE PERSISTENT HISTORY
+// ======================================================
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+
+            loadHistoryFromStorage();
+
+        }
+    );
+
+}
+
+else {
+
+    loadHistoryFromStorage();
+
+}
+
+
+// ======================================================
+// SAVE HISTORY BEFORE PAGE UNLOAD
+// ======================================================
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        saveHistoryToStorage();
+
+    }
+);
+
+
+// ======================================================
+// END OF PART 7
+// ======================================================
+// ======================================================
+// DoseCare AI v8
+// Final Integration & Safety Layer
+// Part 8
+// ======================================================
+
+
+// ======================================================
+// FINAL APPLICATION STATE
+// ======================================================
+
+const DOSECARE_VERSION =
+    "v8";
+
+
+// ======================================================
+// SAFE LOCAL STORAGE CHECK
+// ======================================================
+
+function isStorageAvailable() {
+
+    try {
+
+        const testKey =
+            "__dosecare_storage_test__";
+
+        localStorage.setItem(
+            testKey,
+            "1"
+        );
+
+        localStorage.removeItem(
+            testKey
+        );
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "DoseCare: Local storage is unavailable."
+        );
+
+        return false;
+
+    }
+
+}
+
+
+// ======================================================
+// SAVE CURRENT APPLICATION STATE
+// ======================================================
+
+function saveDoseCareState() {
+
+    if (
+        !isStorageAvailable()
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        // ------------------------------------------------
+        // Keep only the latest 20 calculations
+        // ------------------------------------------------
+
+        if (
+            calculationHistory.length >
+            20
+        ) {
+
+            calculationHistory =
+                calculationHistory.slice(
+                    -20
+                );
+
+        }
+
+
+        // ------------------------------------------------
+        // Save history
+        // ------------------------------------------------
+
+        localStorage.setItem(
+            DOSECARE_HISTORY_KEY,
+            JSON.stringify(
+                calculationHistory
+            )
+        );
+
+
+        // ------------------------------------------------
+        // Save calculation count
+        // ------------------------------------------------
+
+        localStorage.setItem(
+            DOSECARE_CALCULATIONS_KEY,
+            String(
+                calculations
+            )
+        );
+
+
+        // ------------------------------------------------
+        // Save last selected drug
+        // ------------------------------------------------
+
+        const currentLastDrug =
+            lastDrug?.textContent ||
+            "-";
+
+
+        localStorage.setItem(
+            DOSECARE_LAST_DRUG_KEY,
+            currentLastDrug
+        );
+
+
+        // ------------------------------------------------
+        // Save application version
+        // ------------------------------------------------
+
+        localStorage.setItem(
+            "dosecare_version",
+            DOSECARE_VERSION
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: State could not be saved.",
+            error
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// RESTORE APPLICATION STATE
+// ======================================================
+
+function restoreDoseCareState() {
+
+    if (
+        !isStorageAvailable()
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const savedHistory =
+            localStorage.getItem(
+                DOSECARE_HISTORY_KEY
+            );
+
+
+        // ------------------------------------------------
+        // Restore history
+        // ------------------------------------------------
+
+        if (savedHistory) {
+
+            const parsedHistory =
+                JSON.parse(
+                    savedHistory
+                );
+
+
+            if (
+                Array.isArray(
+                    parsedHistory
+                )
+            ) {
+
+                calculationHistory =
+                    parsedHistory
+                        .filter(
+                            item =>
+                                item &&
+                                typeof item ===
+                                "object"
+                        )
+                        .slice(-20);
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // Restore calculation count
+        // ------------------------------------------------
+
+        const savedCount =
+            localStorage.getItem(
+                DOSECARE_CALCULATIONS_KEY
+            );
+
+
+        if (savedCount !== null) {
+
+            const parsedCount =
+                Number(
+                    savedCount
+                );
+
+
+            if (
+                Number.isFinite(
+                    parsedCount
+                ) &&
+                parsedCount >= 0
+            ) {
+
+                calculations =
+                    parsedCount;
+
+            }
+
+        }
+
+
+        // ------------------------------------------------
+        // Keep counter consistent
+        // ------------------------------------------------
+
+        if (
+            calculations <
+            calculationHistory.length
+        ) {
+
+            calculations =
+                calculationHistory.length;
+
+        }
+
+
+        // ------------------------------------------------
+        // Restore last drug
+        // ------------------------------------------------
+
+        const savedLastDrug =
+            localStorage.getItem(
+                DOSECARE_LAST_DRUG_KEY
+            );
+
+
+        if (
+            lastDrug &&
+            savedLastDrug
+        ) {
+
+            lastDrug.textContent =
+                savedLastDrug;
+
+        }
+
+
+        // ------------------------------------------------
+        // Update counter UI
+        // ------------------------------------------------
+
+        if (calcCount) {
+
+            calcCount.textContent =
+                String(
+                    calculations
+                );
+
+        }
+
+
+        // ------------------------------------------------
+        // Update history UI
+        // ------------------------------------------------
+
+        updateHistoryUI();
+
+
+        console.log(
+            "DoseCare state restored successfully."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: Failed to restore state.",
+            error
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// AUTO SAVE AFTER CALCULATION
+// ======================================================
+
+function autoSaveAfterCalculation() {
+
+    /*
+     * Part 4 updates:
+     *
+     * calculationHistory
+     * calculations
+     * lastDrug
+     *
+     * This function saves their current state
+     * without adding another history item.
+     *
+     * This prevents duplicate calculations.
+     */
+
+    saveDoseCareState();
+
+}
+
+
+// ======================================================
+// WATCH APPLICATION CHANGES
+// ======================================================
+
+let doseCareLastSavedCount =
+    -1;
+
+
+function monitorCalculationChanges() {
+
+    if (
+        calculations !==
+        doseCareLastSavedCount
+    ) {
+
+        doseCareLastSavedCount =
+            calculations;
+
+        autoSaveAfterCalculation();
+
+    }
+
+}
+
+
+// ======================================================
+// PERIODIC STATE MONITOR
+// ======================================================
+
+const doseCareStateMonitor =
+    setInterval(
+        () => {
+
+            monitorCalculationChanges();
+
+        },
+        500
+    );
+
+
+// ======================================================
+// SAVE WHEN PAGE BECOMES HIDDEN
+// ======================================================
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if (
+            document.visibilityState ===
+            "hidden"
+        ) {
+
+            saveDoseCareState();
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// SAVE BEFORE PAGE CLOSE
+// ======================================================
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        saveDoseCareState();
+
+    }
+);
+
+
+// ======================================================
+// CLEAR STORAGE SAFELY
+// ======================================================
+
+function clearDoseCareStorage() {
+
+    try {
+
+        localStorage.removeItem(
+            DOSECARE_HISTORY_KEY
+        );
+
+        localStorage.removeItem(
+            DOSECARE_CALCULATIONS_KEY
+        );
+
+        localStorage.removeItem(
+            DOSECARE_LAST_DRUG_KEY
+        );
+
+        localStorage.removeItem(
+            "dosecare_version"
+        );
+
+
+        console.log(
+            "DoseCare storage cleared."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "DoseCare: Could not clear storage.",
+            error
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// APPLICATION RESET
+// ======================================================
+
+function resetDoseCareApplication() {
+
+    // --------------------------------------------------
+    // Reset memory
+    // --------------------------------------------------
+
+    calculationHistory =
+        [];
+
+    calculations =
+        0;
+
+
+    // --------------------------------------------------
+    // Reset UI
+    // --------------------------------------------------
+
+    if (calcCount) {
+
+        calcCount.textContent =
+            "0";
+
+    }
+
+
+    if (lastDrug) {
+
+        lastDrug.textContent =
+            "-";
+
+    }
+
+
+    // --------------------------------------------------
+    // Reset result
+    // --------------------------------------------------
+
+    hideResult();
+
+
+    // --------------------------------------------------
+    // Reset alerts
+    // --------------------------------------------------
+
+    hideClinicalAlerts();
+
+
+    // --------------------------------------------------
+    // Reset history
+    // --------------------------------------------------
+
+    updateHistoryUI();
+
+
+    // --------------------------------------------------
+    // Clear storage
+    // --------------------------------------------------
+
+    clearDoseCareStorage();
+
+
+    console.log(
+        "DoseCare application reset."
+    );
+
+}
+
+
+// ======================================================
+// DATABASE VALIDATION
+// ======================================================
+
+function validateDoseCareDatabase() {
+
+    if (
+        !window.drugs ||
+        typeof window.drugs !==
+        "object"
+    ) {
+
+        console.warn(
+            "DoseCare: Drug database is empty."
+        );
+
+        return false;
+
+    }
+
+
+    const drugCount =
+        Object.keys(
+            window.drugs
+        ).length;
+
+
+    console.log(
+        `DoseCare database validated: ${drugCount} drug(s).`
+    );
+
+
+    return (
+        drugCount > 0
+    );
+
+}
+
+
+// ======================================================
+// FINAL DATABASE REFRESH
+// ======================================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        refreshDrugRegistry();
+
+        validateDoseCareDatabase();
+
+        if (
+            currentDrugList.length > 0
+        ) {
+
+            loadDrugs(
+                currentDrugList
+            );
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// FINAL HISTORY RESTORE
+// ======================================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        restoreDoseCareState();
+
+    }
+);
+
+
+// ======================================================
+// APPLICATION READY MESSAGE
+// ======================================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        console.log(
+            "======================================"
+        );
+
+        console.log(
+            "DoseCare AI v8 is fully initialized."
+        );
+
+        console.log(
+            "Pediatric Dose Engine: READY"
+        );
+
+        console.log(
+            "Drug Information System: READY"
+        );
+
+        console.log(
+            "Clinical Alerts: READY"
+        );
+
+        console.log(
+            "Calculation History: READY"
+        );
+
+        console.log(
+            "Persistent Storage: READY"
+        );
+
+        console.log(
+            "======================================"
+        );
+
+    }
+);
+
+
+// ======================================================
+// END OF PART 8
+// ======================================================
+//                DOSECARE AI v8
+//              FINAL JAVASCRIPT
+// ======================================================
